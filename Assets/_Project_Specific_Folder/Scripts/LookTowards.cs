@@ -20,10 +20,10 @@ public class LookTowards : MonoBehaviour
     public Animator anim;
     float i, j;
     public GameObject Cape;
-    public GameObject CapeFinalPos;
+    public GameObject CapeFinalPos; float CurrentSpeed, CurrentMaxSpeed;
     void Start()
     {
-
+        CurrentMaxSpeed = GameManager.Instance.p.speed; CurrentMaxSpeed = GameManager.Instance.p.MaxSpeed;
     }
 
 
@@ -41,7 +41,7 @@ public class LookTowards : MonoBehaviour
         anim.SetBool("Injured", false); 
         UiManager.Instance.FadeIn.gameObject.SetActive(false);
         yield return new WaitForSeconds(2.5f);
-        GameManager.Instance.p.speed = 1.5f; GameManager.Instance.p.MaxSpeed = 1.5f; 
+        GameManager.Instance.p.speed = CurrentSpeed; GameManager.Instance.p.MaxSpeed = CurrentMaxSpeed; 
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -102,6 +102,7 @@ public class LookTowards : MonoBehaviour
                       anim.transform.localScale.y + ScaleAmmount
                        , anim.transform.localScale.z + ScaleAmmount
                        ), .3f).SetEase(ease);
+                    CurrentMaxSpeed = GameManager.Instance.p.speed; CurrentMaxSpeed = GameManager.Instance.p.MaxSpeed;
                 }
                 //CollectableVFX.Play();
          
@@ -136,6 +137,7 @@ public class LookTowards : MonoBehaviour
                        anim.transform.localScale.y + ScaleAmmount
                         , anim.transform.localScale.z + ScaleAmmount
                         ), .3f).SetEase(ease);
+                    CurrentMaxSpeed = GameManager.Instance.p.speed; CurrentMaxSpeed = GameManager.Instance.p.MaxSpeed;
                 }
                 Destroy(other.gameObject);
             }

@@ -29,12 +29,11 @@ public class Collsion : MonoBehaviour
     public bool Flying;
     Vector3 camStartPos;
     Quaternion camStartRot;
-    float CurrentSpeed;
+    float CurrentSpeed, CurrentMaxSpeed;
     private void Awake()
     {
-        CurrentSpeed = GameManager.Instance.p.MaxSpeed;
-
-       camStartPos = Camera.main.transform.localPosition;
+ 
+        camStartPos = Camera.main.transform.localPosition;
         camStartRot = Camera.main.transform.localRotation;
 
         Hero1ModelPos = Hero1Model.transform.position; Hero2ModelPos = Hero2Model.transform.localPosition;
@@ -118,7 +117,7 @@ public class Collsion : MonoBehaviour
         {
             GameManager.Instance.p.MaxSpeed -= SpeedIncreasAmmount; 
             GameManager.Instance.p.speed = CurrentSpeed;
-
+            GameManager.Instance.p.MaxSpeed = CurrentMaxSpeed;
             Camera.main.transform.DOLocalMove(camStartPos, .2f);
             Camera.main.transform.DOLocalRotate(camStartRot.eulerAngles, .2f);
             Flying = false;
@@ -146,6 +145,8 @@ public class Collsion : MonoBehaviour
 
     void Fly()
     {
+        CurrentMaxSpeed = GameManager.Instance.p.MaxSpeed;
+        CurrentMaxSpeed = GameManager.Instance.p.speed;
         Camera.main.transform.DOLocalMove(new Vector3(0,14.2f , -20.4f), .2f);
         Camera.main.transform.DOLocalRotate(new Vector3(17.66f , -.031f , -.089f), .2f);
         GameManager.Instance.p.MaxSpeed += SpeedIncreasAmmount;
@@ -184,7 +185,7 @@ public class Collsion : MonoBehaviour
     {
         Camera.main.transform.DOLocalMove(GameManager.Instance.FianlCamPos.transform.localPosition, 1);
         Camera.main.transform.DOLocalRotate(GameManager.Instance.FianlCamPos.transform.localEulerAngles, 1);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.3f);
         GameManager.Instance.p.MaxSpeed = .3f;
         GameManager.Instance.p.speed = .3f;
 
