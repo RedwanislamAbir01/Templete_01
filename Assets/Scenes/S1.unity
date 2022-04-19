@@ -7207,10 +7207,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2583821299873273238, guid: f45925c7fa8538647a6be7d7f3fed1ac, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5389664381637350136, guid: f45925c7fa8538647a6be7d7f3fed1ac, type: 3}
       propertyPath: Boss1
       value: 
@@ -7219,10 +7215,6 @@ PrefabInstance:
       propertyPath: Boss2
       value: 
       objectReference: {fileID: 1506926330}
-    - target: {fileID: 7322975178037863949, guid: f45925c7fa8538647a6be7d7f3fed1ac, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7322975178853349176, guid: f45925c7fa8538647a6be7d7f3fed1ac, type: 3}
       propertyPath: m_Name
       value: Players
@@ -7273,10 +7265,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7322975178853349179, guid: f45925c7fa8538647a6be7d7f3fed1ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8242144227680341205, guid: f45925c7fa8538647a6be7d7f3fed1ac, type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
