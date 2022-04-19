@@ -90,13 +90,14 @@ public class LookTowards : MonoBehaviour
                 MMVibrationManager.Haptic(HapticTypes.MediumImpact);
                 i += 10;
                 Scaleup();
-                if(i<= 100)
+                if(i<= 80)
                 transform.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0,i);
                 ColelctableCount++;
                 if (ColelctableCount % 5 == 0 && ColelctableCount>1)
                 {
+                    GameManager.Instance.p.MaxSpeed += .5f;
                     MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-                    CollectableVFX.Play();
+                    CollectableVFX.gameObject.SetActive(true);
                     anim.transform.DOScale(new Vector3(anim.transform.localScale.x + ScaleAmmount,
                       anim.transform.localScale.y + ScaleAmmount
                        , anim.transform.localScale.z + ScaleAmmount
@@ -121,15 +122,16 @@ public class LookTowards : MonoBehaviour
                 MMVibrationManager.Haptic(HapticTypes.MediumImpact);
                 j += 10;
                 Scaleup();
-                if (j <= 100)
+                if (j <= 80)
                     transform.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, j);
                 //CollectableVFX.Play();
                 ColelctableCount++;
                
                     if (ColelctableCount % 5 == 0 && ColelctableCount > 1)
                 {
+                    GameManager.Instance.p.MaxSpeed += .5f;
                     MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-                    CollectableVFX.Play();
+                    CollectableVFX.gameObject.SetActive(true);
                     anim.transform.DOScale(new Vector3(anim.transform.localScale.x + ScaleAmmount,
                        anim.transform.localScale.y + ScaleAmmount
                         , anim.transform.localScale.z + ScaleAmmount

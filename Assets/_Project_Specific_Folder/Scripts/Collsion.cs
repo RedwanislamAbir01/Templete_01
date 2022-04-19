@@ -5,7 +5,7 @@ using DG.Tweening;
 using MoreMountains.NiceVibrations;
 public class Collsion : MonoBehaviour
 {
-
+    public float SpeedIncreasAmmount;
     public GameObject Target;
     public GameObject Hero1, Hero2;
     public Vector3 H1start, H2Start;
@@ -29,11 +29,12 @@ public class Collsion : MonoBehaviour
     public bool Flying;
     Vector3 camStartPos;
     Quaternion camStartRot;
+    float CurrentSpeed;
     private void Awake()
     {
+        CurrentSpeed = GameManager.Instance.p.MaxSpeed;
 
-
-        camStartPos = Camera.main.transform.localPosition;
+       camStartPos = Camera.main.transform.localPosition;
         camStartRot = Camera.main.transform.localRotation;
 
         Hero1ModelPos = Hero1Model.transform.position; Hero2ModelPos = Hero2Model.transform.localPosition;
@@ -100,6 +101,9 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Land"))
         {
+            GameManager.Instance.p.MaxSpeed -= SpeedIncreasAmmount; 
+            GameManager.Instance.p.speed = CurrentSpeed;
+
             Camera.main.transform.DOLocalMove(camStartPos, .2f);
             Camera.main.transform.DOLocalRotate(camStartRot.eulerAngles, .2f);
             Flying = false;
@@ -129,7 +133,7 @@ public class Collsion : MonoBehaviour
     {
         Camera.main.transform.DOLocalMove(new Vector3(0,14.2f , -20.4f), .2f);
         Camera.main.transform.DOLocalRotate(new Vector3(17.66f , -.031f , -.089f), .2f);
-
+        GameManager.Instance.p.MaxSpeed += SpeedIncreasAmmount;
         Flying = true;
         GetComponent<CircularMovement>().RotationSpeed = 0;
         Hero1.GetComponent<LookTowards>().enabled = false;

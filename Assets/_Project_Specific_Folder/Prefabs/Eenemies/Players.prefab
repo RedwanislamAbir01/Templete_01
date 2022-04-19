@@ -5304,7 +5304,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -5357,7 +5357,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -9994,7 +9994,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -10047,7 +10047,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -14543,7 +14543,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1844371213071407533
 Transform:
   m_ObjectHideFlags: 0
@@ -14578,7 +14578,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -24316,6 +24316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7f541697d8b00408aa0942da603054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpeedIncreasAmmount: 1.5
   Target: {fileID: 7322975177900022076}
   Hero1: {fileID: 7322975178767214676}
   Hero2: {fileID: 7322975177908714165}
@@ -24867,7 +24868,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -24920,7 +24921,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -29696,7 +29697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ease: 25
-  ScaleAmmount: 0.5
+  ScaleAmmount: 0.7
   ScaleAmmounts: 0.25
   CollectableVFX: {fileID: 1844371213057253731}
   Target: {fileID: 7322975179266131262}
@@ -40063,7 +40064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ease: 25
-  ScaleAmmount: 0.5
+  ScaleAmmount: 0.7
   ScaleAmmounts: 0.25
   CollectableVFX: {fileID: 7322975179410146157}
   Target: {fileID: 7322975178404754704}
@@ -45347,7 +45348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7322975179410146155
 Transform:
   m_ObjectHideFlags: 0
@@ -45382,7 +45383,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
