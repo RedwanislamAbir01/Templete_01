@@ -62,6 +62,8 @@ public class Collsion : MonoBehaviour
                           + (UiManager.Instance.timerInitvalue /15)), .1f);
                     UiManager.Instance.Timer.fillAmount = UiManager.Instance.timerInitvalue;
                     MMVibrationManager.Haptic(HapticTypes.LightImpact);
+                    Camera.main.transform.DOShakePosition(.5f,.2f);
+                    Camera.main.DOFieldOfView(60, 2);
                 }
             }
 
@@ -76,10 +78,23 @@ public class Collsion : MonoBehaviour
     {
         if (other.gameObject.CompareTag("FinishLine"))
         {
-            Connector.SetActive(false);
+            if(transform.localEulerAngles.y > 0 && transform.localEulerAngles.y <= 90)
+            {
+                Hero1.transform.DOLocalMove(H1start, .3f);
+                Hero2.transform.DOLocalMove(H2Start, .3f);
+  
+
+            }
+            else
+            {
+                Hero2.transform.DOLocalMove(H1start, .3f);
+                Hero1.transform.DOLocalMove(H2Start, .3f);
+                Hero2.transform.DOLocalRotate (new Vector3(0,0,0), .3f);
+                Hero1.transform.DOLocalRotate(new Vector3(0, 0, 0), .3f);
+            }
+                Connector.SetActive(false);
             GameManager.Instance.GameEnd = true;
-            Hero1.transform.DOLocalMove(H1start, .3f);
-            Hero2.transform.DOLocalMove(H2Start, .3f);
+            
             StartCoroutine(StopRountine());
             transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
             Target.transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
@@ -174,7 +189,14 @@ public class Collsion : MonoBehaviour
         GameManager.Instance.p.speed = .3f;
 
         yield return new WaitForSeconds(.2f);
-        GameManager.Instance.p.enabled = false; 
+        GameManager.Instance.p.enabled = false;
+
+
+
+        Hero1Model.transform.parent.DOLocalRotate(new Vector3(Hero1Model.transform.parent.localEulerAngles.x, -16, Hero1Model.transform.parent.localEulerAngles.z), .15f);
+        Hero2Model.transform.DOLocalRotate(new Vector3(Hero2Model.transform.localEulerAngles.x, 16, Hero2Model.transform.localEulerAngles.z), .15f);
+
+
         Hero1.transform.GetComponent<LookTowards>().anim.Play("Aim");
         Hero2.transform.GetComponent<LookTowards>().anim.Play("Aim");
         Bazooka.gameObject.SetActive(true);
@@ -213,7 +235,7 @@ public class Collsion : MonoBehaviour
 
     public IEnumerator ShootBossRoutine()
     {
-        Camera.main.transform.DOLocalMove(new Vector3(1.13f, 3.08f, -9.71f), .3f);
+        Camera.main.transform.DOLocalMove(new Vector3(1.83f, 1.84f, -7.12f), .3f);
         Camera.main.transform.DOLocalRotate(new Vector3(14.21f, -18.791f, 1.535f), .3f);
         Camera.main.transform.parent = Boss1.transform;
      
@@ -224,9 +246,9 @@ public class Collsion : MonoBehaviour
         if (UiManager.Instance.timerInitvalue >= 0f && UiManager.Instance.timerInitvalue < 0.2f)
         {
             print("ok");
-            DistanceZ = -4.12f;
+            DistanceZ = -1.21f;
             Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); Boss2.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit");
-            Boss1.transform.DOLocalMoveZ(DistanceZ, .6f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
+            Boss1.transform.DOLocalMoveZ(DistanceZ, .8f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
             Camera.main.transform.parent = Boss1.transform;
       
             Boss2.transform.DOLocalMoveZ(DistanceZ, .6f).SetEase(ease).OnComplete(() => { Boss2.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
@@ -237,31 +259,31 @@ public class Collsion : MonoBehaviour
             Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit");
             Boss2.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit");
             print("good");
-            DistanceZ = -.93f;
-            Boss1.transform.DOLocalMoveZ(DistanceZ, .8f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
+            DistanceZ = 5.86f;
+            Boss1.transform.DOLocalMoveZ(DistanceZ, 1.3f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
             Boss2.transform.DOLocalMoveZ(DistanceZ, .8f).SetEase(ease).OnComplete(() => { Boss2.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
         }
         else if (UiManager.Instance.timerInitvalue >= 0.4f && UiManager.Instance.timerInitvalue < 0.6f)
         {
             Camera.main.transform.parent = Boss1.transform;
             Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); Boss2.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit");
-            print("nice"); DistanceZ = 2.63f; Boss1.transform.DOLocalMoveZ(DistanceZ, 1.2f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
-            Boss2.transform.DOLocalMoveZ(DistanceZ, 1.2f).SetEase(ease).OnComplete(() => { Boss2.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
+            print("nice"); DistanceZ = 13.33f; Boss1.transform.DOLocalMoveZ(DistanceZ, 1.5f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
+            Boss2.transform.DOLocalMoveZ(DistanceZ, 1.5f).SetEase(ease).OnComplete(() => { Boss2.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
         }
         else if (UiManager.Instance.timerInitvalue >= 0.6f && UiManager.Instance.timerInitvalue < 0.8f)
         {
             Camera.main.transform.parent = Boss1.transform;
             Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); Boss2.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit");
-            print("awesome"); DistanceZ = 5.9f; Boss1.transform.DOLocalMoveZ(DistanceZ, 1.5f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
-            Boss2.transform.DOLocalMoveZ(DistanceZ, 1.5f).SetEase(ease).OnComplete(() => { Boss2.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
+            print("awesome"); DistanceZ = 20.88f; Boss1.transform.DOLocalMoveZ(DistanceZ, 2f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
+            Boss2.transform.DOLocalMoveZ(DistanceZ, 2f).SetEase(ease).OnComplete(() => { Boss2.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
         }
         else if (UiManager.Instance.timerInitvalue >= 0.8f)
         {
             Camera.main.transform.parent = Boss1.transform;
             Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); Boss2.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit");
-            print("perfect"); DistanceZ = 9.31f;
-            Boss1.transform.DOLocalMoveZ(DistanceZ,1.8f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
-            Boss2.transform.DOLocalMoveZ(DistanceZ,1.8f).SetEase(ease).OnComplete(() => { Boss2.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
+            print("perfect"); DistanceZ = 28.72f;
+            Boss1.transform.DOLocalMoveZ(DistanceZ,2.8f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
+            Boss2.transform.DOLocalMoveZ(DistanceZ,2.8f).SetEase(ease).OnComplete(() => { Boss2.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
         }
         yield return new WaitForSeconds(5f);
         UiManager.Instance.CompleteUI.SetActive(true);
