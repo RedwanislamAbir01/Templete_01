@@ -6,71 +6,31 @@ namespace SharkAttack
 {
     public class CameraController : MonoBehaviour
     {
-        public static CameraController Instance;
-        public Transform target;
-        public Vector3 offset;
-        public float smoothFactor;
-
-        private bool isTargetFound = false;
-        private Vector3 defaultPos;
-        private Vector3 step;
-
-        private CanvasScaler playerCanvasScaler;
-        private Camera mainCam;
-     
-
-
-        public static CameraController SharedManager()
+        public GameObject player;
+        public float offsetZ = -9.18f;
+        public float offsetX = -0.47f;
+        public float offsetY = -1.08f, OffsetYIncrease = .1f;
+        Quaternion InitailRot;
+        public int SmoothSpeed;
+        // Use this for initialization
+        void Start()
         {
-            return Instance;
+            offsetZ = -9.18f;
+
+            InitailRot = transform.rotation;
+            //offset = transform.position - player.transform.position;
         }
-
-
-        private void Awake()
+        // Update is called once per frame
+        void Update()
         {
-            if (!Instance)
-                Instance = this;
+            //  transform.position = new Vector3(this.transform.position.x, this.transform.position.y, player.transform.position.z +offset);
           
+
+                transform.position = Vector3.Lerp(transform.position, new Vector3(4.96f + offsetX, 5.96f + offsetY, player.transform.position.z + offsetZ), Time.deltaTime * SmoothSpeed);
+            
+
+
         }
-
-        private void Start()
-        {
-            mainCam = GetComponent<Camera>();
-            defaultPos = transform.localPosition;
-       
-   
-           
-        }
-
-
-        private void LateUpdate()
-        {
- 
-            if (target == null)
-            {
-                return;
-            }
-
-            if (target && isTargetFound == false)
-            {
-
-                isTargetFound = true;
-            }
-
-            Vector3 desiredPosition = target.transform.position + offset;
-            Vector3 smoothedPosition = Vector3.Lerp(desiredPosition, transform.position, smoothFactor * Time.deltaTime);
-            transform.position = smoothedPosition;
-            transform.LookAt(target);
-        }
-
-
-
-
-        public void ShakeCamera()
-        {
-            transform.DOShakePosition(1f, new Vector3(100f, 50f, 0), 15, 10f, false, true);
-        }
-
         public void BlastShake()
         {
             transform.DOShakePosition(1f, new Vector3(100f, 50f, 0), 10, 8f, false, true);

@@ -18,7 +18,7 @@ public class EndSceneUI : MonoBehaviour
         string sceneName = currentScene.name;
         // PlayerPrefs.SetInt("SaveScene", SceneManager.GetActiveScene().buildIndex );
 
-        if (sceneName == "Steven Main 7")
+        if (sceneName == "S1")
         {
             SceneManager.LoadScene(01);
         }
