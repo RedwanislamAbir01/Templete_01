@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7390344853622762439}
   - component: {fileID: 7390344853622762438}
   - component: {fileID: 7390344853622762437}
+  - component: {fileID: 5381007880676859017}
   m_Layer: 7
   m_Name: Door Bat
   m_TagString: Black
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7390344853622762436}
-  m_LocalRotation: {x: -0, y: -0.036424182, z: -0, w: 0.9993364}
+  m_LocalRotation: {x: 0, y: -0.03642567, z: 0, w: 0.99933636}
   m_LocalPosition: {x: 41.312, y: 0.189, z: 6.118}
   m_LocalScale: {x: 0.31832585, y: 1.4977925, z: 0.645934}
   m_Children:
@@ -97,6 +98,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9252325, y: 1.1415507, z: 1}
   m_Center: {x: -0.4626167, y: 0.07077642, z: 1.514654e-10}
+--- !u!114 &5381007880676859017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7390344853622762436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e606b4169225c164fb9809c8e79ecaaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  s: {fileID: 7390344854590155679}
+  a:
+  - {fileID: 21300000, guid: d0ea13a2cba48be42b265f114aaad68e, type: 3}
+  - {fileID: 21300000, guid: ffa00e0badace9346a11066483b01811, type: 3}
+  - {fileID: 21300000, guid: 1e0e2b5ed74fb5946a653c12d99f4a04, type: 3}
 --- !u!1 &7390344854590155677
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +142,7 @@ Transform:
   m_GameObject: {fileID: 7390344854590155677}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0.56, y: 0.305, z: 0.043}
-  m_LocalScale: {x: 0.009696447, y: 0.005324366, z: 0.10269541}
+  m_LocalScale: {x: 0.20611738, y: 0.11318005, z: 2.1829963}
   m_Children: []
   m_Father: {fileID: 7390344853622762440}
   m_RootOrder: 0
@@ -168,7 +187,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d0ea13a2cba48be42b265f114aaad68e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1e0e2b5ed74fb5946a653c12d99f4a04, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

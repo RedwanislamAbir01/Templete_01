@@ -20,7 +20,7 @@ public class EndSceneUI : MonoBehaviour
 
         if (sceneName == "S1")
         {
-            SceneManager.LoadScene(01);
+            SceneManager.LoadScene(02);
         }
         else
         {

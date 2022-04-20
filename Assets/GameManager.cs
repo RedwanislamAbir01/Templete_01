@@ -29,7 +29,7 @@ public class GameManager : Singleton<GameManager>
         GameManager.Instance.GameOver = true;
         UiManager.Instance.FadeIn.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void StartIt()
     {
