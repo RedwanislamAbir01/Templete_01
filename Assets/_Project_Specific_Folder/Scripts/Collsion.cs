@@ -77,7 +77,7 @@ public class Collsion : MonoBehaviour
     {
         if (other.gameObject.CompareTag("FinishLine"))
         {
-            if(transform.localEulerAngles.y > 0 && transform.localEulerAngles.y <= 90)
+            if(transform.localEulerAngles.y > -90 && transform.localEulerAngles.y <= 90)
             {
                 Hero1.transform.DOLocalMove(H1start, .3f);
                 Hero2.transform.DOLocalMove(H2Start, .3f);
