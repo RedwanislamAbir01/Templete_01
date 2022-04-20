@@ -95,7 +95,7 @@ public class LookTowards : MonoBehaviour
                 ColelctableCount++;
                 if (ColelctableCount % 5 == 0 && ColelctableCount>1)
                 {
-                    GameManager.Instance.p.MaxSpeed += .5f;
+                    GameManager.Instance.p.MaxSpeed += .25f;
                     MMVibrationManager.Haptic(HapticTypes.MediumImpact);
                     CollectableVFX.gameObject.SetActive(true);
                     anim.transform.DOScale(new Vector3(anim.transform.localScale.x + ScaleAmmount,
@@ -130,14 +130,15 @@ public class LookTowards : MonoBehaviour
                
                     if (ColelctableCount % 5 == 0 && ColelctableCount > 1)
                 {
-                    GameManager.Instance.p.MaxSpeed += .5f;
+                    GameManager.Instance.p.MaxSpeed += .25f;
                     MMVibrationManager.Haptic(HapticTypes.MediumImpact);
                     CollectableVFX.gameObject.SetActive(true);
                     anim.transform.DOScale(new Vector3(anim.transform.localScale.x + ScaleAmmount,
                        anim.transform.localScale.y + ScaleAmmount
                         , anim.transform.localScale.z + ScaleAmmount
                         ), .3f).SetEase(ease);
-                    CurrentMaxSpeed = GameManager.Instance.p.speed; CurrentMaxSpeed = GameManager.Instance.p.MaxSpeed;
+                    CurrentMaxSpeed = GameManager.Instance.p.speed;
+                    CurrentMaxSpeed = GameManager.Instance.p.MaxSpeed;
                 }
                 Destroy(other.gameObject);
             }
