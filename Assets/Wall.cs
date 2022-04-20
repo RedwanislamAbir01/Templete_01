@@ -6,11 +6,17 @@ public class Wall : MonoBehaviour
 {
     public Rigidbody[] Rigidbodies;
     public float Force = 10 , Radius  =10 ;
-    
+    public Color color;
 
     private void Start()
     {
         Rigidbodies = GetComponentsInChildren<Rigidbody>();
+        transform.GetChild(transform.childCount - 1).gameObject.GetComponent<MeshRenderer>().material.color = color;
+        transform.GetChild(transform.childCount - 1).gameObject.GetComponent<MeshRenderer>().material.color = color;
+        foreach (Rigidbody rb in Rigidbodies)
+        {
+            rb.gameObject.GetComponent<MeshRenderer>().material.color = color;
+        }
     }
 
     public void EnableRb()

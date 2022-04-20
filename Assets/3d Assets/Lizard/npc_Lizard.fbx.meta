@@ -6,7 +6,12 @@ ModelImporter:
   - first:
       74: 1827226128182048838
     second: Take 001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 16 - Default
+    second: {fileID: 2100000, guid: 659b86a6a2a70c7478aab58e3204a183, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -76,6 +81,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips:
+  - b7e97dbb56655204ba9a822634f4bafd
   - 0b6810fb318dd274193f816081f4420a
   - 7bc8cde34b64cb24fbfdf74b573c036f
   importAnimation: 1

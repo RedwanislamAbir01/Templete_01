@@ -93,7 +93,7 @@ public class Collsion : MonoBehaviour
             }
                 Connector.SetActive(false);
             GameManager.Instance.GameEnd = true;
-            
+            Boss1.transform.GetChild(0).gameObject.GetComponent<Animator>().Play("Taunt");
             StartCoroutine(StopRountine());
             transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
             Target.transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
