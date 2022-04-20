@@ -5,6 +5,8 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {
     public Rigidbody[] Rigidbodies;
+    public float Force = 10 , Radius  =10 ;
+    
 
     private void Start()
     {
@@ -21,7 +23,7 @@ public class Wall : MonoBehaviour
             rb.useGravity = true;
             rb.isKinematic = false;
             rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
-            rb.AddExplosionForce(10, Vector3.back, 10);
+            rb.AddExplosionForce(Force, Vector3.back,Radius);
         }
     }
 }

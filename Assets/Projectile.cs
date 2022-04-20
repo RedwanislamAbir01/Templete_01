@@ -41,8 +41,17 @@ public class Projectile : MonoBehaviour
                 Destroy(gameObject);
 
             }
-
-           if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KryptoCrstalguy )
+            if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.BrickWall)
+            {
+                other.GetComponent<Collider>().enabled = false;
+                other.GetComponent<Wall>().EnableRb();
+            }
+            if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.LaserWall)
+            {
+                other.GetComponent<Collider>().enabled = false;
+                other.transform.GetChild(0).gameObject.SetActive(false); Destroy(gameObject);
+            }
+            if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KryptoCrstalguy )
             {
                 other.transform.GetChild(0).gameObject.SetActive(false); other.transform.GetChild(01).gameObject.SetActive(true);
                 GameObject g1 = Instantiate(CrystalSpread, new Vector3(other.transform.position.x, other.transform.position.y + .5f, other.transform.position.z), Quaternion.identity);;

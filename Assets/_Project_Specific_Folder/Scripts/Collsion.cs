@@ -208,7 +208,9 @@ public class Collsion : MonoBehaviour
 
     public IEnumerator TapFastOff()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(1);
+        Hero1.GetComponent<LookTowards>().PowerVFX.gameObject.SetActive(true); Hero2.GetComponent<LookTowards>().PowerVFX.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3);
         StartTapRoutine = false;
         Hero1.transform.GetComponent<LookTowards>().anim.SetTrigger("Shoot");
         // Hero2.transform.GetComponent<LookTowards>().anim.SetTrigger("Shoot");

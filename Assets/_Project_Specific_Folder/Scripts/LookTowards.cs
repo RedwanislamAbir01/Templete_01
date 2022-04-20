@@ -13,7 +13,7 @@ public class LookTowards : MonoBehaviour
 {
     public Ease ease;
     public float ScaleAmmount = .3f; public float ScaleAmmounts = .15f;
-    public ParticleSystem CollectableVFX;
+    public ParticleSystem CollectableVFX , PowerVFX;
     public GameObject Target;
     public eType Type;
     public int ColelctableCount;

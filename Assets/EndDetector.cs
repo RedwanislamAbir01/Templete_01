@@ -63,6 +63,22 @@ public class EndDetector : MonoBehaviour
                 }
 
             }
+            if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.BrickWall)
+            {
+                if (lf.Type == eType.Hero1)
+                {
+                   // Anim.SetTrigger("Throw");
+                    Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                }
+            }
+            if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.LaserWall)
+            {
+                if (lf.Type == eType.Hero2)
+                {
+                     Anim.SetTrigger("Throw");
+                    Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                }
+            }
             if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Ice)
             {
                 if (lf.Type == eType.Hero2)

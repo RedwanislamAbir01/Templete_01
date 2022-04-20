@@ -11,7 +11,9 @@ public enum eEnemyType
    KyptoBlock,
    KryptoCrstalguy, 
    ShieldGuy, 
-   Lava
+   Lava,
+   BrickWall,
+   LaserWall
 
 
 
