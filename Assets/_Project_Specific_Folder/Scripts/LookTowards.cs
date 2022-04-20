@@ -81,8 +81,8 @@ public class LookTowards : MonoBehaviour
             }
             if (other.gameObject.CompareTag("Black"))
             {
-                other.transform.GetChild(0).gameObject.SetActive(false);
-                other.transform.GetChild(01).gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
+                other.transform.GetChild(0).gameObject.SetActive(false); other.transform.GetChild(01).gameObject.SetActive(false);
+                other.transform.GetChild(02).gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
             }
 
 
