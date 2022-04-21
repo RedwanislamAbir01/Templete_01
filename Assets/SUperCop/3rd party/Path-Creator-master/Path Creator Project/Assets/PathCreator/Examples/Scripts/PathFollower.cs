@@ -29,7 +29,7 @@ namespace PathCreation.Examples
         public PathCreator pathCreator;
         public EndOfPathInstruction endOfPathInstruction;
         public float speed =0  , BotSpeed =  4;
-        public float distanceTravelled;
+        public float distanceTravelled = 1.1f;
    
         bool played ;
         public float MaxSpeed, MinSpeed;
@@ -52,7 +52,7 @@ namespace PathCreation.Examples
             }
       
                
-                distanceTravelled = 1.1f;
+               
 
 
             
