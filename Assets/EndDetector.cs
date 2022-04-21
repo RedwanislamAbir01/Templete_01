@@ -70,12 +70,33 @@ public class EndDetector : MonoBehaviour
                    // Anim.SetTrigger("Throw");
                     Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
                 }
+                else
+                {
+                    Anim.SetTrigger("Throw");
+                    Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                }
             }
             if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.LaserWall)
             {
                 if (lf.Type == eType.Hero2)
                 {
                      Anim.SetTrigger("Throw");
+                    Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                }
+            }
+            if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.WarMachine)
+            {
+                if (lf.Type == eType.Hero2)
+                {
+                    Anim.SetTrigger("Throw");
+                    Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                }
+                else
+                {
                     Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
                 }
             }

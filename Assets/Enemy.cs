@@ -13,7 +13,8 @@ public enum eEnemyType
    ShieldGuy, 
    Lava,
    BrickWall,
-   LaserWall
+   LaserWall,
+   WarMachine
 
 
 

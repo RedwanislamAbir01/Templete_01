@@ -43,13 +43,57 @@ public class Projectile : MonoBehaviour
             }
             if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.BrickWall)
             {
-                other.GetComponent<Collider>().enabled = false;
-                other.GetComponent<Wall>().EnableRb();
+                if (this.gameObject.name != "SpiderWeapon(Clone)")
+                {
+                    other.GetComponent<Collider>().enabled = false;
+                    other.GetComponentInChildren<Wall>().EnableRb();
+                    GameObject g = Instantiate(DestroyVFX
+                   , new Vector3(other.transform.position.x , other.transform.position.y + .1f, other.transform.position.z - .3f), Quaternion.identity);
+                    Destroy(g, 1); Destroy(gameObject);
+
+                }
+                else
+                {
+                    other.transform.GetChild(01).gameObject.SetActive(true);
+                    GameObject g = Instantiate(DestroyVFX
+             , new Vector3(other.transform.position.x , other.transform.position.y + .1f, other.transform.position.z-.3f), Quaternion.identity);
+                    Destroy(g, 1); Destroy(gameObject);
+                }
+            }
+            if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.WarMachine)
+            {
+                if (this.gameObject.name != "SpiderWeapon(Clone)")
+                {
+                    other.GetComponent<Collider>().enabled = false;
+                    other.gameObject.transform.GetChild(0).gameObject.SetActive(true); other.gameObject.transform.GetChild(01).gameObject.SetActive(false);
+                    GameObject g = Instantiate(DestroyVFX
+                   , new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z ), Quaternion.identity);
+                    Destroy(g, 1); Destroy(gameObject);
+
+                }
+                else
+                {
+                  
+                    GameObject g = Instantiate(DestroyVFX
+             , new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z ), Quaternion.identity);
+                    Destroy(g, 1); Destroy(gameObject);
+                }
             }
             if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.LaserWall)
             {
-                other.GetComponent<Collider>().enabled = false;
-                other.transform.GetChild(0).gameObject.SetActive(false); Destroy(gameObject);
+                if (this.gameObject.name != "IronWeapon(Clone)")
+                {
+
+                    other.transform.GetChild(01).gameObject.SetActive(true);
+                    other.GetComponent<Collider>().enabled = false;
+                    other.transform.GetChild(0).gameObject.SetActive(false); Destroy(gameObject);
+                }
+                else
+                {
+                    GameObject g = Instantiate(DestroyVFX
+                        , new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z - .3f), Quaternion.identity);
+                    Destroy(g, 1); Destroy(gameObject);
+                }
             }
             if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KryptoCrstalguy )
             {
