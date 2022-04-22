@@ -89,7 +89,7 @@ public class Projectile : MonoBehaviour
                     other.gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>().Play("Taunt");
                     GameObject g = Instantiate(DestroyVFX
                    , new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity);
-                    Destroy(g, 1); 
+                    Destroy(g, 1); Destroy(gameObject);
 
                 }
                 else
@@ -97,7 +97,8 @@ public class Projectile : MonoBehaviour
 
                     GameObject g = Instantiate(DestroyVFX
              , new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity);
-                    Destroy(g, 1); Destroy(gameObject);
+                    Destroy(g, 1);
+                    Destroy(gameObject);
                 }
             }
 
