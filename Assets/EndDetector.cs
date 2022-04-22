@@ -63,7 +63,7 @@ public class EndDetector : MonoBehaviour
                 }
 
             }
-            if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.BrickWall)
+            if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.BrickWall || other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Lizard)
             {
                 if (lf.Type == eType.Hero1)
                 {
