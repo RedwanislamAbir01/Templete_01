@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
 {
     public eEnemyType EnemyType;
     public GameObject WaterSpill ;
+    public GameObject Rope;
     void Start()
     {
         

@@ -94,10 +94,12 @@ public class Projectile : MonoBehaviour
                 }
                 else
                 {
-
+                    other.GetComponent<Enemy>().Rope.SetActive(true);
+                    other.GetComponent<Collider>().enabled = false;
                     GameObject g = Instantiate(DestroyVFX
-             , new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity);
+                    , new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity);
                     Destroy(g, 1);
+                    other.gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>().Play("Tied");
                     Destroy(gameObject);
                 }
             }
