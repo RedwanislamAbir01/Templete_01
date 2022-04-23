@@ -67,9 +67,12 @@ public class Enemy : MonoBehaviour
 
             if (EnemyType == eEnemyType.BrickWall)
             {
+                print("wall");
                 other.GetComponent<LookTowards>().DoorSizeDownRoutine();
 
             }
+
+
                 if (EnemyType == eEnemyType.Lizard)
             {
                 this.GetComponentInChildren<Animator>().Play("Attack");
@@ -94,15 +97,7 @@ public class Enemy : MonoBehaviour
                 MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                 GameManager.Instance.Reset();
             }
-            if (EnemyType != eEnemyType.Lava)
-            {
-                other.gameObject.GetComponent<LookTowards>().anim.SetTrigger("Death");
-                MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-                other.transform.DOLocalMoveY(-2.07f, .2f);
-                
-                GameManager.Instance.Reset();
-            }
-            else
+            if (EnemyType == eEnemyType.Lava)
             {
                 if (other.GetComponent<LookTowards>().Type == eType.Hero2)
                 {
@@ -110,8 +105,8 @@ public class Enemy : MonoBehaviour
                     other.GetComponent<LookTowards>().anim.SetTrigger("Death");
                     GameManager.Instance.Reset(); other.transform.DOLocalMoveY(-2.07f, .2f);
                 }
-         
             }
+         
         }
     }
 }
