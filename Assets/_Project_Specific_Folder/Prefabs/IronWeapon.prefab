@@ -329,6 +329,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1275118324108484560}
     m_Modifications:
+    - target: {fileID: 2925475929406372889, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.23921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925475929406372889, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 14649
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925475929406372889, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime2
+      value: 19275
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925475929406372889, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 0.9137255
+      objectReference: {fileID: 0}
     - target: {fileID: 2925475929406372894, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1

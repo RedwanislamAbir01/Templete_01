@@ -197,7 +197,7 @@ MonoBehaviour:
   DestroyTime: 5
   HitVFX: {fileID: 1797657264430493913, guid: dd8575b51ad6e4644a5abb4fda3f6e07, type: 3}
   CrystalSpread: {fileID: 9144820366456875970, guid: f4d26465e3671d0429816dc8f7937a0f, type: 3}
-  DestroyVFX: {fileID: 4851845360303099115, guid: 376665393570cad47981f645ba31c45c, type: 3}
+  DestroyVFX: {fileID: 8748687995501502678, guid: 62334a566bbfe3945bc7bd0c02ca1c9e, type: 3}
 --- !u!54 &-7563849298568495467
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -384,6 +384,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 16d8a7dec42d7ce4c9bd730629c2b1f0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0b2187d86066b164693e1d030df66538, type: 2}
     - target: {fileID: 919132149155446097, guid: 16d8a7dec42d7ce4c9bd730629c2b1f0, type: 3}
       propertyPath: m_Name
       value: Web_Ball

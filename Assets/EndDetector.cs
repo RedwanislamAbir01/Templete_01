@@ -67,7 +67,7 @@ public class EndDetector : MonoBehaviour
             {
                 if (lf.Type == eType.Hero1)
                 {
-                   // Anim.SetTrigger("Throw");
+                    Anim.SetTrigger("Shoot");
                     Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
                 }
                 else
@@ -85,6 +85,7 @@ public class EndDetector : MonoBehaviour
                 }
                 else
                 {
+                    Anim.SetTrigger("Shoot");
                     Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
                 }
             }
@@ -97,6 +98,7 @@ public class EndDetector : MonoBehaviour
                 }
                 else
                 {
+                    Anim.SetTrigger("Shoot");
                     Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
                 }
             }

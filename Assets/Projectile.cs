@@ -48,7 +48,7 @@ public class Projectile : MonoBehaviour
                     other.GetComponent<Collider>().enabled = false;
                     other.GetComponentInChildren<Wall>().EnableRb();
                     GameObject g = Instantiate(DestroyVFX
-                   , new Vector3(other.transform.position.x , other.transform.position.y + .1f, other.transform.position.z - .3f), Quaternion.identity);
+                   , new Vector3(other.transform.position.x-.3f , other.transform.position.y , other.transform.position.z +.1f), Quaternion.identity);
                     Destroy(g, 1); Destroy(gameObject);
                     other.transform.GetChild(01).gameObject.SetActive(false);
 
@@ -57,7 +57,7 @@ public class Projectile : MonoBehaviour
                 {
                     other.transform.GetChild(01).gameObject.SetActive(true);
                     GameObject g = Instantiate(DestroyVFX
-             , new Vector3(other.transform.position.x , other.transform.position.y + .1f, other.transform.position.z-.3f), Quaternion.identity);
+                , new Vector3(other.transform.position.x - .3f, other.transform.position.y, other.transform.position.z + .1f), Quaternion.identity);
                     Destroy(g, 1); Destroy(gameObject);
                 }
             }
@@ -125,7 +125,9 @@ public class Projectile : MonoBehaviour
             {
                 if (this.gameObject.name != "IronWeapon(Clone)")
                 {
-
+                    GameObject g = Instantiate(DestroyVFX
+              , new Vector3(other.transform.position.x, other.transform.position.y + .5f, other.transform.position.z), Quaternion.identity);
+                    Destroy(g, 1);
                     other.transform.GetChild(01).gameObject.SetActive(true);
                     other.GetComponent<Collider>().enabled = false;
                     other.transform.GetChild(0).gameObject.SetActive(false); Destroy(gameObject);
