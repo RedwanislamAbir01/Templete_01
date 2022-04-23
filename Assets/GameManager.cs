@@ -54,8 +54,8 @@ public class GameManager : Singleton<GameManager>
     public IEnumerator CamZoomInAndOutRoutine()
     {
    
-        Camera.main.DOFieldOfView(58, 2); 
-        yield return new WaitForSeconds(2);
+        Camera.main.DOFieldOfView(58, 1); 
+        yield return new WaitForSeconds(1);
         Camera.main.DOFieldOfView(70, .5f);
     }
 }

@@ -5,7 +5,7 @@ using MoreMountains.NiceVibrations;
 using DG.Tweening;
 public class Boss : MonoBehaviour
 {
-   
+    public ParticleSystem ParticleFX;
     private void OnTriggerEnter(Collider collision)
     {
         if(collision.gameObject.CompareTag("Wall"))
@@ -14,6 +14,7 @@ public class Boss : MonoBehaviour
             MMVibrationManager.Haptic(HapticTypes.LightImpact);
             SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().TankHit);
             collision.gameObject.GetComponent<Wall>().EnableRb();
+            ParticleFX.Play();
         }
     }
 }

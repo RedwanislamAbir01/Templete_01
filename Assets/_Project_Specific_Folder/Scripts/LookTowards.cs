@@ -127,7 +127,7 @@ anim.transform.localScale.y + ScaleAmmounts
                 MMVibrationManager.Haptic(HapticTypes.MediumImpact);
                 i += 10;
                 Scaleup();
-                if(i<=70)
+                if(i<=50)
                 transform.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0,i);
                 ColelctableCount++;
                 if (ColelctableCount % 5 == 0 && ColelctableCount>1)
@@ -160,7 +160,7 @@ anim.transform.localScale.y + ScaleAmmounts
                 MMVibrationManager.Haptic(HapticTypes.MediumImpact);
                 j += 10;
                 Scaleup();
-                if (j <= 70)
+                if (j <= 50)
                     transform.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, j);
                 //CollectableVFX.Play();
                 ColelctableCount++;
