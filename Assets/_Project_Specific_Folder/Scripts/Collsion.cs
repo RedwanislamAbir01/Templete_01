@@ -61,7 +61,8 @@ public class Collsion : MonoBehaviour
                           + (UiManager.Instance.timerInitvalue /15)), .1f);
                     UiManager.Instance.Timer.fillAmount = UiManager.Instance.timerInitvalue;
                     MMVibrationManager.Haptic(HapticTypes.LightImpact);
-                    Camera.main.transform.DOShakePosition(.5f,.2f);
+                    
+                    Camera.main.transform.DOShakePosition(1.5f,.2f);
                     Camera.main.DOFieldOfView(60, 2);
                 }
             }
@@ -287,6 +288,16 @@ public class Collsion : MonoBehaviour
             print("perfect"); DistanceZ = 28.72f;
             Boss1.transform.DOLocalMoveZ(DistanceZ,2.8f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
             Boss2.transform.DOLocalMoveZ(DistanceZ,2.8f).SetEase(ease).OnComplete(() => { Boss2.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
+        }
+        else if (  UiManager.Instance.timerInitvalue <=0.19f)
+        {
+            print("ok");
+            DistanceZ = -4.4f;
+            Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); Boss2.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit");
+            Boss1.transform.DOLocalMoveZ(DistanceZ, .8f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
+            Camera.main.transform.parent = Boss1.transform;
+
+            Boss2.transform.DOLocalMoveZ(DistanceZ, .6f).SetEase(ease).OnComplete(() => { Boss2.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
         }
         yield return new WaitForSeconds(5f);
         UiManager.Instance.CompleteUI.SetActive(true);

@@ -48,7 +48,8 @@ AnimatorStateMachine:
     m_State: {fileID: 7085242645524193392}
     m_Position: {x: 430, y: 140, z: 0}
   m_ChildStateMachines: []
-  m_AnyStateTransitions: []
+  m_AnyStateTransitions:
+  - {fileID: 1026753052513512668}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
@@ -107,7 +108,7 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1101 &3324468595447932869
+--- !u!1101 &1026753052513512668
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,7 +192,6 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
-  - {fileID: 3324468595447932869}
   - {fileID: 5833175616863838270}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}

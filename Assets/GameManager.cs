@@ -47,4 +47,15 @@ public class GameManager : Singleton<GameManager>
       //  p.GetComponentInChildren<Collsion>().Hero1Model.GetComponentInChildren<Obi.ObiSolver>().transform.GetChild(0).transform.DOLocalRotate(new Vector3(0, -90, -50), .1f);
       //   p.GetComponentInChildren<Collsion>().Hero1Model.GetComponentInChildren<Obi.ObiSolver>().transform.GetChild(0).transform.DOLocalMove(new Vector3(-2.501f, 2.726f, -0.985f), .1f);
     }
+    public void ZoomEffect()
+    {
+        StartCoroutine(CamZoomInAndOutRoutine());
+    }
+    public IEnumerator CamZoomInAndOutRoutine()
+    {
+   
+        Camera.main.DOFieldOfView(58, 2); 
+        yield return new WaitForSeconds(2);
+        Camera.main.DOFieldOfView(70, .5f);
+    }
 }

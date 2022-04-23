@@ -23,6 +23,7 @@ public class LookTowards : MonoBehaviour
     public GameObject CapeFinalPos;
 
     public float CurrentSpeed,CurrentMaxSpeed;
+    public int SizeDownAmmount = 20;
     void Start()
     {
        
@@ -35,6 +36,18 @@ public class LookTowards : MonoBehaviour
       
             transform.LookAt(Target.transform.position);
     }
+    public IEnumerator OnlyRedScreenRoutine()
+    {
+        //anim.SetBool("Injured", true);
+        //GameManager.Instance.p.speed = .75f; GameManager.Instance.p.MaxSpeed = .75f;
+        UiManager.Instance.FadeIn.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+       // anim.SetBool("Injured", false);
+        UiManager.Instance.FadeIn.gameObject.SetActive(false);
+       // yield return new WaitForSeconds(1.5f);
+
+     //   GameManager.Instance.p.MaxSpeed = CurrentMaxSpeed;
+    }
     public IEnumerator RedScreenRoutine()
     {
         anim.SetBool("Injured", true);
@@ -43,10 +56,31 @@ public class LookTowards : MonoBehaviour
         yield return new WaitForSeconds(1f);
         anim.SetBool("Injured", false); 
         UiManager.Instance.FadeIn.gameObject.SetActive(false);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
        
-        GameManager.Instance.p.MaxSpeed = CurrentMaxSpeed; 
+        GameManager.Instance.p.MaxSpeed = CurrentMaxSpeed;
     }
+    public void DoorSizeDownRoutine()
+    {
+        StartCoroutine(OnlyRedScreenRoutine());
+
+        float a = transform.GetComponentInChildren<SkinnedMeshRenderer>().GetBlendShapeWeight(0);
+        if(a > 0)
+        transform.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0,SizeDownAmmount);
+
+        anim.transform.DOScale(new Vector3(anim.transform.localScale.x - ScaleAmmounts,
+              anim.transform.localScale.y - ScaleAmmounts
+               , anim.transform.localScale.z - ScaleAmmounts
+               ), .3f).SetEase(ease).OnComplete(() => {
+                   anim.transform.DOScale(new Vector3(anim.transform.localScale.x + ScaleAmmounts,
+anim.transform.localScale.y + ScaleAmmounts
+, anim.transform.localScale.z + ScaleAmmounts
+), .3f);
+               });
+
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
        
@@ -57,9 +91,10 @@ public class LookTowards : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Black"))
             {
-                GameManager.Instance.Reset();
-                GetComponentInParent<PathCreation.Examples.PathFollower>().enabled = false;
-                anim.SetTrigger("Death"); MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+             //   GameManager.Instance.Reset();
+             //   GetComponentInParent<PathCreation.Examples.PathFollower>().enabled = false;
+              //  anim.SetTrigger("Death");
+              MMVibrationManager.Haptic(HapticTypes.MediumImpact); DoorSizeDownRoutine();
 
             }
             if (other.gameObject.CompareTag("Blue"))
@@ -74,10 +109,8 @@ public class LookTowards : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Blue"))
             {
-                GetComponentInParent<PathCreation.Examples.PathFollower>().enabled = false;
-                GameManager.Instance.Reset(); 
-                anim.SetTrigger("Death");
-                
+                MMVibrationManager.Haptic(HapticTypes.MediumImpact); DoorSizeDownRoutine();
+
             }
             if (other.gameObject.CompareTag("Black"))
             {
@@ -94,14 +127,14 @@ public class LookTowards : MonoBehaviour
                 MMVibrationManager.Haptic(HapticTypes.MediumImpact);
                 i += 10;
                 Scaleup();
-                if(i<= 80)
+                if(i<=70)
                 transform.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0,i);
                 ColelctableCount++;
                 if (ColelctableCount % 5 == 0 && ColelctableCount>1)
                 {
                     GameManager.Instance.p.MaxSpeed += .25f;
                     MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-                    CollectableVFX.gameObject.SetActive(true);
+                    StartCoroutine(EvolveEffectRoutine());
                     anim.transform.DOScale(new Vector3(anim.transform.localScale.x + ScaleAmmount,
                       anim.transform.localScale.y + ScaleAmmount
                        , anim.transform.localScale.z + ScaleAmmount
@@ -127,21 +160,22 @@ public class LookTowards : MonoBehaviour
                 MMVibrationManager.Haptic(HapticTypes.MediumImpact);
                 j += 10;
                 Scaleup();
-                if (j <= 80)
+                if (j <= 70)
                     transform.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, j);
                 //CollectableVFX.Play();
                 ColelctableCount++;
                
                     if (ColelctableCount % 5 == 0 && ColelctableCount > 1)
                 {
+                    GameManager.Instance.ZoomEffect();
                     GameManager.Instance.p.MaxSpeed += .25f;
                     MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-                    CollectableVFX.gameObject.SetActive(true);
+                    StartCoroutine(EvolveEffectRoutine());
                     anim.transform.DOScale(new Vector3(anim.transform.localScale.x + ScaleAmmount,
                        anim.transform.localScale.y + ScaleAmmount
                         , anim.transform.localScale.z + ScaleAmmount
                         ), .3f).SetEase(ease);
-                 
+
                     CurrentMaxSpeed = GameManager.Instance.p.MaxSpeed;
                 }
                 Destroy(other.gameObject);
@@ -153,6 +187,14 @@ public class LookTowards : MonoBehaviour
             }
         }
     }
+
+    public IEnumerator EvolveEffectRoutine()
+    {
+    
+
+        CollectableVFX.gameObject.SetActive(true); yield return new WaitForSeconds(1); CollectableVFX.gameObject.SetActive(false);
+    }
+
     void Scaleup()
     {
         anim.transform.DOScale(new Vector3(anim.transform.localScale.x + ScaleAmmounts,

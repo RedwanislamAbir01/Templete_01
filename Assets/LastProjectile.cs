@@ -15,8 +15,14 @@ public class LastProjectile : MonoBehaviour
     {
         transform.DOMove(new Vector3(GameObject.FindGameObjectWithTag("Boss").transform.position.x +1f,
             GameObject.FindGameObjectWithTag("Boss").transform.position.y + .3f,
-            GameObject.FindGameObjectWithTag("Boss").transform.position.z ), .5f).SetEase(Ease.InSine);
-    }
+            GameObject.FindGameObjectWithTag("Boss").transform.position.z ), .5f).SetEase(Ease.InSine).OnComplete(() => {
+
+                MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+                Instantiate(Explosion, GameObject.FindGameObjectWithTag("Boss").transform.position, Quaternion.identity);
+                FindObjectOfType<Collsion>().StartCoroutine(FindObjectOfType<Collsion>().ShootBossRoutine());
+                Destroy(gameObject);
+            });
+            }
     // Update is called once per frame
     void Update()
     {
@@ -26,10 +32,7 @@ public class LastProjectile : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Boss"))
         {
-            MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-            Instantiate(Explosion, other.transform.position, Quaternion.identity);
-            FindObjectOfType<Collsion>().StartCoroutine(FindObjectOfType<Collsion>().ShootBossRoutine());
-            Destroy(gameObject);
+            
         }
     }
 }

@@ -65,25 +65,25 @@ public class Enemy : MonoBehaviour
 
             }
 
+            if (EnemyType == eEnemyType.BrickWall)
+            {
+                other.GetComponent<LookTowards>().DoorSizeDownRoutine();
 
-            if (EnemyType == eEnemyType.Lizard)
+            }
+                if (EnemyType == eEnemyType.Lizard)
             {
                 this.GetComponentInChildren<Animator>().Play("Attack");
                 other.transform.DOLocalMoveY(-2.07f, .2f);
                 MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                 GameManager.Instance.Reset();
-            }
-            else
-            {
                 if (other.GetComponent<LookTowards>().Type == eType.Hero1)
                 {
                     MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                     other.GetComponent<LookTowards>().anim.SetTrigger("Death");
                     GameManager.Instance.Reset(); other.transform.DOLocalMoveY(-2.07f, .2f);
                 }
-
             }
-
+        
 
 
 
