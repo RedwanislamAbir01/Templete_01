@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
 
 
 
-            if (EnemyType == eEnemyType.ShieldGuy || EnemyType == eEnemyType.KryptoCrstalguy)
+            if (EnemyType == eEnemyType.ShieldGuy || EnemyType == eEnemyType.KryptoCrstalguy || EnemyType == eEnemyType.WarMachine)
             {
                this.GetComponentInChildren<Animator>().Play("Attack"); 
                 other.transform.DOLocalMoveY(-2.07f, .2f);
