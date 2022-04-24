@@ -46,7 +46,7 @@ public class LastProjectile : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Boss"))
         {
-            StartCoroutine(PauseGame(.2f));
+           // StartCoroutine(PauseGame(.2f));
         }
     }
 }
