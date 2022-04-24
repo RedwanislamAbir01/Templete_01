@@ -74,10 +74,8 @@ public class Projectile : MonoBehaviour
                 }
                 else
                 {
-                  
-                    GameObject g = Instantiate(DestroyVFX
-             , new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z ), Quaternion.identity);
-                    Destroy(g, 1); Destroy(gameObject);
+                    other.transform.GetChild(3).gameObject.SetActive(true);
+                    Destroy(gameObject);
                 }
             }
 
