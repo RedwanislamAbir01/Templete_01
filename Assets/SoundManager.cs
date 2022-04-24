@@ -17,6 +17,13 @@ public class SoundManager : MonoBehaviour
     public AudioClip Colleactable1;
     public AudioClip Colleactable2;
     public AudioClip TankHit;
+    public AudioClip Flying;
+    public AudioClip IronShoot;
+    public AudioClip EnemyHitPlayer;
+    public AudioClip SuperLaser;
+    public AudioClip BatBlade;
+    public AudioClip SizeUp , Webshoot;
+
     public static SoundManager SharedManager()
     {
         return sharedInstance;

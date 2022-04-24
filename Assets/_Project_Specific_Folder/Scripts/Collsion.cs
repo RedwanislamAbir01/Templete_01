@@ -78,7 +78,8 @@ public class Collsion : MonoBehaviour
     {
         if (other.gameObject.CompareTag("FinishLine"))
         {
-            if(transform.localEulerAngles.y > -90 && transform.localEulerAngles.y <= 90)
+          
+            if (transform.localEulerAngles.y > -90 && transform.localEulerAngles.y <= 90)
             {
                 Hero1.transform.DOLocalMove(H1start, .3f);
                 Hero2.transform.DOLocalMove(H2Start, .3f);
@@ -107,7 +108,7 @@ public class Collsion : MonoBehaviour
         if (other.gameObject.CompareTag("Finish"))
         {
 
-
+            GameManager.Instance.Fly.Play();
             Fly();
             GameManager.Instance.ZoomEffect();
 
@@ -116,6 +117,7 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Land"))
         {
+            GameManager.Instance.Fly.Stop();
             GameManager.Instance.p.MaxSpeed -= SpeedIncreasAmmount; 
             GameManager.Instance.p.speed = CurrentSpeed;
             GameManager.Instance.p.MaxSpeed = CurrentMaxSpeed;

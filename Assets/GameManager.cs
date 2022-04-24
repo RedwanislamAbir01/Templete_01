@@ -10,7 +10,7 @@ public class GameManager : Singleton<GameManager>
     public PathCreation.Examples.PathFollower p;
     public GameObject FianlCamPos;
     public bool GameOver , GameEnd;
-
+    public AudioSource Fly;
   
     public override void Start()
     {
@@ -33,6 +33,7 @@ public class GameManager : Singleton<GameManager>
     }
     public void StartIt()
     {
+     
         ChracterSetUp();
         UiManager.Instance.StartUI.SetActive(false);
         StartGame = true;

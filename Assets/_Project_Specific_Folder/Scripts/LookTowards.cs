@@ -50,6 +50,7 @@ public class LookTowards : MonoBehaviour
     }
     public IEnumerator RedScreenRoutine()
     {
+  
         anim.SetBool("Injured", true);
         GameManager.Instance.p.speed = .75f; GameManager.Instance.p.MaxSpeed= .75f;
         UiManager.Instance.FadeIn.gameObject.SetActive(true);
@@ -57,7 +58,7 @@ public class LookTowards : MonoBehaviour
         anim.SetBool("Injured", false); 
         UiManager.Instance.FadeIn.gameObject.SetActive(false);
         yield return new WaitForSeconds(1f);
-       
+    
         GameManager.Instance.p.MaxSpeed = CurrentMaxSpeed;
     }
     public void DoorSizeDownRoutine()
@@ -132,6 +133,7 @@ anim.transform.localScale.y + ScaleAmmounts
                 ColelctableCount++;
                 if (ColelctableCount % 5 == 0 && ColelctableCount>1)
                 {
+                    SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().SizeUp);
                     GameManager.Instance.p.MaxSpeed += .25f;
                     MMVibrationManager.Haptic(HapticTypes.MediumImpact);
                     StartCoroutine(EvolveEffectRoutine());
@@ -167,7 +169,7 @@ anim.transform.localScale.y + ScaleAmmounts
                
                     if (ColelctableCount % 5 == 0 && ColelctableCount > 1)
                 {
-            
+                    SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().SizeUp);
                     GameManager.Instance.p.MaxSpeed += .25f;
                     MMVibrationManager.Haptic(HapticTypes.MediumImpact);
                     StartCoroutine(EvolveEffectRoutine());

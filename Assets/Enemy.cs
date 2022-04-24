@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
 
             }
 
-            if (EnemyType == eEnemyType.Ice || EnemyType == eEnemyType.ShieldGuy || EnemyType == eEnemyType.Lava)
+            if ( EnemyType == eEnemyType.ShieldGuy || EnemyType == eEnemyType.Lava)
             {
 
                 if (other.GetComponent<LookTowards>().Type == eType.Hero2)
@@ -65,7 +65,7 @@ public class Enemy : MonoBehaviour
 
             }
 
-            if (EnemyType == eEnemyType.BrickWall  || EnemyType == eEnemyType.Wall || EnemyType == eEnemyType.KyptoBlock)
+            if (EnemyType == eEnemyType.BrickWall  || EnemyType == eEnemyType.Wall || EnemyType == eEnemyType.KyptoBlock ||EnemyType == eEnemyType.Ice )
             {
                 print("wall");
                 other.GetComponent<LookTowards>().DoorSizeDownRoutine();
@@ -75,6 +75,7 @@ public class Enemy : MonoBehaviour
 
                 if (EnemyType == eEnemyType.Lizard)
             {
+                SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
                 this.GetComponentInChildren<Animator>().Play("Attack");
                 other.transform.DOLocalMoveY(-2.07f, .2f);
                 MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
@@ -92,7 +93,8 @@ public class Enemy : MonoBehaviour
 
             if (EnemyType == eEnemyType.ShieldGuy || EnemyType == eEnemyType.KryptoCrstalguy || EnemyType == eEnemyType.WarMachine)
             {
-               this.GetComponentInChildren<Animator>().Play("Attack"); 
+                SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
+                this.GetComponentInChildren<Animator>().Play("Attack"); 
                 other.transform.DOLocalMoveY(-2.07f, .2f);
                 MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                 GameManager.Instance.Reset();
