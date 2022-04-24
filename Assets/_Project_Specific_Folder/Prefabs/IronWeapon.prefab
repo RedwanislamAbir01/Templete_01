@@ -198,7 +198,7 @@ MonoBehaviour:
   DestroyTime: 5
   HitVFX: {fileID: 1797657264430493913, guid: dd8575b51ad6e4644a5abb4fda3f6e07, type: 3}
   CrystalSpread: {fileID: 9144820366456875970, guid: f4d26465e3671d0429816dc8f7937a0f, type: 3}
-  DestroyVFX: {fileID: 8650938231098632368, guid: 6ba1454cd4061fa449ba3e22578c5d5d, type: 3}
+  DestroyVFX: {fileID: 3157370685969289855, guid: 662372284ddeee54fad3c2462587922e, type: 3}
 --- !u!54 &-7563849298568495467
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -56,7 +56,7 @@ public class LookTowards : MonoBehaviour
         yield return new WaitForSeconds(1f);
         anim.SetBool("Injured", false); 
         UiManager.Instance.FadeIn.gameObject.SetActive(false);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
        
         GameManager.Instance.p.MaxSpeed = CurrentMaxSpeed;
     }
@@ -167,7 +167,7 @@ anim.transform.localScale.y + ScaleAmmounts
                
                     if (ColelctableCount % 5 == 0 && ColelctableCount > 1)
                 {
-                    GameManager.Instance.ZoomEffect();
+            
                     GameManager.Instance.p.MaxSpeed += .25f;
                     MMVibrationManager.Haptic(HapticTypes.MediumImpact);
                     StartCoroutine(EvolveEffectRoutine());

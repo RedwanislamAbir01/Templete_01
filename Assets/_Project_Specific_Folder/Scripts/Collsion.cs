@@ -109,7 +109,7 @@ public class Collsion : MonoBehaviour
 
 
             Fly();
-
+            GameManager.Instance.ZoomEffect();
 
 
 

@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("Player")) {
 
 
-            if (EnemyType == eEnemyType.Wall || EnemyType == eEnemyType.KryptoCrstalguy || EnemyType == eEnemyType.KyptoBlock)
+            if ( EnemyType == eEnemyType.KryptoCrstalguy )
             {
 
                 if (other.GetComponent<LookTowards>().Type == eType.Hero1)
@@ -65,7 +65,7 @@ public class Enemy : MonoBehaviour
 
             }
 
-            if (EnemyType == eEnemyType.BrickWall)
+            if (EnemyType == eEnemyType.BrickWall  || EnemyType == eEnemyType.Wall || EnemyType == eEnemyType.KyptoBlock)
             {
                 print("wall");
                 other.GetComponent<LookTowards>().DoorSizeDownRoutine();
@@ -96,6 +96,7 @@ public class Enemy : MonoBehaviour
                 other.transform.DOLocalMoveY(-2.07f, .2f);
                 MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                 GameManager.Instance.Reset();
+                other.gameObject.GetComponentInParent<LookTowards>().anim.SetTrigger("Death");
             }
             if (EnemyType == eEnemyType.Lava)
             {
