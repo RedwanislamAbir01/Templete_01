@@ -83,11 +83,10 @@ public class Projectile : MonoBehaviour
             {
                 if (this.gameObject.name != "SpiderWeapon(Clone)")
                 {
+                    other.transform.GetChild(1).gameObject.SetActive(true);
                     //other.GetComponent<Collider>().enabled = false;
                     other.gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>().Play("Taunt");
-                    GameObject g = Instantiate(DestroyVFX
-                   , new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity);
-                    Destroy(g, 1); Destroy(gameObject);
+                 Destroy(gameObject);
 
                 }
                 else
