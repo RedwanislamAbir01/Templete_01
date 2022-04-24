@@ -42,11 +42,12 @@ namespace PathCreation.Examples
         {
 
             GameObject path = GameObject.Find("pathWAY");
-            pathCreator = path.GetComponent<PathCreator>();
+           
             //path.GetComponent<RoadMeshCreator>().refresh();
   
             if (pathCreator != null)
             {
+                pathCreator = path.GetComponent<PathCreator>();
                 // Subscribed to the pathUpdated event so that we're notified if the path changes during the game
                 pathCreator.pathUpdated += OnPathChanged;
             }
