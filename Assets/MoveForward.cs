@@ -29,6 +29,7 @@ public class MoveForward : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.ShieldGuy)
             {
+                SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
                 MMVibrationManager.Haptic(HapticTypes.MediumImpact);
                 GetComponent<BoxCollider>().enabled = false;
                  E.Anim.SetTrigger("Punch");

@@ -138,6 +138,7 @@ public class Projectile : MonoBehaviour
             }
             if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KryptoCrstalguy )
             {
+                SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().TankHit);
                 other.transform.GetChild(0).gameObject.SetActive(false); other.transform.GetChild(01).gameObject.SetActive(true);
                 GameObject g1 = Instantiate(CrystalSpread, new Vector3(other.transform.position.x, other.transform.position.y + .5f, other.transform.position.z), Quaternion.identity);;
                 Destroy(g1, 1);
