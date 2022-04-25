@@ -5448,7 +5448,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 90
       flipNormals: 0
-    vertexPathUpToDate: 0
+    vertexPathUpToDate: 1
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -6334,6 +6334,14 @@ PrefabInstance:
     - target: {fileID: 6894420649972834982, guid: 8228ef9c2042e534896ca73d445a335c, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880380949978136944, guid: 8228ef9c2042e534896ca73d445a335c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880380949978136946, guid: 8228ef9c2042e534896ca73d445a335c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7880380950341457350, guid: 8228ef9c2042e534896ca73d445a335c, type: 3}
       propertyPath: m_RootOrder
