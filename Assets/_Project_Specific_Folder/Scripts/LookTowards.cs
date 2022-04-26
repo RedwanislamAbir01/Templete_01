@@ -21,7 +21,7 @@ public class LookTowards : MonoBehaviour
     float i, j;
     public GameObject Cape;
     public GameObject CapeFinalPos;
-
+    int wrong;
     public float CurrentSpeed,CurrentMaxSpeed;
     public int SizeDownAmmount = 20;
     void Start()
@@ -38,8 +38,10 @@ public class LookTowards : MonoBehaviour
     }
     public IEnumerator OnlyRedScreenRoutine()
     {
+        anim.SetTrigger("Death");
+        transform.DOLocalMoveY(-2.07f, .2f);
         //anim.SetBool("Injured", true);
-        //GameManager.Instance.p.speed = .75f; GameManager.Instance.p.MaxSpeed = .75f;
+        GameManager.Instance.p.enabled = false;
         UiManager.Instance.FadeIn.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
        // anim.SetBool("Injured", false);
@@ -150,7 +152,14 @@ anim.transform.localScale.y + ScaleAmmounts
           else  if (other.gameObject.CompareTag("Hero2c"))
             {
                 print("Superman");
-                StartCoroutine(RedScreenRoutine());
+                StartCoroutine(RedScreenRoutine()); 
+                wrong++;
+                if (wrong == 5)
+                {
+                    GameManager.Instance.p.enabled = false;
+                    anim.SetTrigger("Death");
+                    transform.DOLocalMoveY(-2.07f, .2f);
+                }
             }
 
 
@@ -186,6 +195,13 @@ anim.transform.localScale.y + ScaleAmmounts
            else if (other.gameObject.CompareTag("Hero1c"))
             {
                 StartCoroutine(RedScreenRoutine());
+                wrong++;
+                if(wrong == 5)
+                {
+                    GameManager.Instance.p.enabled = false;
+                    anim.SetTrigger("Death");
+                    transform.DOLocalMoveY(-2.07f, .2f);
+                }
             }
         }
     }
