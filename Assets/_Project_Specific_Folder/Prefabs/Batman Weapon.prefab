@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectileSpeed: 6
-  DestroyTime: 5
+  DestroyTime: 2
   HitVFX: {fileID: 1797657264430493913, guid: dd8575b51ad6e4644a5abb4fda3f6e07, type: 3}
   CrystalSpread: {fileID: 9144820366456875970, guid: f4d26465e3671d0429816dc8f7937a0f, type: 3}
   DestroyVFX: {fileID: 4851845360303099115, guid: 376665393570cad47981f645ba31c45c, type: 3}
