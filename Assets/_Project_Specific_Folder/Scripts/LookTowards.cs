@@ -161,7 +161,7 @@ anim.transform.localScale.y + ScaleAmmounts
                     anim.SetTrigger("Death");
                     transform.DOLocalMoveY(-2.07f, .2f); GetComponentInParent<Collsion>().Hero1.GetComponent<LookTowards>().anim.SetTrigger("Death");
                     GetComponentInParent<Collsion>().Hero2.GetComponent<LookTowards>().anim.SetTrigger("Death");
-                    GetComponentInParent<Collsion>().Hero1.GetComponent<LookTowards>().transform.DOLocalMoveY(-2.07f, .2f);
+                    GetComponentInParent<Collsion>().Hero2.GetComponent<LookTowards>().transform.DOLocalMoveY(-2.07f, .2f);
 
                 }
             }
@@ -207,7 +207,7 @@ anim.transform.localScale.y + ScaleAmmounts
                     transform.DOLocalMoveY(-2.07f, .2f);
                     GetComponentInParent<Collsion>().Hero1.GetComponent<LookTowards>().anim.SetTrigger("Death");
                     GetComponentInParent<Collsion>().Hero2.GetComponent<LookTowards>().anim.SetTrigger("Death");
-                    GetComponentInParent<Collsion>().Hero2.GetComponent<LookTowards>().transform.DOLocalMoveY(-2.07f, .2f);
+                    GetComponentInParent<Collsion>().Hero1.GetComponent<LookTowards>().transform.DOLocalMoveY(-2.07f, .2f);
                 }
             }
         }
