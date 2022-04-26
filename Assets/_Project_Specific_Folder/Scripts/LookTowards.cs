@@ -38,6 +38,7 @@ public class LookTowards : MonoBehaviour
     }
     public IEnumerator OnlyRedScreenRoutine()
     {
+        GetComponentInParent<Collsion>().Connector.SetActive(false);
         anim.SetTrigger("Death"); GetComponentInParent<Collsion>().Hero1.GetComponent<LookTowards>().anim.SetTrigger("Death");
         GetComponentInParent<Collsion>().Hero2.GetComponent<LookTowards>().anim.SetTrigger("Death");
         transform.DOLocalMoveY(-2.07f, .2f);
@@ -157,6 +158,7 @@ anim.transform.localScale.y + ScaleAmmounts
                 wrong++;
                 if (wrong == 5)
                 {
+                    GetComponentInParent<Collsion>().Connector.SetActive(false);
                     GameManager.Instance.p.enabled = false;
                     anim.SetTrigger("Death");
                     transform.DOLocalMoveY(-2.07f, .2f); GetComponentInParent<Collsion>().Hero1.GetComponent<LookTowards>().anim.SetTrigger("Death");
@@ -208,6 +210,7 @@ anim.transform.localScale.y + ScaleAmmounts
                     GetComponentInParent<Collsion>().Hero1.GetComponent<LookTowards>().anim.SetTrigger("Death");
                     GetComponentInParent<Collsion>().Hero2.GetComponent<LookTowards>().anim.SetTrigger("Death");
                     GetComponentInParent<Collsion>().Hero1.GetComponent<LookTowards>().transform.DOLocalMoveY(-2.07f, .2f);
+                    GetComponentInParent<Collsion>().Connector.SetActive(false);
                 }
             }
         }
