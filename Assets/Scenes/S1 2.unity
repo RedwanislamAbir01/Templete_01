@@ -6174,6 +6174,10 @@ PrefabInstance:
       value: Players
       objectReference: {fileID: 0}
     - target: {fileID: 7322975178853349178, guid: f45925c7fa8538647a6be7d7f3fed1ac, type: 3}
+      propertyPath: MaxSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7322975178853349178, guid: f45925c7fa8538647a6be7d7f3fed1ac, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
