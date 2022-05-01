@@ -11,7 +11,9 @@ public class GameManager : Singleton<GameManager>
     public GameObject FianlCamPos;
     public bool GameOver , GameEnd;
     public AudioSource Fly;
-  
+
+
+    public int Level;
     public override void Start()
     {
         p.enabled = false;
