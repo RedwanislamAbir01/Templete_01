@@ -30,6 +30,8 @@ public class Collsion : MonoBehaviour
     Vector3 camStartPos;
     Quaternion camStartRot;
     float CurrentSpeed, CurrentMaxSpeed;
+
+    public bool NewCam;
     private void Awake()
     {
  
@@ -186,8 +188,12 @@ public class Collsion : MonoBehaviour
 
     public IEnumerator StopRountine()
     {
-        Camera.main.transform.DOLocalMove(GameManager.Instance.FianlCamPos.transform.localPosition, 1);
-        Camera.main.transform.DOLocalRotate(GameManager.Instance.FianlCamPos.transform.localEulerAngles, 1);
+
+        
+            Camera.main.transform.DOLocalMove(GameManager.Instance.FianlCamPos.transform.localPosition, 1);
+            Camera.main.transform.DOLocalRotate(GameManager.Instance.FianlCamPos.transform.localEulerAngles, 1);
+        
+      
         yield return new WaitForSeconds(.3f);
         GameManager.Instance.p.MaxSpeed = .3f;
         GameManager.Instance.p.speed = .3f;
@@ -241,9 +247,18 @@ public class Collsion : MonoBehaviour
 
     public IEnumerator ShootBossRoutine()
     {
-        Camera.main.transform.DOLocalMove(new Vector3(1.83f, 1.84f, -7.12f), .3f);
-        Camera.main.transform.DOLocalRotate(new Vector3(14.21f, -18.791f, 1.535f), .3f);
-        Camera.main.transform.parent = Boss1.transform;
+        if (!NewCam)
+        {
+            Camera.main.transform.DOLocalMove(new Vector3(1.83f, 1.84f, -7.12f), .3f);
+            Camera.main.transform.DOLocalRotate(new Vector3(14.21f, -18.791f, 1.535f), .3f);
+            Camera.main.transform.parent = Boss1.transform;
+        }
+        else
+        {
+            Camera.main.transform.DOLocalMove(new Vector3(10f, 1.84f,1.75f), .3f);
+            Camera.main.transform.DOLocalRotate(new Vector3(0, -90, 0), .3f);
+            Camera.main.transform.parent = Boss1.transform;
+        }
      
 
 
