@@ -27,7 +27,7 @@ public class LookTowards : MonoBehaviour
     public GameObject Baby , BFX;
     void Start()
     {
-       
+        GameManager.Instance.p.MaxSpeed = .5f;
         CurrentMaxSpeed = GameManager.Instance.p.MaxSpeed;
     }
 
@@ -226,11 +226,13 @@ anim.transform.localScale.y + ScaleAmmounts
 
     void Babys ()
     {
+        Baby.GetComponent<MySDK.SimpleRotator>().enabled = true;
         BFX.gameObject.SetActive(true);
         Baby.transform.DOScale(new Vector3(Baby.transform.localScale.x - BbayScale,
                      Baby.transform.localScale.y - BbayScale
                       , Baby.transform.localScale.z - BbayScale
                       ), .3f).SetEase(Ease.InOutBounce).OnComplete(() => {
+                          GameManager.Instance.p.MaxSpeed = 1.5f;
                           anim.transform.GetChild(0).gameObject.SetActive(true); anim.transform.GetChild(1).gameObject.SetActive(true);
                           Baby.SetActive(false);
                          
