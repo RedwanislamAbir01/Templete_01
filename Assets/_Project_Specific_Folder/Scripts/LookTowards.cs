@@ -12,7 +12,7 @@ public enum eType
 public class LookTowards : MonoBehaviour
 {
     public Ease ease;
-    public float ScaleAmmount = .3f; public float ScaleAmmounts = .15f;
+    public float ScaleAmmount = .3f; public float ScaleAmmounts = .15f , BbayScale;
     public ParticleSystem CollectableVFX , PowerVFX;
     public GameObject Target;
     public eType Type;
@@ -24,6 +24,7 @@ public class LookTowards : MonoBehaviour
     int wrong;
     public float CurrentSpeed,CurrentMaxSpeed;
     public int SizeDownAmmount = 20;
+    public GameObject Baby , BFX;
     void Start()
     {
        
@@ -135,6 +136,10 @@ anim.transform.localScale.y + ScaleAmmounts
                 if(i<=50)
                 transform.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0,i);
                 ColelctableCount++;
+                if (ColelctableCount == 1)
+                {
+                    Babys();
+                }
                 if (ColelctableCount % 5 == 0 && ColelctableCount>1)
                 {
                    // SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().SizeUp);
@@ -181,7 +186,10 @@ anim.transform.localScale.y + ScaleAmmounts
                     transform.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, j);
                 //CollectableVFX.Play();
                 ColelctableCount++;
-               
+               if(ColelctableCount == 1)
+                {
+                    Babys();
+                }
                     if (ColelctableCount % 5 == 0 && ColelctableCount > 1)
                 {
                     SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().SizeUp);
@@ -216,6 +224,24 @@ anim.transform.localScale.y + ScaleAmmounts
         }
     }
 
+    void Babys ()
+    {
+        BFX.gameObject.SetActive(true);
+        Baby.transform.DOScale(new Vector3(Baby.transform.localScale.x - BbayScale,
+                     Baby.transform.localScale.y - BbayScale
+                      , Baby.transform.localScale.z - BbayScale
+                      ), .3f).SetEase(Ease.InOutBounce).OnComplete(() => {
+                          anim.transform.GetChild(0).gameObject.SetActive(true); anim.transform.GetChild(1).gameObject.SetActive(true);
+                          Baby.SetActive(false);
+                         
+                          anim.transform.DOScale(new Vector3(anim.transform.localScale.x - ScaleAmmounts,
+anim.transform.localScale.y - ScaleAmmounts
+, anim.transform.localScale.z - ScaleAmmounts
+), .3f);
+                      });
+
+    
+}
     public IEnumerator EvolveEffectRoutine()
     {
     
