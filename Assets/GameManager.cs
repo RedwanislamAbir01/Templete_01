@@ -8,7 +8,7 @@ public class GameManager : Singleton<GameManager>
 {
     public bool StartGame;
     public PathCreation.Examples.PathFollower p;
-    public GameObject FianlCamPos;
+    public GameObject FianlCamPos, FianlCamPos1;
     public bool GameOver , GameEnd;
     public AudioSource Fly;
   

@@ -188,12 +188,19 @@ public class Collsion : MonoBehaviour
 
     public IEnumerator StopRountine()
     {
+        if (!NewCam)
+        {
 
-        
             Camera.main.transform.DOLocalMove(GameManager.Instance.FianlCamPos.transform.localPosition, 1);
             Camera.main.transform.DOLocalRotate(GameManager.Instance.FianlCamPos.transform.localEulerAngles, 1);
-        
+        }
       
+        else
+        {
+
+            Camera.main.transform.DOLocalMove(GameManager.Instance.FianlCamPos1.transform.localPosition, 1);
+            Camera.main.transform.DOLocalRotate(GameManager.Instance.FianlCamPos1.transform.localEulerAngles, 1);
+        }
         yield return new WaitForSeconds(.3f);
         GameManager.Instance.p.MaxSpeed = .3f;
         GameManager.Instance.p.speed = .3f;
