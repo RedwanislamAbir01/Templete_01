@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class Controller : MonoBehaviour
 {
     public enum State
@@ -105,19 +105,19 @@ public class Controller : MonoBehaviour
         if (Input.GetAxis("Mouse X") > .1f)
         {
             direction = State.right;
-            // Toilet.transform.DORotate(new Vector3(0, 5, 0), .1f);
+           transform.parent.DOLocalRotate(new Vector3(0, 3, 0), .1f);
         }
         if (Input.GetAxis("Mouse X") < -.1f)
         {
 
             direction = State.left;
-            // Toilet.transform.DORotate(new Vector3(0, -5, 0), .1f);
+             transform.parent.DOLocalRotate(new Vector3(0, -3, 0), .1f);
         }
         if (Input.GetAxis("Mouse X") == 0)
         {
 
             direction = State.middle;
-            // Toilet.transform.DORotate(new Vector3(0, 0, 0), .3f);
+            transform.parent.DOLocalRotate(new Vector3(0, 0, 0), .1f);
         }
 
 
@@ -149,7 +149,7 @@ public class Controller : MonoBehaviour
         //if you play on computer---------------------------------
         float x = Input.GetAxis("Horizontal") * Time.deltaTime * computerSpeed;     //you can move by pressing 'a' - 'd' or the arrow keys
         Vector3 newPosition = rb.transform.localPosition + Vector3.right * x;
-        newPosition.x = Mathf.Clamp(newPosition.x, -6,6);
+        newPosition.x = Mathf.Clamp(newPosition.x, -2,2);
         transform.localPosition = newPosition;
         //--------------------------------------------------------
 

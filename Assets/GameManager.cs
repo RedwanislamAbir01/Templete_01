@@ -10,7 +10,7 @@ public class GameManager : Singleton<GameManager>
     public PathCreation.Examples.PathFollower p;
     public GameObject FianlCamPos;
     public bool GameOver , GameEnd;
-    public AudioSource Fly;
+    public GameObject TattoMachine;
 
 
     public int Level;
@@ -28,14 +28,20 @@ public class GameManager : Singleton<GameManager>
 
     public void StartIt()
     {
-     
-     
+
+
         UiManager.Instance.StartUI.SetActive(false);
         StartGame = true;
         p.enabled = true;
+        TattoMachineMechanics();
     }
 
-   
+    private void TattoMachineMechanics()
+    {
+        TattoMachine.transform.DOMoveZ(-0.62f, .3f);
+        TattoMachine.transform.GetComponentInChildren<Animator>().enabled = false;
+    }
+
     public void ZoomEffect()
     {
         StartCoroutine(CamZoomInAndOutRoutine());
