@@ -239,7 +239,7 @@ public class Collsion : MonoBehaviour
     
        
         UiManager.Instance.TapFastPanel.SetActive(false);
-        Camera.main.transform.DOLocalMoveZ(-5.8f, .3f);
+       // Camera.main.transform.DOLocalMoveZ(-5.8f, .3f);
 
 
     }
