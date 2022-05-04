@@ -14,7 +14,7 @@ public class LastProjectile : MonoBehaviour
     }
     private void OnEnable()
     {
-        transform.DOMove(new Vector3(GameObject.FindGameObjectWithTag("Boss").transform.position.x +1f,
+        transform.DOMove(new Vector3(GameObject.FindGameObjectWithTag("Boss").transform.position.x +0f,
             GameObject.FindGameObjectWithTag("Boss").transform.position.y + .3f,
             GameObject.FindGameObjectWithTag("Boss").transform.position.z ), .5f).SetEase(Ease.InSine).OnComplete(() => {
                 
