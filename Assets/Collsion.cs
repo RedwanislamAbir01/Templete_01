@@ -24,6 +24,12 @@ public class Collsion : MonoBehaviour
             GameManager.Instance.Level++;
             LevelText.text = "Bad :" + GameManager.Instance.Level.ToString(); ColorText.text = "Red";
         }
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            RandomAnimationPlay();
+            GameManager.Instance.Level--;
+            LevelText.text = "No sticker"; ColorText.text = "No color";
+        }
     }
 
     void RandomAnimationPlay() {
