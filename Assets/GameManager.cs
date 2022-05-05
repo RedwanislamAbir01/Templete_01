@@ -11,7 +11,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject FianlCamPos;
     public bool GameOver , GameEnd;
     public GameObject TattoMachine;
-
+    public Collsion CollsionScript;
 
     public int Level;
     public override void Start()
@@ -38,7 +38,9 @@ public class GameManager : Singleton<GameManager>
         }
     IEnumerator DelayStart()
     {
-        yield return new WaitForSeconds(2); TattoMachine.transform.DOMoveZ(-0.98f, .3f);
+        CollsionScript.ChangeMaterials();
+        yield return new WaitForSeconds(2);
+        TattoMachine.transform.DOMoveZ(-0.98f, .3f);
         StartGame = true;
         p.enabled = true;
     }
