@@ -26,10 +26,16 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
-            RandomAnimationPlay();
+            StartCoroutine(SpeedSlowDownRoutine());
             GameManager.Instance.Level--;
             LevelText.text = "No sticker"; ColorText.text = "No color";
         }
+    }
+    public IEnumerator SpeedSlowDownRoutine()
+    {
+        GameManager.Instance.p.speed = GameManager.Instance.p.MaxSpeed = .8f;
+        yield return new WaitForSeconds(.6f);
+        GameManager.Instance.p.MaxSpeed = 2;
     }
 
     void RandomAnimationPlay() {

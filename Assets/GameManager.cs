@@ -31,14 +31,21 @@ public class GameManager : Singleton<GameManager>
 
 
         UiManager.Instance.StartUI.SetActive(false);
+        p.gameObject.transform.DOMoveX(.1f, .6f).OnComplete(() => { TattoMachine.transform.GetComponentInChildren<Animator>().enabled = true;
+            StartCoroutine(DelayStart());
+        });
+                                                                                               
+        }
+    IEnumerator DelayStart()
+    {
+        yield return new WaitForSeconds(2); TattoMachine.transform.DOMoveZ(-0.98f, .3f);
         StartGame = true;
         p.enabled = true;
-        TattoMachineMechanics();
     }
 
     private void TattoMachineMechanics()
     {
-        TattoMachine.transform.DOMoveZ(-0.62f, .3f);
+       
         TattoMachine.transform.GetComponentInChildren<Animator>().enabled = false;
     }
 
