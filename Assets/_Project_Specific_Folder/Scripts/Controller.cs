@@ -105,19 +105,19 @@ public class Controller : MonoBehaviour
         if (Input.GetAxis("Mouse X") > .1f)
         {
             direction = State.right;
-           transform.parent.DOLocalRotate(new Vector3(0, 3, 0), .1f);
+           transform.DOLocalRotate(new Vector3(5, -90, 0), .1f);
         }
         if (Input.GetAxis("Mouse X") < -.1f)
         {
 
             direction = State.left;
-             transform.parent.DOLocalRotate(new Vector3(0, -3, 0), .1f);
+             transform.DOLocalRotate(new Vector3(-5, -90, 0), .1f);
         }
         if (Input.GetAxis("Mouse X") == 0)
         {
 
             direction = State.middle;
-            transform.parent.DOLocalRotate(new Vector3(0, 0, 0), .1f);
+            transform.DOLocalRotate(new Vector3(0, -90, 0), .3f);
         }
 
 
