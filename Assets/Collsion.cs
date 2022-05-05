@@ -81,7 +81,7 @@ public class Collsion : MonoBehaviour
     public void UpdateTexture()
     {
         StiackerMat.DOFade(0, .3f).OnComplete(() => {
-            StiackerMat.mainTexture = Tattos[GameManager.Instance.Level];
+            StiackerMat.mainTexture = Tattos[GameManager.Instance.Level-1];
             StiackerMat.DOFade(1, .5f);
         });
     }
