@@ -133,6 +133,10 @@ public class Collsion : MonoBehaviour
                 }
             }
         }
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            StartCoroutine(StopRoutine());
+        }
     }
     public IEnumerator AnimationDelayRoutine()
     {
@@ -160,6 +164,20 @@ public class Collsion : MonoBehaviour
         {
             anim.Play("g"); anim1.Play("g");
         }
+    }
+    public IEnumerator StopRoutine()
+    {
+        Camera.main.transform.DOLocalMove(GameManager.Instance.FianlCamPos.transform.localPosition, 1);
+        Camera.main.transform.DOLocalRotate(GameManager.Instance.FianlCamPos.transform.localEulerAngles, 1);
+        yield return new WaitForSeconds(1.4f);
+        GameManager.Instance.p.MaxSpeed = .3f;
+        GameManager.Instance.p.speed = .3f;
+
+        yield return new WaitForSeconds(.2f); anim.Play("Wrestle"); anim1.Play("Wrestle");
+        this.transform.root.DOMove(new Vector3(8.404f, 0, -0.052f), .3f);
+        GameManager.Instance.p.enabled = false;
+
+
     }
 
     public void ChangeMaterials()

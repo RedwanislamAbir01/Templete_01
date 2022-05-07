@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject TattoMachine;
     public Collsion CollsionScript;
 
+    public Transform FinalCamPos;
     public int Level;
     public override void Start()
     {
