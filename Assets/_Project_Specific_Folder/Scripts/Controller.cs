@@ -102,23 +102,23 @@ public class Controller : MonoBehaviour
     public void HandlePlayerMovement()
     {
 
-        if (Input.GetAxis("Mouse X") > .1f)
-        {
-            direction = State.right;
-           transform.DOLocalRotate(new Vector3(5, -90, 0), .1f);
-        }
-        if (Input.GetAxis("Mouse X") < -.1f)
-        {
+        //if (Input.GetAxis("Mouse X") > .1f)
+        //{
+        //    direction = State.right;
+        //   transform.DOLocalRotate(new Vector3(5, -90, 13), .1f);
+        //}
+        //if (Input.GetAxis("Mouse X") < -.1f)
+        //{
 
-            direction = State.left;
-             transform.DOLocalRotate(new Vector3(-5, -90, 0), .1f);
-        }
-        if (Input.GetAxis("Mouse X") == 0)
-        {
+        //    direction = State.left;
+        //     transform.DOLocalRotate(new Vector3(-5, -90, 13), .1f);
+        //}
+        //if (Input.GetAxis("Mouse X") == 0)
+        //{
 
-            direction = State.middle;
-            transform.DOLocalRotate(new Vector3(0, -90, 0), .3f);
-        }
+        //    direction = State.middle;
+        //    transform.DOLocalRotate(new Vector3(0, -90, 13), .3f);
+        //}
 
 
         foreach (Touch touch in Input.touches)
@@ -153,7 +153,23 @@ public class Controller : MonoBehaviour
         transform.localPosition = newPosition;
         //--------------------------------------------------------
 
+        if (Input.GetAxis("Horizontal") > .1f)
+        {
+            direction = State.right;
+            transform.DOLocalRotate(new Vector3(6, -90, 13), .1f);
+        }
+        if (Input.GetAxis("Horizontal") < -.1f)
+        {
 
+            direction = State.left;
+            transform.DOLocalRotate(new Vector3(-6, -90, 13), .1f);
+        }
+        if (Input.GetAxis("Horizontal") == 0)
+        {
+
+            direction = State.middle;
+            transform.DOLocalRotate(new Vector3(0, -90, 13), .2f);
+        }
 
     }
 }
