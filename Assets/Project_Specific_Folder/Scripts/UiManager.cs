@@ -19,6 +19,13 @@ public class UiManager : Singleton<UiManager>
 
         LevelText.text = SceneLoadCounter.Instance.SceneLoadCount.ToString();
     }
+    public IEnumerator FdeDelayRoutine()
+    {
+        FadeIn.SetActive(true);
+        yield return new WaitForSeconds(.3f);
+        FadeIn.SetActive(false);
+     
+    }
 
 
 }

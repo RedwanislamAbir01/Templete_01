@@ -45,13 +45,14 @@ public class Collsion : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             StartCoroutine(SpeedSlowDownRoutine());
-            GameManager.Instance.Level--; 
-            StiackerMat.DOFade(0, .3f);
+            StartCoroutine(UiManager.Instance.FdeDelayRoutine());
+            StiackerMat.DOFade(0, .3f); anim1.Play("Hurt"); anim.Play("Hurt");
             other.GetComponent<BoxCollider>().enabled = false;
         }
         if (other.gameObject.CompareTag("Yellow"))
         {
-            if(IsGoodGate)
+            StartCoroutine(AnimationDelayRoutine());
+            if (IsGoodGate)
             {
                 if(GameManager.Instance.Level == 4)
                 {
@@ -92,6 +93,7 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Blue"))
         {
+            StartCoroutine(AnimationDelayRoutine());
             if (IsGoodGate)
             {
                 if (GameManager.Instance.Level == 4)
