@@ -16,10 +16,12 @@ public class Collsion : MonoBehaviour
     public int min = 0, max = 255;
     public Texture Default;
    [SerializeField] bool IsGoodGate;
+    Vector3 Startpos;
     private void Start()
     {
         StiackerMat.mainTexture = Default;
         StiackerMat.DOFade(0, 0);
+        Startpos = transform.localPosition;
 
     }
     private void OnTriggerEnter(Collider other)
@@ -158,6 +160,7 @@ public class Collsion : MonoBehaviour
         }
         if (i == 1)
         {
+            StartCoroutine(GoodGateRot());
             anim.Play("g 1"); anim1.Play("g 1");
         }
         if(i == 2)
@@ -194,6 +197,16 @@ public class Collsion : MonoBehaviour
                 StiackerMat.DOFade(1, .5f);
             });
         
+    }
+    public IEnumerator GoodGateRot()
+    {
+        ///GetComponent<Controller>().enabled = false;
+        transform.DOLocalMove(new Vector3(-1.35f, 3.15f, -0.67f), .1f); anim1. transform.DOLocalMove(new Vector3(-1.35f, 3.15f, -0.67f), .1f);
+        yield return new WaitForSeconds(.2f);
+        //GetComponent<Controller>().enabled = true;
+        transform.DOLocalMove(Startpos, .1f);
+        anim1.transform.DOLocalMove(Startpos, .1f);
+
     }
     public void UpdateTextureCheap()
     {
