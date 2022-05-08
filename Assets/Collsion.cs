@@ -25,11 +25,11 @@ public class Collsion : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("GoodGate"))
-        {
+        {;
           
             StartCoroutine(AnimationDelayRoutine());
-            GameManager.Instance.Level++; 
-            UpdateTexture();
+            GameManager.Instance.Level++;
+            Invoke("UpdateTexture", .2f);
             IsGoodGate = true;
             other.GetComponent<BoxCollider>().enabled = false;
         }
@@ -38,7 +38,7 @@ public class Collsion : MonoBehaviour
            
             StartCoroutine(AnimationDelayRoutine());
             GameManager.Instance.Level++;
-            UpdateTextureCheap();
+            Invoke("UpdateTextureCheap", .2f);
             IsGoodGate = false;
             LevelText.text = "Bad :" + GameManager.Instance.Level.ToString(); ColorText.text = "Red";
         }

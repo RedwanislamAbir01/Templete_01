@@ -39,9 +39,11 @@ public class GameManager : Singleton<GameManager>
         }
     IEnumerator DelayStart()
     {
+        TattoMachine.transform.GetChild(1).gameObject.SetActive(true);
         CollsionScript.ChangeMaterials();
         yield return new WaitForSeconds(2);
         TattoMachine.transform.DOMoveZ(-0.98f, .3f);
+    
         StartGame = true;
         p.enabled = true;
     }
