@@ -192,7 +192,7 @@ public class Collsion : MonoBehaviour
     }
 
     void RandomAnimationPlay() {
-        int i = Random.Range(0, 3);
+        int i = Random.Range(0, 2);
         if(i== 0)
         {
             anim.Play("g 0"); anim1.Play("g 0");
@@ -230,7 +230,7 @@ public class Collsion : MonoBehaviour
         transform.parent.parent = GameManager.Instance.PivotParent.transform; Boss.transform.parent = GameManager.Instance.PivotParent.transform;
         yield return new WaitForSeconds(.2f);
         GameManager.Instance.PivotParent.transform.GetComponent<MySDK.Rotator>().enabled = true;
-        this.transform.root.DOLocalMove(new Vector3(-0.3102503f, 0, -0.205f), .3f);
+      //  this.transform.root.DOLocalMove(new Vector3(-0.3102503f, 0, -0.205f), .3f);
         GameManager.Instance.p.enabled = false;
         StartTapRoutine = true;
         UiManager.Instance.TapFastPanel.SetActive(true);
