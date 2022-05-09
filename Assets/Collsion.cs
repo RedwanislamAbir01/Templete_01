@@ -33,13 +33,8 @@ public class Collsion : MonoBehaviour
     {
         if (StartTapRoutine)
         {
-            if(GameManager.Instance.PivotParent.transform.eulerAngles.x <= 54.171f)
-            {
-                //StartTapRoutine = false;
-                //UiManager.Instance.TapFastPanel.gameObject.SetActive(false);
-                //UiManager.Instance.CompleteUI.gameObject.SetActive(true);
-                //GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(27.824f, 0, 0), .5f);
-            }
+           
+       
             if (Input.GetMouseButtonDown(0))
             {
                 if (UiManager.Instance.timerInitvalue < 1f)
@@ -54,10 +49,14 @@ public class Collsion : MonoBehaviour
 
                     Camera.main.transform.DOShakePosition(1.5f, .01f);
                     Camera.main.DOFieldOfView(60, 2);
+
                 }
-                
+               
+
+
 
             }
+           
 
             if (UiManager.Instance.timerInitvalue > 0f)
             {
