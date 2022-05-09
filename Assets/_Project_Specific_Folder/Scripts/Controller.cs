@@ -51,6 +51,8 @@ public class Controller : MonoBehaviour
     bool playedd;
     Camera m_Cam;
 
+    public Animator Opps;
+
     void Start()
     {
  

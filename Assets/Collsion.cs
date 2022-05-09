@@ -20,7 +20,7 @@ public class Collsion : MonoBehaviour
     public GameObject Boss;
 
     public bool StartTapRoutine;
-
+    public Animator Opps;
     bool IsYellow, IsBlue;
     private void Start()
     {
@@ -110,7 +110,9 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("BadGate"))
         {
-           
+            Opps.Play("opps"); 
+
+
             StartCoroutine(AnimationDelayRoutine());
             GameManager.Instance.Level++;
           
