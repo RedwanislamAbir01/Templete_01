@@ -188,7 +188,7 @@ public class Collsion : MonoBehaviour
     {
         GameManager.Instance.p.speed = GameManager.Instance.p.MaxSpeed = .8f;
         yield return new WaitForSeconds(.6f);
-        GameManager.Instance.p.MaxSpeed = 2;
+        GameManager.Instance.p.MaxSpeed = 3;
     }
 
     void RandomAnimationPlay() {
@@ -254,10 +254,10 @@ public class Collsion : MonoBehaviour
     }
     public IEnumerator GoodGateRot()
     {
-        ///GetComponent<Controller>().enabled = false;
-        transform.DOLocalMove(new Vector3(-1.35f, 3.15f, -0.67f), .1f); anim1. transform.DOLocalMove(new Vector3(-1.35f, 3.15f, -0.67f), .1f);
-        yield return new WaitForSeconds(.2f);
-        //GetComponent<Controller>().enabled = true;
+        GetComponent<Controller>().enabled = false;
+        transform.DOLocalMove(new Vector3(-1.35f, 3.15f, -2.67f), .1f); anim1. transform.DOLocalMove(new Vector3(-1.35f, 3.15f, -2.67f), .1f);
+        yield return new WaitForSeconds(1f);
+        GetComponent<Controller>().enabled = true;
         transform.DOLocalMove(Startpos, .1f);
         anim1.transform.DOLocalMove(Startpos, .1f);
 
