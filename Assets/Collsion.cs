@@ -50,7 +50,7 @@ public class Collsion : MonoBehaviour
                     
                     UiManager.Instance.Timer.fillAmount = UiManager.Instance.timerInitvalue;
                     GameManager.Instance.PivotParent.GetComponent<MySDK.Rotator>().enabled = false;
-                    GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3((GameManager.Instance.PivotParent.transform.eulerAngles.x + UiManager.Instance.timerInitvalue +.4f ) , 0, 0), .1f);
+                    GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3((GameManager.Instance.PivotParent.transform.eulerAngles.x + UiManager.Instance.timerInitvalue +1f ) , 0, 0), .1f);
 
                     Camera.main.transform.DOShakePosition(1.5f, .01f);
                     Camera.main.DOFieldOfView(60, 2);
