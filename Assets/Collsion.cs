@@ -18,7 +18,7 @@ public class Collsion : MonoBehaviour
    [SerializeField] bool IsGoodGate;
     Vector3 Startpos;
     public GameObject Boss;
-
+    public float Multiplier;
     public bool StartTapRoutine;
     public Animator Opps;
     bool IsYellow, IsBlue;
@@ -33,12 +33,12 @@ public class Collsion : MonoBehaviour
     {
         if (StartTapRoutine)
         {
-            if(GameManager.Instance.PivotParent.transform.eulerAngles.x <= 15)
+            if(GameManager.Instance.PivotParent.transform.eulerAngles.x <= 54.171f)
             {
-                StartTapRoutine = false;
-                UiManager.Instance.TapFastPanel.gameObject.SetActive(false);
-                UiManager.Instance.CompleteUI.gameObject.SetActive(true); 
-                  GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(27.824f, 0, 0), .5f);
+                //StartTapRoutine = false;
+                //UiManager.Instance.TapFastPanel.gameObject.SetActive(false);
+                //UiManager.Instance.CompleteUI.gameObject.SetActive(true);
+                //GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(27.824f, 0, 0), .5f);
             }
             if (Input.GetMouseButtonDown(0))
             {
@@ -50,17 +50,18 @@ public class Collsion : MonoBehaviour
                     
                     UiManager.Instance.Timer.fillAmount = UiManager.Instance.timerInitvalue;
                     GameManager.Instance.PivotParent.GetComponent<MySDK.Rotator>().enabled = false;
-                    GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(GameManager.Instance.PivotParent.transform.eulerAngles.x + UiManager.Instance.timerInitvalue, 0, 0), .1f);
+                    GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3((GameManager.Instance.PivotParent.transform.eulerAngles.x + UiManager.Instance.timerInitvalue +.4f ) , 0, 0), .1f);
 
                     Camera.main.transform.DOShakePosition(1.5f, .01f);
                     Camera.main.DOFieldOfView(60, 2);
                 }
+                
 
             }
 
             if (UiManager.Instance.timerInitvalue > 0f)
             {
-                UiManager.Instance.timerInitvalue -= 0.0075f;
+                UiManager.Instance.timerInitvalue -= 0.0071f;
                 UiManager.Instance.Timer.fillAmount = UiManager.Instance.timerInitvalue;
             }
         }
@@ -286,24 +287,22 @@ public class Collsion : MonoBehaviour
 
         transform.root.parent = g.transform.root;
      
-        Camera.main.transform.DOLocalMove(GameManager.Instance.FianlCamPos.transform.localPosition, 1);
-        Camera.main.transform.DOLocalRotate(GameManager.Instance.FianlCamPos.transform.localEulerAngles, 1);
-        yield return new WaitForSeconds(1.4f);
+        Camera.main.transform.DOLocalMove(GameManager.Instance.FianlCamPos.transform.localPosition, .7f);
+        Camera.main.transform.DOLocalRotate(GameManager.Instance.FianlCamPos.transform.localEulerAngles, .7f);
+        yield return new WaitForSeconds(.8f);
         transform.DOLocalRotate(new Vector3(0, -90, 9), .1f); anim1.transform.DOLocalRotate(new Vector3(0, -90, 9), .1f);
         Boss.transform.GetComponent<Animator>().enabled = true;
-        GameManager.Instance.p.MaxSpeed = .3f;
-        GameManager.Instance.p.speed = .3f;
+        GameManager.Instance.p.enabled = false;
         anim.Play("Wrestle"); anim1.Play("Wrestle");
-       
-        transform.parent.parent = GameManager.Instance.PivotParent.transform; Boss.transform.parent = GameManager.Instance.PivotParent.transform;
-        transform.parent.transform.DOLocalMove(new Vector3(0.323f, -0.039f, 0.025f), .3f);
         Camera.main.transform.parent = g.transform.root;
-        Camera.main. transform.DOLocalMove(new Vector3(-2.17f, 1.419593f, -1.085019f), .3f);
+        transform.parent.parent = GameManager.Instance.PivotParent.transform; Boss.transform.parent = GameManager.Instance.PivotParent.transform;
+        this.transform.parent.DOLocalMove(new Vector3(0.308f, -0.017f, -0.007f), .3f);
+        Camera.main.transform.DOLocalMoveX(-2.2f, .3f);
         yield return new WaitForSeconds(.2f);
         GameManager.Instance.PivotParent.transform.GetComponent<MySDK.Rotator>().enabled = true;
-     
-        //  this.transform.root.DOLocalMove(new Vector3(-0.3102503f, 0, -0.205f), .3f);
-        GameManager.Instance.p.enabled = false;
+
+       
+       
         StartTapRoutine = true;
         UiManager.Instance.TapFastPanel.SetActive(true);
 
