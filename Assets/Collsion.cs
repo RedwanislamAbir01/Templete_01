@@ -110,7 +110,7 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("BadGate"))
         {
-            Opps.Play("opps"); 
+         
 
 
             StartCoroutine(AnimationDelayRoutine());
@@ -339,6 +339,7 @@ public class Collsion : MonoBehaviour
     public void UpdateTextureCheap()
     {
         StiackerMat.DOFade(0, .3f).OnComplete(() => {
+            Opps.Play("opps");
             StiackerMat.mainTexture = CheapTttos[GameManager.Instance.Level - 1];
             StiackerMat.DOFade(1, .5f);
         });
