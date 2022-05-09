@@ -20,6 +20,8 @@ public class Collsion : MonoBehaviour
     public GameObject Boss;
 
     public bool StartTapRoutine;
+
+    bool IsYellow, IsBlue;
     private void Start()
     {
         StiackerMat.mainTexture = Default;
@@ -70,24 +72,86 @@ public class Collsion : MonoBehaviour
           
             StartCoroutine(AnimationDelayRoutine());
             GameManager.Instance.Level++;
-            Invoke("UpdateTexture", .2f);
+          
             IsGoodGate = true;
             other.GetComponent<BoxCollider>().enabled = false;
+            if (IsYellow)
+            {
+                if (GameManager.Instance.Level == 5)
+                {
+                    StiackerMat.DOFade(0, .3f).OnComplete(() =>
+                    {
+                        StiackerMat.mainTexture = GoodYellow[01];
+                        StiackerMat.DOFade(1, .5f);
+
+                    });
+                }
+                else
+                    Invoke("UpdateTexture", .2f);
+            }
+            else if(IsBlue)
+            {
+                if (GameManager.Instance.Level == 5)
+                {
+                    StiackerMat.DOFade(0, .3f).OnComplete(() =>
+                    {
+                        StiackerMat.mainTexture = GoodBlue[01];
+                        StiackerMat.DOFade(1, .5f);
+                    });
+                }
+                else
+                    Invoke("UpdateTexture", .2f);
+            }
+            else
+            {
+                Invoke("UpdateTexture", .2f);
+            }
+
         }
         if (other.gameObject.CompareTag("BadGate"))
         {
            
             StartCoroutine(AnimationDelayRoutine());
             GameManager.Instance.Level++;
-            Invoke("UpdateTextureCheap", .2f);
+          
             IsGoodGate = false;
-            LevelText.text = "Bad :" + GameManager.Instance.Level.ToString(); ColorText.text = "Red";
+            if (IsYellow)
+            {
+                if (GameManager.Instance.Level == 5)
+                {
+                    StiackerMat.DOFade(0, .3f).OnComplete(() =>
+                    {
+                        StiackerMat.mainTexture = BadYellow[01];
+                        StiackerMat.DOFade(1, .5f);
+
+                    });
+                }
+                else
+                    Invoke("UpdateTextureCheap", .2f);
+            }
+            else if (IsBlue)
+            {
+                if (GameManager.Instance.Level == 5)
+                {
+                    StiackerMat.DOFade(0, .3f).OnComplete(() =>
+                    {
+                        StiackerMat.mainTexture = BadBlue[01];
+                        StiackerMat.DOFade(1, .5f);
+                    });
+                }
+                else
+                    Invoke("UpdateTextureCheap", .2f);
+            }
+            else
+            {
+                Invoke("UpdateTextureCheap", .2f);
+            }
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
             StartCoroutine(SpeedSlowDownRoutine());
-            StartCoroutine(UiManager.Instance.FdeDelayRoutine());
-            StiackerMat.DOFade(0, .3f); anim1.Play("Hurt"); anim.Play("Hurt");
+            StartCoroutine(UiManager.Instance.FdeDelayRoutine()); Invoke("RemoveMat" , .2f);
+            anim1.Play("Hurt"); anim.Play("Hurt");
             other.GetComponent<BoxCollider>().enabled = false;
         }
         if (other.gameObject.CompareTag("Yellow"))
@@ -101,6 +165,7 @@ public class Collsion : MonoBehaviour
                     {
                         StiackerMat.mainTexture = GoodYellow[0];
                         StiackerMat.DOFade(1, .5f);
+                        IsYellow = true;
                     });
                 }
                 else if (GameManager.Instance.Level == 5)
@@ -109,6 +174,7 @@ public class Collsion : MonoBehaviour
                     {
                         StiackerMat.mainTexture = GoodYellow[01];
                         StiackerMat.DOFade(1, .5f);
+                      
                     });
                 }
             }
@@ -120,6 +186,7 @@ public class Collsion : MonoBehaviour
                     {
                         StiackerMat.mainTexture = BadYellow[0];
                         StiackerMat.DOFade(1, .5f);
+                        IsYellow = true;
                     });
                 }
                 else  if (GameManager.Instance.Level == 5)
@@ -143,6 +210,7 @@ public class Collsion : MonoBehaviour
                     {
                         StiackerMat.mainTexture = GoodBlue[0];
                         StiackerMat.DOFade(1, .5f);
+                        IsBlue = true;
                     });
                 }
              else   if (GameManager.Instance.Level == 5)
@@ -163,6 +231,7 @@ public class Collsion : MonoBehaviour
                         StiackerMat.mainTexture = BadBlue[0];
                         StiackerMat.DOFade(1, .5f);
                     });
+                    IsBlue = true;
                 }
                else if (GameManager.Instance.Level == 5)
                 {
@@ -241,7 +310,10 @@ public class Collsion : MonoBehaviour
     {
         StiackerMat.DOFade(1, 1.8f);
     }
-
+    public void RemoveMat()
+    {
+        StiackerMat.DOFade(0, .3f);
+    }
     public void UpdateTexture()
     {
         
