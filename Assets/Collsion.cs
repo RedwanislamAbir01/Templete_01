@@ -263,20 +263,17 @@ public class Collsion : MonoBehaviour
     }
 
     void RandomAnimationPlay() {
-        int i = Random.Range(0, 2);
-        if(i== 0)
+        
+        if(GameManager.Instance.Level % 2 == 0)
         {
             anim.Play("g 0"); anim1.Play("g 0");
         }
-        if (i == 1)
+     else
         {
             StartCoroutine(GoodGateRot());
             anim.Play("g 1"); anim1.Play("g 1");
         }
-        if(i == 2)
-        {
-            anim.Play("g"); anim1.Play("g");
-        }
+     
     }
     public IEnumerator StopRoutine(GameObject g )
 
@@ -328,10 +325,10 @@ public class Collsion : MonoBehaviour
     }
     public IEnumerator GoodGateRot()
     {
-        GetComponent<Controller>().enabled = false;
-        transform.DOLocalMove(new Vector3(-1.35f, 3.15f, -2.67f), .1f); anim1. transform.DOLocalMove(new Vector3(-1.35f, 3.15f, -2.67f), .1f);
+       // GetComponent<Controller>().enabled = false;
+        transform.DOLocalMove(new Vector3(-1.35f, 3.15f, -2.67f), .1f); anim1.transform.DOLocalMove(new Vector3(-1.35f, 3.15f, -2.67f), .1f);
         yield return new WaitForSeconds(1f);
-        GetComponent<Controller>().enabled = true;
+      //  GetComponent<Controller>().enabled = true;
         transform.DOLocalMove(Startpos, .1f);
         anim1.transform.DOLocalMove(Startpos, .1f);
 
