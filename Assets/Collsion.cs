@@ -294,11 +294,15 @@ public class Collsion : MonoBehaviour
         GameManager.Instance.p.MaxSpeed = .3f;
         GameManager.Instance.p.speed = .3f;
         anim.Play("Wrestle"); anim1.Play("Wrestle");
-        Camera.main.transform.parent = g.transform.root;
+       
         transform.parent.parent = GameManager.Instance.PivotParent.transform; Boss.transform.parent = GameManager.Instance.PivotParent.transform;
+        transform.parent.transform.DOLocalMove(new Vector3(0.323f, -0.039f, 0.025f), .3f);
+        Camera.main.transform.parent = g.transform.root;
+        Camera.main. transform.DOLocalMove(new Vector3(-2.17f, 1.419593f, -1.085019f), .3f);
         yield return new WaitForSeconds(.2f);
         GameManager.Instance.PivotParent.transform.GetComponent<MySDK.Rotator>().enabled = true;
-      //  this.transform.root.DOLocalMove(new Vector3(-0.3102503f, 0, -0.205f), .3f);
+     
+        //  this.transform.root.DOLocalMove(new Vector3(-0.3102503f, 0, -0.205f), .3f);
         GameManager.Instance.p.enabled = false;
         StartTapRoutine = true;
         UiManager.Instance.TapFastPanel.SetActive(true);
