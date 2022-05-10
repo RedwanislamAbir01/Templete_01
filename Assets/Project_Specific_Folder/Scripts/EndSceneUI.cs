@@ -14,19 +14,19 @@ public class EndSceneUI : MonoBehaviour
     public void Reset1()
     {
         DOTween.KillAll();
-      
+        SceneManager.LoadScene(02);
         string sceneName = currentScene.name;
         // PlayerPrefs.SetInt("SaveScene", SceneManager.GetActiveScene().buildIndex );
 
-        if (sceneName == "S1 6")
-        {
-            SceneManager.LoadScene(02);
-        }
-        else
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //if (sceneName == "S Main")
+        //{
+        //    SceneManager.LoadScene(02);
+        //}
+        //else
+        //{
+        //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
-        }
+        //}
 
     }
 

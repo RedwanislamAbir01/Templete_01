@@ -364,6 +364,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d94be6bebe99fd845b3a059b45be559a, type: 3}
 --- !u!1001 &1301135272
@@ -375,6 +379,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 298972064, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 770009423, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 378251048042958316, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
@@ -695,7 +703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7399229293092650956, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: m_text
-      value: SWAP
+      value: Tattoo
       objectReference: {fileID: 0}
     - target: {fileID: 7399229293092650956, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: m_fontColor.b
@@ -719,7 +727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7467405457401530793, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: m_text
-      value: HERO
+      value: ' Master'
       objectReference: {fileID: 0}
     - target: {fileID: 7467405457401530793, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: m_fontColor.b
@@ -735,7 +743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7467405457401530793, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: m_characterSpacing
-      value: 31.93
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 7467405457401530793, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: m_fontColor32.rgba

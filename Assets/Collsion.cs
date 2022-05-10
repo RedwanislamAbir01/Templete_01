@@ -22,6 +22,8 @@ public class Collsion : MonoBehaviour
     public bool StartTapRoutine;
     public Animator Opps;
     bool IsYellow, IsBlue;
+    private float timeLeft = 1.5f;
+
     private void Start()
     {
         StiackerMat.mainTexture = Default;
@@ -33,10 +35,10 @@ public class Collsion : MonoBehaviour
     {
         if (StartTapRoutine)
         {
-           
-       
-            if (Input.GetMouseButtonDown(0))
+         
+                if (Input.GetMouseButtonDown(0))
             {
+                timeLeft = 1.5f;
                 if (UiManager.Instance.timerInitvalue < 1f)
                 {
                     UiManager.Instance.timerInitvalue += 0.12f;
@@ -55,6 +57,16 @@ public class Collsion : MonoBehaviour
 
 
 
+            }
+            else
+            {
+                timeLeft -= Time.deltaTime;
+
+                if (timeLeft < 0)
+                {
+                    timeLeft = 1.5f;
+                    GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(-22, 0, 0), .2f);
+                }
             }
            
 
