@@ -22,8 +22,8 @@ public class Collsion : MonoBehaviour
     public bool StartTapRoutine;
     public Animator Opps;
     bool IsYellow, IsBlue;
-    private float timeLeft = 1.5f;
-
+    private float timeLeft = 1f;
+    [SerializeField] public ParticleSystem Ps;
     private void Start()
     {
         StiackerMat.mainTexture = Default;
@@ -38,7 +38,7 @@ public class Collsion : MonoBehaviour
          
                 if (Input.GetMouseButtonDown(0))
             {
-                timeLeft = 1.5f;
+                timeLeft = 1f;
                 if (UiManager.Instance.timerInitvalue < 1f)
                 {
                     UiManager.Instance.timerInitvalue += 0.12f;
@@ -50,7 +50,7 @@ public class Collsion : MonoBehaviour
                     GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3((GameManager.Instance.PivotParent.transform.eulerAngles.x + UiManager.Instance.timerInitvalue +1f ) , 0, 0), .1f);
 
                     Camera.main.transform.DOShakePosition(1.5f, .01f);
-                    Camera.main.DOFieldOfView(60, 2);
+                    Camera.main.DOFieldOfView(50, 2);
 
                 }
                
@@ -291,13 +291,10 @@ public class Collsion : MonoBehaviour
 
     {
         //Camera.main.transform.parent = g.transform.root;
-      
-        transform.GetComponent<Controller>().enabled = false; anim1.transform.GetComponent<Controller>().enabled = false;
-        anim.transform.DOLocalMoveX(-1.66f, .1f); anim1.transform.DOLocalMoveX(-1.66f, .1f);
-      
-
-        transform.root.parent = g.transform.root;
      
+        transform.GetComponent<Controller>().enabled = false; anim1.transform.GetComponent<Controller>().enabled = false;
+        anim.transform.DOLocalMoveX(-1.66f, .1f); anim1.transform.DOLocalMoveX(-1.66f, .1f);      
+        transform.root.parent = g.transform.root;     
         Camera.main.transform.DOLocalMove(GameManager.Instance.FianlCamPos.transform.localPosition, .7f);
         Camera.main.transform.DOLocalRotate(GameManager.Instance.FianlCamPos.transform.localEulerAngles, .7f);
         yield return new WaitForSeconds(.8f);
@@ -307,8 +304,9 @@ public class Collsion : MonoBehaviour
         anim.Play("Wrestle"); anim1.Play("Wrestle");
         Camera.main.transform.parent = g.transform.root;
         transform.parent.parent = GameManager.Instance.PivotParent.transform; Boss.transform.parent = GameManager.Instance.PivotParent.transform;
-        this.transform.parent.DOLocalMove(new Vector3(0.308f, -0.017f, -0.007f), .3f);
-        Camera.main.transform.DOLocalMoveX(-2.2f, .3f);
+       
+        this.transform.parent.DOLocalMove(new Vector3(0.308f, -0.09f, -0.007f), .3f).OnComplete(() => { Ps.Play(); }); 
+            Camera.main.transform.DOLocalMoveX(-2.2f, .3f);
         yield return new WaitForSeconds(.2f);
         GameManager.Instance.PivotParent.transform.GetComponent<MySDK.Rotator>().enabled = true;
 
