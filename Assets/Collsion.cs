@@ -25,6 +25,7 @@ public class Collsion : MonoBehaviour
     bool IsYellow, IsBlue;
     private float timeLeft = 1f;
     [SerializeField] public ParticleSystem Ps;
+    bool m_FirstClick;
     private void Start()
     {
         StiackerMat.mainTexture = Default;
@@ -36,37 +37,40 @@ public class Collsion : MonoBehaviour
     {
         if (StartTapRoutine)
         {
-         
-                if (Input.GetMouseButtonDown(0))
+
+            if (Input.GetMouseButtonDown(0))
             {
                 timeLeft = 1f;
                 if (UiManager.Instance.timerInitvalue < 1f)
                 {
                     UiManager.Instance.timerInitvalue += 0.12f;
-                    
+
                     UiManager.Instance.Timer.fillAmount = UiManager.Instance.timerInitvalue;
-                    
+
                     UiManager.Instance.Timer.fillAmount = UiManager.Instance.timerInitvalue;
                     GameManager.Instance.PivotParent.GetComponent<MySDK.Rotator>().enabled = false;
-                    GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3((GameManager.Instance.PivotParent.transform.eulerAngles.x + UiManager.Instance.timerInitvalue +4f ) , 0, 0), .1f);
+                    GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3((GameManager.Instance.PivotParent.transform.eulerAngles.x + UiManager.Instance.timerInitvalue + 4f), 0, 0), .1f);
 
                     Camera.main.transform.DOShakePosition(1.5f, .01f);
                     Camera.main.DOFieldOfView(50, 2);
-
+                    m_FirstClick = true;
                 }
-               
+
 
 
 
             }
             else
             {
-                timeLeft -= Time.deltaTime;
-
-                if (timeLeft < 0)
+                if (m_FirstClick)
                 {
-                    timeLeft = 1.5f;
-                    GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(-22, 0, 0), .2f);
+                    timeLeft -= Time.deltaTime;
+
+                    if (timeLeft < 0)
+                    {
+                        timeLeft = 1.5f;
+                        GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(-22, 0, 0), .2f);
+                    }
                 }
             }
            
