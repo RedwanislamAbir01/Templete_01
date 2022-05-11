@@ -12,6 +12,8 @@ TagManager:
   - Yellow
   - Land
   - EndIt
+  - Lava
+  - Spike
   layers:
   - Default
   - TransparentFX

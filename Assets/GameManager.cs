@@ -33,7 +33,7 @@ public class GameManager : Singleton<GameManager>
 
 
         UiManager.Instance.StartUI.SetActive(false);
-        p.gameObject.transform.DOMoveX(.1f, .6f).OnComplete(() => { TattoMachine.transform.GetComponentInChildren<Animator>().enabled = true;
+        p.gameObject.transform.DOMoveX(.1f, .5f).OnComplete(() => { TattoMachine.transform.GetComponentInChildren<Animator>().enabled = true;
             StartCoroutine(DelayStart());
         });
                                                                                                
@@ -42,7 +42,7 @@ public class GameManager : Singleton<GameManager>
     {
         TattoMachine.transform.GetChild(1).gameObject.SetActive(true);
         CollsionScript.ChangeMaterials();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(.5f);
         TattoMachine.transform.DOMoveZ(-0.98f, .3f);
     
         StartGame = true;

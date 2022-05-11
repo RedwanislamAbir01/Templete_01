@@ -10,6 +10,7 @@ public class Collsion : MonoBehaviour
     public Animator anim , anim1;
 
     public GameObject SecondHand;
+    public Texture Burnt;
     public Texture[] Tattos , CheapTttos;
     public Texture[] BadBlue, GoodBlue, GoodYellow, BadYellow;
     public Material StiackerMat;
@@ -47,7 +48,7 @@ public class Collsion : MonoBehaviour
                     
                     UiManager.Instance.Timer.fillAmount = UiManager.Instance.timerInitvalue;
                     GameManager.Instance.PivotParent.GetComponent<MySDK.Rotator>().enabled = false;
-                    GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3((GameManager.Instance.PivotParent.transform.eulerAngles.x + UiManager.Instance.timerInitvalue +1f ) , 0, 0), .1f);
+                    GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3((GameManager.Instance.PivotParent.transform.eulerAngles.x + UiManager.Instance.timerInitvalue +4f ) , 0, 0), .1f);
 
                     Camera.main.transform.DOShakePosition(1.5f, .01f);
                     Camera.main.DOFieldOfView(50, 2);
@@ -168,6 +169,21 @@ public class Collsion : MonoBehaviour
             anim1.Play("Hurt"); anim.Play("Hurt");
             other.GetComponent<BoxCollider>().enabled = false;
         }
+        if (other.gameObject.CompareTag("Spike"))
+        {
+            StartCoroutine(SpeedSlowDownRoutine());
+            StartCoroutine(UiManager.Instance.FdeDelayRoutine()); 
+            anim1.Play("Hurt"); anim.Play("Hurt");
+            other.GetComponent<BoxCollider>().enabled = false;
+        }
+        if (other.gameObject.CompareTag("Lava"))
+        {
+            StartCoroutine(SpeedSlowDownRoutine());
+            StartCoroutine(UiManager.Instance.FdeDelayRoutine());
+            anim1.Play("Hurt"); anim.Play("Hurt");
+            other.GetComponent<BoxCollider>().enabled = false;
+        }
+
         if (other.gameObject.CompareTag("Yellow"))
         {
             StartCoroutine(AnimationDelayRoutine());
@@ -323,7 +339,11 @@ public class Collsion : MonoBehaviour
     }
     public void RemoveMat()
     {
-        StiackerMat.DOFade(0, .3f);
+        StiackerMat.DOFade(0, .3f).OnComplete(() =>
+        {
+            StiackerMat.mainTexture = Burnt;
+            StiackerMat.DOFade(1, .5f);
+        });
     }
     public void UpdateTexture()
     {
@@ -333,7 +353,17 @@ public class Collsion : MonoBehaviour
                 StiackerMat.mainTexture = Tattos[GameManager.Instance.Level - 1];
                 StiackerMat.DOFade(1, .5f);
             });
-        
+
+    }
+    public void ApplyBurntTexture()
+    {
+
+        StiackerMat.DOFade(0, .3f).OnComplete(() =>
+        {
+            StiackerMat.mainTexture = Tattos[GameManager.Instance.Level - 1];
+            StiackerMat.DOFade(1, .5f);
+        });
+
     }
     public IEnumerator GoodGateRot()
     {
