@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using MoreMountains.NiceVibrations;
 public class EndDetector : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("EndIt"))
         {
+            MMVibrationManager.Haptic(HapticTypes.MediumImpact);
             GameManager.Instance.PivotParent.transform.GetChild(01).transform.parent = null;
             GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(-40, -20, 20f), .3f);
             //GameManager.Instance.p.transform.DOLocalRotate(new Vector3(0, 90 - 40), .1f);
