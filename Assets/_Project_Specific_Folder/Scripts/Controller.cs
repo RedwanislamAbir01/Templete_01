@@ -104,23 +104,23 @@ public class Controller : MonoBehaviour
     public void HandlePlayerMovement()
     {
 
-        //if (Input.GetAxis("Mouse X") > .1f)
-        //{
-        //    direction = State.right;
-        //   transform.DOLocalRotate(new Vector3(5, -90, 13), .1f);
-        //}
-        //if (Input.GetAxis("Mouse X") < -.1f)
-        //{
+        if (Input.GetAxis("Mouse X") > .1f)
+        {
+            direction = State.right;
+            transform.DOLocalRotate(new Vector3(5, -90, 13), .1f);
+        }
+        if (Input.GetAxis("Mouse X") < -.1f)
+        {
 
-        //    direction = State.left;
-        //     transform.DOLocalRotate(new Vector3(-5, -90, 13), .1f);
-        //}
-        //if (Input.GetAxis("Mouse X") == 0)
-        //{
+            direction = State.left;
+            transform.DOLocalRotate(new Vector3(-5, -90, 13), .1f);
+        }
+        if (Input.GetAxis("Mouse X") == 0)
+        {
 
-        //    direction = State.middle;
-        //    transform.DOLocalRotate(new Vector3(0, -90, 13), .3f);
-        //}
+            direction = State.middle;
+            transform.DOLocalRotate(new Vector3(0, -90, 13), .3f);
+        }
 
 
         foreach (Touch touch in Input.touches)
@@ -138,7 +138,7 @@ public class Controller : MonoBehaviour
                 float deltaX = initTouch.position.x - touch.position.x;
                 positionX -= (deltaX / (float)Screen.width) / Time.deltaTime * speed * dir;
                 positionX = Mathf.Clamp(positionX, -6, 6);      //to set the boundaries of the player's position
-                transform.localPosition = new Vector3(-positionX, positionY, 0f);
+                transform.localPosition = new Vector3(-positionX, positionY, 3.1188f);
                 initTouch = touch;
             }
             else if (touch.phase == TouchPhase.Ended)       //if finger releases the screen

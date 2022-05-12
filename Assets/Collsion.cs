@@ -69,7 +69,7 @@ public class Collsion : MonoBehaviour
                     if (timeLeft < 0)
                     {
                         timeLeft = .4f;
-                        GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(-22, 0, 0), 2f);
+                        GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(-22, 0, 0), 1.5f).SetEase(Ease.InSine);
                     }
                 }
             }
