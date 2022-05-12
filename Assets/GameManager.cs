@@ -16,6 +16,7 @@ public class GameManager : Singleton<GameManager>
     public Transform FinalCamPos;
     public int Level;
     public GameObject PivotParent;
+    public bool IsGameOver;
     public override void Start()
     {
         p.enabled = false;

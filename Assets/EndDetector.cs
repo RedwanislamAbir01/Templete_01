@@ -20,6 +20,7 @@ public class EndDetector : MonoBehaviour
             FindObjectOfType<Collsion>().Ps.Play();
             UiManager.Instance.TapFastPanel.gameObject.SetActive(false);
             StartCoroutine(EnableEndUi());
+            GameManager.Instance.IsGameOver = true;
         }
            
     }

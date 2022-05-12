@@ -26,6 +26,7 @@ public class Collsion : MonoBehaviour
     private float timeLeft = .4f;
     [SerializeField] public ParticleSystem Ps;
     bool m_FirstClick;
+    [SerializeField] bool m_isTapping;
     private void Start()
     {
         StiackerMat.mainTexture = Default;
@@ -35,11 +36,27 @@ public class Collsion : MonoBehaviour
     }
     private void Update()
     {
-        if (StartTapRoutine)
+        if (GameManager.Instance.IsGameOver)
+            return;
+
+        if(Input.GetMouseButton(0))
+        {
+            DOTween.Kill(GameManager.Instance.PivotParent.transform);
+            m_isTapping = true;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            m_isTapping = false;
+        }
+
+   
+
+            if (StartTapRoutine)
         {
 
             if (Input.GetMouseButtonDown(0))
             {
+                
                 timeLeft = .4f;
                 if (UiManager.Instance.timerInitvalue < 1f)
                 {
@@ -49,8 +66,8 @@ public class Collsion : MonoBehaviour
 
                     UiManager.Instance.Timer.fillAmount = UiManager.Instance.timerInitvalue;
                     GameManager.Instance.PivotParent.GetComponent<MySDK.Rotator>().enabled = false;
-                    GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3((GameManager.Instance.PivotParent.transform.eulerAngles.x + UiManager.Instance.timerInitvalue + 4f), 0, 0), .1f);
-
+                    GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3((GameManager.Instance.PivotParent.transform.eulerAngles.x + UiManager.Instance.timerInitvalue + 8f), 0, 0), .1f);
+                    
                     Camera.main.transform.DOShakePosition(1.5f, .01f);
                     Camera.main.DOFieldOfView(50, 2);
                     m_FirstClick = true;
@@ -62,6 +79,7 @@ public class Collsion : MonoBehaviour
             }
             else
             {
+               
                 if (m_FirstClick)
                 {
                     timeLeft -= Time.deltaTime;
@@ -69,7 +87,10 @@ public class Collsion : MonoBehaviour
                     if (timeLeft < 0)
                     {
                         timeLeft = .4f;
+                   
                         GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(-22, 0, 0), 1.5f).SetEase(Ease.InSine);
+                        
+                        
                     }
                 }
             }
