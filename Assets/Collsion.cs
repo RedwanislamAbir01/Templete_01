@@ -189,6 +189,7 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
+            MMVibrationManager.Haptic(HapticTypes.MediumImpact);
             StartCoroutine(SpeedSlowDownRoutine());
             StartCoroutine(UiManager.Instance.FdeDelayRoutine()); Invoke("RemoveMat" , .2f);
             anim1.Play("Hurt"); anim.Play("Hurt");
@@ -196,6 +197,7 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Spike"))
         {
+            MMVibrationManager.Haptic(HapticTypes.MediumImpact);
             StartCoroutine(SpeedSlowDownRoutine());
             StartCoroutine(UiManager.Instance.FdeDelayRoutine()); 
             anim1.Play("Hurt"); anim.Play("Hurt");
@@ -203,6 +205,7 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Lava"))
         {
+            MMVibrationManager.Haptic(HapticTypes.MediumImpact);
             StartCoroutine(SpeedSlowDownRoutine());
             StartCoroutine(UiManager.Instance.FdeDelayRoutine());
             anim1.Play("Hurt"); anim.Play("Hurt");
