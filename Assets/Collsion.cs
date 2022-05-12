@@ -23,7 +23,7 @@ public class Collsion : MonoBehaviour
     public bool StartTapRoutine;
     public Animator Opps;
     bool IsYellow, IsBlue;
-    private float timeLeft = 1f;
+    private float timeLeft = .4f;
     [SerializeField] public ParticleSystem Ps;
     bool m_FirstClick;
     private void Start()
@@ -40,7 +40,7 @@ public class Collsion : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                timeLeft = 1f;
+                timeLeft = .4f;
                 if (UiManager.Instance.timerInitvalue < 1f)
                 {
                     UiManager.Instance.timerInitvalue += 0.12f;
@@ -68,8 +68,8 @@ public class Collsion : MonoBehaviour
 
                     if (timeLeft < 0)
                     {
-                        timeLeft = 1.5f;
-                        GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(-22, 0, 0), .2f);
+                        timeLeft = .4f;
+                        GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(-22, 0, 0), 2f);
                     }
                 }
             }
