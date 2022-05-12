@@ -8,15 +8,23 @@ public class EndDetector : MonoBehaviour
     {
         if (other.gameObject.CompareTag("EndIt"))
         {
-            GameManager.Instance.PivotParent.transform.GetChild(0).transform.DORotate(new Vector3(0, 90 - 50), .1f);
+            GameManager.Instance.PivotParent.transform.GetChild(01).transform.parent = null;
+            GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(-40, -20, 20f), .3f);
+            //GameManager.Instance.p.transform.DOLocalRotate(new Vector3(0, 90 - 40), .1f);
             //FindObjectOfType<Collsion>().transform.parent.transform.DOLocalRotate(new Vector3(-7, 90 - 50), .1f);
             FindObjectOfType<Collsion>().StartTapRoutine = false;
             FindObjectOfType<Collsion>().anim.Play("g 0 0"); 
             FindObjectOfType<Collsion>().anim1.Play("g 0 0");
             FindObjectOfType<Collsion>().Ps.Play();
             UiManager.Instance.TapFastPanel.gameObject.SetActive(false);
-            UiManager.Instance.CompleteUI.gameObject.SetActive(true);
+            StartCoroutine(EnableEndUi());
         }
            
+    }
+    public IEnumerator EnableEndUi()
+    {
+        yield return new WaitForSeconds(.7f);
+        
+        UiManager.Instance.CompleteUI.gameObject.SetActive(true);
     }
 }

@@ -302,8 +302,15 @@ public class Collsion : MonoBehaviour
         }
      else
         {
-            StartCoroutine(GoodGateRot());
-            anim.Play("g 1"); anim1.Play("g 1");
+            int i = Random.Range(0, 2);
+            if (i == 0)
+            {
+                anim.Play("g 1"); anim1.Play("g 1");
+            }
+            else
+            {
+                anim.Play("g"); anim1.Play("g");
+            }
         }
      
     }
@@ -325,7 +332,7 @@ public class Collsion : MonoBehaviour
         Camera.main.transform.parent = g.transform.root;
         transform.parent.parent = GameManager.Instance.PivotParent.transform; Boss.transform.parent = GameManager.Instance.PivotParent.transform;
        
-        this.transform.parent.DOLocalMove(new Vector3(0.308f, -0.09f, -0.007f), .3f).OnComplete(() => { Ps.Play(); }); 
+        this.transform.parent.DOLocalMove(new Vector3(0.296f, -0.038f, -0.038f), .3f).OnComplete(() => { Ps.Play(); }); 
             Camera.main.transform.DOLocalMoveX(-2.2f, .3f);
         yield return new WaitForSeconds(.2f);
         GameManager.Instance.PivotParent.transform.GetComponent<MySDK.Rotator>().enabled = true;
