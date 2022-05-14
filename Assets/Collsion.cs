@@ -6,6 +6,8 @@ using DG.Tweening;
 using MoreMountains.NiceVibrations;
 public class Collsion : MonoBehaviour
 {
+    public ParticleSystem HeatEffect;
+
     public Text LevelText , ColorText;
     public Animator anim , anim1;
 
@@ -205,6 +207,7 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Lava"))
         {
+            HeatEffect.Play();
             MMVibrationManager.Haptic(HapticTypes.MediumImpact);
             StartCoroutine(SpeedSlowDownRoutine());
             StartCoroutine(UiManager.Instance.FdeDelayRoutine());
@@ -353,6 +356,7 @@ public class Collsion : MonoBehaviour
         Boss.transform.GetComponent<Animator>().enabled = true;
         GameManager.Instance.p.enabled = false;
         anim.Play("Wrestle"); anim1.Play("Wrestle");
+        MMVibrationManager.Haptic(HapticTypes.MediumImpact);
         Camera.main.transform.parent = g.transform.root;
         transform.parent.parent = GameManager.Instance.PivotParent.transform; Boss.transform.parent = GameManager.Instance.PivotParent.transform;
        
