@@ -23,7 +23,7 @@ public class Collsion : MonoBehaviour
     public GameObject Boss;
     public float Multiplier;
     public bool StartTapRoutine;
-    public Animator Opps;
+    public Animator Opps,wow;
     bool IsYellow, IsBlue;
     private float timeLeft = .4f;
     [SerializeField] public ParticleSystem Ps;
@@ -390,6 +390,7 @@ public class Collsion : MonoBehaviour
         
             StiackerMat.DOFade(0, .3f).OnComplete(() =>
             {
+                wow.Play("opps");
                 StiackerMat.mainTexture = Tattos[GameManager.Instance.Level - 1];
                 StiackerMat.DOFade(1, .5f);
             });
@@ -400,6 +401,7 @@ public class Collsion : MonoBehaviour
 
         StiackerMat.DOFade(0, .3f).OnComplete(() =>
         {
+            
             StiackerMat.mainTexture = Tattos[GameManager.Instance.Level - 1];
             StiackerMat.DOFade(1, .5f);
         });
