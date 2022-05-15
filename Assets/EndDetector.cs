@@ -9,7 +9,7 @@ public class EndDetector : MonoBehaviour
     {
         if (other.gameObject.CompareTag("EndIt"))
         {
-            Camera.main.transform.DOShakePosition(2f, .1f);
+            Camera.main.transform.DOShakePosition(1f, .1f);
             MMVibrationManager.Haptic(HapticTypes.MediumImpact);
             GameManager.Instance.PivotParent.transform.GetChild(01).transform.parent = null;
             GameManager.Instance.PivotParent.transform.DOLocalRotate(new Vector3(-40, -20, 20f), .3f);
