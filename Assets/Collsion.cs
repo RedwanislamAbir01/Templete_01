@@ -191,6 +191,7 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
+            HeatEffect.Play();
             MMVibrationManager.Haptic(HapticTypes.MediumImpact);
             StartCoroutine(SpeedSlowDownRoutine());
             StartCoroutine(UiManager.Instance.FdeDelayRoutine()); Invoke("RemoveMat" , .2f);
@@ -207,7 +208,7 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Lava"))
         {
-            HeatEffect.Play();
+            
             MMVibrationManager.Haptic(HapticTypes.MediumImpact);
             StartCoroutine(SpeedSlowDownRoutine());
             StartCoroutine(UiManager.Instance.FdeDelayRoutine());

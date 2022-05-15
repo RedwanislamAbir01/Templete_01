@@ -9647,39 +9647,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &9124384044031012199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8241933801936703538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0b27c2330bbee44f93b5f34677ee90a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: 0
-  maxDragDistance: 40
-  sensitivity: 300
-  SwipeSensitivity: 1
-  turnTreshold: 15
-  movementSmoothing: 0
-  rotationSmoothing: 0
-  originPos: {x: 0, y: 0, z: 0}
-  positionX: 0
-  positionY: 0
-  speed: 0.4
-  computerSpeed: 15
-  dir: -1
-  rotationSpeed: 0
-  mapWidth: 2
-  touching: 0
-  end: 0
-  EndSceneSpeed: 0.5
-  count: 0
-  TileCount: 0
-  multiply: 0
 --- !u!114 &9124384044031012121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9736,6 +9703,120 @@ MonoBehaviour:
   Opps: {fileID: 9124384044290931973}
   Ps: {fileID: 0}
   m_isTapping: 0
+--- !u!114 &9124384044031012199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8241933801936703538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b27c2330bbee44f93b5f34677ee90a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 0
+  maxDragDistance: 40
+  sensitivity: 300
+  SwipeSensitivity: 1
+  turnTreshold: 15
+  movementSmoothing: 0
+  rotationSmoothing: 0
+  originPos: {x: 0, y: 0, z: 0}
+  positionX: 0
+  positionY: 0
+  speed: 0.3
+  computerSpeed: 15
+  dir: -1
+  rotationSpeed: 0
+  mapWidth: 2
+  touching: 0
+  end: 0
+  EndSceneSpeed: 0.5
+  count: 0
+  TileCount: 0
+  multiply: 0
+--- !u!54 &9124384043451851772
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8241933803071461036}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &9124384043451851773
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8241933803071461036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &9124384043451851770
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8241933803071461036}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6a4c336b4ccfb6849879190602b4b206, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9124384043451851775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8241933803071461036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b27c2330bbee44f93b5f34677ee90a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 0
+  maxDragDistance: 40
+  sensitivity: 300
+  SwipeSensitivity: 1
+  turnTreshold: 15
+  movementSmoothing: 0
+  rotationSmoothing: 0
+  originPos: {x: 0, y: 0, z: 0}
+  positionX: 0
+  positionY: 0
+  speed: 0.3
+  computerSpeed: 15
+  dir: -1
+  rotationSpeed: 0
+  mapWidth: 2
+  touching: 0
+  end: 0
+  EndSceneSpeed: 0.5
+  count: 0
+  TileCount: 0
+  multiply: 0
 --- !u!1 &9124384042516072869
 GameObject:
   m_ObjectHideFlags: 0
@@ -10112,87 +10193,6 @@ MonoBehaviour:
   m_FrameDelay: 2
   m_UpdateTimestep: 0.02
   m_GlowLightSource: {fileID: 0}
---- !u!54 &9124384043451851772
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8241933803071461036}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &9124384043451851773
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8241933803071461036}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &9124384043451851770
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8241933803071461036}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6a4c336b4ccfb6849879190602b4b206, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &9124384043451851775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8241933803071461036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0b27c2330bbee44f93b5f34677ee90a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: 0
-  maxDragDistance: 40
-  sensitivity: 300
-  SwipeSensitivity: 1
-  turnTreshold: 15
-  movementSmoothing: 0
-  rotationSmoothing: 0
-  originPos: {x: 0, y: 0, z: 0}
-  positionX: 0
-  positionY: 0
-  speed: 0.4
-  computerSpeed: 15
-  dir: -1
-  rotationSpeed: 0
-  mapWidth: 2
-  touching: 0
-  end: 0
-  EndSceneSpeed: 0.5
-  count: 0
-  TileCount: 0
-  multiply: 0
 --- !u!1 &9124384043461111371
 GameObject:
   m_ObjectHideFlags: 0

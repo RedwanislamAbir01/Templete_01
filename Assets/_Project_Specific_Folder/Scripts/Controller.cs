@@ -62,7 +62,7 @@ public class Controller : MonoBehaviour
         positionX = 0f;
         positionY = transform.localPosition.y;
         originPos = transform.localPosition;
-        speed = .5f;
+      
 
        
 
@@ -108,19 +108,19 @@ public class Controller : MonoBehaviour
         if (Input.GetAxis("Mouse X") > .1f)
         {
             direction = State.right;
-            transform.DOLocalRotate(new Vector3(5, -90, 13), .1f);
+          //  transform.DOLocalRotate(new Vector3(5, -90, 13), .1f);
         }
         if (Input.GetAxis("Mouse X") < -.1f)
         {
 
             direction = State.left;
-            transform.DOLocalRotate(new Vector3(-5, -90, 13), .1f);
+         //   transform.DOLocalRotate(new Vector3(-5, -90, 13), .1f);
         }
         if (Input.GetAxis("Mouse X") == 0)
         {
 
             direction = State.middle;
-            transform.DOLocalRotate(new Vector3(0, -90, 13), .3f);
+        //    transform.DOLocalRotate(new Vector3(0, -90, 13), .3f);
         }
 
 
