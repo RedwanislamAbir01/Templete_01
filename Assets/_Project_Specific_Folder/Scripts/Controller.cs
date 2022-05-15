@@ -84,7 +84,7 @@ public class Controller : MonoBehaviour
 
 
 
-    private void FixedUpdate()
+    private void Update()
     {
 
 

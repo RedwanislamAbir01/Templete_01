@@ -9725,7 +9725,7 @@ MonoBehaviour:
   originPos: {x: 0, y: 0, z: 0}
   positionX: 0
   positionY: 0
-  speed: 0.3
+  speed: 0.4
   computerSpeed: 15
   dir: -1
   rotationSpeed: 0
@@ -9806,7 +9806,7 @@ MonoBehaviour:
   originPos: {x: 0, y: 0, z: 0}
   positionX: 0
   positionY: 0
-  speed: 0.3
+  speed: 0.4
   computerSpeed: 15
   dir: -1
   rotationSpeed: 0
@@ -15505,6 +15505,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -8435975335451012586, guid: ada469bd56cdf754a958c7577bd7ef26, type: 3}
+    - target: {fileID: 8908480709290657970, guid: 19e2d1478ae4d784185a00f0ce8bbef7, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8908480709290657970, guid: 19e2d1478ae4d784185a00f0ce8bbef7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
