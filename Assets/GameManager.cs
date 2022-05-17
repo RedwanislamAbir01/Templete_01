@@ -11,7 +11,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject FianlCamPos, FianlCamPos1;
     public bool GameOver , GameEnd;
     public AudioSource Fly;
-  
+    public GameObject BatMobile;
     public override void Start()
     {
         p.enabled = false;

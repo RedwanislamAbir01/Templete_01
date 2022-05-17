@@ -12,18 +12,47 @@ public class EndDetector : MonoBehaviour
     public float LaserTime;
     public GameObject Puncher;
     public bool Enable;
+    Vector3 StartPos;
 
     private void Start()
     {
+        StartPos = Anim.transform.position;
         lf = GetComponentInParent<LookTowards>();
     }
+    public IEnumerator GetOnCarRoutine(GameObject obj)
+    {
+      
+        obj.GetComponent<Collider>().enabled = false;
+        GameManager.Instance.p.transform.GetChild(0).transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
+        yield return new WaitForSeconds(2f);
+        GameManager.Instance.BatMobile.transform.GetComponent<Animator>().Play("Open");
+       
+        GameManager.Instance.p.transform.GetComponentInChildren<CircularMovement>().enabled = false;
+        GameManager.Instance.BatMobile.transform.parent = GameManager.Instance.p.transform.GetChild(0);
+        Anim.transform.DOJump(GameManager.Instance.BatMobile.transform.position, .5f, 1, .3f).OnComplete(() => {
+        
+            GameManager.Instance.BatMobile.transform.GetComponent<Animator>().Play("Close");
+            Anim.gameObject.SetActive(false); GameManager.Instance.BatMobile.transform.DOLocalRotate(new Vector3(0, -90f, 0), .3f).OnComplete(() => {
 
+            FindObjectOfType<Controller>().enabled = true; GameManager.Instance.BatMobile.transform.GetComponent<Animator>().Play("Driving");
+                GameManager.Instance.p.MaxSpeed = 9;
+            }); }); GameManager.Instance.ZoomEffect();
+        Camera.main.transform.DOLocalMoveZ(15f,1f);
+        Camera.main.transform.GetChild(0).gameObject.SetActive(true);
+
+        Anim.SetTrigger("Jump");
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Blue"))
         {
           //  Camera.main.transform.DOLocalRotate(GameManager.Instance.FianlCamPos.transform.localEulerAngles, 1.5f);
          //   Camera.main.transform.DOLocalMove(GameManager.Instance.FianlCamPos.transform.localPosition, 1.5f);
+        }
+        if(other.gameObject.CompareTag("Car"))
+        {
+           
+            StartCoroutine(GetOnCarRoutine(other.gameObject));
         }
 
 

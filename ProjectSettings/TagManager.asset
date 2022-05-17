@@ -3,7 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - EndDetect
+  - FxTemporaire
+  - Land
+  - Hero2c
+  - Hero1c
+  - Blue
+  - Black
+  - Enemy
+  - Wall
+  - Boss
+  - FinishLine
+  - Car
   layers:
   - Default
   - TransparentFX
