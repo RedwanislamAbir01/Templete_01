@@ -184,19 +184,24 @@ public class EndDetector : MonoBehaviour
     }
     public IEnumerator Shoot6Times()
     {
-        Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
-    
-        Instantiate(Projectile, SpwanPoint1.position, Quaternion.identity);
+       GameObject g = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+        g.transform.DOLocalRotate(new Vector3(0, 2, 0), 0); 
+        GameObject g1 = Instantiate(Projectile, SpwanPoint1.position, Quaternion.identity);
+        g1.transform.DOLocalRotate(new Vector3(0, -2, 0), 0);
         a.Play();
         b.Play();
         yield return new WaitForSeconds(.2f);
-        Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
-        Instantiate(Projectile, SpwanPoint1.position, Quaternion.identity);
+        GameObject g2 = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+        g2.transform.DOLocalRotate(new Vector3(0, 2, 0), 0);
+        GameObject g3 = Instantiate(Projectile, SpwanPoint1.position, Quaternion.identity);
+        g3.transform.DOLocalRotate(new Vector3(0, -2, 0), 0);
         a.Play();
         b.Play();
         yield return new WaitForSeconds(.2f);
-        Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
-        Instantiate(Projectile, SpwanPoint1.position, Quaternion.identity);
+        GameObject g4 = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+        g4.transform.DOLocalRotate(new Vector3(0, 2, 0), 0);
+        GameObject g5 = Instantiate(Projectile, SpwanPoint1.position, Quaternion.identity);
+        g5.transform.DOLocalRotate(new Vector3(0, -2, 0), 0);
         a.Play();
         b.Play();
 
