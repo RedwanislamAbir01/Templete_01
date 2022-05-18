@@ -488,6 +488,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11464288, guid: 70772aa6880c0d24b82c6e5d01283073, type: 3}
+      propertyPath: muzzleParticle
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 13576440, guid: 70772aa6880c0d24b82c6e5d01283073, type: 3}
       propertyPath: m_IsTrigger
       value: 0

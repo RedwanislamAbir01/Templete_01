@@ -13,6 +13,7 @@ public class EndDetector : MonoBehaviour
     public GameObject Puncher;
     public bool Enable;
     Vector3 StartPos;
+    public ParticleSystem a, b;
     public bool IsBatMobile;
 
     private void Start()
@@ -168,8 +169,7 @@ public class EndDetector : MonoBehaviour
             }
             else
             {
-                Instantiate(Projectile, SpawnPoint.position, Quaternion.identity); 
-                Instantiate(Projectile, SpwanPoint1.position, Quaternion.identity);
+                StartCoroutine(Shoot6Times());
             }
         }
     }
@@ -181,5 +181,24 @@ public class EndDetector : MonoBehaviour
         yield return new WaitForSeconds(LaserTime);
         Laser.gameObject.SetActive(false);
             
+    }
+    public IEnumerator Shoot6Times()
+    {
+        Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+    
+        Instantiate(Projectile, SpwanPoint1.position, Quaternion.identity);
+        a.Play();
+        b.Play();
+        yield return new WaitForSeconds(.2f);
+        Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+        Instantiate(Projectile, SpwanPoint1.position, Quaternion.identity);
+        a.Play();
+        b.Play();
+        yield return new WaitForSeconds(.2f);
+        Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+        Instantiate(Projectile, SpwanPoint1.position, Quaternion.identity);
+        a.Play();
+        b.Play();
+
     }
 }
