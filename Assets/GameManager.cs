@@ -52,11 +52,22 @@ public class GameManager : Singleton<GameManager>
     {
         StartCoroutine(CamZoomInAndOutRoutine());
     }
+    public void ZoomEffectCar()
+    {
+        StartCoroutine(CamZoomInAndOutRoutine1());
+    }
     public IEnumerator CamZoomInAndOutRoutine()
     {
    
         Camera.main.DOFieldOfView(58, 1); 
         yield return new WaitForSeconds(1);
         Camera.main.DOFieldOfView(70, .5f);
+    }
+    public IEnumerator CamZoomInAndOutRoutine1()
+    {
+
+        Camera.main.DOFieldOfView(58, 1);
+        yield return new WaitForSeconds(1);
+        Camera.main.DOFieldOfView(86, .5f);
     }
 }
