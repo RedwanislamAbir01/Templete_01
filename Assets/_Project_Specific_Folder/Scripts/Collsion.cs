@@ -345,12 +345,14 @@ public class Collsion : MonoBehaviour
         Hero1.transform.DOLocalMove(H1start, .1f);
         Hero2.transform.DOLocalMove(H2Start, .1f);
         yield return new WaitForSeconds(.1f);
+        Hero2.transform.DOLocalRotate(new Vector3(0, 0, 0), 0f); Hero1.transform.DOLocalRotate(new Vector3(0, 0, 0), 0f);
+        Hero2.transform.GetComponent<LookTowards>().enabled = true; Hero1.transform.GetComponent<LookTowards>().enabled = true;
         GameManager.Instance.BatMobile.transform.GetComponent<Animator>().Play("Open");
-        GameManager.Instance.BatMobile.transform.DOLocalMoveX(0, .1f);
+        GameManager.Instance.BatMobile.transform.DOLocalMoveX(0, .3f);
         GameManager.Instance.p.transform.GetComponentInChildren<CircularMovement>().enabled = false;
         GameManager.Instance.BatMobile.transform.parent = GameManager.Instance.p.transform.GetChild(0);
-        Hero2.transform.DOJump(GameManager.Instance.BatMobile.transform.position, .5f, 1, .3f);
-        Hero1.transform.DOJump(GameManager.Instance.BatMobile.transform.position, .5f, 1, .3f).OnComplete(() => {
+        Hero2.transform.DOJump(GameManager.Instance.BatMobile.transform.position, .5f, 1, .2f);
+        Hero1.transform.DOJump(GameManager.Instance.BatMobile.transform.position, .5f, 1, .5f).OnComplete(() => {
 
             GameManager.Instance.BatMobile.transform.GetComponent<Animator>().Play("Close");
             Hero2.gameObject.SetActive(false);
@@ -359,12 +361,12 @@ public class Collsion : MonoBehaviour
 
                 transform.GetComponent<CircularMovement>().enabled = true ; 
                 GameManager.Instance.BatMobile.transform.GetComponent<Animator>().Play("Driving");
-                GameManager.Instance.p.MaxSpeed = 9;
+                GameManager.Instance.p.MaxSpeed = 9; Camera.main.transform.GetChild(0).gameObject.SetActive(true);
             });
         });
         GameManager.Instance.ZoomEffect();
-        Camera.main.transform.DOLocalMoveZ(22f, 1f);
-        Camera.main.transform.GetChild(0).gameObject.SetActive(true);
+        Camera.main.transform.DOLocalMoveZ(30f, 1.5f);
+        
         Hero1Model.GetComponent<Animator>().SetTrigger("Jump");
         Hero2Model.GetComponent<Animator>().SetTrigger("Jump");
 
