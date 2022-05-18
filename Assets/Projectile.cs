@@ -170,6 +170,7 @@ public class Projectile : MonoBehaviour
                     other.GetComponent<Collider>().enabled = false;
                     other.transform.GetChild(2).gameObject.SetActive(true);
                     other.GetComponentInChildren<Animator>().Play("Death"); other.GetComponentInChildren<Animator>().speed = 1.5f; Destroy(gameObject);
+                    Destroy(gameObject);
                 }
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.BrickWall)
                 {

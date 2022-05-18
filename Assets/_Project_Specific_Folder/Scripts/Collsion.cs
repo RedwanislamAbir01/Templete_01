@@ -83,7 +83,12 @@ public class Collsion : MonoBehaviour
 
             StartCoroutine(GetOnCarRoutine(other.gameObject));
         }
-        if (other.gameObject.CompareTag("FinishLine"))
+        if (other.gameObject.CompareTag("Exit"))
+        {
+            StartCoroutine(OnExitRoutine());
+        }
+        
+            if (other.gameObject.CompareTag("FinishLine"))
         {
           
             if (transform.localEulerAngles.y > -90 && transform.localEulerAngles.y <= 90)
@@ -346,12 +351,14 @@ public class Collsion : MonoBehaviour
         Hero2.transform.DOLocalMove(H2Start, .1f);
         yield return new WaitForSeconds(.1f);
         Hero2.transform.DOLocalRotate(new Vector3(0, 0, 0), 0f); Hero1.transform.DOLocalRotate(new Vector3(0, 0, 0), 0f);
-        Hero2.transform.GetComponent<LookTowards>().enabled = true; Hero1.transform.GetComponent<LookTowards>().enabled = true;
+        Hero2.transform.GetComponent<LookTowards>().enabled = false; Hero1.transform.GetComponent<LookTowards>().enabled = false;
         GameManager.Instance.BatMobile.transform.GetComponent<Animator>().Play("Open");
         GameManager.Instance.BatMobile.transform.DOLocalMoveX(0, .3f);
         GameManager.Instance.p.transform.GetComponentInChildren<CircularMovement>().enabled = false;
         GameManager.Instance.BatMobile.transform.parent = GameManager.Instance.p.transform.GetChild(0);
-        Hero2.transform.DOJump(GameManager.Instance.BatMobile.transform.position, .5f, 1, .2f);
+        Hero2.transform.DOJump(GameManager.Instance.BatMobile.transform.position, .5f, 1, .4f);
+        yield return new WaitForSeconds(.1f);
+       
         Hero1.transform.DOJump(GameManager.Instance.BatMobile.transform.position, .5f, 1, .5f).OnComplete(() => {
 
             GameManager.Instance.BatMobile.transform.GetComponent<Animator>().Play("Close");
@@ -365,11 +372,61 @@ public class Collsion : MonoBehaviour
             });
         });
         GameManager.Instance.ZoomEffect();
-        Camera.main.transform.DOLocalMoveZ(30f, 1.5f);
+        Camera.main.transform.DOLocalMoveZ(22f, 1.5f);
         
         Hero1Model.GetComponent<Animator>().SetTrigger("Jump");
         Hero2Model.GetComponent<Animator>().SetTrigger("Jump");
 
 
+    }
+
+    public IEnumerator OnExitRoutine()
+    {
+      //  GameManager.Instance.p.MaxSpeed -= SpeedIncreasAmmount;
+        GameManager.Instance.p.speed = CurrentSpeed;
+        GameManager.Instance.p.MaxSpeed =3;
+        GameManager.Instance.BatMobile.transform.DORotate(new Vector3(0, 54.4f, 0), .5f).OnComplete(() =>
+        {
+           
+
+        });
+        GameManager.Instance.BatMobile.transform.DOLocalMoveZ(11.7f, .8f).OnComplete(() =>
+        {
+
+            GameManager.Instance.BatMobile.gameObject.SetActive(false);
+        });
+        yield return new WaitForSeconds(1f);
+        Hero1.SetActive(true); Hero2.SetActive(true); 
+        //  GameManager.Instance.Fly.Stop();
+
+
+        Camera.main.transform.DOLocalMove(camStartPos, .2f);
+        Camera.main.transform.DOLocalRotate(camStartRot.eulerAngles, .2f);
+        Flying = false;
+        GetComponent<CircularMovement>().RotationSpeed = 1.3f;
+        BatCape.transform.DOLocalRotate(StartCapeRot, .2f);
+        BatCape.transform.DOLocalMove(StartCapePos, .01f);
+        Hero2Model.transform.DOLocalMove(Hero2ModelPos, .1f);
+        Hero1Model.GetComponent<Animator>().SetTrigger("Jump");  Hero2Model.GetComponent<Animator>().SetTrigger("Jump");
+        Target.transform.DOLocalMoveX(0, .1f);
+        transform.DOLocalMoveX(0, .1f);
+        GetComponent<Controller>().enabled = false;
+        
+        Target.transform.GetChild(0).DOLocalMove(H1start, .3f); Target.transform.GetChild(01).transform.DOLocalMove(H2Start, .3f);
+        Hero1.transform.DOLocalJump(H1start, .5f, 1, .3f);
+
+
+       // Hero1.transform.DOLocalMove(H1start, .3f);
+        Hero2.transform.DOLocalJump(H2Start, .5f, 1, .3f).OnComplete(() =>
+        {
+            Hero1Model.GetComponent<Animator>().Play("Run"); Hero2Model.GetComponent<Animator>().Play("Run");
+            Camera.main.transform.GetChild(0).gameObject.SetActive(false);
+            Shadow1.gameObject.SetActive(true); Shadow2.gameObject.SetActive(true); Connector.gameObject.SetActive(true);
+            Target.GetComponent<CircularMovement>().RotationSpeed = 1.3f;
+            GetComponent<CircularMovement>().RotationSpeed = 1.3f;
+            Hero1.GetComponent<LookTowards>().enabled = true; Hero2.GetComponent<LookTowards>().enabled = true;
+
+        }); 
+        
     }
 }

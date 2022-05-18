@@ -107,10 +107,10 @@ GameObject:
   - component: {fileID: 1275118324108484560}
   - component: {fileID: 1275118324108484561}
   - component: {fileID: 1275118324108484574}
-  - component: {fileID: 1275118324108484575}
   - component: {fileID: 1275118324108484563}
   - component: {fileID: -7563849298568495467}
   - component: {fileID: 1574407332}
+  - component: {fileID: 375106378274744138}
   m_Layer: 0
   m_Name: Batman Weapon 1
   m_TagString: Untagged
@@ -184,19 +184,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1275118324108484575
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1275118324108484572}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.6837685, y: 0.9999999, z: 4.115524}
-  m_Center: {x: -0.20385161, y: 0, z: 0.2844252}
 --- !u!114 &1275118324108484563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d616ccccd0affa049815eed540f6444c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileSpeed: 17
+  ProjectileSpeed: 25
   DestroyTime: 1.5
   HitVFX: {fileID: 1797657264430493913, guid: dd8575b51ad6e4644a5abb4fda3f6e07, type: 3}
   CrystalSpread: {fileID: 9144820366456875970, guid: f4d26465e3671d0429816dc8f7937a0f, type: 3}
@@ -228,7 +215,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
 --- !u!96 &1574407332
@@ -272,7 +259,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.4
+  m_Time: 0.1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.05
@@ -338,6 +325,19 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!135 &375106378274744138
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275118324108484572}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 22.79
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &752365141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -486,6 +486,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 450904, guid: 70772aa6880c0d24b82c6e5d01283073, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 13576440, guid: 70772aa6880c0d24b82c6e5d01283073, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
