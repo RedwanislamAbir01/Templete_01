@@ -395,7 +395,7 @@ public class Collsion : MonoBehaviour
 
             GameManager.Instance.BatMobile.gameObject.SetActive(false);
         });
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.8f);
         Hero1.SetActive(true); Hero2.SetActive(true); 
         //  GameManager.Instance.Fly.Stop();
 

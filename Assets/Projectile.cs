@@ -185,7 +185,18 @@ public class Projectile : MonoBehaviour
 
 
                 }
-                if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KryptoCrstalguy)
+                if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.WarMachine)
+                {
+                    
+                        other.GetComponent<Collider>().enabled = false;
+                        other.gameObject.transform.GetChild(0).gameObject.SetActive(true); other.gameObject.transform.GetChild(01).gameObject.SetActive(false);
+                        GameObject g = Instantiate(DestroyVFX
+                       , new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity);
+                        Destroy(g, 1); Destroy(gameObject);
+
+                    
+                }
+                    if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KryptoCrstalguy)
                 {
                     SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().TankHit);
                     other.transform.GetChild(0).gameObject.SetActive(false); other.transform.GetChild(01).gameObject.SetActive(true);
