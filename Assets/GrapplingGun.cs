@@ -14,22 +14,23 @@ public class GrapplingGun : MonoBehaviour
     }
     void Start()
     {
-        
+        currentGrapplePosition = gunTip.transform.position;
     }
 
     private void Update()
     {
-       // currentGrapplePosition = gunTip.position;
+        DrawRope();
+        // currentGrapplePosition = gunTip.position;
     }
     void LateUpdate()
     {
        
-        DrawRope();
+       
     }
     private Vector3 currentGrapplePosition;
     void DrawRope()
     {
- 
+      
 
         currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint.position, Time.deltaTime *speed);
 

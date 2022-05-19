@@ -82,7 +82,7 @@ public class Collsion : MonoBehaviour
         yield return new WaitForSeconds(0);
         GameManager.Instance.p.enabled = false;
         Hero1Model.GetComponent<Animator>().Play("Idle"); Hero2Model.GetComponent<Animator>().Play("Aim 0");
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.4f);
         Grapple.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         GameManager.Instance.Kong.GetComponent<Animator>().Play("Kill");
@@ -447,7 +447,7 @@ public class Collsion : MonoBehaviour
             GameManager.Instance.p.MaxSpeed = 3;
             Hero1Model.GetComponent<Animator>().Play("Run"); Hero2Model.GetComponent<Animator>().Play("Run");
          
-            //Shadow1.gameObject.SetActive(true); Shadow2.gameObject.SetActive(true);
+            Shadow1.gameObject.SetActive(true); Shadow2.gameObject.SetActive(true);
             Connector.transform.DOLocalMove(new Vector3(-0.18f, .21f,10), 0f);
             Connector.gameObject.SetActive(true);
             Target.GetComponent<CircularMovement>().RotationSpeed = 1.3f;
