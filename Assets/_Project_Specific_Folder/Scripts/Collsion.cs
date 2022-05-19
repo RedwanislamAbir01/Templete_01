@@ -65,7 +65,7 @@ public class Collsion : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         Hero1Model.transform.GetComponent<Animator>().Play("Run"); Hero2Model.transform.GetComponent<Animator>().Play("Run");
         GameManager.Instance.p.enabled = true;
-        GameManager.Instance.Platform.transform.DOMoveY(-1.3f, .5f);
+        GameManager.Instance.Platform.transform.DOMoveY(-1.3f, 1f);
 
     }
     private void Update()
