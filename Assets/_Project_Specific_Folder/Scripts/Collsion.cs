@@ -5,7 +5,7 @@ using DG.Tweening;
 using MoreMountains.NiceVibrations;
 public class Collsion : MonoBehaviour
 {
-    public GameObject Grapple;
+    public GameObject Grapple, PullingPos;
     public float SpeedIncreasAmmount;
     public GameObject Target;
     public GameObject Hero1, Hero2;
@@ -46,8 +46,51 @@ public class Collsion : MonoBehaviour
         StartCapeRot = BatCape.transform.localEulerAngles;
 
     }
+    IEnumerator PullingRoutine()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Hero1.transform.GetChild(0).transform.DOLocalMove(PullingPos.transform.localPosition, .4f);
+        Hero1.transform.GetChild(0).transform.DOLocalRotate(PullingPos.transform.localEulerAngles , .4f);
+        yield return new WaitForSeconds(0.3f);
+        Hero1Model.transform.GetComponent<Animator>().Play("Pulling");
+        yield return new WaitForSeconds(0.1f);
+       
+        GameManager.Instance.Kong.GetComponent<Animator>().Play("Dealth");
+        yield return new WaitForSeconds(0.1f);
+        Grapple.SetActive(false);
+        GameManager.Instance.Kong.transform.DOLocalMove(new Vector3(4.489f, 0.06f, 0), .3f);
+        yield return new WaitForSeconds(0.8f);
+        Hero1.transform.GetChild(0).transform.DOLocalMove(new Vector3(0, 1.38f, 0), .2f);
+        Hero1.transform.GetChild(0).transform.DOLocalRotate(new Vector3(90, 0, 0), .2f);
+        yield return new WaitForSeconds(0.2f);
+        Hero1Model.transform.GetComponent<Animator>().Play("Run"); Hero2Model.transform.GetComponent<Animator>().Play("Run");
+        GameManager.Instance.p.enabled = true;
+        GameManager.Instance.Platform.transform.DOMoveY(-1.3f, .5f);
+
+    }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Hero2Model.transform.GetComponent<Animator>().Play("Strafe");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Hero2Model.GetComponent<Animator>().Play("Aim 0");
+            StartCoroutine(PullingRoutine());
+        }
+
+
+
+
+
+
+
+
+
+
+
         if (StartTapRoutine)
         {
             if (Input.GetMouseButtonDown(0))
@@ -93,7 +136,7 @@ public class Collsion : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Kong"))
         {
-
+            other.GetComponent<Collider>().enabled = false;
             StartCoroutine(KongRoutine());
         }
         if (other.gameObject.CompareTag("Car"))

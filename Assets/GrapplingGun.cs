@@ -19,13 +19,13 @@ public class GrapplingGun : MonoBehaviour
 
     private void Update()
     {
-        DrawRope();
+       
         // currentGrapplePosition = gunTip.position;
     }
     void LateUpdate()
     {
-       
-       
+        DrawRope();
+
     }
     private Vector3 currentGrapplePosition;
     void DrawRope()
