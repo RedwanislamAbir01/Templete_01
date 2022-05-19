@@ -5,6 +5,7 @@ using DG.Tweening;
 using MoreMountains.NiceVibrations;
 public class Collsion : MonoBehaviour
 {
+    public GameObject Grapple;
     public float SpeedIncreasAmmount;
     public GameObject Target;
     public GameObject Hero1, Hero2;
@@ -76,8 +77,25 @@ public class Collsion : MonoBehaviour
             }
         }
     }
+    public IEnumerator KongRoutine()
+    {
+        yield return new WaitForSeconds(0);
+        GameManager.Instance.p.enabled = false;
+        Hero1Model.GetComponent<Animator>().Play("Idle"); Hero2Model.GetComponent<Animator>().Play("Aim 0");
+        yield return new WaitForSeconds(0.1f);
+        Grapple.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        GameManager.Instance.Kong.GetComponent<Animator>().Play("Kill");
+
+        GameManager.Instance.Rope.SetActive(true);
+    }
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Kong"))
+        {
+
+            StartCoroutine(KongRoutine());
+        }
         if (other.gameObject.CompareTag("Car"))
         {
 

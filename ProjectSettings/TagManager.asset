@@ -18,6 +18,7 @@ TagManager:
   - Car
   - Exit
   - Bullet
+  - Kong
   layers:
   - Default
   - TransparentFX

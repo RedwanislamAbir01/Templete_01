@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 public class GameManager : Singleton<GameManager>
 {
-    public GameObject Superman, Batman;
+    public GameObject Superman, Batman, Kong , Rope;
     public bool StartGame;
     public PathCreation.Examples.PathFollower p;
     public GameObject FianlCamPos, FianlCamPos1;
