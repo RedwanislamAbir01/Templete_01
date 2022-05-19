@@ -17,6 +17,7 @@ TagManager:
   - FinishLine
   - Car
   - Exit
+  - Bullet
   layers:
   - Default
   - TransparentFX
