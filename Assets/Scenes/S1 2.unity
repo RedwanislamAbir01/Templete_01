@@ -3703,7 +3703,7 @@ MonoBehaviour:
   spawnObject: {fileID: 1275118324108484572, guid: ab9b5b5da3dd54d4292a142df96dec8e, type: 3}
   spawnPoint: {x: 64.76, y: 1.21, z: 6.06}
   maxX: 0
-  timeTilNextSpawn: 1
+  timeTilNextSpawn: 5
 --- !u!4 &1606990408
 Transform:
   m_ObjectHideFlags: 0

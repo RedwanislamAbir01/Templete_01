@@ -382,7 +382,9 @@ public class Collsion : MonoBehaviour
 
     public IEnumerator OnExitRoutine()
     {
-      //  GameManager.Instance.p.MaxSpeed -= SpeedIncreasAmmount;
+       
+        Camera.main.transform.GetChild(0).gameObject.SetActive(false);
+        //  GameManager.Instance.p.MaxSpeed -= SpeedIncreasAmmount;
         GameManager.Instance.p.speed = 0;
         GameManager.Instance.p.MaxSpeed =0;
         GameManager.Instance.BatMobile.transform.DORotate(new Vector3(0, 54.4f, 0), .5f).OnComplete(() =>
@@ -396,14 +398,14 @@ public class Collsion : MonoBehaviour
 
            // GameManager.Instance.BatMobile.gameObject.SetActive(false);
        // });
-        yield return new WaitForSeconds(.6f);
+        yield return new WaitForSeconds(1.5f);
         Hero1.SetActive(true); Hero2.SetActive(true);
         //  GameManager.Instance.Fly.Stop();
 
     
         Camera.main.transform.DOLocalMove(camStartPos, .2f);
         Camera.main.transform.DOLocalRotate(camStartRot.eulerAngles, .2f);
-        Flying = false;
+    
         GetComponent<CircularMovement>().RotationSpeed = 1.3f;
         BatCape.transform.DOLocalRotate(StartCapeRot, .2f);
         BatCape.transform.DOLocalMove(StartCapePos, .01f);
@@ -413,24 +415,28 @@ public class Collsion : MonoBehaviour
         transform.DOLocalMoveX(0, .1f);
         GetComponent<Controller>().enabled = false;
         
-        Target.transform.GetChild(0).DOLocalMove(H1start, .3f); Target.transform.GetChild(01).transform.DOLocalMove(H2Start, .3f);
-        Hero1.transform.DOLocalJump(H1start, .5f, 1, .3f);
+        Target.transform.GetChild(0).DOLocalMove(new Vector3(H1start.x, H1start.y, H1start.z + 10), .3f); Target.transform.GetChild(01).transform.DOLocalMove(H2Start, .3f);
 
+        Hero1.transform.DOLocalJump(new Vector3(H1start.x , H1start.y , H1start.z +10), .5f, 1, .1f);
         GameManager.Instance.BatMobile.transform.DOLocalMove(new Vector3(0,.21f,0), .3f);
        // Hero1.transform.DOLocalMove(H1start, .3f);
-        Hero2.transform.DOLocalJump(H2Start, .5f, 1, .3f).OnComplete(() =>
+        Hero2.transform.DOLocalJump(new Vector3(H2Start.x, H2Start.y, H2Start.z + 10), .5f, 1, .3f).OnComplete(() =>
         {
+            Camera.main.transform.DOLocalMoveZ(-7.83f, .3f);
             GameManager.Instance.BatMobile.transform.parent = null;
             GameManager.Instance.p.speed =1;
             GameManager.Instance.p.MaxSpeed = 3;
             Hero1Model.GetComponent<Animator>().Play("Run"); Hero2Model.GetComponent<Animator>().Play("Run");
-            Camera.main.transform.GetChild(0).gameObject.SetActive(false);
-            Shadow1.gameObject.SetActive(true); Shadow2.gameObject.SetActive(true); Connector.gameObject.SetActive(true);
+         
+            //Shadow1.gameObject.SetActive(true); Shadow2.gameObject.SetActive(true);
+            Connector.transform.DOLocalMove(new Vector3(-0.18f, .21f,10), 0f);
+            Connector.gameObject.SetActive(true);
             Target.GetComponent<CircularMovement>().RotationSpeed = 1.3f;
             GetComponent<CircularMovement>().RotationSpeed = 1.3f;
             Hero1.GetComponent<LookTowards>().enabled = true; Hero2.GetComponent<LookTowards>().enabled = true;
 
-        }); 
+        }
+        ); 
         
     }
 }

@@ -235,7 +235,7 @@ anim.transform.localScale.y + ScaleAmmounts
                           GameManager.Instance.p.MaxSpeed = 1.5f;
                           anim.transform.GetChild(0).gameObject.SetActive(true); anim.transform.GetChild(1).gameObject.SetActive(true);
                           Baby.SetActive(false);
-                         
+                          BFX.gameObject.SetActive(false);
                           anim.transform.DOScale(new Vector3(anim.transform.localScale.x - ScaleAmmounts,
 anim.transform.localScale.y - ScaleAmmounts
 , anim.transform.localScale.z - ScaleAmmounts
