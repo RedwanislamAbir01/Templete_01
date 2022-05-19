@@ -415,7 +415,8 @@ public class Collsion : MonoBehaviour
         transform.DOLocalMoveX(0, .1f);
         GetComponent<Controller>().enabled = false;
         
-        Target.transform.GetChild(0).DOLocalMove(new Vector3(H1start.x, H1start.y, H1start.z + 10), .3f); Target.transform.GetChild(01).transform.DOLocalMove(H2Start, .3f);
+        Target.transform.GetChild(0).DOLocalMove(new Vector3(H1start.x, H1start.y, H1start.z + 10), .3f);
+        Target.transform.GetChild(01).transform.DOLocalMove(H2Start, .3f);
 
         Hero1.transform.DOLocalJump(new Vector3(H1start.x , H1start.y , H1start.z +10), .5f, 1, .3f);
         GameManager.Instance.BatMobile.transform.DOLocalMove(new Vector3(0,.21f,0), .3f);

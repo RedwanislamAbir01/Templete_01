@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectileSpeed: 6
-  DestroyTime: 3
+  DestroyTime: 5
   HitVFX: {fileID: 0}
   CrystalSpread: {fileID: 0}
   DestroyVFX: {fileID: 0}
@@ -428,6 +428,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1275118324108484560}
     m_Modifications:
+    - target: {fileID: 2925475929406372889, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.2627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925475929406372889, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime2
+      value: 10601
+      objectReference: {fileID: 0}
     - target: {fileID: 2925475929406372894, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -435,6 +443,18 @@ PrefabInstance:
     - target: {fileID: 4333637354549323736, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4333637354549323738, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.33484924
+      objectReference: {fileID: 0}
+    - target: {fileID: 4333637354549323738, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.33484924
+      objectReference: {fileID: 0}
+    - target: {fileID: 4333637354549323738, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.33484924
       objectReference: {fileID: 0}
     - target: {fileID: 4333637355060481310, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
       propertyPath: m_Materials.Array.size
