@@ -57,8 +57,14 @@ public class Collsion : MonoBehaviour
        
         GameManager.Instance.Kong.GetComponent<Animator>().Play("Dealth");
         yield return new WaitForSeconds(0.1f);
-        Grapple.SetActive(false);
-        GameManager.Instance.Kong.transform.DOLocalMove(new Vector3(4.489f, 0.06f, 0), .3f);
+       
+        GameManager.Instance.Kong.transform.DOLocalMove(new Vector3(-1.143f, 0.292f, 0), .3f).OnComplete(() =>
+        {
+            GameManager.Instance.Kong.transform.parent = null;
+            Grapple.SetActive(false);
+            Camera.main.transform.DOShakePosition(3f, .3f);
+
+        });
         yield return new WaitForSeconds(0.8f);
         Hero1.transform.GetChild(0).transform.DOLocalMove(new Vector3(0, 1.38f, 0), .2f);
         Hero1.transform.GetChild(0).transform.DOLocalRotate(new Vector3(90, 0, 0), .2f);
