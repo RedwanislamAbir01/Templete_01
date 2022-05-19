@@ -17,7 +17,10 @@ public class GrapplingGun : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    private void Update()
+    {
+       // currentGrapplePosition = gunTip.position;
+    }
     void LateUpdate()
     {
        
