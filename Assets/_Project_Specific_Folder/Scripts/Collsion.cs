@@ -57,7 +57,7 @@ public class Collsion : MonoBehaviour
        
         GameManager.Instance.Kong.GetComponent<Animator>().Play("Dealth");
         yield return new WaitForSeconds(0.1f);
-        FindObjectOfType<GrapplingGun>().grapplePoint.transform.DOLocalMoveY(-0.24f, .5f);
+        FindObjectOfType<GrapplingGun>().grapplePoint.transform.DOLocalMoveY(-0.66f, .4f);
         GameManager.Instance.Kong.transform.DOLocalMove(new Vector3(-1.143f, 0.292f, 0), .3f).OnComplete(() =>
         {
             GameManager.Instance.Kong.transform.parent = null;
