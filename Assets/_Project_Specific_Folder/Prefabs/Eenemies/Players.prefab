@@ -111921,7 +111921,7 @@ GameObject:
   - component: {fileID: 7322975178461188540}
   - component: {fileID: 7322975178461188541}
   - component: {fileID: 7322975178461188538}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: shiled Detector (1)
   m_TagString: EndDetect
   m_Icon: {fileID: 0}
