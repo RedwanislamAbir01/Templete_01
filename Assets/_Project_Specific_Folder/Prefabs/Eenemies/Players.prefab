@@ -86923,6 +86923,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7f541697d8b00408aa0942da603054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Grapple: {fileID: 0}
+  PullingPos: {fileID: 0}
   SpeedIncreasAmmount: 1.5
   Target: {fileID: 7322975177900022076}
   Hero1: {fileID: 7322975178767214676}
@@ -86948,6 +86950,8 @@ MonoBehaviour:
   FinalShootProjectile: {fileID: 4185521089485720313, guid: 58f446bbb91550549ae1bfd6a9987f88, type: 3}
   FinalShootProjectile1: {fileID: 2120927060573911038, guid: 11dee30929c489147848370399a3b02e, type: 3}
   Flying: 0
+  NewCam: 0
+  OnCar: 0
 --- !u!54 &5389664381637350137
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -106881,6 +106885,7 @@ MonoBehaviour:
   ease: 25
   ScaleAmmount: 0.7
   ScaleAmmounts: 0.25
+  BbayScale: 0
   CollectableVFX: {fileID: 1844371213057253731}
   PowerVFX: {fileID: 7648996234254010299}
   Target: {fileID: 7322975179266131262}
@@ -106892,6 +106897,8 @@ MonoBehaviour:
   CurrentSpeed: 0
   CurrentMaxSpeed: 0
   SizeDownAmmount: 20
+  Baby: {fileID: 0}
+  BFX: {fileID: 0}
 --- !u!54 &7322975177908714155
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -116854,7 +116861,7 @@ GameObject:
   - component: {fileID: 7322975178573844364}
   - component: {fileID: 7322975178573844353}
   - component: {fileID: 7322975178573844352}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Detector
   m_TagString: EndDetect
   m_Icon: {fileID: 0}
@@ -116967,11 +116974,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Anim: {fileID: 1793015626340872766}
   SpawnPoint: {fileID: 7322975178948181095}
+  SpwanPoint1: {fileID: 0}
   Projectile: {fileID: 1275118324108484572, guid: 382f431f0e183814bb206cf4cf2a2431, type: 3}
   Laser: {fileID: 0}
   LaserTime: 0
   Puncher: {fileID: 0}
   Enable: 0
+  a: {fileID: 0}
+  b: {fileID: 0}
+  IsBatMobile: 0
 --- !u!1 &7322975178616291623
 GameObject:
   m_ObjectHideFlags: 0
@@ -116986,7 +116997,7 @@ GameObject:
   - component: {fileID: 7322975178616291545}
   - component: {fileID: 7322975178616291546}
   - component: {fileID: 7322975178616291549}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Detector
   m_TagString: EndDetect
   m_Icon: {fileID: 0}
@@ -117099,11 +117110,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Anim: {fileID: 3409237569334416987}
   SpawnPoint: {fileID: 7322975178766312382}
+  SpwanPoint1: {fileID: 0}
   Projectile: {fileID: 0}
   Laser: {fileID: 7322975178797199690}
   LaserTime: 0.5
   Puncher: {fileID: 7322975179143835512}
   Enable: 0
+  a: {fileID: 0}
+  b: {fileID: 0}
+  IsBatMobile: 0
 --- !u!1 &7322975178766312383
 GameObject:
   m_ObjectHideFlags: 0
@@ -117255,6 +117270,7 @@ MonoBehaviour:
   ease: 25
   ScaleAmmount: 0.7
   ScaleAmmounts: 0.25
+  BbayScale: 0
   CollectableVFX: {fileID: 7322975179410146157}
   PowerVFX: {fileID: 5649538748783465337}
   Target: {fileID: 7322975178404754704}
@@ -117266,6 +117282,8 @@ MonoBehaviour:
   CurrentSpeed: 0
   CurrentMaxSpeed: 0
   SizeDownAmmount: 20
+  Baby: {fileID: 0}
+  BFX: {fileID: 0}
 --- !u!54 &7322975178767214666
 Rigidbody:
   m_ObjectHideFlags: 0
