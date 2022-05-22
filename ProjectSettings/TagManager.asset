@@ -19,6 +19,11 @@ TagManager:
   - Exit
   - Bullet
   - Kong
+  - Carnivorous
+  - Creature
+  - Herbivorous
+  - Batmobil
+  - BatCar
   layers:
   - Default
   - TransparentFX
@@ -28,9 +33,9 @@ TagManager:
   - UI
   - Exit
   - Hero
-  - 
-  - 
-  - 
+  - BatMobil
+  - BatDetector
+  - BatCar
   - 
   - 
   - 

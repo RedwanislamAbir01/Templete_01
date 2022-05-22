@@ -439,7 +439,7 @@ public class Collsion : MonoBehaviour
             });
         });
         GameManager.Instance.ZoomEffect();
-        Camera.main.transform.DOLocalMoveZ(22f, 1.5f);
+        Camera.main.transform.DOLocalMoveZ(5f, 1.5f);
         
         Hero1Model.GetComponent<Animator>().SetTrigger("Jump");
         Hero2Model.GetComponent<Animator>().SetTrigger("Jump");
