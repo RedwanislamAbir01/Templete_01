@@ -20,17 +20,17 @@ public class BatGrade : MonoBehaviour
                       , transform.localScale.z + ScaleAmmount
                       ), .2f).SetEase(ease).OnComplete(() => {
 
-                          if (count == 1)
+                          if (count == 5)
                           {
                               Main.SetActive(false);
                               part1.gameObject.SetActive(true);
                           }
-                          if (count == 2)
+                          if (count ==10)
                           {
                               part1.SetActive(false);
                               part2.gameObject.SetActive(true);
                           }
-                          if (count == 3)
+                          if (count == 15)
                           {
                               part2.SetActive(false);
                               part3.gameObject.SetActive(true);
