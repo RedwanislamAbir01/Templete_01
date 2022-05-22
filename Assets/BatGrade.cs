@@ -8,6 +8,7 @@ public class BatGrade : MonoBehaviour
     public Ease ease;
     public float ScaleAmmount = .3f;
     public GameObject Main, part1, part2 , part3;
+    public ParticleSystem p;
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("BatCar"))
@@ -24,16 +25,17 @@ public class BatGrade : MonoBehaviour
                           {
                               Main.SetActive(false);
                               part1.gameObject.SetActive(true);
+                              p.Play();
                           }
                           if (count ==10)
                           {
                               part1.SetActive(false);
-                              part2.gameObject.SetActive(true);
+                              part2.gameObject.SetActive(true); p.Play();
                           }
                           if (count == 15)
                           {
                               part2.SetActive(false);
-                              part3.gameObject.SetActive(true);
+                              part3.gameObject.SetActive(true); p.Play();
                           }
 
                           transform.DOScale(new Vector3(7.44f, 7.44f, 7.44f ), .3f);

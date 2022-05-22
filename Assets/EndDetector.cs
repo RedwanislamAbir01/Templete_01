@@ -192,7 +192,12 @@ public class EndDetector : MonoBehaviour
     }
     public IEnumerator Shoot6Times()
     {
-       GameObject g = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+
+
+
+
+
+        GameObject g = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
         g.transform.DOLocalRotate(new Vector3(0, 1, 0), 0); 
         GameObject g1 = Instantiate(Projectile, SpwanPoint1.position, Quaternion.identity);
         g1.transform.DOLocalRotate(new Vector3(0, -1, 0), 0);
