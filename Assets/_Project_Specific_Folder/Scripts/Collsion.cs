@@ -487,11 +487,11 @@ public class Collsion : MonoBehaviour
 
         Hero1.transform.DOLocalJump(new Vector3(H1start.x , H1start.y , H1start.z +10), .5f, 1, .3f);
         GameManager.Instance.BatMobile.transform.DOLocalMove(new Vector3(0,.21f,0), .3f);
-      
+        transform.DOLocalMoveZ(5.6f, .3f);
         Hero2.transform.DOLocalJump(new Vector3(H2Start.x, H2Start.y, H2Start.z + 10), .5f, 1, .3f).OnComplete(() =>
         {
             Hero1.transform.DOLocalMoveZ(0, .3f); Hero2.transform.DOLocalMoveZ(0, .3f);
-            Camera.main.transform.DOLocalMoveZ(-19.8f, .3f);
+            Camera.main.transform.DOLocalMoveZ(-14.25f, .3f);
             GameManager.Instance.BatMobile.transform.parent = null;
             GameManager.Instance.p.speed =1;
             GameManager.Instance.p.MaxSpeed = 3;
