@@ -36,10 +36,7 @@ public class BatGrade : MonoBehaviour
                               part3.gameObject.SetActive(true);
                           }
 
-                          transform.DOScale(new Vector3(transform.localScale.x - ScaleAmmount,
-       transform.localScale.y- ScaleAmmount
-       , transform.localScale.z - ScaleAmmount
-       ), .3f);
+                          transform.DOScale(new Vector3(7.44f, 7.44f, 7.44f ), .3f);
                       });
       
 
