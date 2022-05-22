@@ -482,7 +482,7 @@ public class Collsion : MonoBehaviour
         transform.DOLocalMoveX(0, .1f);
         GetComponent<Controller>().enabled = false;
         
-        Target.transform.GetChild(0).DOLocalMove(new Vector3(H1start.x, H1start.y, H1start.z + 10), .3f);
+        //Target.transform.GetChild(0).DOLocalMove(new Vector3(H1start.x, H1start.y, H1start.z + 10), .3f);
         Target.transform.GetChild(01).transform.DOLocalMove(H2Start, .3f);
 
         Hero1.transform.DOLocalJump(new Vector3(H1start.x , H1start.y , H1start.z +10), .5f, 1, .3f);
@@ -490,14 +490,15 @@ public class Collsion : MonoBehaviour
       
         Hero2.transform.DOLocalJump(new Vector3(H2Start.x, H2Start.y, H2Start.z + 10), .5f, 1, .3f).OnComplete(() =>
         {
-            Camera.main.transform.DOLocalMoveZ(-7.83f, .3f);
+            Hero1.transform.DOLocalMoveZ(0, .3f); Hero2.transform.DOLocalMoveZ(0, .3f);
+            Camera.main.transform.DOLocalMoveZ(-19.8f, .3f);
             GameManager.Instance.BatMobile.transform.parent = null;
             GameManager.Instance.p.speed =1;
             GameManager.Instance.p.MaxSpeed = 3;
             Hero1Model.GetComponent<Animator>().Play("Run"); Hero2Model.GetComponent<Animator>().Play("Run");
          
             Shadow1.gameObject.SetActive(true); Shadow2.gameObject.SetActive(true);
-            Connector.transform.DOLocalMove(new Vector3(-0.18f, .21f,10), 0f);
+            //Connector.transform.DOLocalMove(new Vector3(-0.18f, .21f,10), 0f);
             Connector.gameObject.SetActive(true);
             Target.GetComponent<CircularMovement>().RotationSpeed = 1.3f;
             GetComponent<CircularMovement>().RotationSpeed = 1.3f;
