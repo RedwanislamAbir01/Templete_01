@@ -12,7 +12,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject FianlCamPos, FianlCamPos1;
     public bool GameOver , GameEnd;
     public AudioSource Fly;
-    public GameObject BatMobile;
+    public GameObject BatMobile , Bat;
     public override void Start()
     {
         p.enabled = false;
@@ -46,8 +46,9 @@ public class GameManager : Singleton<GameManager>
         p.GetComponentInChildren<Collsion>().Hero1Model.GetComponent<Animator>().Play("Run"); p.GetComponentInChildren<Collsion>().Hero2Model.GetComponent<Animator>().Play("Run");
         p.GetComponentInChildren<Collsion>().Hero1.GetComponent<LookTowards>().Cape.transform.DOLocalRotate(p.GetComponentInChildren<Collsion>().Hero1.GetComponent<LookTowards>().CapeFinalPos.transform.localEulerAngles, .1f);
         p.GetComponentInChildren<Collsion>().Hero1.GetComponent<LookTowards>().Cape.transform.DOLocalMove(p.GetComponentInChildren<Collsion>().Hero1.GetComponent<LookTowards>().CapeFinalPos.transform.localPosition, .1f);
-      //  p.GetComponentInChildren<Collsion>().Hero1Model.GetComponentInChildren<Obi.ObiSolver>().transform.GetChild(0).transform.DOLocalRotate(new Vector3(0, -90, -50), .1f);
-      //   p.GetComponentInChildren<Collsion>().Hero1Model.GetComponentInChildren<Obi.ObiSolver>().transform.GetChild(0).transform.DOLocalMove(new Vector3(-2.501f, 2.726f, -0.985f), .1f);
+        //p.GetComponentInChildren<Collsion>().Hero1Model.GetComponentInChildren<Obi.ObiSolver>().transform.GetChild(0).transform.DOLocalRotate(new Vector3(0, -90, -50), .1f);
+        // p.GetComponentInChildren<Collsion>().Hero1Model.GetComponentInChildren<Obi.ObiSolver>().transform.GetChild(0).transform.DOLocalMove(new Vector3(-2.501f, 2.726f, -0.985f), .1f);
+    
     }
     public void ZoomEffect()
     {

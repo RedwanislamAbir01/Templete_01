@@ -457,7 +457,7 @@ public class Collsion : MonoBehaviour
         GameManager.Instance.BatMobile.transform.DORotate(new Vector3(0, 54.4f, 0), .5f).OnComplete(() =>
         {
             GameManager.Instance.BatMobile.transform.GetComponent<Animator>().Play("Open");
-
+            GameManager.Instance.Bat.transform.GetComponent<Animator>().Play("Open");
         });
 
        // GameManager.Instance.BatMobile.transform.DOLocalMoveZ(11.7f, .8f).OnComplete(() =>
@@ -496,7 +496,7 @@ public class Collsion : MonoBehaviour
             GameManager.Instance.p.speed =1;
             GameManager.Instance.p.MaxSpeed = 3;
             Hero1Model.GetComponent<Animator>().Play("Run"); Hero2Model.GetComponent<Animator>().Play("Run");
-         
+            
             Shadow1.gameObject.SetActive(true); Shadow2.gameObject.SetActive(true);
             //Connector.transform.DOLocalMove(new Vector3(-0.18f, .21f,10), 0f);
             Connector.gameObject.SetActive(true);
