@@ -152,6 +152,7 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Exit"))
         {
+            other.gameObject.GetComponent<Collider>().enabled = false;
             StartCoroutine(OnExitRoutine());
         }
         
