@@ -49,11 +49,11 @@ public class BatGrade : MonoBehaviour
             }
             if (count == 10)
             {
-                part2.transform.DOScale(new Vector3(ScaleAmmounts, ScaleAmmounts, ScaleAmmounts), .3f);
+                part2.transform.DOScale(new Vector3(ScaleAmmounts+.1f, ScaleAmmounts + .1f, ScaleAmmounts + .1f), .3f);
             }
             if (count == 15)
             {
-                part3.transform.DOScale(new Vector3(ScaleAmmounts, ScaleAmmounts, ScaleAmmounts), .3f);
+                part3.transform.DOScale(new Vector3(ScaleAmmounts + .2f, ScaleAmmounts + .2f, ScaleAmmounts + .2f), .3f);
             }
 
         }
