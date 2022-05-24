@@ -115,7 +115,7 @@ anim.transform.localScale.y + ScaleAmmounts
         {
             if (other.gameObject.CompareTag("Blue"))
             {
-                MMVibrationManager.Haptic(HapticTypes.MediumImpact); DoorSizeDownRoutine();
+                MMVibrationManager.Haptic(HapticTypes.MediumImpact); DoorSizeDownRoutine(); Baby.transform.DOLocalMoveY(1.06f, 0); 
 
             }
             if (other.gameObject.CompareTag("Black"))
