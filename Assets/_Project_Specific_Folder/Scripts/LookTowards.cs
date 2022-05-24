@@ -123,9 +123,13 @@ anim.transform.localScale.y + ScaleAmmounts
                 other.transform.GetChild(0).gameObject.SetActive(false); other.transform.GetChild(01).gameObject.SetActive(false);
                 other.transform.GetChild(02).gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
             }
-
+            if (other.gameObject.CompareTag("Special")){
+                ToBabys(); Baby.transform.DOLocalRotate(new Vector3(0, 0, 0), 0); Destroy(other.gameObject);
+            }
 
         }
+
+
         if (Type == eType.Hero1)
         {
             if (other.gameObject.CompareTag("Hero1c"))
@@ -173,7 +177,11 @@ anim.transform.localScale.y + ScaleAmmounts
                 }
             }
 
-
+            if (other.gameObject.CompareTag("Special")){
+                ToBabys();
+                Baby.transform.DOLocalRotate(new Vector3(-90, 0, 0), 0);
+                Destroy(other.gameObject);
+            }
         }
         if (Type == eType.Hero2)
         {
@@ -244,6 +252,47 @@ anim.transform.localScale.y - ScaleAmmounts
 
     
 }
+    void ToBabys()
+    {
+//        Baby.GetComponent<MySDK.SimpleRotator>().enabled = true;
+//        BFX.gameObject.SetActive(true);
+//        Baby.transform.DOScale(new Vector3(Baby.transform.localScale.x - BbayScale,
+//                     Baby.transform.localScale.y - BbayScale
+//                      , Baby.transform.localScale.z - BbayScale
+//                      ), .3f).SetEase(Ease.InOutBounce).OnComplete(() => {
+//                          GameManager.Instance.p.MaxSpeed = 1.5f;
+//                          anim.transform.GetChild(0).gameObject.SetActive(true); anim.transform.GetChild(1).gameObject.SetActive(true);
+//                          Baby.SetActive(false);
+//                          BFX.gameObject.SetActive(false);
+//                          anim.transform.DOScale(new Vector3(anim.transform.localScale.x - ScaleAmmounts,
+//anim.transform.localScale.y - ScaleAmmounts
+//, anim.transform.localScale.z - ScaleAmmounts
+//), .3f);
+//                      });
+
+        BFX.gameObject.SetActive(true);
+        anim.transform.DOScale(new Vector3(anim.transform.localScale.x - ScaleAmmounts,
+anim.transform.localScale.y - ScaleAmmounts
+, anim.transform.localScale.z - ScaleAmmounts
+), .3f).OnComplete(() => {
+    anim.transform.GetChild(0).gameObject.SetActive(false); anim.transform.GetChild(1).gameObject.SetActive(false);
+    BFX.gameObject.SetActive(false);
+    Baby.SetActive(true);
+    GameManager.Instance.p.MaxSpeed = .5f;
+    Baby.transform.DOScale(new Vector3(Baby.transform.localScale.x + BbayScale,
+                    Baby.transform.localScale.y + BbayScale
+                     , Baby.transform.localScale.z + BbayScale
+                     ), .3f).SetEase(Ease.InOutBounce); Baby.GetComponent<MySDK.SimpleRotator>().enabled = false;
+});
+
+
+
+
+    }
+
+
+
+
     public IEnumerator EvolveEffectRoutine()
     {
     
