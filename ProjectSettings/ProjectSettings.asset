@@ -154,6 +154,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.manabreak.swophero
+    iPhone: com.manabreak.swophero
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -691,8 +692,8 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
     1: ODIN_INSPECTOR;ODIN_INSPECTOR_3
-    4: HOMA_BELLY
-    7: ODIN_INSPECTOR;ODIN_INSPECTOR_3;MOREMOUNTAINS_NICEVIBRATIONS;HOMA_BELLY
+    4: HOMA_BELLY;HOMA_BELLY_EDITOR_ANALYTICS_ENABLED;HOMA_DEVELOPMENT;HOMA_BELLY_DEBUG_CLASS_OVERRIDE_ENABLED;HOMA_BELLY_DEFAULT_ANALYTICS_ENABLED
+    7: ODIN_INSPECTOR;ODIN_INSPECTOR_3;MOREMOUNTAINS_NICEVIBRATIONS;HOMA_BELLY;HOMA_BELLY_EDITOR_ANALYTICS_ENABLED;HOMA_DEVELOPMENT;HOMA_BELLY_DEBUG_CLASS_OVERRIDE_ENABLED;HOMA_BELLY_DEFAULT_ANALYTICS_ENABLED
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
