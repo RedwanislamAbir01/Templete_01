@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectileSpeed: 6
-  DestroyTime: 5
+  DestroyTime: 3
   HitVFX: {fileID: 0}
   CrystalSpread: {fileID: 0}
   DestroyVFX: {fileID: 0}
