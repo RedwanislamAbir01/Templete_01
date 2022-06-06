@@ -81,6 +81,11 @@ public class Collsion : MonoBehaviour
 
             StartCoroutine(GetOnCarRoutine(other.gameObject));
         }
+        if (other.gameObject.CompareTag("Exit"))
+        {
+            other.gameObject.GetComponent<Collider>().enabled = false;
+            StartCoroutine(OnExitRoutine());
+        }
         if (other.gameObject.CompareTag("FinishLine"))
         {
           
@@ -129,7 +134,7 @@ public class Collsion : MonoBehaviour
             Camera.main.transform.DOLocalMove(camStartPos, .2f);
             Camera.main.transform.DOLocalRotate(camStartRot.eulerAngles, .2f);
             Flying = false;
-            GetComponent<CircularMovement>().RotationSpeed = 1.3f;
+          
             BatCape.transform.DOLocalRotate(StartCapeRot, .2f);
             BatCape.transform.DOLocalMove(StartCapePos, .01f);
             Hero2Model.transform.DOLocalMove(Hero2ModelPos, .1f);
@@ -143,8 +148,8 @@ public class Collsion : MonoBehaviour
             {
                 Camera.main.transform.GetChild(0).gameObject.SetActive(false);
                 Shadow1.gameObject.SetActive(true); Shadow2.gameObject.SetActive(true); Connector.gameObject.SetActive(true);
-                Target.GetComponent<CircularMovement>().RotationSpeed = 1.3f;
-                GetComponent<CircularMovement>().RotationSpeed = 1.3f;
+              
+         
                 Hero1.GetComponent<LookTowards>().enabled = true; Hero2.GetComponent<LookTowards>().enabled = true;
 
             });
@@ -159,7 +164,7 @@ public class Collsion : MonoBehaviour
         Camera.main.transform.DOLocalRotate(new Vector3(17.66f , -.031f , -.089f), .2f);
         GameManager.Instance.p.MaxSpeed += SpeedIncreasAmmount;
         Flying = true;
-        GetComponent<CircularMovement>().RotationSpeed = 0;
+       
         Hero1.GetComponent<LookTowards>().enabled = false;
         Hero2.GetComponent<LookTowards>().enabled = false;
 
@@ -169,8 +174,7 @@ public class Collsion : MonoBehaviour
         transform.DOLocalRotate(new Vector3(0, 0, 0), 0);
         Target.transform.DOLocalRotate(new Vector3(0, 0, 0), 0);
         Hero1.transform.DOLocalRotate(new Vector3(0, -0, 0), 0f); Hero2.transform.DOLocalRotate(new Vector3(0, -0, 0), 0f);
-        GetComponent<CircularMovement>().RotationSpeed = 0;
-        Target.GetComponent<CircularMovement>().RotationSpeed = 0;
+
         Hero1.transform.DOLocalMoveY(5.98f, .3f);
         Hero1.transform.DOLocalMoveX(0, .3f);
         Hero2Model.GetComponent<Animator>().SetBool("Hang", true);
@@ -316,7 +320,7 @@ public class Collsion : MonoBehaviour
     public IEnumerator GetOnCarRoutine(GameObject obj)
     {
      
-        transform.GetComponent<Controller>().enabled = true;
+     
         transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
         Target.transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
         transform.DOLocalMove(new Vector3(0, 0.88f, 0), .2f);
@@ -325,6 +329,7 @@ public class Collsion : MonoBehaviour
         Hero1.transform.DOLocalMove(H1start, .1f);
         Hero2.transform.DOLocalMove(H2Start, .1f);
         yield return new WaitForSeconds(.1f);
+        GameManager.Instance.p.enabled = false;
         Hero2.transform.DOLocalRotate(new Vector3(0, 0, 0), 0f); Hero1.transform.DOLocalRotate(new Vector3(0, 0, 0), 0f);
       
         GameManager.Instance.BatMobile.transform.GetComponent<Animator>().Play("Open");
@@ -333,17 +338,18 @@ public class Collsion : MonoBehaviour
         GameManager.Instance.BatMobile.transform.parent = GameManager.Instance.p.transform.GetChild(0);
         Hero2.transform.DOJump(GameManager.Instance.BatMobile.transform.position, .5f, 1, .4f);
         yield return new WaitForSeconds(.1f);
-
+        GameManager.Instance.p.enabled = true;
         Hero1.transform.DOJump(GameManager.Instance.BatMobile.transform.position, .5f, 1, .5f).OnComplete(() => {
-
+            transform.GetComponent<Controller>().enabled = true;
             GameManager.Instance.BatMobile.transform.GetComponent<Animator>().Play("Close");
             Hero2.gameObject.SetActive(false);
             Hero1.gameObject.SetActive(false);
             GameManager.Instance.BatMobile.transform.DOLocalRotate(new Vector3(0, -90f, 0), .3f).OnComplete(() => {
 
-                transform.GetComponent<CircularMovement>().enabled = true;
+               
                 GameManager.Instance.BatMobile.transform.GetComponent<Animator>().Play("Driving");
-                GameManager.Instance.p.MaxSpeed = 9; Camera.main.transform.GetChild(0).gameObject.SetActive(true);
+                GameManager.Instance.p.MaxSpeed = 9;
+                Camera.main.transform.GetChild(0).gameObject.SetActive(true);
             });
         });
         GameManager.Instance.ZoomEffect();
@@ -352,6 +358,67 @@ public class Collsion : MonoBehaviour
         Hero1Model.GetComponent<Animator>().SetTrigger("Jump");
         Hero2Model.GetComponent<Animator>().SetTrigger("Jump");
 
+
+    }
+    public IEnumerator OnExitRoutine()
+    {
+        transform.GetComponent<Controller>().enabled = false;
+        Camera.main.transform.GetChild(0).gameObject.SetActive(false);
+        //  GameManager.Instance.p.MaxSpeed -= SpeedIncreasAmmount;
+        GameManager.Instance.p.speed = 0;
+        GameManager.Instance.p.MaxSpeed = 0; GameManager.Instance.p.MinSpeed = 0; GameManager.Instance.p.IncreazseMultiplier = 0;
+        GameManager.Instance.BatMobile.transform.DORotate(new Vector3(0, 54.4f, 0), .5f).OnComplete(() =>
+        {
+            GameManager.Instance.BatMobile.transform.GetComponent<Animator>().Play("Open");
+            GameManager.Instance.Bat.transform.GetComponent<Animator>().Play("Open");
+        });
+
+        // GameManager.Instance.BatMobile.transform.DOLocalMoveZ(11.7f, .8f).OnComplete(() =>
+        //   {
+
+        // GameManager.Instance.BatMobile.gameObject.SetActive(false);
+        // });
+        yield return new WaitForSeconds(1.5f);
+        Hero1.SetActive(true); Hero2.SetActive(true);
+        //  GameManager.Instance.Fly.Stop();
+
+
+        Camera.main.transform.DOLocalMove(camStartPos, .2f);
+        Camera.main.transform.DOLocalRotate(camStartRot.eulerAngles, .2f);
+
+
+        BatCape.transform.DOLocalRotate(StartCapeRot, .2f);
+        BatCape.transform.DOLocalMove(StartCapePos, .01f);
+        Hero2Model.transform.DOLocalMove(Hero2ModelPos, .1f);
+        Hero1Model.GetComponent<Animator>().SetTrigger("Jump"); Hero2Model.GetComponent<Animator>().SetTrigger("Jump");
+        Target.transform.DOLocalMoveX(0, .1f);
+        transform.DOLocalMoveX(0, .1f);
+        GetComponent<Controller>().enabled = false;
+
+        //Target.transform.GetChild(0).DOLocalMove(new Vector3(H1start.x, H1start.y, H1start.z + 10), .3f);
+        Target.transform.GetChild(01).transform.DOLocalMove(H2Start, .3f);
+
+        Hero1.transform.DOLocalJump(new Vector3(H1start.x, H1start.y, H1start.z + 10), .5f, 1, .3f);
+        GameManager.Instance.BatMobile.transform.DOLocalMove(new Vector3(0, .21f, 0), .3f);
+        transform.DOLocalMoveZ(5.6f, .3f);
+        Hero2.transform.DOLocalJump(new Vector3(H2Start.x, H2Start.y, H2Start.z + 10), .5f, 1, .3f).OnComplete(() =>
+        {
+            Hero1.transform.DOLocalMoveZ(0, .3f); Hero2.transform.DOLocalMoveZ(0, .3f);
+            Camera.main.transform.DOLocalMoveZ(-14.25f, .3f);
+            GameManager.Instance.BatMobile.transform.parent = null;
+            GameManager.Instance.p.speed = 1;
+            GameManager.Instance.p.MaxSpeed = 3;
+            Hero1Model.GetComponent<Animator>().Play("Run"); Hero2Model.GetComponent<Animator>().Play("Run");
+
+            Shadow1.gameObject.SetActive(true); Shadow2.gameObject.SetActive(true);
+            //Connector.transform.DOLocalMove(new Vector3(-0.18f, .21f,10), 0f);
+            Connector.gameObject.SetActive(true);
+        
+
+            Hero1.GetComponent<LookTowards>().enabled = true; Hero2.GetComponent<LookTowards>().enabled = true;
+
+        }
+        );
 
     }
 }

@@ -199,19 +199,23 @@ public class EndDetector : MonoBehaviour
 
         GameObject g = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
         g.transform.DOLocalRotate(new Vector3(0, 1, 0), 0);
-        GameObject g1 = Instantiate(Projectile, SpwanPoint1.position, Quaternion.identity);
+        GameObject g1 = Instantiate(Projectile, SpwanPoint1.position, Quaternion.identity); g1.GetComponent<Collider>().enabled = false;
         g1.transform.DOLocalRotate(new Vector3(0, -1, 0), 0);
         StartCoroutine(SpriteOnOff());
         yield return new WaitForSeconds(.2f);
         GameObject g2 = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+        g2.GetComponent<Collider>().enabled = false;
         g2.transform.DOLocalRotate(new Vector3(0, 1, 0), 0);
         GameObject g3 = Instantiate(Projectile, SpwanPoint1.position, Quaternion.identity);
+        g3.GetComponent<Collider>().enabled = false;
         g3.transform.DOLocalRotate(new Vector3(0, -1, 0), 0);
         StartCoroutine(SpriteOnOff());
         yield return new WaitForSeconds(.2f);
         GameObject g4 = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+        g4.GetComponent<Collider>().enabled = false;
         g4.transform.DOLocalRotate(new Vector3(0, 1, 0), 0);
         GameObject g5 = Instantiate(Projectile, SpwanPoint1.position, Quaternion.identity);
+        g5.GetComponent<Collider>().enabled = false;
         g5.transform.DOLocalRotate(new Vector3(0, -1, 0), 0);
         StartCoroutine(SpriteOnOff());
 

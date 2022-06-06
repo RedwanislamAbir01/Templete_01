@@ -23,6 +23,7 @@ TagManager:
   - Batmobil
   - Bullet
   - BatCar
+  - Exit
   layers:
   - Default
   - TransparentFX
