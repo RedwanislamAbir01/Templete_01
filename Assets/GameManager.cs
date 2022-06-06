@@ -4,13 +4,18 @@ using UnityEngine;
 using Singleton;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using PathCreation.Examples;
 public class GameManager : Singleton<GameManager>
 {
+    public int WallCollidedWith;
     public bool StartGame;
     public PathCreation.Examples.PathFollower p;
     public GameObject FianlCamPos;
     public bool GameOver , GameEnd;
     public AudioSource Fly;
+
+    GameObject Path; 
+    public PathCreation.PathCreator pathCreator;
 
 
     public Texture[] RoadTextures;
@@ -19,8 +24,17 @@ public class GameManager : Singleton<GameManager>
         p.enabled = false;
         base.Start();
         PlayerPrefs.SetInt("current_scene", SceneManager.GetActiveScene().buildIndex);
+    
     }
-
+    private void Update()
+    {
+        if (Path == null)
+        {
+            Path = GameObject.Find("pathWAY");
+            pathCreator = Path.GetComponent<PathCreation.PathCreator>();
+            Path.GetComponent<RoadMeshCreator>().refresh();
+        }
+    }
     public void Reset()
     {
         StartCoroutine(ResetRoutine());

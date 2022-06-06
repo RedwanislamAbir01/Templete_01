@@ -252,6 +252,7 @@ public class Collsion : MonoBehaviour
         if (UiManager.Instance.timerInitvalue >= 0f && UiManager.Instance.timerInitvalue < 0.2f)
         {
             print("ok");
+   
             DistanceZ = -1.21f;
             Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); Boss2.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit");
             Boss1.transform.DOLocalMoveZ(DistanceZ, .8f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
@@ -293,6 +294,7 @@ public class Collsion : MonoBehaviour
         }
         else if (  UiManager.Instance.timerInitvalue <=0.19f)
         {
+     
             print("ok");
             DistanceZ = -4.4f;
             Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); Boss2.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit");

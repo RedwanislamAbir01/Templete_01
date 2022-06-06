@@ -74,10 +74,11 @@ public class UiManager : Singleton<UiManager>
 
     public void CurrentScoreUpdater()
     {
+        rewardValueTween = RewardValue;
         NormalCoin.text = 0.ToString();
         // Multiplied.text = 0.ToString();
-
-     //   RewardValue = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss>().multiply;
+        int i = RewardValue;
+        RewardValue = GameManager.Instance.WallCollidedWith * i;
         RewardMultiplyValue = 2 * RewardValue;
         DOTween.To(() => rewardValueTween, x => rewardValueTween = x, RewardValue, 1).OnUpdate(UpdateText);
         DOTween.To(() => rewardMultiplyValueTween, x => rewardMultiplyValueTween = x, RewardMultiplyValue, 1)
@@ -88,6 +89,6 @@ public class UiManager : Singleton<UiManager>
     {
         PointText.text = rewardValueTween.ToString();
         NormalCoin.text = rewardValueTween.ToString();
-        Multiplied.text = rewardMultiplyValueTween.ToString();
+       // Multiplied.text = rewardMultiplyValueTween.ToString();
     }
 }
