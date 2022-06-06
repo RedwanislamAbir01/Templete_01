@@ -16,7 +16,7 @@ public class UiManager : Singleton<UiManager>
     int currentLevel;
     int currentLevelText;
 
-    public GameObject StartUI, EndUi, CompleteUI , FadeIn;
+    public GameObject StartUI, EndUi, CompleteUI , FadeIn , UpgradePnael;
     public GameObject TapFastPanel;
 
     public GameObject fillbarTimer;

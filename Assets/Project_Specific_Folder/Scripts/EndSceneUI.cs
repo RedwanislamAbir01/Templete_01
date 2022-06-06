@@ -27,18 +27,7 @@ public class EndSceneUI : MonoBehaviour
     {
         DOTween.KillAll();
         UiManager.Instance.SetTotalScore();
-        string sceneName = currentScene.name;
-        // PlayerPrefs.SetInt("SaveScene", SceneManager.GetActiveScene().buildIndex );
-
-        if (sceneName == "S1 6")
-        {
-            SceneManager.LoadScene(02);
-        }
-        else
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
-        }
+        UiManager.Instance.UpgradePnael.SetActive(true);
 
     }
 
