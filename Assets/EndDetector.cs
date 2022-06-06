@@ -6,15 +6,20 @@ using MoreMountains.NiceVibrations;
 public class EndDetector : MonoBehaviour
 {
     public Animator Anim;
-    public Transform SpawnPoint;
+    public Transform SpawnPoint, SpwanPoint1;
+    public GameObject aa, bb;
     LookTowards lf;
     public GameObject Projectile , Laser;
     public float LaserTime;
     public GameObject Puncher;
     public bool Enable;
-
+    Vector3 StartPos;
+    public ParticleSystem a, b;
+    public bool IsBatMobile;
     private void Start()
     {
+        if (Anim != null)
+            StartPos = Anim.transform.position;
         lf = GetComponentInParent<LookTowards>();
     }
 

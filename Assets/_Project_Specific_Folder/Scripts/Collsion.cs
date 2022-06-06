@@ -76,6 +76,11 @@ public class Collsion : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Car"))
+        {
+
+            StartCoroutine(GetOnCarRoutine(other.gameObject));
+        }
         if (other.gameObject.CompareTag("FinishLine"))
         {
           
@@ -305,5 +310,48 @@ public class Collsion : MonoBehaviour
         }
         yield return new WaitForSeconds(5f);
         UiManager.Instance.CompleteUI.SetActive(true);
+    }
+
+
+    public IEnumerator GetOnCarRoutine(GameObject obj)
+    {
+     
+        transform.GetComponent<Controller>().enabled = true;
+        transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
+        Target.transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
+        transform.DOLocalMove(new Vector3(0, 0.88f, 0), .2f);
+
+        Connector.SetActive(false);
+        Hero1.transform.DOLocalMove(H1start, .1f);
+        Hero2.transform.DOLocalMove(H2Start, .1f);
+        yield return new WaitForSeconds(.1f);
+        Hero2.transform.DOLocalRotate(new Vector3(0, 0, 0), 0f); Hero1.transform.DOLocalRotate(new Vector3(0, 0, 0), 0f);
+      
+        GameManager.Instance.BatMobile.transform.GetComponent<Animator>().Play("Open");
+        GameManager.Instance.BatMobile.transform.DOLocalMoveX(0, .3f);
+        GameManager.Instance.p.transform.GetComponentInChildren<CircularMovement>().enabled = false;
+        GameManager.Instance.BatMobile.transform.parent = GameManager.Instance.p.transform.GetChild(0);
+        Hero2.transform.DOJump(GameManager.Instance.BatMobile.transform.position, .5f, 1, .4f);
+        yield return new WaitForSeconds(.1f);
+
+        Hero1.transform.DOJump(GameManager.Instance.BatMobile.transform.position, .5f, 1, .5f).OnComplete(() => {
+
+            GameManager.Instance.BatMobile.transform.GetComponent<Animator>().Play("Close");
+            Hero2.gameObject.SetActive(false);
+            Hero1.gameObject.SetActive(false);
+            GameManager.Instance.BatMobile.transform.DOLocalRotate(new Vector3(0, -90f, 0), .3f).OnComplete(() => {
+
+                transform.GetComponent<CircularMovement>().enabled = true;
+                GameManager.Instance.BatMobile.transform.GetComponent<Animator>().Play("Driving");
+                GameManager.Instance.p.MaxSpeed = 9; Camera.main.transform.GetChild(0).gameObject.SetActive(true);
+            });
+        });
+        GameManager.Instance.ZoomEffect();
+        Camera.main.transform.DOLocalMoveZ(5f, 1.5f);
+
+        Hero1Model.GetComponent<Animator>().SetTrigger("Jump");
+        Hero2Model.GetComponent<Animator>().SetTrigger("Jump");
+
+
     }
 }

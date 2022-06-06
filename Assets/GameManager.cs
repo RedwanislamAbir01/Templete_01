@@ -16,7 +16,7 @@ public class GameManager : Singleton<GameManager>
 
     GameObject Path; 
     public PathCreation.PathCreator pathCreator;
-
+    public GameObject BatMobile, Bat;
 
     public Texture[] RoadTextures;
     public override void Start()
