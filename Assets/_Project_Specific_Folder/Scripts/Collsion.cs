@@ -329,7 +329,7 @@ public class Collsion : MonoBehaviour
       
         GameManager.Instance.BatMobile.transform.GetComponent<Animator>().Play("Open");
         GameManager.Instance.BatMobile.transform.DOLocalMoveX(0, .3f);
-        GameManager.Instance.p.transform.GetComponentInChildren<CircularMovement>().enabled = false;
+       
         GameManager.Instance.BatMobile.transform.parent = GameManager.Instance.p.transform.GetChild(0);
         Hero2.transform.DOJump(GameManager.Instance.BatMobile.transform.position, .5f, 1, .4f);
         yield return new WaitForSeconds(.1f);

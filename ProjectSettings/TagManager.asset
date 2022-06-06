@@ -19,6 +19,10 @@ TagManager:
   - Boss
   - FinishLine
   - Cash
+  - Car
+  - Batmobil
+  - Bullet
+  - BatCar
   layers:
   - Default
   - TransparentFX

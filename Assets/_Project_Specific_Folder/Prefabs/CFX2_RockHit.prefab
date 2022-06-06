@@ -18679,7 +18679,6 @@ GameObject:
   - component: {fileID: 4848068539790074053}
   - component: {fileID: 4725992952316115205}
   - component: {fileID: 4725095812232476665}
-  - component: {fileID: 4810038166000332763}
   m_Layer: 0
   m_Name: CFX2_RockHit
   m_TagString: FxTemporaire
@@ -23403,16 +23402,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &4810038166000332763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4851845360303099115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fd2e8874f60266498a388d7229a1bac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnlyDeactivate: 0
