@@ -150,6 +150,8 @@ namespace PathCreation.Examples {
 
         void AssignMaterials () {
             if (roadMaterial != null && undersideMaterial != null) {
+                int i = Random.Range(0, GameManager.Instance.RoadTextures.Length);
+                roadMaterial.mainTexture = GameManager.Instance.RoadTextures[i];
                 meshRenderer.sharedMaterials = new Material[] { roadMaterial, undersideMaterial, undersideMaterial };
                 meshRenderer.sharedMaterials[0].mainTextureScale = new Vector3 (1, textureTiling);
             }

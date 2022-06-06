@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Controller : MonoBehaviour
+public class Controller1 : MonoBehaviour
 {
     public enum State
     {
@@ -136,7 +136,7 @@ public class Controller : MonoBehaviour
             else if (touch.phase == TouchPhase.Moved)       //if finger moves while touching the screen
             {
                 float deltaX = initTouch.position.x - touch.position.x;
-                positionX -= (-deltaX / (float)Screen.width) / Time.deltaTime * speed * dir;
+                positionX -= (deltaX / (float)Screen.width) / Time.deltaTime * speed * dir;
                 positionX = Mathf.Clamp(positionX, -6, 6);      //to set the boundaries of the player's position
 
                 transform.localPosition = new Vector3(positionX, positionY, 0f);
@@ -151,7 +151,7 @@ public class Controller : MonoBehaviour
 
         //if you play on computer---------------------------------
 
-        x = -Input.GetAxis("Horizontal") * Time.deltaTime * 15;
+        x = Input.GetAxis("Horizontal") * Time.deltaTime * 15;
         //you can move by pressing 'a' - 'd' or the arrow keys
         Vector3 newPosition = rb.transform.localPosition + Vector3.right * x;
 

@@ -11,7 +11,9 @@ public class GameManager : Singleton<GameManager>
     public GameObject FianlCamPos;
     public bool GameOver , GameEnd;
     public AudioSource Fly;
-  
+
+
+    public Texture[] RoadTextures;
     public override void Start()
     {
         p.enabled = false;
@@ -33,7 +35,7 @@ public class GameManager : Singleton<GameManager>
     }
     public void StartIt()
     {
-     
+        UiManager.Instance.IncreasePoints(0);
         ChracterSetUp();
         UiManager.Instance.StartUI.SetActive(false);
         StartGame = true;

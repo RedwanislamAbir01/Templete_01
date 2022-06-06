@@ -3,7 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Carnivorous
+  - Creature
+  - Hero2c
+  - Herbivorous
+  - EndDetect
+  - FxTemporaire
+  - Hero1c
+  - Land
+  - Blue
+  - Black
+  - Enemy
+  - Wall
+  - Boss
+  - FinishLine
+  - Cash
   layers:
   - Default
   - TransparentFX

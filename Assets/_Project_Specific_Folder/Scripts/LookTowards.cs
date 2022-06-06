@@ -31,11 +31,7 @@ public class LookTowards : MonoBehaviour
     }
 
 
-    private void LateUpdate()
-    {
-      
-            transform.LookAt(Target.transform.position);
-    }
+
     public IEnumerator OnlyRedScreenRoutine()
     {
         //anim.SetBool("Injured", true);
@@ -85,7 +81,11 @@ anim.transform.localScale.y + ScaleAmmounts
     private void OnTriggerEnter(Collider other)
     {
        
-
+        if(other.gameObject.CompareTag("Cash"))
+        {
+            UiManager.Instance.IncreasePoints(10); other.transform.GetChild(0).gameObject.SetActive(true);
+             other.transform.GetComponent<Collider>().enabled = false; other.transform.GetComponent<MeshRenderer>().enabled = false;
+        }
 
 
         if (Type == eType.Hero1)

@@ -14,7 +14,7 @@ public class EndSceneUI : MonoBehaviour
     public void Reset1()
     {
         DOTween.KillAll();
-      
+        UiManager.Instance.SetTotalScore();
         string sceneName = currentScene.name;
         // PlayerPrefs.SetInt("SaveScene", SceneManager.GetActiveScene().buildIndex );
 

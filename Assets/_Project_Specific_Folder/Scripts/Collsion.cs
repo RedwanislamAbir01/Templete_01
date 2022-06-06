@@ -100,7 +100,7 @@ public class Collsion : MonoBehaviour
             transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
             Target.transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
             transform.DOLocalMove(new Vector3(0, 0.88f, 0), .2f);
-            transform.GetComponent<CircularMovement>().enabled = false;
+            //transform.GetComponent<Controller>().enabled = false;
 
             StartCoroutine(TapFastOff());
         }
