@@ -5,6 +5,7 @@ using Singleton;
 using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 public class UiManager : Singleton<UiManager>
 {
     public TMP_Text LevelText, CoinText, PointText, totalText, NormalCoin, BonusText;
@@ -22,12 +23,17 @@ public class UiManager : Singleton<UiManager>
     public GameObject fillbarTimer;
     public Image Timer;
     public float timerInitvalue;
-
+    int _currentLevel;
     public override void Start()
     {
         base.Start();
         GetTotalScore();
-        LevelText.text = SceneLoadCounter.Instance.SceneLoadCount.ToString();
+        _currentLevel = PlayerPrefs.GetInt("current_scene");
+        currentLevelText = PlayerPrefs.GetInt("current_scene_text", 0);
+        if (LevelText != null)
+        {
+            LevelText.text = "Level "+ (currentLevelText + 1).ToString();
+        }
     }
     public void UpdateTotalCoin()
     {
@@ -90,5 +96,33 @@ public class UiManager : Singleton<UiManager>
         PointText.text = rewardValueTween.ToString();
         NormalCoin.text = rewardValueTween.ToString();
        // Multiplied.text = rewardMultiplyValueTween.ToString();
+    }
+    public void NextCallBack()
+    {
+        DOTween.KillAll();
+        UiManager.Instance.SetTotalScore();
+        UiManager.Instance.UpgradePnael.SetActive(true);
+
+        if (_currentLevel + 1 >= GameManager.Instance.LevelPrefabs.Count)
+        {
+            PlayerPrefs.SetInt("current_scene", 0);
+            print("reload");
+
+        }
+        else
+        {
+            print("next");
+            PlayerPrefs.SetInt("current_scene", _currentLevel + 1);
+
+        }
+        PlayerPrefs.SetInt("current_scene_text", currentLevelText + 1);
+
+
+        //   StorageManager.Instance.SetTotalScore();
+    }
+
+    public void Next()
+    {
+        SceneManager.LoadScene("main");
     }
 }

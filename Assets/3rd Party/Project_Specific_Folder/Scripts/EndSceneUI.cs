@@ -23,16 +23,5 @@ public class EndSceneUI : MonoBehaviour
     }
 
 
-    public void Reset1()
-    {
-        DOTween.KillAll();
-        UiManager.Instance.SetTotalScore();
-        UiManager.Instance.UpgradePnael.SetActive(true);
 
-    }
-
-    public void Reload()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
 }

@@ -7,24 +7,46 @@ using DG.Tweening;
 using PathCreation.Examples;
 public class GameManager : Singleton<GameManager>
 {
+
+    [Header("Level prefabs List")]
+    public List<GameObject> LevelPrefabs = new List<GameObject>();
+
+    public int levelNo;
+    public GameObject currentLvlPrefab;
+    GameObject Path;
+    public PathCreation.PathCreator pathCreator;
+    public PathCreation.Examples.PathFollower p;
+
+
     public int WallCollidedWith;
     public bool StartGame;
-    public PathCreation.Examples.PathFollower p;
+
     public GameObject FianlCamPos;
     public bool GameOver , GameEnd;
     public AudioSource Fly;
 
-    GameObject Path; 
-    public PathCreation.PathCreator pathCreator;
+
     public GameObject BatMobile, Bat;
 
     public Texture[] RoadTextures;
+
+    int SavedLevelNo;
     public override void Start()
     {
+        /*#if UNITY_EDITOR
+
+                levelNo = amarIcchaLevel;
+                PlayerPrefs.SetInt("current_scene", levelNo);
+
+        #endif*/
+        SavedLevelNo = PlayerPrefs.GetInt("current_scene_text", 0);
+        UiManager.Instance.LevelText.text = (SavedLevelNo + 1).ToString();
+        int currentLevel = PlayerPrefs.GetInt("current_scene");
         p.enabled = false;
         base.Start();
-        PlayerPrefs.SetInt("current_scene", SceneManager.GetActiveScene().buildIndex);
-    
+        LoadLvlPrefab();
+        p.GetComponentInChildren<Collsion>().Boss1 = GameObject.FindGameObjectWithTag("Boss");
+        BatMobile= GameObject.FindGameObjectWithTag("Batmobil");
     }
     private void Update()
     {
@@ -74,5 +96,15 @@ public class GameManager : Singleton<GameManager>
         Camera.main.DOFieldOfView(58, 1); 
         yield return new WaitForSeconds(1);
         Camera.main.DOFieldOfView(70, .5f);
+    }
+    public void LoadLvlPrefab()
+    {
+
+        levelNo = PlayerPrefs.GetInt("current_scene", 0);
+
+
+        currentLvlPrefab = Instantiate(SuperCop.Scripts.LevelPrefabManager.Instance.GetCurrentLevelPrefab());
+
+
     }
 }

@@ -24,6 +24,7 @@ TagManager:
   - Bullet
   - BatCar
   - Exit
+  - Bike
   layers:
   - Default
   - TransparentFX

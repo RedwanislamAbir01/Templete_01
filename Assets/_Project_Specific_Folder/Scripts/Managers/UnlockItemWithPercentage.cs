@@ -107,20 +107,8 @@ namespace ItemCollection.GameEndUnlockItem
 
         private void NextCallBack()
         {
-            DOTween.KillAll();
-            UiManager.Instance.SetTotalScore();
-            string sceneName = currentScene.name;
-            // PlayerPrefs.SetInt("SaveScene", SceneManager.GetActiveScene().buildIndex );
-
-            if (sceneName == "S1 6")
-            {
-                SceneManager.LoadScene(02);
-            }
-            else
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
-            }
+  
+            SceneManager.LoadScene("main");
             //    UiManager.Instance.LoadSelectionMenu();
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }

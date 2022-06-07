@@ -18,7 +18,7 @@ public class Collsion : MonoBehaviour
     public GameObject Sphere, Sphere1;
     public GameObject Bazooka;
     public GameObject BatCape;
-    public GameObject Boss1, Boss2;
+    public GameObject Boss1;
     float DistanceZ;
     public Ease ease;
     public GameObject TargetCapePos;
@@ -263,54 +263,54 @@ public class Collsion : MonoBehaviour
             print("ok");
    
             DistanceZ = -1.21f;
-            Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); Boss2.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit");
+            Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); 
             Boss1.transform.DOLocalMoveZ(DistanceZ, .8f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
             Camera.main.transform.parent = Boss1.transform;
       
-            Boss2.transform.DOLocalMoveZ(DistanceZ, .6f).SetEase(ease).OnComplete(() => { Boss2.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
+        
         }
         else if (UiManager.Instance.timerInitvalue >= 0.2f && UiManager.Instance.timerInitvalue < 0.4f)
         {
             Camera.main.transform.parent = Boss1.transform;
             Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit");
-            Boss2.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit");
+        
             print("good");
             DistanceZ = 5.86f;
             Boss1.transform.DOLocalMoveZ(DistanceZ, 1.3f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
-            Boss2.transform.DOLocalMoveZ(DistanceZ, .8f).SetEase(ease).OnComplete(() => { Boss2.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
+           
         }
         else if (UiManager.Instance.timerInitvalue >= 0.4f && UiManager.Instance.timerInitvalue < 0.6f)
         {
             Camera.main.transform.parent = Boss1.transform;
-            Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); Boss2.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit");
+            Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); 
             print("nice"); DistanceZ = 13.33f; Boss1.transform.DOLocalMoveZ(DistanceZ, 1.5f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
-            Boss2.transform.DOLocalMoveZ(DistanceZ, 1.5f).SetEase(ease).OnComplete(() => { Boss2.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
+          
         }
         else if (UiManager.Instance.timerInitvalue >= 0.6f && UiManager.Instance.timerInitvalue < 0.8f)
         {
             Camera.main.transform.parent = Boss1.transform;
-            Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); Boss2.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit");
+            Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); 
             print("awesome"); DistanceZ = 20.88f; Boss1.transform.DOLocalMoveZ(DistanceZ, 2f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
-            Boss2.transform.DOLocalMoveZ(DistanceZ, 2f).SetEase(ease).OnComplete(() => { Boss2.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
+           
         }
         else if (UiManager.Instance.timerInitvalue >= 0.8f)
         {
             Camera.main.transform.parent = Boss1.transform;
-            Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); Boss2.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit");
+            Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); 
             print("perfect"); DistanceZ = 28.72f;
             Boss1.transform.DOLocalMoveZ(DistanceZ,2.8f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
-            Boss2.transform.DOLocalMoveZ(DistanceZ,2.8f).SetEase(ease).OnComplete(() => { Boss2.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
+           
         }
         else if (  UiManager.Instance.timerInitvalue <=0.19f)
         {
      
             print("ok");
             DistanceZ = -4.4f;
-            Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); Boss2.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit");
+            Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); 
             Boss1.transform.DOLocalMoveZ(DistanceZ, .8f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
             Camera.main.transform.parent = Boss1.transform;
 
-            Boss2.transform.DOLocalMoveZ(DistanceZ, .6f).SetEase(ease).OnComplete(() => { Boss2.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
+
         }
         yield return new WaitForSeconds(5f);
         UiManager.Instance.CompleteUI.SetActive(true);
@@ -324,8 +324,7 @@ public class Collsion : MonoBehaviour
         transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
         Target.transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
         transform.DOLocalMove(new Vector3(0, 0.88f, 0), .2f);
-
-        Connector.SetActive(false);
+        Camera.main.transform.DOLocalMoveZ(5.87f, 1f);
         Hero1.transform.DOLocalMove(H1start, .1f);
         Hero2.transform.DOLocalMove(H2Start, .1f);
         yield return new WaitForSeconds(.1f);
@@ -386,7 +385,9 @@ public class Collsion : MonoBehaviour
         GameManager.Instance.BatMobile.transform.DORotate(new Vector3(0, 54.4f, 0), .5f).OnComplete(() =>
         {
             GameManager.Instance.BatMobile.transform.GetComponent<Animator>().Play("Open");
-            GameManager.Instance.Bat.transform.GetComponent<Animator>().Play("Open");
+            GameManager.Instance.BatMobile.GetComponent<BatGrade>().part1.transform.GetComponent<Animator>().Play("Open");
+            GameManager.Instance.BatMobile.GetComponent<BatGrade>().part2.transform.GetComponent<Animator>().Play("Open");
+            GameManager.Instance.BatMobile.GetComponent<BatGrade>().part3.transform.GetComponent<Animator>().Play("Open");
         });
 
         yield return new WaitForSeconds(1.5f); GameManager.Instance.BatMobile.transform.parent = null;
