@@ -329,6 +329,7 @@ public class Collsion : MonoBehaviour
 
     public IEnumerator GetOnBikeRoutine(GameObject g)
     {
+        transform.GetComponent<CarController>().Control = CarController.eControl.Bike;
         transform.DOLocalRotate(new Vector3(-25, transform.localEulerAngles.y, transform.localEulerAngles.z), .5f);
         BatCape.gameObject.SetActive(false);
         Hero1.transform.GetComponent<Controller>().enabled = false;
