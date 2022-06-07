@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5fb44540b2b9cbc47852a64b7912b04e
+guid: 9902f59ab27fc504c978c4cf68d33b86
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
@@ -39,7 +39,7 @@ ModelImporter:
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 1.5
+      lastFrame: 23
       wrapMode: 0
       orientationOffsetY: -50
       level: 0
@@ -104,7 +104,8 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
+  referencedClips:
+  - d97b9775d27f35948a2725b8d9348bd9
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
@@ -526,18 +527,18 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: chr_BatGuyGunplay 1(Clone)
+    - name: chr_BatGuyGunplay(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: chr_Batguy
-      parentName: chr_BatGuyGunplay 1(Clone)
+      parentName: chr_BatGuyGunplay(Clone)
       position: {x: -0, y: -0.00003105876, z: -0.000000039458907}
       rotation: {x: 0.00000006657903, y: -0, z: -0, w: 1}
       scale: {x: 0.610177, y: 0.456458, z: 0.610177}
     - name: mixamorig:Hips
-      parentName: chr_BatGuyGunplay 1(Clone)
+      parentName: chr_BatGuyGunplay(Clone)
       position: {x: -0.0000034466384, y: 0.91630244, z: -0.0000000028616671}
       rotation: {x: -0.000000016891361, y: 1.4350759e-15, z: -0.000000009564021, w: 1}
       scale: {x: 1.0000001, y: 0.99999994, z: 1}
