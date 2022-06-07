@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using DG.Tweening;
 public class CarController : MonoBehaviour
 {
     public enum State
@@ -11,8 +11,8 @@ public class CarController : MonoBehaviour
 
     public enum eControl
     {
-        Dino,
-        Dragon
+        Car,
+        Bike
     }
     public State direction;
     public eControl Control;
@@ -159,8 +159,26 @@ public class CarController : MonoBehaviour
 
         transform.localPosition = newPosition;
         //--------------------------------------------------------
+        if (Control == eControl.Bike)
+        {
+            if (Input.GetAxis("Horizontal") > .1f)
+            {
+                direction = State.right;
+                transform.DOLocalRotate(new Vector3(0, -5, -10), .2f);
+            }
+            if (Input.GetAxis("Horizontal") < -.1f)
+            {
 
+                direction = State.left;
+                transform.DOLocalRotate(new Vector3(0, 5, 10), .2f);
+            }
+            if (Input.GetAxis("Horizontal") == 0)
+            {
 
+                direction = State.middle;
+                transform.DOLocalRotate(new Vector3(0, 0, 0), .3f);
+            }
 
+        }
     }
 }

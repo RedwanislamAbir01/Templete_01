@@ -26,19 +26,21 @@ public class GameManager : Singleton<GameManager>
     public AudioSource Fly;
 
 
-    public GameObject BatMobile, Bat;
+    public GameObject BatMobile,Bike;
 
     public Texture[] RoadTextures;
 
     int SavedLevelNo;
+    [SerializeField] int amarIcchaLevel;
+
     public override void Start()
     {
-        /*#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
                 levelNo = amarIcchaLevel;
                 PlayerPrefs.SetInt("current_scene", levelNo);
 
-        #endif*/
+        #endif
         SavedLevelNo = PlayerPrefs.GetInt("current_scene_text", 0);
         UiManager.Instance.LevelText.text = (SavedLevelNo + 1).ToString();
         int currentLevel = PlayerPrefs.GetInt("current_scene");
@@ -46,7 +48,7 @@ public class GameManager : Singleton<GameManager>
         base.Start();
         LoadLvlPrefab();
         p.GetComponentInChildren<Collsion>().Boss1 = GameObject.FindGameObjectWithTag("Boss");
-        BatMobile= GameObject.FindGameObjectWithTag("Batmobil");
+        BatMobile= GameObject.FindGameObjectWithTag("Batmobil");Bike = GameObject.FindGameObjectWithTag("Bike");
     }
     private void Update()
     {

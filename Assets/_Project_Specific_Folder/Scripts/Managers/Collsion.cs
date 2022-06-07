@@ -81,6 +81,17 @@ public class Collsion : MonoBehaviour
 
             StartCoroutine(GetOnCarRoutine(other.gameObject));
         }
+        if (other.gameObject.CompareTag("Bike"))
+        {
+            other.GetComponent<Collider>().enabled = false;
+            StartCoroutine(GetOnBikeRoutine(other.gameObject));
+
+        }
+        if (other.gameObject.CompareTag("BikeExit"))
+        {
+            other.gameObject.GetComponent<Collider>().enabled = false;
+            StartCoroutine(OnBikeExitRoutine());
+        }
         if (other.gameObject.CompareTag("Exit"))
         {
             other.gameObject.GetComponent<Collider>().enabled = false;
@@ -316,8 +327,76 @@ public class Collsion : MonoBehaviour
         UiManager.Instance.CompleteUI.SetActive(true);
     }
 
+    public IEnumerator GetOnBikeRoutine(GameObject g)
+    {
+        transform.DOLocalRotate(new Vector3(-25, transform.localEulerAngles.y, transform.localEulerAngles.z), .5f);
+        BatCape.gameObject.SetActive(false);
+        Hero1.transform.GetComponent<Controller>().enabled = false;
+        Hero2.transform.GetComponent<Controller1>().enabled = false;
+        g.transform.parent = GameManager.Instance.p.transform.GetChild(0);
+        g.transform.DOLocalMove(new Vector3(0, -0.94f, 4.66f), 0);
+        g.transform.GetChild(1).GetComponentInChildren<MySDK.SimpleRotator>().enabled = true;
+        g.transform.GetChild(2).GetComponentInChildren<MySDK.SimpleRotator>().enabled = true;
+        Hero1.transform.DOLocalMove(new Vector3(0, 2.02f, 2.13f), .15f);
+        Hero2.transform.DOLocalMove(new Vector3(0, 0.64f,  4.66f), .15f);
+        Hero1Model.GetComponent<Animator>().SetTrigger("Ride");
+        Hero2Model.GetComponent<Animator>().SetTrigger("Ride");
+        
+        yield return new WaitForSeconds(.5f);
+      
 
-    public IEnumerator GetOnCarRoutine(GameObject obj)
+        GameManager.Instance.p.MaxSpeed = 5; GameManager.Instance.p.speed = 5; GameManager.Instance.p.IncreazseMultiplier = 5;
+        transform.GetComponent<CarController>().enabled = true;
+        Camera.main.transform.GetChild(0).gameObject.SetActive(true);
+
+
+
+
+    }
+    public IEnumerator OnBikeExitRoutine()
+    {
+       
+        transform.GetComponent<CarController>().enabled = false;
+        Camera.main.transform.GetChild(0).gameObject.SetActive(false);
+        GameManager.Instance.p.speed = 0;
+        GameManager.Instance.p.MaxSpeed = 0; GameManager.Instance.p.MinSpeed = 0;
+        GameManager.Instance.p.IncreazseMultiplier = 0;
+
+
+        yield return new WaitForSeconds(.1f); GameManager.Instance.Bike.transform.parent = null;
+        // Hero1.SetActive(true); Hero2.SetActive(true);
+        //  GameManager.Instance.Fly.Stop();
+
+        BatCape.SetActive(true);
+        Hero1.transform.GetComponent<Controller>().enabled = true;
+        Hero2.transform.GetComponent<Controller1>().enabled = true;
+
+        Hero1Model.GetComponent<Animator>().SetTrigger("Jump");
+        Hero2Model.GetComponent<Animator>().SetTrigger("Jump");
+
+        Camera.main.transform.DOLocalMoveZ(-20f, .3f);
+
+        Hero1.transform.DOLocalMoveX(-3.552f, .3f);
+        Hero2.transform.DOLocalMoveX(3.552f, .3f);
+
+        Hero1.transform.DOLocalMoveZ(0, .3f);
+        Hero2.transform.DOLocalMoveZ(0, .3f);
+
+        DOTween.To(() => GameManager.Instance.p.distanceTravelled, x => GameManager.Instance.p.distanceTravelled = x, GameManager.Instance.p.distanceTravelled + 3, .5f).OnComplete(() =>
+        {
+
+            transform.DOLocalMoveX(0, .1f);
+
+            GameManager.Instance.p.speed = 2.5f;
+            GameManager.Instance.p.MaxSpeed = 2.5f;
+            Hero1Model.GetComponent<Animator>().Play("Run"); Hero2Model.GetComponent<Animator>().Play("Run");
+            Hero1.GetComponent<LookTowards>().enabled = true; Hero2.GetComponent<LookTowards>().enabled = true;
+            transform.DOLocalMove(new Vector3(0, 0, 0), .1f);
+        }
+        ); 
+      
+    }
+        public IEnumerator GetOnCarRoutine(GameObject obj)
     {
      
      
