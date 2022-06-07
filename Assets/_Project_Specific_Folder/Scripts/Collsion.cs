@@ -377,9 +377,9 @@ public class Collsion : MonoBehaviour
     public IEnumerator OnExitRoutine()
     {
         transform.GetComponent<CarController>().enabled = false; 
-       // GameManager.Instance.BatMobile.transform.DOLocalMove(new Vector3(0, .21f, 0), .3f);
+       
         Camera.main.transform.GetChild(0).gameObject.SetActive(false);
-        //  GameManager.Instance.p.MaxSpeed -= SpeedIncreasAmmount;
+
         GameManager.Instance.p.speed = 0;
         GameManager.Instance.p.MaxSpeed = 0; GameManager.Instance.p.MinSpeed = 0; 
         GameManager.Instance.p.IncreazseMultiplier = 0;
@@ -389,12 +389,6 @@ public class Collsion : MonoBehaviour
             GameManager.Instance.Bat.transform.GetComponent<Animator>().Play("Open");
         });
 
-        // GameManager.Instance.BatMobile.transform.DOLocalMoveZ(11.7f, .8f).OnComplete(() =>
-        //   {
-
-        // GameManager.Instance.BatMobile.gameObject.SetActive(false);
-        // });
-
         yield return new WaitForSeconds(1.5f); GameManager.Instance.BatMobile.transform.parent = null;
         Hero1.SetActive(true); Hero2.SetActive(true);
         //  GameManager.Instance.Fly.Stop();
@@ -403,12 +397,15 @@ public class Collsion : MonoBehaviour
        
         Hero1Model.GetComponent<Animator>().SetTrigger("Jump");
         Hero2Model.GetComponent<Animator>().SetTrigger("Jump");
+      
         Camera.main.transform.DOLocalMoveZ(-20f, .3f);
+      
         Hero1.transform.DOLocalMoveX(-3.552f, .3f);
         Hero2.transform.DOLocalMoveX(3.552f, .3f);
+    
         Hero1.transform.DOLocalMoveZ(0, .3f);
         Hero2.transform.DOLocalMoveZ(0, .3f);
-        GetComponent<CarController>().enabled = false;
+      
         DOTween.To(() => GameManager.Instance.p.distanceTravelled, x => GameManager.Instance.p.distanceTravelled = x, GameManager.Instance.p.distanceTravelled + 3, .5f).OnComplete(() =>
         {
            
