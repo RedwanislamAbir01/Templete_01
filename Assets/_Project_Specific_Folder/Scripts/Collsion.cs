@@ -394,7 +394,7 @@ public class Collsion : MonoBehaviour
 
         // GameManager.Instance.BatMobile.gameObject.SetActive(false);
         // });
-        Camera.main.transform.DOLocalMoveZ(1.06f, .5f);
+
         yield return new WaitForSeconds(1.5f); GameManager.Instance.BatMobile.transform.parent = null;
         Hero1.SetActive(true); Hero2.SetActive(true);
         //  GameManager.Instance.Fly.Stop();
@@ -403,19 +403,17 @@ public class Collsion : MonoBehaviour
        
         Hero1Model.GetComponent<Animator>().SetTrigger("Jump");
         Hero2Model.GetComponent<Animator>().SetTrigger("Jump");
-
+        Camera.main.transform.DOLocalMoveZ(-20f, .3f);
+        Hero1.transform.DOLocalMoveX(-3.552f, .3f);
+        Hero2.transform.DOLocalMoveX(3.552f, .3f);
+        Hero1.transform.DOLocalMoveZ(0, .3f);
+        Hero2.transform.DOLocalMoveZ(0, .3f);
         GetComponent<CarController>().enabled = false;
-
-
-        Hero1.transform.DOLocalJump(new Vector3(H1start.x, H1start.y, H1start.z + 40), .5f, 1, .3f);
-
-        transform.DOLocalMoveZ(5.6f, .3f); 
-        Hero2.transform.DOLocalJump(new Vector3(H2Start.x, H2Start.y, H2Start.z + 40), .5f, 1, .3f).OnComplete(() =>
+        DOTween.To(() => GameManager.Instance.p.distanceTravelled, x => GameManager.Instance.p.distanceTravelled = x, GameManager.Instance.p.distanceTravelled + 3, .5f).OnComplete(() =>
         {
-            Camera.main.transform.DOLocalMoveZ(25.66f, .5f);
-            //Hero1.transform.DOLocalMoveZ(0, .3f); Hero2.transform.DOLocalMoveZ(0, .3f);
+           
+            transform.DOLocalMoveX(0, .1f);
 
-         
             GameManager.Instance.p.speed = 2.5f;
             GameManager.Instance.p.MaxSpeed = 2.5f;
             Hero1Model.GetComponent<Animator>().Play("Run"); Hero2Model.GetComponent<Animator>().Play("Run");
@@ -423,6 +421,23 @@ public class Collsion : MonoBehaviour
 
         }
         );
+
+        //Hero1.transform.DOLocalJump(new Vector3(H1start.x, H1start.y, H1start.z + 40), .5f, 1, .3f);
+        ////Camera.main.transform.DOLocalMoveZ(-20f, .3f);
+        //// transform.DOLocalMoveZ(5.6f, .3f); 
+        //Hero2.transform.DOLocalJump(new Vector3(H2Start.x, H2Start.y, H2Start.z + 40), .5f, 1, .3f).OnComplete(() =>
+        //{
+
+        //    Hero1.transform.DOLocalMoveZ(0, .3f); Hero2.transform.DOLocalMoveZ(0, .3f);
+        //    //Camera.main.transform.DOLocalMoveZ(-20f, .3f);
+
+        //    GameManager.Instance.p.speed = 2.5f;
+        //    GameManager.Instance.p.MaxSpeed = 2.5f;
+        //    Hero1Model.GetComponent<Animator>().Play("Run"); Hero2Model.GetComponent<Animator>().Play("Run");
+        //    Hero1.GetComponent<LookTowards>().enabled = true; Hero2.GetComponent<LookTowards>().enabled = true;
+
+        //}
+        //);
 
     }
 }
