@@ -11,6 +11,7 @@ public enum eType
 }
 public class LookTowards : MonoBehaviour
 {
+    public int HeroLevel;
     public Ease ease;
     public float ScaleAmmount = .3f; public float ScaleAmmounts = .15f;
     public ParticleSystem CollectableVFX , PowerVFX;
@@ -34,15 +35,12 @@ public class LookTowards : MonoBehaviour
 
     public IEnumerator OnlyRedScreenRoutine()
     {
-        //anim.SetBool("Injured", true);
-        //GameManager.Instance.p.speed = .75f; GameManager.Instance.p.MaxSpeed = .75f;
+       
         UiManager.Instance.FadeIn.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
-       // anim.SetBool("Injured", false);
+    
         UiManager.Instance.FadeIn.gameObject.SetActive(false);
-       // yield return new WaitForSeconds(1.5f);
 
-     //   GameManager.Instance.p.MaxSpeed = CurrentMaxSpeed;
     }
     public IEnumerator RedScreenRoutine()
     {
@@ -95,7 +93,8 @@ anim.transform.localScale.y + ScaleAmmounts
              //   GameManager.Instance.Reset();
              //   GetComponentInParent<PathCreation.Examples.PathFollower>().enabled = false;
               //  anim.SetTrigger("Death");
-              MMVibrationManager.Haptic(HapticTypes.MediumImpact); DoorSizeDownRoutine();
+              MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+                DoorSizeDownRoutine();
 
             }
             if (other.gameObject.CompareTag("Blue"))
@@ -115,7 +114,8 @@ anim.transform.localScale.y + ScaleAmmounts
             }
             if (other.gameObject.CompareTag("Black"))
             {
-                other.transform.GetChild(0).gameObject.SetActive(false); other.transform.GetChild(01).gameObject.SetActive(false);
+                other.transform.GetChild(0).gameObject.SetActive(false);
+                other.transform.GetChild(01).gameObject.SetActive(false);
                 other.transform.GetChild(02).gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
             }
 
