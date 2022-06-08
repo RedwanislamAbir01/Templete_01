@@ -50,7 +50,7 @@ public class LookTowards : MonoBehaviour
         HeroLevel = PlayerPrefs.GetInt("Superman");
         if (HeroLevel == 1)
         {
-         //   Power1.SetActive(true);
+           Power1.SetActive(true);
           //  Power2.SetActive(true);
            
             
