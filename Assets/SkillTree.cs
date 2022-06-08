@@ -10,6 +10,7 @@ public class SkillTree : MonoBehaviour
     public Button UpgradeButton1, UpgradeButton2;
 
     public int RequiredCash = 30;
+    public int IncreaseAmmount = 50;
     public Text a, b;
     void Start()
     {
@@ -50,7 +51,7 @@ public class SkillTree : MonoBehaviour
             c.Hero1.GetComponent<LookTowards>().SuperManLevel1Upgrade();
             c.Hero1.GetComponent<LookTowards>().TorneddoFX.gameObject.SetActive(true);
             c.Hero1.GetComponent<LookTowards>().GetComponent<MySDK.Rotator>().enabled = true;
-            if (UiManager.GetTotalCoin() < 50)
+            if (UiManager.GetTotalCoin() < IncreaseAmmount)
             {
                 UpgradeButton2.interactable = false;
             }
@@ -74,7 +75,7 @@ public class SkillTree : MonoBehaviour
             c.Hero2.GetComponent<LookTowards>().BatManLevel1Upgrade();
             c.Hero2.GetComponent<LookTowards>().TorneddoFX.gameObject.SetActive(true);
             c.Hero2.GetComponent<LookTowards>().GetComponent<MySDK.Rotator>().enabled = true;
-            if (UiManager.GetTotalCoin() < 50)
+            if (UiManager.GetTotalCoin() < IncreaseAmmount)
             {
                 UpgradeButton1.interactable = false;
             }
