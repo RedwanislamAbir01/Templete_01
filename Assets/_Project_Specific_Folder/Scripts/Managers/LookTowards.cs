@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
+using UnityEngine.Animations;
 using MoreMountains.NiceVibrations;
 public enum eType
 {
@@ -25,8 +25,25 @@ public class LookTowards : MonoBehaviour
 
     public float CurrentSpeed,CurrentMaxSpeed;
     public int SizeDownAmmount = 20;
+    public RuntimeAnimatorController Current;
+    public RuntimeAnimatorController Level2Aniamtor;
+    public GameObject Power1, Power2;
+
     void Start()
     {
+
+        if (Type == eType.Hero1)
+        {
+            HeroLevel = PlayerPrefs.GetInt("Superman");
+            if (HeroLevel == 1)
+            {
+                Power1.SetActive(true);
+                Power2.SetActive(true);
+                // Current = Level2Aniamtor;
+                anim.runtimeAnimatorController = Level2Aniamtor;
+            }
+        }
+
         CurrentSpeed = GameManager.Instance.p.MaxSpeed;
         CurrentMaxSpeed = GameManager.Instance.p.MaxSpeed;
     }
@@ -78,8 +95,23 @@ anim.transform.localScale.y + ScaleAmmounts
 
     private void OnTriggerEnter(Collider other)
     {
-       
-        if(other.gameObject.CompareTag("Cash"))
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Ice)
+            {
+                if (Type == eType.Hero1)
+                {
+                    other.transform.parent.GetChild(0).gameObject.SetActive(false);
+                    SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
+                    anim.SetTrigger("Punch");
+                    other.gameObject.GetComponent<Enemy>().BrokenPieces.SetActive(true);
+                }
+
+
+            }
+        }
+
+        if (other.gameObject.CompareTag("Cash"))
         {
             UiManager.Instance.IncreasePoints(10); other.transform.GetChild(0).gameObject.SetActive(true);
              other.transform.GetComponent<Collider>().enabled = false; other.transform.GetComponent<MeshRenderer>().enabled = false;
