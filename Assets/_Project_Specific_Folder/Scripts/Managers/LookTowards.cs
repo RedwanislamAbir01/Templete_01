@@ -14,7 +14,7 @@ public class LookTowards : MonoBehaviour
     public int HeroLevel;
     public Ease ease;
     public float ScaleAmmount = .3f; public float ScaleAmmounts = .15f;
-    public ParticleSystem CollectableVFX , PowerVFX;
+    public ParticleSystem CollectableVFX , PowerVFX , TorneddoFX ;
     public GameObject Target;
     public eType Type;
     public int ColelctableCount;
@@ -34,22 +34,41 @@ public class LookTowards : MonoBehaviour
 
         if (Type == eType.Hero1)
         {
-            HeroLevel = PlayerPrefs.GetInt("Superman");
-            if (HeroLevel == 1)
-            {
-                Power1.SetActive(true);
-                Power2.SetActive(true);
-                // Current = Level2Aniamtor;
-                anim.runtimeAnimatorController = Level2Aniamtor;
-            }
+            SuperManLevel1Upgrade();
+        }
+        if (Type == eType.Hero2)
+        {
+            BatManLevel1Upgrade();
         }
 
         CurrentSpeed = GameManager.Instance.p.MaxSpeed;
         CurrentMaxSpeed = GameManager.Instance.p.MaxSpeed;
     }
 
+    public void SuperManLevel1Upgrade()
+    {
+        HeroLevel = PlayerPrefs.GetInt("Superman");
+        if (HeroLevel == 1)
+        {
+         //   Power1.SetActive(true);
+          //  Power2.SetActive(true);
+           
+            
+            anim.runtimeAnimatorController = Level2Aniamtor;
+        }
+    }
+    public void BatManLevel1Upgrade()
+    {
+        HeroLevel = PlayerPrefs.GetInt("Batman");
+        if (HeroLevel == 1)
+        {
+               Power1.SetActive(true);
+            //  Power2.SetActive(true);
 
 
+            anim.runtimeAnimatorController = Level2Aniamtor;
+        }
+    }
     public IEnumerator OnlyRedScreenRoutine()
     {
        
@@ -101,6 +120,7 @@ anim.transform.localScale.y + ScaleAmmounts
             {
                 if (Type == eType.Hero1)
                 {
+                    other.gameObject.GetComponent<Collider>().enabled = false;
                     other.transform.parent.GetChild(0).gameObject.SetActive(false);
                     SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
                     anim.SetTrigger("Punch");

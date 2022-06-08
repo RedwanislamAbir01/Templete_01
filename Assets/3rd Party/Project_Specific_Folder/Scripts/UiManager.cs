@@ -86,7 +86,7 @@ public class UiManager : Singleton<UiManager>
         int i = RewardValue;
         RewardValue = GameManager.Instance.WallCollidedWith * i;
         RewardMultiplyValue = 2 * RewardValue;
-        DOTween.To(() => rewardValueTween, x => rewardValueTween = x, RewardValue, 1).OnUpdate(UpdateText);
+        DOTween.To(() => rewardValueTween, x => rewardValueTween = x, RewardValue, 2).OnUpdate(UpdateText);
         DOTween.To(() => rewardMultiplyValueTween, x => rewardMultiplyValueTween = x, RewardMultiplyValue, 1)
             .OnUpdate(UpdateText);
     }

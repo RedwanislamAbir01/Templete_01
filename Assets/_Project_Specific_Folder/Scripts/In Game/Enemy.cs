@@ -68,13 +68,27 @@ public class Enemy : MonoBehaviour
 
             if (EnemyType == eEnemyType.BrickWall  || EnemyType == eEnemyType.Wall || EnemyType == eEnemyType.KyptoBlock ||EnemyType == eEnemyType.Ice )
             {
-                print("wall");
+                if (other.GetComponent<LookTowards>().Type == eType.Hero2)
                 other.GetComponent<LookTowards>().DoorSizeDownRoutine();
+         
 
             }
+            if ( EnemyType == eEnemyType.Wall )
+            {
+                if (other.GetComponent<LookTowards>().Type == eType.Hero2)
+                    other.GetComponent<LookTowards>().DoorSizeDownRoutine();
 
+                else
+                {
+                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+                    other.GetComponent<LookTowards>().anim.SetTrigger("Death");
+                    other.transform.DOLocalMoveY(-2.07f, .2f);
+                    GameManager.Instance.Reset();
+                }
+            }
+          
 
-                if (EnemyType == eEnemyType.Lizard)
+            if (EnemyType == eEnemyType.Lizard)
             {
                 SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
                 this.GetComponentInChildren<Animator>().Play("Attack");

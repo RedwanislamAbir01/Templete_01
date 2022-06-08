@@ -78,28 +78,32 @@ public class Collsion : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Car"))
         {
-
+            Hero2.GetComponent<LookTowards>().Power1.gameObject.SetActive(false);
             StartCoroutine(GetOnCarRoutine(other.gameObject));
         }
         if (other.gameObject.CompareTag("Bike"))
         {
+            Hero2.GetComponent<LookTowards>().Power1.gameObject.SetActive(false);
             other.GetComponent<Collider>().enabled = false;
             StartCoroutine(GetOnBikeRoutine(other.gameObject));
 
         }
         if (other.gameObject.CompareTag("BikeExit"))
         {
+            Hero2.GetComponent<LookTowards>().Power1.gameObject.SetActive(true);
             other.gameObject.GetComponent<Collider>().enabled = false;
             StartCoroutine(OnBikeExitRoutine());
         }
         if (other.gameObject.CompareTag("Exit"))
         {
+            Hero2.GetComponent<LookTowards>().Power1.gameObject.SetActive(true);
             other.gameObject.GetComponent<Collider>().enabled = false;
             StartCoroutine(OnExitRoutine());
         }
         if (other.gameObject.CompareTag("FinishLine"))
         {
-          
+            Hero1.transform.GetComponent<Controller>().enabled = false;
+            Hero2.transform.GetComponent<Controller1>().enabled = false;
             if (transform.localEulerAngles.y > -90 && transform.localEulerAngles.y <= 90)
             {
                 Hero1.transform.DOLocalMove(H1start, .3f);
@@ -114,7 +118,7 @@ public class Collsion : MonoBehaviour
                 Hero2.transform.DOLocalRotate (new Vector3(0,0,0), .3f);
                 Hero1.transform.DOLocalRotate(new Vector3(0, 0, 0), .3f);
             }
-                Connector.SetActive(false);
+   
             GameManager.Instance.GameEnd = true;
             Boss1.transform.GetChild(0).gameObject.GetComponent<Animator>().Play("Taunt");
             StartCoroutine(StopRountine());
@@ -396,14 +400,18 @@ public class Collsion : MonoBehaviour
 
             }
         }
-
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
+        Camera.main.transform.DOLocalMove(Boss1.transform.GetChild(4).transform.localPosition, .3f);
+        Camera.main.transform.DOLocalRotate(Boss1.transform.GetChild(4).transform.localEulerAngles, .7f);
+        yield return new WaitForSeconds(3f);
         UiManager.Instance.CompleteUI.SetActive(true);
+       
     }
 
     public IEnumerator GetOnBikeRoutine(GameObject g)
     {
         transform.GetComponent<CarController>().Control = CarController.eControl.Bike;
+        GameManager.Instance.Bike.transform.GetChild(3).gameObject.SetActive(true);
         transform.DOLocalRotate(new Vector3(-25, transform.localEulerAngles.y, transform.localEulerAngles.z), .5f);
         BatCape.gameObject.SetActive(false);
         Hero1.transform.GetComponent<Controller>().enabled = false;
@@ -451,11 +459,10 @@ public class Collsion : MonoBehaviour
 
         Camera.main.transform.DOLocalMoveZ(-20f, .3f);
 
-        Hero1.transform.DOLocalMoveX(-3.552f, .3f);
-        Hero2.transform.DOLocalMoveX(3.552f, .3f);
+        Hero1.transform.DOLocalMove(H1start, .3f);
+        Hero2.transform.DOLocalMove(H2Start, .3f);
 
-        Hero1.transform.DOLocalMoveZ(0, .3f);
-        Hero2.transform.DOLocalMoveZ(0, .3f);
+       
 
         DOTween.To(() => GameManager.Instance.p.distanceTravelled, x => GameManager.Instance.p.distanceTravelled = x, GameManager.Instance.p.distanceTravelled + 3, .5f).OnComplete(() =>
         {
@@ -466,7 +473,8 @@ public class Collsion : MonoBehaviour
             GameManager.Instance.p.MaxSpeed = 2.5f;
             Hero1Model.GetComponent<Animator>().Play("Run"); Hero2Model.GetComponent<Animator>().Play("Run");
             Hero1.GetComponent<LookTowards>().enabled = true; Hero2.GetComponent<LookTowards>().enabled = true;
-            transform.DOLocalMove(new Vector3(0, 0, 0), .1f);
+            transform.DOLocalMove(new Vector3(0, 0, 0), .3f);
+            transform.DOLocalRotate(new Vector3(0, 0, 0), .05f);
         }
         ); 
       
