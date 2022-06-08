@@ -32,15 +32,16 @@ public class GameManager : Singleton<GameManager>
 
     int SavedLevelNo;
     [SerializeField] int amarIcchaLevel;
+    public int BossLevel;
 
     public override void Start()
     {
-        #if UNITY_EDITOR
+        //#if UNITY_EDITOR
 
-                levelNo = amarIcchaLevel;
-                PlayerPrefs.SetInt("current_scene", levelNo);
+        //        levelNo = amarIcchaLevel;
+        //        PlayerPrefs.SetInt("current_scene", levelNo);
 
-        #endif
+        //#endif
         SavedLevelNo = PlayerPrefs.GetInt("current_scene_text", 0);
         UiManager.Instance.LevelText.text = (SavedLevelNo + 1).ToString();
         int currentLevel = PlayerPrefs.GetInt("current_scene");
@@ -107,6 +108,6 @@ public class GameManager : Singleton<GameManager>
 
         currentLvlPrefab = Instantiate(SuperCop.Scripts.LevelPrefabManager.Instance.GetCurrentLevelPrefab());
 
-
+        BossLevel = currentLvlPrefab.GetComponent<LevelDetails>().BossLevel;
     }
 }

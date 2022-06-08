@@ -107,10 +107,10 @@ namespace ItemCollection.GameEndUnlockItem
 
         private void NextCallBack()
         {
-  
-            SceneManager.LoadScene("main");
-            //    UiManager.Instance.LoadSelectionMenu();
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+
+            UiManager.Instance.Next();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         private void AssignNextItem()

@@ -268,61 +268,135 @@ public class Collsion : MonoBehaviour
 
 
         yield return new WaitForSeconds(0f);
+        if(GameManager.Instance.BossLevel == 1)
+        {
+               if (UiManager.Instance.timerInitvalue <= 0.19f)
+            {
 
-        if (UiManager.Instance.timerInitvalue >= 0f && UiManager.Instance.timerInitvalue < 0.2f)
-        {
-            print("ok");
-   
-            DistanceZ = -1.21f;
-            Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); 
-            Boss1.transform.DOLocalMoveZ(DistanceZ, .8f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
-            Camera.main.transform.parent = Boss1.transform;
-      
-        
-        }
-        else if (UiManager.Instance.timerInitvalue >= 0.2f && UiManager.Instance.timerInitvalue < 0.4f)
-        {
-            Camera.main.transform.parent = Boss1.transform;
-            Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit");
-        
-            print("good");
-            DistanceZ = 5.86f;
-            Boss1.transform.DOLocalMoveZ(DistanceZ, 1.3f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
-           
-        }
-        else if (UiManager.Instance.timerInitvalue >= 0.4f && UiManager.Instance.timerInitvalue < 0.6f)
-        {
-            Camera.main.transform.parent = Boss1.transform;
-            Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); 
-            print("nice"); DistanceZ = 13.33f; Boss1.transform.DOLocalMoveZ(DistanceZ, 1.5f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
-          
-        }
-        else if (UiManager.Instance.timerInitvalue >= 0.6f && UiManager.Instance.timerInitvalue < 0.8f)
-        {
-            Camera.main.transform.parent = Boss1.transform;
-            Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); 
-            print("awesome"); DistanceZ = 20.88f; Boss1.transform.DOLocalMoveZ(DistanceZ, 2f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
-           
-        }
-        else if (UiManager.Instance.timerInitvalue >= 0.8f)
-        {
-            Camera.main.transform.parent = Boss1.transform;
-            Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); 
-            print("perfect"); DistanceZ = 28.72f;
-            Boss1.transform.DOLocalMoveZ(DistanceZ,2.8f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
-           
-        }
-        else if (  UiManager.Instance.timerInitvalue <=0.19f)
-        {
-     
-            print("ok");
-            DistanceZ = -4.4f;
-            Boss1.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit"); 
-            Boss1.transform.DOLocalMoveZ(DistanceZ, .8f).SetEase(ease).OnComplete(() => { Boss1.transform.GetChild(0).GetComponent<Animator>().Play("Death"); });
-            Camera.main.transform.parent = Boss1.transform;
+                print("ok");
+                DistanceZ = -4.4f;
+                    Boss1.GetComponent<Boss>().Anim.SetTrigger("Hit");
+                Boss1.transform.DOLocalMoveZ(DistanceZ, .8f).SetEase(ease).OnComplete(() => {  Boss1.GetComponent<Boss>().Anim.Play("Death"); });
+                Camera.main.transform.parent = Boss1.transform;
 
 
+            }
+
+           else if (UiManager.Instance.timerInitvalue >= 0f && UiManager.Instance.timerInitvalue < 0.8f)
+            {
+                print("ok");
+
+                DistanceZ = -1.21f;
+                    Boss1.GetComponent<Boss>().Anim.SetTrigger("Hit");
+                Boss1.transform.DOLocalMoveZ(DistanceZ, .8f).SetEase(ease).OnComplete(() => {  Boss1.GetComponent<Boss>().Anim.Play("Death"); });
+                Camera.main.transform.parent = Boss1.transform;
+
+
+            }
+            else if (UiManager.Instance.timerInitvalue >= 0.8f)
+            {
+                Camera.main.transform.parent = Boss1.transform;
+                    Boss1.GetComponent<Boss>().Anim.SetTrigger("Hit");
+
+                print("good");
+                DistanceZ = 5.86f;
+                Boss1.transform.DOLocalMoveZ(DistanceZ, 1.3f).SetEase(ease).OnComplete(() => {  Boss1.GetComponent<Boss>().Anim.Play("Death"); });
+
+            }
+
         }
+        if  (GameManager.Instance.BossLevel == 2)
+        {
+            if (UiManager.Instance.timerInitvalue <= 0.19f)
+            {
+
+                print("ok");
+                DistanceZ = -4.4f;
+                    Boss1.GetComponent<Boss>().Anim.SetTrigger("Hit");
+                Boss1.transform.DOLocalMoveZ(DistanceZ, .8f).SetEase(ease).OnComplete(() => {  Boss1.GetComponent<Boss>().Anim.Play("Death"); });
+                Camera.main.transform.parent = Boss1.transform;
+
+
+            }
+            else if (UiManager.Instance.timerInitvalue >= 0f && UiManager.Instance.timerInitvalue < 0.8f)
+            {
+                Camera.main.transform.parent = Boss1.transform;
+                    Boss1.GetComponent<Boss>().Anim.SetTrigger("Hit");
+
+                print("good");
+                DistanceZ = 5.86f;
+                Boss1.transform.DOLocalMoveZ(DistanceZ, 1.3f).SetEase(ease).OnComplete(() => {  Boss1.GetComponent<Boss>().Anim.Play("Death"); });
+
+
+            }
+            else if (UiManager.Instance.timerInitvalue >= 0.8f)
+            {
+                Camera.main.transform.parent = Boss1.transform;
+                    Boss1.GetComponent<Boss>().Anim.SetTrigger("Hit");
+                print("awesome"); DistanceZ = 20.88f; Boss1.transform.DOLocalMoveZ(DistanceZ, 2f).SetEase(ease).OnComplete(() => {  Boss1.GetComponent<Boss>().Anim.Play("Death"); });
+
+            }
+        }
+        if (GameManager.Instance.BossLevel == 3)
+        {
+
+            if (UiManager.Instance.timerInitvalue >= 0f && UiManager.Instance.timerInitvalue < 0.2f)
+            {
+                print("ok");
+
+                DistanceZ = -1.21f;
+            
+                Boss1.GetComponent<Boss>().Anim.SetTrigger("Hit");
+                Boss1.transform.DOLocalMoveZ(DistanceZ, .8f).SetEase(ease).OnComplete(() => {  Boss1.GetComponent<Boss>().Anim.Play("Death"); });
+                Camera.main.transform.parent = Boss1.transform;
+
+               
+            }
+            else if (UiManager.Instance.timerInitvalue >= 0.2f && UiManager.Instance.timerInitvalue < 0.4f)
+            {
+                Camera.main.transform.parent = Boss1.transform;
+                    Boss1.GetComponent<Boss>().Anim.SetTrigger("Hit");
+
+                print("good");
+                DistanceZ = 5.86f;
+                Boss1.transform.DOLocalMoveZ(DistanceZ, 1.3f).SetEase(ease).OnComplete(() => {  Boss1.GetComponent<Boss>().Anim.Play("Death"); });
+
+            }
+            else if (UiManager.Instance.timerInitvalue >= 0.4f && UiManager.Instance.timerInitvalue < 0.6f)
+            {
+                Camera.main.transform.parent = Boss1.transform;
+                    Boss1.GetComponent<Boss>().Anim.SetTrigger("Hit");
+                print("nice"); DistanceZ = 13.33f; Boss1.transform.DOLocalMoveZ(DistanceZ, 1.5f).SetEase(ease).OnComplete(() => {  Boss1.GetComponent<Boss>().Anim.Play("Death"); });
+
+            }
+            else if (UiManager.Instance.timerInitvalue >= 0.6f && UiManager.Instance.timerInitvalue < 0.8f)
+            {
+                Camera.main.transform.parent = Boss1.transform;
+                    Boss1.GetComponent<Boss>().Anim.SetTrigger("Hit");
+                print("awesome"); DistanceZ = 20.88f; Boss1.transform.DOLocalMoveZ(DistanceZ, 2f).SetEase(ease).OnComplete(() => {  Boss1.GetComponent<Boss>().Anim.Play("Death"); });
+
+            }
+            else if (UiManager.Instance.timerInitvalue >= 0.8f)
+            {
+                Camera.main.transform.parent = Boss1.transform;
+                    Boss1.GetComponent<Boss>().Anim.SetTrigger("Hit");
+                print("perfect"); DistanceZ = 28.72f;
+                Boss1.transform.DOLocalMoveZ(DistanceZ, 2.8f).SetEase(ease).OnComplete(() => {  Boss1.GetComponent<Boss>().Anim.Play("Death"); });
+
+            }
+            else if (UiManager.Instance.timerInitvalue <= 0.19f)
+            {
+
+                print("ok");
+                DistanceZ = -4.4f;
+                    Boss1.GetComponent<Boss>().Anim.SetTrigger("Hit");
+                Boss1.transform.DOLocalMoveZ(DistanceZ, .8f).SetEase(ease).OnComplete(() => {  Boss1.GetComponent<Boss>().Anim.Play("Death"); });
+                Camera.main.transform.parent = Boss1.transform;
+
+
+            }
+        }
+
         yield return new WaitForSeconds(5f);
         UiManager.Instance.CompleteUI.SetActive(true);
     }

@@ -6,7 +6,16 @@ using DG.Tweening;
 public class Boss : MonoBehaviour
 {
     public ParticleSystem ParticleFX;
-
+    public int CurrentBossLevel;
+     int BossLevel;
+    public Animator Anim;
+    public GameObject[] Meshes;
+    private void Start()
+    {
+        Meshes[GameManager.Instance.BossLevel-1].SetActive(true);
+        Anim = GetComponentInChildren<Animator>();
+      
+    }
 
     private void OnTriggerEnter(Collider collision)
     {

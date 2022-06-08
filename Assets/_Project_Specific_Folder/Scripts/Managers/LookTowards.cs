@@ -26,7 +26,7 @@ public class LookTowards : MonoBehaviour
     public int SizeDownAmmount = 20;
     void Start()
     {
-       
+        CurrentSpeed = GameManager.Instance.p.MaxSpeed;
         CurrentMaxSpeed = GameManager.Instance.p.MaxSpeed;
     }
 
@@ -54,7 +54,7 @@ public class LookTowards : MonoBehaviour
         anim.SetBool("Injured", false); 
         UiManager.Instance.FadeIn.gameObject.SetActive(false);
         yield return new WaitForSeconds(1f);
-    
+        GameManager.Instance.p.speed = CurrentSpeed;
         GameManager.Instance.p.MaxSpeed = CurrentMaxSpeed;
     }
     public void DoorSizeDownRoutine()

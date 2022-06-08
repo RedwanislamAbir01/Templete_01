@@ -99,9 +99,15 @@ public class UiManager : Singleton<UiManager>
     }
     public void NextCallBack()
     {
+
+        UiManager.Instance.UpgradePnael.SetActive(true);
+
+    }
+    public void Next()
+    {
         DOTween.KillAll();
         UiManager.Instance.SetTotalScore();
-        UiManager.Instance.UpgradePnael.SetActive(true);
+ 
 
         if (_currentLevel + 1 >= GameManager.Instance.LevelPrefabs.Count)
         {
@@ -117,12 +123,6 @@ public class UiManager : Singleton<UiManager>
         }
         PlayerPrefs.SetInt("current_scene_text", currentLevelText + 1);
 
-
-        //   StorageManager.Instance.SetTotalScore();
     }
 
-    public void Next()
-    {
-        SceneManager.LoadScene("main");
-    }
 }
