@@ -119,9 +119,21 @@ public class Enemy : MonoBehaviour
             {
                 if (other.GetComponent<LookTowards>().Type == eType.Hero2)
                 {
-                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-                    other.GetComponent<LookTowards>().anim.SetTrigger("Death");
-                    GameManager.Instance.Reset(); other.transform.DOLocalMoveY(-2.07f, .2f);
+                    if (other.GetComponent<LookTowards>().HeroLevel == 0)
+                    {
+                        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+                        other.GetComponent<LookTowards>().anim.SetTrigger("Death");
+                        GameManager.Instance.Reset(); other.transform.DOLocalMoveY(-2.07f, .2f);
+                    }
+                }
+                if (other.GetComponent<LookTowards>().Type == eType.Hero1)
+                {
+                    if (other.GetComponent<LookTowards>().HeroLevel == 0)
+                    {
+                        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+                        other.GetComponent<LookTowards>().anim.SetTrigger("Death");
+                        GameManager.Instance.Reset(); other.transform.DOLocalMoveY(-2.07f, .2f);
+                    }
                 }
             }
          

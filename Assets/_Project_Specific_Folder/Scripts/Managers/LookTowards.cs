@@ -47,11 +47,12 @@ public class LookTowards : MonoBehaviour
 
     public void SuperManLevel1Upgrade()
     {
+
         HeroLevel = PlayerPrefs.GetInt("Superman");
         if (HeroLevel == 1)
         {
            Power1.SetActive(true);
-          //  Power2.SetActive(true);
+          //Power2.SetActive(true);
            
             
             anim.runtimeAnimatorController = Level2Aniamtor;
@@ -59,14 +60,16 @@ public class LookTowards : MonoBehaviour
     }
     public void BatManLevel1Upgrade()
     {
+        
         HeroLevel = PlayerPrefs.GetInt("Batman");
         if (HeroLevel == 1)
         {
-               Power1.SetActive(true);
-            //  Power2.SetActive(true);
+           Power1.SetActive(true);
+           anim.transform.DOLocalMoveY(0, .2f).OnComplete(() => { anim.transform.GetComponent<MySDK.Mover>().enabled = true;});
 
 
-            anim.runtimeAnimatorController = Level2Aniamtor;
+
+                anim.runtimeAnimatorController = Level2Aniamtor;
         }
     }
     public IEnumerator OnlyRedScreenRoutine()
