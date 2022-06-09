@@ -400,10 +400,10 @@ public class Collsion : MonoBehaviour
 
             }
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         Camera.main.transform.DOLocalMove(Boss1.transform.GetChild(4).transform.localPosition, .3f);
         Camera.main.transform.DOLocalRotate(Boss1.transform.GetChild(4).transform.localEulerAngles, .7f);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(.5f);
         UiManager.Instance.CompleteUI.SetActive(true);
        
     }
