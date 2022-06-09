@@ -44,9 +44,9 @@ public class SkillTree : MonoBehaviour
             UiManager.Instance.PointText.text = UiManager.GetTotalCoin().ToString();
             a.text = "2";
             b.text = "50";
-          if (PlayerPrefs.GetInt("Superman") == 0)
+            if (PlayerPrefs.GetInt("Superman") == 0)
             PlayerPrefs.SetInt("Superman", 1);
-          else if  (PlayerPrefs.GetInt("Superman") == 1)
+            else if  (PlayerPrefs.GetInt("Superman") == 1)
              PlayerPrefs.SetInt("Superman", 2);
 
             c.Hero1.GetComponent<LookTowards>().SuperManLevel1Upgrade();
@@ -64,30 +64,38 @@ public class SkillTree : MonoBehaviour
     {
 
 
-        if (c.Hero2.GetComponent<LookTowards>().HeroLevel == 0)
-        {
+        
             UiManager.SaveTotalCoin(UiManager.GetTotalCoin() - RequiredCash);
             UiManager.Instance.PointText.text = UiManager.GetTotalCoin().ToString();
             a.text = "2";
             b.text = "50";
 
-            PlayerPrefs.SetInt("Batman", 1);
+            if (PlayerPrefs.GetInt("Batman") == 0)
+                PlayerPrefs.SetInt("Batman", 1);
+            else if (PlayerPrefs.GetInt("Batman") == 1)
+                PlayerPrefs.SetInt("Batman", 2);
 
             c.Hero2.GetComponent<LookTowards>().BatManLevel1Upgrade();
-            c.Hero2.GetComponent<LookTowards>().TorneddoFX.gameObject.SetActive(true);
-            c.Hero2.GetComponent<LookTowards>().GetComponent<MySDK.Rotator>().enabled = true;
+            c.Hero2.GetComponent<LookTowards>().TorneddoFX.Play();
+            StartCoroutine(RotateRoutine1());
             if (UiManager.GetTotalCoin() < IncreaseAmmount)
             {
                 UpgradeButton1.interactable = false;
             }
 
 
-        }
+        
     }
     public IEnumerator RotateRoutine()
     {
         c.Hero1.GetComponent<LookTowards>().GetComponent<MySDK.Rotator>().enabled = true;
         yield return new WaitForSeconds(.4f);
         c.Hero1.GetComponent<LookTowards>().GetComponent<MySDK.Rotator>().enabled = false;
+    }
+    public IEnumerator RotateRoutine1()
+    {
+        c.Hero2.GetComponent<LookTowards>().GetComponent<MySDK.Rotator>().enabled = true;
+        yield return new WaitForSeconds(.4f);
+        c.Hero2.GetComponent<LookTowards>().GetComponent<MySDK.Rotator>().enabled = false;
     }
 }

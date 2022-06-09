@@ -484,7 +484,7 @@ public class Collsion : MonoBehaviour
             GameManager.Instance.p.MaxSpeed = 2.5f;
             Hero1Model.GetComponent<Animator>().Play("Run"); Hero2Model.GetComponent<Animator>().Play("Run");
             Hero1.GetComponent<LookTowards>().enabled = true; Hero2.GetComponent<LookTowards>().enabled = true;
-            transform.DOLocalMove(new Vector3(0, 0, 0), .3f);
+
             transform.DOLocalRotate(new Vector3(0, 0, 0), .05f);
         }
         ); 

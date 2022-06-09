@@ -26,7 +26,7 @@ public class LookTowards : MonoBehaviour
     public float CurrentSpeed,CurrentMaxSpeed;
     public int SizeDownAmmount = 20;
     public RuntimeAnimatorController Current;
-    public RuntimeAnimatorController Level2Aniamtor;
+    public RuntimeAnimatorController Level2Aniamtor , Level3Animator;
     public GameObject Power1, Power2;
 
     void Start()
@@ -74,10 +74,13 @@ public class LookTowards : MonoBehaviour
         {
            Power1.SetActive(true);
            anim.transform.DOLocalMoveY(0, .2f).OnComplete(() => { anim.transform.GetComponent<MySDK.Mover>().enabled = true;});
-
-
-
-                anim.runtimeAnimatorController = Level2Aniamtor;
+           anim.runtimeAnimatorController = Level2Aniamtor;
+        }
+        if (HeroLevel == 2)
+        {
+            Power1.SetActive(true);
+            anim.transform.DOLocalMoveY(0, .2f).OnComplete(() => { anim.transform.GetComponent<MySDK.Mover>().enabled = true; });
+            anim.runtimeAnimatorController = Level3Animator;
         }
     }
     public IEnumerator OnlyRedScreenRoutine()
