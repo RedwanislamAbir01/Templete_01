@@ -57,6 +57,14 @@ public class LookTowards : MonoBehaviour
             
             anim.runtimeAnimatorController = Level2Aniamtor;
         }
+        if (HeroLevel == 2)
+        {
+           Power1.SetActive(false);
+           Power2.SetActive(true);
+
+
+            anim.runtimeAnimatorController = Level2Aniamtor;
+        }
     }
     public void BatManLevel1Upgrade()
     {

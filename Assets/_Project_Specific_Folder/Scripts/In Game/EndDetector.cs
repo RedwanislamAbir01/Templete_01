@@ -139,7 +139,7 @@ public class EndDetector : MonoBehaviour
                         other.GetComponent<Collider>().enabled = false;
                         other.transform.GetComponent<Enemy>().WaterSpill.transform.DOScale(new Vector3(0.227319f, 0.227319f, 0.5852864f), 1.5f);
                         StartCoroutine(LaserEnableDisableRoutine());
-                        other.transform.root.transform.DOScaleY(0, 1.5f).OnComplete(() =>
+                        other.transform.parent.transform.DOScaleY(0, 1.5f).OnComplete(() =>
                         {
                             Destroy(other.gameObject);
 
@@ -157,8 +157,11 @@ public class EndDetector : MonoBehaviour
                     else
                     {
 
-                        Enable = true;
-
+                        MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+                        other.GetComponent<Collider>().enabled = false;
+                       
+                        StartCoroutine(LaserEnableDisableRoutine());
+                        StartCoroutine(EnemyDeath(other.gameObject));
                         //Anim.SetTrigger("Punch");
                         //Puncher.GetComponent<Animator>().enabled = false;
                         //Puncher.transform.DOLocalMoveZ(25, .6f).SetEase(Ease.Linear).OnComplete(() => {
@@ -180,6 +183,11 @@ public class EndDetector : MonoBehaviour
                 StartCoroutine(Shoot6Times());
             }
         }
+    }
+    public IEnumerator EnemyDeath(GameObject g)
+    {
+        yield return new WaitForSeconds(.3f);
+        g.GetComponentInChildren<Animator>().Play("Death");
     }
     public IEnumerator LaserEnableDisableRoutine()
     {

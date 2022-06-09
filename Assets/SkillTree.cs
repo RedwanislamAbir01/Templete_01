@@ -9,8 +9,8 @@ public class SkillTree : MonoBehaviour
     Collsion c;
     public Button UpgradeButton1, UpgradeButton2;
 
-    public int RequiredCash = 30;
-    public int IncreaseAmmount = 50;
+    public int RequiredCash = 20;
+    public int IncreaseAmmount = 30;
     public Text a, b;
     void Start()
     {
@@ -39,25 +39,26 @@ public class SkillTree : MonoBehaviour
     {
       
 
-        if (c.Hero1.GetComponent<LookTowards>().HeroLevel == 0)
-        {
+       
             UiManager.SaveTotalCoin(UiManager.GetTotalCoin() - RequiredCash);
             UiManager.Instance.PointText.text = UiManager.GetTotalCoin().ToString();
             a.text = "2";
             b.text = "50";
-          
+          if (PlayerPrefs.GetInt("Superman") == 0)
             PlayerPrefs.SetInt("Superman", 1);
+          else if  (PlayerPrefs.GetInt("Superman") == 1)
+             PlayerPrefs.SetInt("Superman", 2);
 
             c.Hero1.GetComponent<LookTowards>().SuperManLevel1Upgrade();
-            c.Hero1.GetComponent<LookTowards>().TorneddoFX.gameObject.SetActive(true);
-            c.Hero1.GetComponent<LookTowards>().GetComponent<MySDK.Rotator>().enabled = true;
+            c.Hero1.GetComponent<LookTowards>().TorneddoFX.Play();
+            StartCoroutine(RotateRoutine());
             if (UiManager.GetTotalCoin() < IncreaseAmmount)
             {
                 UpgradeButton2.interactable = false;
             }
 
 
-        }
+        
     }
     public void UpgradeBatMan()
     {
@@ -82,5 +83,11 @@ public class SkillTree : MonoBehaviour
 
 
         }
+    }
+    public IEnumerator RotateRoutine()
+    {
+        c.Hero1.GetComponent<LookTowards>().GetComponent<MySDK.Rotator>().enabled = true;
+        yield return new WaitForSeconds(.4f);
+        c.Hero1.GetComponent<LookTowards>().GetComponent<MySDK.Rotator>().enabled = false;
     }
 }
