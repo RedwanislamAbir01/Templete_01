@@ -10,7 +10,7 @@ namespace SuperCop.Scripts
 
         private List<string> levelIdList = new List<string>()
         {
-            "101","102","103","104","105"
+            "101","102","103","104","105", "106"
         };
 
         private string GetCurrentLevelId()

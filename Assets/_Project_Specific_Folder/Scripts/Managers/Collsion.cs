@@ -102,6 +102,7 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("FinishLine"))
         {
+            Hero2.transform.GetComponent<LookTowards>().DummyGun.SetActive(false);
             Hero1.transform.GetComponent<Controller>().enabled = false;
             Hero2.transform.GetComponent<Controller1>().enabled = false;
             if (transform.localEulerAngles.y > -90 && transform.localEulerAngles.y <= 90)
