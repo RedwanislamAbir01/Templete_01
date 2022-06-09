@@ -3,7 +3,17 @@ guid: e49d1c80d73a57845938111f0b24badb
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 23 - Default
+    second: {fileID: 2100000, guid: 02a9821eef06a13449d198b28afbf17d, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: prop_Cashpile_mat01
+    second: {fileID: 2800000, guid: 30e069925d4fad1419a7d5402ea2b205, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

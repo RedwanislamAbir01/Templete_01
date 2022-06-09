@@ -307,6 +307,11 @@ public class Collsion : MonoBehaviour
                 Boss1.transform.DOLocalMoveZ(DistanceZ, 1.3f).SetEase(ease).OnComplete(() => {  Boss1.GetComponent<Boss>().Anim.Play("Death"); });
 
             }
+            yield return new WaitForSeconds(3f);
+            Camera.main.transform.DOLocalMove(Boss1.transform.GetChild(4).transform.localPosition, .3f);
+            Camera.main.transform.DOLocalRotate(Boss1.transform.GetChild(4).transform.localEulerAngles, .7f);
+            yield return new WaitForSeconds(2f);
+            UiManager.Instance.CompleteUI.SetActive(true);
 
         }
         if  (GameManager.Instance.BossLevel == 2)
@@ -340,6 +345,11 @@ public class Collsion : MonoBehaviour
                 print("awesome"); DistanceZ = 20.88f; Boss1.transform.DOLocalMoveZ(DistanceZ, 2f).SetEase(ease).OnComplete(() => {  Boss1.GetComponent<Boss>().Anim.Play("Death"); });
 
             }
+            yield return new WaitForSeconds(3f);
+            Camera.main.transform.DOLocalMove(Boss1.transform.GetChild(4).transform.localPosition, .3f);
+            Camera.main.transform.DOLocalRotate(Boss1.transform.GetChild(4).transform.localEulerAngles, .7f);
+            yield return new WaitForSeconds(2f);
+            UiManager.Instance.CompleteUI.SetActive(true);
         }
         if (GameManager.Instance.BossLevel == 3)
         {
@@ -399,12 +409,13 @@ public class Collsion : MonoBehaviour
 
 
             }
+            yield return new WaitForSeconds(3f);
+            Camera.main.transform.DOLocalMove(Boss1.transform.GetChild(4).transform.localPosition, .3f);
+            Camera.main.transform.DOLocalRotate(Boss1.transform.GetChild(4).transform.localEulerAngles, .7f);
+            yield return new WaitForSeconds(2f);
+            UiManager.Instance.CompleteUI.SetActive(true);
         }
-        yield return new WaitForSeconds(5f);
-        Camera.main.transform.DOLocalMove(Boss1.transform.GetChild(4).transform.localPosition, .3f);
-        Camera.main.transform.DOLocalRotate(Boss1.transform.GetChild(4).transform.localEulerAngles, .7f);
-        yield return new WaitForSeconds(.5f);
-        UiManager.Instance.CompleteUI.SetActive(true);
+
        
     }
 

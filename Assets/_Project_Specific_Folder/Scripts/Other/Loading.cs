@@ -31,6 +31,7 @@ public class Loading : MonoBehaviour
 
     public void LoadGame()
     {
+        SceneManager.LoadScene("main");
       //  UiManager.Instance.CompleteUI.GetComponent<EndSceneUI>().Reset1();
     }
 }
