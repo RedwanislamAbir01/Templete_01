@@ -70,10 +70,14 @@ public class SkillTree : MonoBehaviour
             a.text = "2";
             b.text = "50";
 
-            if (PlayerPrefs.GetInt("Batman") == 0)
-                PlayerPrefs.SetInt("Batman", 1);
-            else if (PlayerPrefs.GetInt("Batman") == 1)
-                PlayerPrefs.SetInt("Batman", 2);
+        if (PlayerPrefs.GetInt("Batman") == 0)
+            PlayerPrefs.SetInt("Batman", 1);
+        else if (PlayerPrefs.GetInt("Batman") == 1)
+        {
+            PlayerPrefs.SetInt("Batman", 2); c.Hero2.GetComponent<LookTowards>().DummyGun.SetActive(true);
+
+
+        }
 
             c.Hero2.GetComponent<LookTowards>().BatManLevel1Upgrade();
             c.Hero2.GetComponent<LookTowards>().TorneddoFX.Play();

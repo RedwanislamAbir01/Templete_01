@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
 
             }
 
-            if ( EnemyType == eEnemyType.ShieldGuy || EnemyType == eEnemyType.Lava)
+            if ( EnemyType == eEnemyType.ShieldGuy)
             {
 
                 if (other.GetComponent<LookTowards>().Type == eType.Hero2)

@@ -6,7 +6,7 @@ using MoreMountains.NiceVibrations;
 public class EndDetector : MonoBehaviour
 {
     public Animator Anim;
-    public Transform SpawnPoint, SpwanPoint1;
+    public Transform SpawnPoint, SpwanPoint1, NewGunSpawnPoint;
     public GameObject aa, bb;
 
 
@@ -31,6 +31,8 @@ public class EndDetector : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         aa.gameObject.SetActive(false); bb.gameObject.SetActive(false);
     }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Blue"))
@@ -52,7 +54,7 @@ public class EndDetector : MonoBehaviour
                         SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().BatBlade);
                         Anim.SetTrigger("Throw");
                         StartCoroutine(LevelTwoBatThrowRoutine());
-                        Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                        Shoot();
                     }
                     else
                     {
@@ -66,7 +68,7 @@ public class EndDetector : MonoBehaviour
                     {
                         SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().BatBlade);
                         Anim.SetTrigger("Throw"); StartCoroutine(LevelTwoBatThrowRoutine());
-                        Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                        Shoot();
                     }
                     else
                     {
@@ -87,13 +89,13 @@ public class EndDetector : MonoBehaviour
                     if (lf.Type == eType.Hero1)
                     {
                         Anim.SetTrigger("Shoot"); SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().IronShoot);
-                        Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                        Shoot();
                     }
                     else
                     {
                         SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().Webshoot);
                         Anim.SetTrigger("Throw"); StartCoroutine(LevelTwoBatThrowRoutine());
-                        Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                        Shoot();
                     }
                 }
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.LaserWall)
@@ -102,13 +104,13 @@ public class EndDetector : MonoBehaviour
                     {
                         SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().Webshoot);
                         Anim.SetTrigger("Throw"); StartCoroutine(LevelTwoBatThrowRoutine());
-                        Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                        Shoot();
                     }
                     else
                     {
                         SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().IronShoot);
                         Anim.SetTrigger("Shoot");
-                        Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                        Shoot();
                     }
                 }
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.WarMachine)
@@ -117,13 +119,13 @@ public class EndDetector : MonoBehaviour
                     {
                         SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().Webshoot);
                         Anim.SetTrigger("Throw"); StartCoroutine(LevelTwoBatThrowRoutine());
-                        Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                        Shoot();
                     }
                     else
                     {
                         SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().IronShoot);
                         Anim.SetTrigger("Shoot");
-                        Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                        Shoot();
                     }
                 }
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Ice)
@@ -132,7 +134,7 @@ public class EndDetector : MonoBehaviour
                     {
                         SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().BatBlade);
                         Anim.SetTrigger("Throw"); StartCoroutine(LevelTwoBatThrowRoutine());
-                        Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                        Shoot();
                     }
                     else
                     {
@@ -153,7 +155,7 @@ public class EndDetector : MonoBehaviour
                     if (lf.Type == eType.Hero2)
                     {
                         Anim.SetTrigger("Throw"); StartCoroutine(LevelTwoBatThrowRoutine());
-                        Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                        Shoot();
                     }
                     else
                     {
@@ -203,10 +205,29 @@ public class EndDetector : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("Batman") == 2)
         {
+            lf.DummyGun.gameObject.SetActive(false);
             lf.Power2.gameObject.SetActive(true);
             yield return new WaitForSeconds(.3f);
             lf.Power2.gameObject.SetActive(false);
+            lf.DummyGun.gameObject.SetActive(true);
         }
+    }
+
+    public void Shoot()
+    {
+        if (lf.Type == eType.Hero2)
+        {
+            if (PlayerPrefs.GetInt("Batman") == 2)
+                Instantiate(Projectile, NewGunSpawnPoint.position, Quaternion.identity);
+            else
+                Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+
+
+        }
+
+        else 
+            Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+
     }
     public IEnumerator Shoot6Times()
     {

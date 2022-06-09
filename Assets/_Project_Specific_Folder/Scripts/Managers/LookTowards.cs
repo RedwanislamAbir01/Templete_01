@@ -28,6 +28,7 @@ public class LookTowards : MonoBehaviour
     public RuntimeAnimatorController Current;
     public RuntimeAnimatorController Level2Aniamtor , Level3Animator;
     public GameObject Power1, Power2;
+    public GameObject DummyGun;
 
     void Start()
     {
@@ -79,6 +80,7 @@ public class LookTowards : MonoBehaviour
         }
         if (HeroLevel == 2)
         {
+            DummyGun.gameObject.SetActive(true);
             Power1.SetActive(true);
             anim.transform.DOLocalMoveY(0, .2f);
             anim.transform.GetComponent<MySDK.Mover>().enabled = true;
