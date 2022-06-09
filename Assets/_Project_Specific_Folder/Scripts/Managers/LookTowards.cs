@@ -73,13 +73,15 @@ public class LookTowards : MonoBehaviour
         if (HeroLevel == 1)
         {
            Power1.SetActive(true);
-           anim.transform.DOLocalMoveY(0, .2f).OnComplete(() => { anim.transform.GetComponent<MySDK.Mover>().enabled = true;});
-           anim.runtimeAnimatorController = Level2Aniamtor;
+            anim.transform.DOLocalMoveY(0, .2f);
+            anim.transform.GetComponent<MySDK.Mover>().enabled = true;
+            anim.runtimeAnimatorController = Level2Aniamtor;
         }
         if (HeroLevel == 2)
         {
             Power1.SetActive(true);
-            anim.transform.DOLocalMoveY(0, .2f).OnComplete(() => { anim.transform.GetComponent<MySDK.Mover>().enabled = true; });
+            anim.transform.DOLocalMoveY(0, .2f);
+            anim.transform.GetComponent<MySDK.Mover>().enabled = true;
             anim.runtimeAnimatorController = Level3Animator;
         }
     }
