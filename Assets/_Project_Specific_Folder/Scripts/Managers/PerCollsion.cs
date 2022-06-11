@@ -9,50 +9,54 @@ public enum eType
     Hero1, 
     Hero2
 }
-public class LookTowards : MonoBehaviour
+public class PerCollsion : MonoBehaviour
 {
-    public int HeroLevel;
-    public Ease ease;
-    public float ScaleAmmount = .3f; public float ScaleAmmounts = .15f;
-    public ParticleSystem CollectableVFX , PowerVFX , TorneddoFX ;
-    public GameObject Target;
     public eType Type;
-    public int ColelctableCount;
-    public Animator anim;
-    float i, j;
-    public GameObject Cape;
-    public GameObject CapeFinalPos;
-
-    public float CurrentSpeed,CurrentMaxSpeed;
-    public int SizeDownAmmount = 20;
+    [Header("Hero Upgrade Stuffs")]
+    public int HeroLevel;
     public RuntimeAnimatorController Current;
-    public RuntimeAnimatorController Level2Aniamtor , Level3Animator;
+    public RuntimeAnimatorController Level2Aniamtor, Level3Animator;
     public GameObject Power1, Power2;
     public GameObject DummyGun;
+    [Header("VFX")]
+    public ParticleSystem CollectableVFX;
+    public ParticleSystem PowerVFX;
 
+    public ParticleSystem TorneddoFX;
+    public Ease ease;
+    public float ScaleAmmount = .3f;
+    public float ScaleAmmounts = .15f;
+    public int ColelctableCount;
+    public Animator anim;
+    public GameObject Cape;
+    public GameObject CapeFinalPos;
+    public float CurrentSpeed,CurrentMaxSpeed;
+    public int SizeDownAmmount = 20;
+
+    float i, j;
     void Start()
     {
 
         if (Type == eType.Hero1)
         {
-            SuperManLevel1Upgrade();
+            Hero1Upgrade();
         }
         if (Type == eType.Hero2)
         {
-            BatManLevel1Upgrade();
+            Hero2Upgrade();
         }
 
         CurrentSpeed = GameManager.Instance.p.MaxSpeed;
         CurrentMaxSpeed = GameManager.Instance.p.MaxSpeed;
     }
 
-    public void SuperManLevel1Upgrade()
+    public void Hero1Upgrade()
     {
 
-        HeroLevel = PlayerPrefs.GetInt("Superman");
+        HeroLevel = PlayerPrefs.GetInt("Hero1");
         if (HeroLevel == 1)
         {
-           Power1.SetActive(true);
+            Power1.SetActive(true);
             //Power2.SetActive(true);
             anim.transform.GetComponent<MySDK.Mover>().enabled = true;
 
@@ -62,16 +66,14 @@ public class LookTowards : MonoBehaviour
         {
             anim.transform.GetComponent<MySDK.Mover>().enabled = true;
             Power1.SetActive(false);
-           Power2.SetActive(true);
-
-
+            Power2.SetActive(true);
             anim.runtimeAnimatorController = Level2Aniamtor;
         }
     }
-    public void BatManLevel1Upgrade()
+    public void Hero2Upgrade()
     {
         
-        HeroLevel = PlayerPrefs.GetInt("Batman");
+        HeroLevel = PlayerPrefs.GetInt("Hero2");
         if (HeroLevel == 1)
         {
            Power1.SetActive(true);
@@ -82,6 +84,7 @@ public class LookTowards : MonoBehaviour
         }
         if (HeroLevel == 2)
         {
+            if(DummyGun != null)
             DummyGun.gameObject.SetActive(true);
             Power1.SetActive(true);
             anim.transform.DOLocalMoveY(0, .2f);

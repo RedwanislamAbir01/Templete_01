@@ -10,7 +10,7 @@ public class EndDetector : MonoBehaviour
     public GameObject aa, bb;
 
 
-    LookTowards lf;
+    PerCollsion lf;
     public GameObject Projectile, Laser;
     public float LaserTime;
     public GameObject Puncher;
@@ -23,7 +23,7 @@ public class EndDetector : MonoBehaviour
     {
         if (Anim != null)
             StartPos = Anim.transform.position;
-        lf = GetComponentInParent<LookTowards>();
+        lf = GetComponentInParent<PerCollsion>();
     }
     public IEnumerator SpriteOnOff()
     {

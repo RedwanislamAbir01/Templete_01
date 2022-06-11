@@ -78,31 +78,31 @@ public class Collsion : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Car"))
         {
-            Hero2.GetComponent<LookTowards>().Power1.gameObject.SetActive(false);
+            Hero2.GetComponent<PerCollsion>().Power1.gameObject.SetActive(false);
             StartCoroutine(GetOnCarRoutine(other.gameObject));
         }
         if (other.gameObject.CompareTag("Bike"))
         {
-            Hero2.GetComponent<LookTowards>().Power1.gameObject.SetActive(false);
+            Hero2.GetComponent<PerCollsion>().Power1.gameObject.SetActive(false);
             other.GetComponent<Collider>().enabled = false;
             StartCoroutine(GetOnBikeRoutine(other.gameObject));
 
         }
         if (other.gameObject.CompareTag("BikeExit"))
         {
-            Hero2.GetComponent<LookTowards>().Power1.gameObject.SetActive(true);
+            Hero2.GetComponent<PerCollsion>().Power1.gameObject.SetActive(true);
             other.gameObject.GetComponent<Collider>().enabled = false;
             StartCoroutine(OnBikeExitRoutine());
         }
         if (other.gameObject.CompareTag("Exit"))
         {
-            Hero2.GetComponent<LookTowards>().Power1.gameObject.SetActive(true);
+            Hero2.GetComponent<PerCollsion>().Power1.gameObject.SetActive(true);
             other.gameObject.GetComponent<Collider>().enabled = false;
             StartCoroutine(OnExitRoutine());
         }
         if (other.gameObject.CompareTag("FinishLine"))
         {
-            Hero2.transform.GetComponent<LookTowards>().DummyGun.SetActive(false);
+            Hero2.transform.GetComponent<PerCollsion>().DummyGun.SetActive(false);
             Hero1.transform.GetComponent<Controller>().enabled = false;
             Hero2.transform.GetComponent<Controller1>().enabled = false;
             if (transform.localEulerAngles.y > -90 && transform.localEulerAngles.y <= 90)
@@ -124,7 +124,7 @@ public class Collsion : MonoBehaviour
             Boss1.transform.GetChild(0).gameObject.GetComponent<Animator>().Play("Taunt");
             StartCoroutine(StopRountine());
             transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
-            Target.transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
+          
             transform.DOLocalMove(new Vector3(0, 0.88f, 0), .2f);
             //transform.GetComponent<Controller>().enabled = false;
 
@@ -155,10 +155,10 @@ public class Collsion : MonoBehaviour
             BatCape.transform.DOLocalMove(StartCapePos, .01f);
             Hero2Model.transform.DOLocalMove(Hero2ModelPos, .1f);
             Hero2Model.GetComponent<Animator>().SetBool("Hang", false); Hero1Model.GetComponent<Animator>().SetBool("Hang", false);
-            Target.transform.DOLocalMoveX(0, .1f);
+          
             transform.DOLocalMoveX(0, .1f);
             GetComponent<Controller>().enabled = false;
-            Target.transform.GetChild(0).DOLocalMove(H1start, .3f); Target.transform.GetChild(01).transform.DOLocalMove(H2Start, .3f);
+            
             Hero1.transform.DOLocalMove(H1start, .3f);
             Hero2.transform.DOLocalMove(H2Start, .3f).OnComplete(() =>
             {
@@ -166,7 +166,7 @@ public class Collsion : MonoBehaviour
                 Shadow1.gameObject.SetActive(true); Shadow2.gameObject.SetActive(true); Connector.gameObject.SetActive(true);
               
          
-                Hero1.GetComponent<LookTowards>().enabled = true; Hero2.GetComponent<LookTowards>().enabled = true;
+                Hero1.GetComponent<PerCollsion>().enabled = true; Hero2.GetComponent<PerCollsion>().enabled = true;
 
             });
         }
@@ -181,14 +181,14 @@ public class Collsion : MonoBehaviour
         GameManager.Instance.p.MaxSpeed += SpeedIncreasAmmount;
         Flying = true;
        
-        Hero1.GetComponent<LookTowards>().enabled = false;
-        Hero2.GetComponent<LookTowards>().enabled = false;
+        Hero1.GetComponent<PerCollsion>().enabled = false;
+        Hero2.GetComponent<PerCollsion>().enabled = false;
 
         BatCape.transform.DOLocalRotate(TargetCapePos.transform.localEulerAngles, .2f);
         BatCape.transform.DOLocalMove(TargetCapePos.transform.localPosition, .01f);
         Camera.main.transform.GetChild(0).gameObject.SetActive(true);
         transform.DOLocalRotate(new Vector3(0, 0, 0), 0);
-        Target.transform.DOLocalRotate(new Vector3(0, 0, 0), 0);
+       
         Hero1.transform.DOLocalRotate(new Vector3(0, -0, 0), 0f); Hero2.transform.DOLocalRotate(new Vector3(0, -0, 0), 0f);
 
         Hero1.transform.DOLocalMoveY(5.98f, .3f);
@@ -203,7 +203,7 @@ public class Collsion : MonoBehaviour
         {
 
             Hero1.transform.DOLocalRotate(new Vector3(0, -0, 0), .3f); Hero2.transform.DOLocalRotate(new Vector3(0, -0, 0), .1f);
-            Target.transform.GetChild(0).DOLocalRotate(new Vector3(0, -0, 0), .1f); Target.transform.GetChild(01).transform.DOLocalRotate(new Vector3(0, -0, 0), .1f);
+        
             GetComponent<Controller>().enabled = true;
         });
 
@@ -226,8 +226,8 @@ public class Collsion : MonoBehaviour
         Hero2Model.transform.DOLocalRotate(new Vector3(Hero2Model.transform.localEulerAngles.x, 16, Hero2Model.transform.localEulerAngles.z), .15f);
 
 
-        Hero1.transform.GetComponent<LookTowards>().anim.Play("Aim");
-        Hero2.transform.GetComponent<LookTowards>().anim.Play("Aim");
+        Hero1.transform.GetComponent<PerCollsion>().anim.Play("Aim");
+        Hero2.transform.GetComponent<PerCollsion>().anim.Play("Aim");
         Bazooka.gameObject.SetActive(true);
         Sphere1.gameObject.SetActive(true); 
         StartTapRoutine = true;
@@ -237,13 +237,13 @@ public class Collsion : MonoBehaviour
     public IEnumerator TapFastOff()
     {
         yield return new WaitForSeconds(1);
-        Hero1.GetComponent<LookTowards>().PowerVFX.gameObject.SetActive(true); Hero2.GetComponent<LookTowards>().PowerVFX.gameObject.SetActive(true);
+        Hero1.GetComponent<PerCollsion>().PowerVFX.gameObject.SetActive(true); Hero2.GetComponent<PerCollsion>().PowerVFX.gameObject.SetActive(true);
         yield return new WaitForSeconds(3);
         StartTapRoutine = false;
-        Hero1.transform.GetComponent<LookTowards>().anim.SetTrigger("Shoot");
-        // Hero2.transform.GetComponent<LookTowards>().anim.SetTrigger("Shoot");
+        Hero1.transform.GetComponent<PerCollsion>().anim.SetTrigger("Shoot");
+        // Hero2.transform.GetComponent<PerCollsion>().anim.SetTrigger("Shoot");
         yield return new WaitForSeconds(.5f);
-        Hero2.transform.GetComponent<LookTowards>().anim.SetTrigger("Shoot");
+        Hero2.transform.GetComponent<PerCollsion>().anim.SetTrigger("Shoot");
         yield return new WaitForSeconds(.5f); 
         Sphere.SetActive(false);
         Sphere1.SetActive(false);
@@ -484,7 +484,7 @@ public class Collsion : MonoBehaviour
             GameManager.Instance.p.speed = 2.5f;
             GameManager.Instance.p.MaxSpeed = 2.5f;
             Hero1Model.GetComponent<Animator>().Play("Run"); Hero2Model.GetComponent<Animator>().Play("Run");
-            Hero1.GetComponent<LookTowards>().enabled = true; Hero2.GetComponent<LookTowards>().enabled = true;
+            Hero1.GetComponent<PerCollsion>().enabled = true; Hero2.GetComponent<PerCollsion>().enabled = true;
 
             transform.DOLocalRotate(new Vector3(0, 0, 0), .05f);
         }
@@ -496,7 +496,7 @@ public class Collsion : MonoBehaviour
      
      
         transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
-        Target.transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
+
         transform.DOLocalMove(new Vector3(0, 0.88f, 0), .2f);
         Camera.main.transform.DOLocalMoveZ(5.87f, 1f);
         Hero1.transform.DOLocalMove(H1start, .1f);
@@ -589,7 +589,7 @@ public class Collsion : MonoBehaviour
             GameManager.Instance.p.speed = 2.5f;
             GameManager.Instance.p.MaxSpeed = 2.5f;
             Hero1Model.GetComponent<Animator>().Play("Run"); Hero2Model.GetComponent<Animator>().Play("Run");
-            Hero1.GetComponent<LookTowards>().enabled = true; Hero2.GetComponent<LookTowards>().enabled = true;
+            Hero1.GetComponent<PerCollsion>().enabled = true; Hero2.GetComponent<PerCollsion>().enabled = true;
 
         }
         );
@@ -606,7 +606,7 @@ public class Collsion : MonoBehaviour
         //    GameManager.Instance.p.speed = 2.5f;
         //    GameManager.Instance.p.MaxSpeed = 2.5f;
         //    Hero1Model.GetComponent<Animator>().Play("Run"); Hero2Model.GetComponent<Animator>().Play("Run");
-        //    Hero1.GetComponent<LookTowards>().enabled = true; Hero2.GetComponent<LookTowards>().enabled = true;
+        //    Hero1.GetComponent<PerCollsion>().enabled = true; Hero2.GetComponent<PerCollsion>().enabled = true;
 
         //}
         //);

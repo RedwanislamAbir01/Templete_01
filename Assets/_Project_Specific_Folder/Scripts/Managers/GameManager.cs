@@ -36,12 +36,12 @@ public class GameManager : Singleton<GameManager>
 
     public override void Start()
     {
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 
-        levelNo = amarIcchaLevel;
-        PlayerPrefs.SetInt("current_scene", levelNo);
+//        levelNo = amarIcchaLevel;
+//        PlayerPrefs.SetInt("current_scene", levelNo);
 
-#endif
+//#endif
         SavedLevelNo = PlayerPrefs.GetInt("current_scene_text", 0);
         UiManager.Instance.LevelText.text = (SavedLevelNo + 1).ToString();
         int currentLevel = PlayerPrefs.GetInt("current_scene");
@@ -84,8 +84,8 @@ public class GameManager : Singleton<GameManager>
     private void ChracterSetUp()
     {
         p.GetComponentInChildren<Collsion>().Hero1Model.GetComponent<Animator>().Play("Run"); p.GetComponentInChildren<Collsion>().Hero2Model.GetComponent<Animator>().Play("Run");
-        p.GetComponentInChildren<Collsion>().Hero1.GetComponent<LookTowards>().Cape.transform.DOLocalRotate(p.GetComponentInChildren<Collsion>().Hero1.GetComponent<LookTowards>().CapeFinalPos.transform.localEulerAngles, .1f);
-        p.GetComponentInChildren<Collsion>().Hero1.GetComponent<LookTowards>().Cape.transform.DOLocalMove(p.GetComponentInChildren<Collsion>().Hero1.GetComponent<LookTowards>().CapeFinalPos.transform.localPosition, .1f);
+        p.GetComponentInChildren<Collsion>().Hero1.GetComponent<PerCollsion>().Cape.transform.DOLocalRotate(p.GetComponentInChildren<Collsion>().Hero1.GetComponent<PerCollsion>().CapeFinalPos.transform.localEulerAngles, .1f);
+        p.GetComponentInChildren<Collsion>().Hero1.GetComponent<PerCollsion>().Cape.transform.DOLocalMove(p.GetComponentInChildren<Collsion>().Hero1.GetComponent<PerCollsion>().CapeFinalPos.transform.localPosition, .1f);
       //  p.GetComponentInChildren<Collsion>().Hero1Model.GetComponentInChildren<Obi.ObiSolver>().transform.GetChild(0).transform.DOLocalRotate(new Vector3(0, -90, -50), .1f);
       //   p.GetComponentInChildren<Collsion>().Hero1Model.GetComponentInChildren<Obi.ObiSolver>().transform.GetChild(0).transform.DOLocalMove(new Vector3(-2.501f, 2.726f, -0.985f), .1f);
     }
