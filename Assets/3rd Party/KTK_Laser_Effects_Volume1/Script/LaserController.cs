@@ -81,7 +81,7 @@ public class LaserController : MonoBehaviour {
 
 		if(Physics.Raycast(transform.position, transform.forward, out hit))
 		{
-			Debug.Log (hit.distance);
+			
 			if(hit.collider && hit.distance <= length / 10 * OvarAll_Size)
 			{
 				

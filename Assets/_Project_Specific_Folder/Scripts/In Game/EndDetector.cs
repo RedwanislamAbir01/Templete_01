@@ -161,7 +161,7 @@ public class EndDetector : MonoBehaviour
                     {
 
                         MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-                        other.GetComponent<Collider>().enabled = false;
+                       
                        
                         StartCoroutine(LaserEnableDisableRoutine());
                         StartCoroutine(EnemyDeath(other.gameObject));
@@ -191,6 +191,7 @@ public class EndDetector : MonoBehaviour
     {
         yield return new WaitForSeconds(.3f);
         g.GetComponentInChildren<Animator>().Play("Death");
+       g.GetComponent<Collider>().enabled = false;
     }
     public IEnumerator LaserEnableDisableRoutine()
     {
@@ -203,8 +204,9 @@ public class EndDetector : MonoBehaviour
     }
     public IEnumerator LevelTwoBatThrowRoutine()
     {
-        if(PlayerPrefs.GetInt("Batman") == 2)
+        if(lf.HeroLevel == 2)
         {
+            Instantiate(Projectile, NewGunSpawnPoint.position, Quaternion.identity);
             lf.DummyGun.gameObject.SetActive(false);
             lf.Power2.gameObject.SetActive(true);
             yield return new WaitForSeconds(.3f);
@@ -217,9 +219,7 @@ public class EndDetector : MonoBehaviour
     {
         if (lf.Type == eType.Hero2)
         {
-            if (PlayerPrefs.GetInt("Batman") == 2)
-                Instantiate(Projectile, NewGunSpawnPoint.position, Quaternion.identity);
-            else
+            if (lf.HeroLevel != 2)
                 Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
 
 

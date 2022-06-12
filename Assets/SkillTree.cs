@@ -27,7 +27,7 @@ public class SkillTree : MonoBehaviour
 
         Hero2PriceUpdate();
 
-        c = GameManager.Instance.p.transform.GetChild(0).GetComponent<Collsion>();
+        c = GameManager.Instance.p.transform.GetComponentInChildren<Collsion>();
 
         if (UiManager.GetTotalCoin() >= RequiredCash)
         {

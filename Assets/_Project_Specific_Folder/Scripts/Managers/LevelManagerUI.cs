@@ -13,9 +13,9 @@ namespace KaijuRun
 
         public void VuiFor(int m_LevelNo, string m_UiName)
         {
-            LevelBtn[m_LevelNo % 5].transform.GetChild(4).gameObject.SetActive(true);
-            LevelBtn[m_LevelNo % 5].transform.GetChild(5).gameObject.SetActive(true);
-            LevelBtn[m_LevelNo % 5].transform.GetChild(5).GetComponent<Image>().sprite =
+            LevelBtn[m_LevelNo % 6].transform.GetChild(4).gameObject.SetActive(true);
+            LevelBtn[m_LevelNo % 6].transform.GetChild(5).gameObject.SetActive(true);
+            LevelBtn[m_LevelNo % 6].transform.GetChild(5).GetComponent<Image>().sprite =
                 Resources.Load<Sprite>("UI/" + m_UiName);
             // LevelBtn[m_LevelNo % 5].transform.GetChild(4).gameObject.transform.parent.DOScale(new Vector3(1.448387f, 1.448387f, 1.448387f), 0);
         }
@@ -26,9 +26,9 @@ namespace KaijuRun
 
 
             int j = 0;
-            while (j < 5)
+            while (j < 6)
             {
-                if (j < i % 5)
+                if (j < i % 6)
                 {
                     LevelBtn[j].transform.GetChild(2).gameObject.SetActive(true);
                     LevelBtn[j].transform.GetChild(2).gameObject.transform.parent
@@ -36,7 +36,7 @@ namespace KaijuRun
                 }
 
                 LevelBtn[j].transform.GetChild(3).gameObject.GetComponent<Text>().text =
-                    (Mathf.Floor(i / 5) * 5 + j + 1).ToString();
+                    (Mathf.Floor(i / 6) * 6 + j + 1).ToString();
                 j++;
             }
 

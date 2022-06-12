@@ -37,7 +37,7 @@ namespace ItemCollection.GameEndUnlockItem
 
         private int _unlockPercentage = 0;
         private int _nextPackIndex = 0;
-        public  int _increaseAmount = 20;
+        public  int _increaseAmount = 17;
         public  float _duration = 2.0f;
         private void Start()
         {
@@ -59,7 +59,7 @@ namespace ItemCollection.GameEndUnlockItem
             AssignNextItem();
 
             _unlockPercentage = GetUnlockPercentage();
-            imgUnLocked.fillAmount = _unlockPercentage /100f;
+            imgUnLocked.fillAmount = _unlockPercentage /102f;
 
             if (_unlockPercentage < 100)
                 _unlockPercentage += _increaseAmount;
@@ -110,9 +110,13 @@ namespace ItemCollection.GameEndUnlockItem
 
 
             UiManager.Instance.Next();
+            StartCoroutine(LoadNextScene());
+        }
+        public IEnumerator LoadNextScene ()
+        {
+            yield return new WaitForSeconds(.5f);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-
         private void AssignNextItem()
         {
             imgLocked.sprite = allItemPack[_nextPackIndex].lockSprite;
@@ -122,8 +126,12 @@ namespace ItemCollection.GameEndUnlockItem
         private IEnumerator DisplayItemPack(bool shouldCallNext = false)
         {
             SaveUnlockPercentage(_unlockPercentage);
-            float targetFillAmount = _unlockPercentage / 100f;
-
+            float targetFillAmount = _unlockPercentage / 102f;
+            if (_unlockPercentage > 100)
+            {
+                _unlockPercentage = 100;
+                targetFillAmount = 100;
+            }
             //Debug.Log("FillAmount " + imgUnLocked.fillAmount + "  targetFillAmount " + targetFillAmount);
             DOTween.To(() => imgUnLocked.fillAmount, x => imgUnLocked.fillAmount = x, targetFillAmount, _duration);
             int previousPercentage = _unlockPercentage - _increaseAmount;
@@ -132,6 +140,7 @@ namespace ItemCollection.GameEndUnlockItem
 
             if (_unlockPercentage < 100)
             {
+
                 yield return new WaitForSeconds(_duration);
                 if (shouldCallNext)
                 {
@@ -151,7 +160,7 @@ namespace ItemCollection.GameEndUnlockItem
             btnReveal.gameObject.SetActive(false);
             btnNext.gameObject.SetActive(false);
             yield return new WaitForSeconds(_duration);
-            btnCollect.gameObject.SetActive(true); //txtUnlockPercentage.text = "100" + "%";
+            btnCollect.gameObject.SetActive(true); txtUnlockPercentage.text = "100" + "%";
         }
 
         private void SaveUnlockPercentage(int percentage) => PlayerPrefs.SetInt(UnlockPercentageKey, percentage);

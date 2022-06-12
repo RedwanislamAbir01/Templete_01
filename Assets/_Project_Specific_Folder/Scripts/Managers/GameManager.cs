@@ -36,12 +36,12 @@ public class GameManager : Singleton<GameManager>
 
     public override void Start()
     {
-//#if UNITY_EDITOR
+#if UNITY_EDITOR
 
-//        levelNo = amarIcchaLevel;
-//        PlayerPrefs.SetInt("current_scene", levelNo);
+        levelNo = amarIcchaLevel;
+        PlayerPrefs.SetInt("current_scene", levelNo);
 
-//#endif
+#endif
         SavedLevelNo = PlayerPrefs.GetInt("current_scene_text", 0);
         UiManager.Instance.LevelText.text = (SavedLevelNo + 1).ToString();
         int currentLevel = PlayerPrefs.GetInt("current_scene");
@@ -66,7 +66,7 @@ public class GameManager : Singleton<GameManager>
     }
     public IEnumerator ResetRoutine()
     {
-        FindObjectOfType<Collsion>().Connector.SetActive(false);
+     
         GameManager.Instance.GameOver = true;
         UiManager.Instance.FadeIn.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);

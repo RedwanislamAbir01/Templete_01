@@ -56,7 +56,9 @@ public class PerCollsion : MonoBehaviour
         HeroLevel = PlayerPrefs.GetInt("Hero1");
         if (HeroLevel == 1)
         {
+            if(Power1 != null)
             Power1.SetActive(true);
+            anim.transform.GetComponent<MySDK.Mover>().m_InitialPosition.z=1.86f;
             //Power2.SetActive(true);
             anim.transform.GetComponent<MySDK.Mover>().enabled = true;
 
@@ -65,8 +67,10 @@ public class PerCollsion : MonoBehaviour
         if (HeroLevel == 2)
         {
             anim.transform.GetComponent<MySDK.Mover>().enabled = true;
+            if (Power1 != null)
             Power1.SetActive(false);
-            Power2.SetActive(true);
+            if (Power2 != null)
+             Power2.SetActive(true);
             anim.runtimeAnimatorController = Level2Aniamtor;
         }
     }
@@ -76,7 +80,8 @@ public class PerCollsion : MonoBehaviour
         HeroLevel = PlayerPrefs.GetInt("Hero2");
         if (HeroLevel == 1)
         {
-           Power1.SetActive(true);
+            if (Power1 != null)
+                Power1.SetActive(true);
             anim.transform.DOLocalMoveY(0, .2f);
             anim.transform.GetComponent<MySDK.Mover>().m_InitialPosition.y = 0;
             anim.transform.GetComponent<MySDK.Mover>().enabled = true;
@@ -86,7 +91,8 @@ public class PerCollsion : MonoBehaviour
         {
             if(DummyGun != null)
             DummyGun.gameObject.SetActive(true);
-            Power1.SetActive(true);
+            if (Power1 != null)
+                Power1.SetActive(true);
             anim.transform.DOLocalMoveY(0, .2f);
             anim.transform.GetComponent<MySDK.Mover>().m_InitialPosition.y = 0;
             anim.transform.GetComponent<MySDK.Mover>().enabled = true;

@@ -105,20 +105,18 @@ public class Collsion : MonoBehaviour
             Hero2.transform.GetComponent<PerCollsion>().DummyGun.SetActive(false);
             Hero1.transform.GetComponent<Controller>().enabled = false;
             Hero2.transform.GetComponent<Controller1>().enabled = false;
-            if (transform.localEulerAngles.y > -90 && transform.localEulerAngles.y <= 90)
+            if (Hero1.transform.localPosition.x <= 7 && Hero1.transform.localPosition.x >= 0)
             {
                 Hero1.transform.DOLocalMove(H1start, .3f);
                 Hero2.transform.DOLocalMove(H2Start, .3f);
-  
 
             }
             else
             {
                 Hero2.transform.DOLocalMove(H1start, .3f);
                 Hero1.transform.DOLocalMove(H2Start, .3f);
-                Hero2.transform.DOLocalRotate (new Vector3(0,0,0), .3f);
-                Hero1.transform.DOLocalRotate(new Vector3(0, 0, 0), .3f);
             }
+            
    
             GameManager.Instance.GameEnd = true;
             Boss1.transform.GetChild(0).gameObject.GetComponent<Animator>().Play("Taunt");
