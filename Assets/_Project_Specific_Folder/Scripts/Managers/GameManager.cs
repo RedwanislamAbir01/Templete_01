@@ -56,14 +56,16 @@ public class GameManager : Singleton<GameManager>
             IsIronManScene = false;
             DC.gameObject.SetActive(true);
         }
-        if (levelNo > 5)
+       else if (levelNo > 5)
         {
-          
-              
+            if (PlayerPrefs.GetInt("FirstTime", 0) == 0)
+            {
+
+                PlayerPrefs.SetInt("FirstTime", 1);
                 PlayerPrefs.SetInt("Hero1", 0);
                 PlayerPrefs.SetInt("Hero2", 0);
 
-            
+            }
             IsIronManScene = true;
 
             Marvel.gameObject.SetActive(true); DC.gameObject.SetActive(false);

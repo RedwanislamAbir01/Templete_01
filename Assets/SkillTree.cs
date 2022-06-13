@@ -44,11 +44,14 @@ public class SkillTree : MonoBehaviour
             {
                 UpgradeButton1.interactable = true;
                 UpgradeButton2.interactable = true;
+
+                UpgradeButton1.GetComponent<MySDK.Scaler>().enabled = true; UpgradeButton2.GetComponent<MySDK.Scaler>().enabled = true;
             }
             else
             {
                 UpgradeButton1.interactable = false;
-                UpgradeButton2.interactable = false;
+                UpgradeButton2.interactable = false; 
+                UpgradeButton1.GetComponent<MySDK.Scaler>().enabled = false; UpgradeButton2.GetComponent<MySDK.Scaler>().enabled = false;
             }
         }
 
