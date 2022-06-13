@@ -40,11 +40,11 @@ namespace KaijuRun
                 j++;
             }
 
-            LevelBtn[i % 5].transform.GetChild(1).gameObject.SetActive(true);
-            LevelBtn[i % 5].transform.GetChild(4).gameObject.GetComponent<Image>().sprite =
-                Resources.Load<Sprite>("UI/Select");
-            LevelBtn[i % 5].transform.GetChild(1).gameObject.transform.parent.DOScale(new Vector3(1.8f, 1.8f, 1.8f), 0);
-            LevelBtn[i % 5].transform.GetChild(4).gameObject.transform.parent.DOScale(new Vector3(1.8f, 1.8f, 1.8f), 0);
+            LevelBtn[i % 6].transform.GetChild(1).gameObject.SetActive(true);
+            LevelBtn[i % 6].transform.GetChild(4).gameObject.GetComponent<Image>().sprite =
+             Resources.Load<Sprite>("UI/Select");
+            LevelBtn[i % 6].transform.GetChild(1).gameObject.transform.parent.DOScale(new Vector3(1.8f, 1.8f, 1.8f), 0);
+            LevelBtn[i % 6].transform.GetChild(4).gameObject.transform.parent.DOScale(new Vector3(1.8f, 1.8f, 1.8f), 0);
             if (i >= 0 && i < 3)
             {
                 VuiFor(2, "4");
