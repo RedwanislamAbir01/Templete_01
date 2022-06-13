@@ -30,19 +30,27 @@ public class SkillTree : MonoBehaviour
 
         Hero2PriceUpdate();
 
-        
-
-        if (UiManager.GetTotalCoin() >= RequiredCash)
+        if (PlayerPrefs.GetInt("Hero1") == 2)
         {
-            UpgradeButton1.interactable = true;
-            UpgradeButton2.interactable = true;
+            UpgradeButton2.interactable = false;
+        }
+        else if (PlayerPrefs.GetInt("Hero2") == 2)
+        {
+            UpgradeButton1.interactable = false;
         }
         else
         {
-            UpgradeButton1.interactable = false;
-            UpgradeButton2.interactable = false;
+            if (UiManager.GetTotalCoin() >= RequiredCash)
+            {
+                UpgradeButton1.interactable = true;
+                UpgradeButton2.interactable = true;
+            }
+            else
+            {
+                UpgradeButton1.interactable = false;
+                UpgradeButton2.interactable = false;
+            }
         }
-
 
     }
 
