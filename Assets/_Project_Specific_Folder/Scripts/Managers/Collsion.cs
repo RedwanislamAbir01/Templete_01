@@ -170,16 +170,15 @@ public class Collsion : MonoBehaviour
             Hero2Model.GetComponent<Animator>().SetBool("Hang", false); Hero1Model.GetComponent<Animator>().SetBool("Hang", false);
           
             transform.DOLocalMoveX(0, .1f);
-            GetComponent<Controller>().enabled = false;
+            GetComponent<CarController>().enabled = false;
             
             Hero1.transform.DOLocalMove(H1start, .3f);
             Hero2.transform.DOLocalMove(H2Start, .3f).OnComplete(() =>
             {
                 Camera.main.transform.GetChild(0).gameObject.SetActive(false);
-                Shadow1.gameObject.SetActive(true); Shadow2.gameObject.SetActive(true); Connector.gameObject.SetActive(true);
-              
-         
-                Hero1.GetComponent<PerCollsion>().enabled = true; Hero2.GetComponent<PerCollsion>().enabled = true;
+             
+                Hero1.GetComponent<Controller>().enabled = true;
+                Hero2.GetComponent<Controller1>().enabled = true;
 
             });
         }
@@ -194,8 +193,8 @@ public class Collsion : MonoBehaviour
         GameManager.Instance.p.MaxSpeed += SpeedIncreasAmmount;
         Flying = true;
        
-        Hero1.GetComponent<PerCollsion>().enabled = false;
-        Hero2.GetComponent<PerCollsion>().enabled = false;
+        Hero1.GetComponent<Controller>().enabled = false;
+        Hero2.GetComponent<Controller1>().enabled = false;
 
         BatCape.transform.DOLocalRotate(TargetCapePos.transform.localEulerAngles, .2f);
         BatCape.transform.DOLocalMove(TargetCapePos.transform.localPosition, .01f);
@@ -217,7 +216,7 @@ public class Collsion : MonoBehaviour
 
             Hero1.transform.DOLocalRotate(new Vector3(0, -0, 0), .3f); Hero2.transform.DOLocalRotate(new Vector3(0, -0, 0), .1f);
         
-            GetComponent<Controller>().enabled = true;
+            GetComponent<CarController>().enabled = true;
         });
 
     }

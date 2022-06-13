@@ -38,45 +38,48 @@ public class GameManager : Singleton<GameManager>
 
     public override void Start()
     {
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 
-        levelNo = amarIcchaLevel;
-        PlayerPrefs.SetInt("current_scene", levelNo);
+//        levelNo = amarIcchaLevel;
+//        PlayerPrefs.SetInt("current_scene", levelNo);
 
-#endif
-        if(levelNo >= 0 && levelNo <= 5 )
-        {
-            IsIronManScene = false;
-            DC.gameObject.SetActive(true);
-        }
-        else
-        {
-            if (PlayerPrefs.GetInt("FirstTime", 0) == 0)
-            {
-                
-                PlayerPrefs.SetInt("FirstTime", 1);
-                PlayerPrefs.SetInt("Hero1", 0);
-                PlayerPrefs.SetInt("Hero2", 0);
+//#endif
 
-            }
-            IsIronManScene = true;
-           
-                Marvel.gameObject.SetActive(true) ;
-        }
         SavedLevelNo = PlayerPrefs.GetInt("current_scene_text", 0);
         UiManager.Instance.LevelText.text = (SavedLevelNo + 1).ToString();
         int currentLevel = PlayerPrefs.GetInt("current_scene");
         p.enabled = false;
         base.Start();
         LoadLvlPrefab();
+        if (levelNo >= 0 && levelNo <= 5)
+        {
+            IsIronManScene = false;
+            DC.gameObject.SetActive(true);
+        }
+        if (levelNo > 5)
+        {
+            if (PlayerPrefs.GetInt("FirstTime", 0) == 0)
+            {
+
+                PlayerPrefs.SetInt("FirstTime", 1);
+                PlayerPrefs.SetInt("Hero1", 0);
+                PlayerPrefs.SetInt("Hero2", 0);
+
+            }
+            IsIronManScene = true;
+
+            Marvel.gameObject.SetActive(true); DC.gameObject.SetActive(false);
+        }
         p.GetComponentInChildren<Collsion>().Boss1 = GameObject.FindGameObjectWithTag("Boss");
         BatMobile= GameObject.FindGameObjectWithTag("Batmobil");Bike = GameObject.FindGameObjectWithTag("Bike");
+
     }
     private void Update()
     {
         if (Path == null)
         {
             Path = GameObject.Find("pathWAY");
+
             pathCreator = Path.GetComponent<PathCreation.PathCreator>();
             Path.GetComponent<RoadMeshCreator>().refresh();
         }

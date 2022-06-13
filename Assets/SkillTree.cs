@@ -8,10 +8,11 @@ public class SkillTree : MonoBehaviour
     public Button UpgradeButton1, UpgradeButton2;
     public TMP_Text Button1LevelText;
     public TMP_Text Button1PriceText;
+    public TMP_Text Description1Text;
 
     public TMP_Text Button2LevelText;
     public TMP_Text Button2PriceText;
-
+    public TMP_Text Description2Text;
     public Sprite[] ButtonSprite;
 
    
@@ -24,8 +25,7 @@ public class SkillTree : MonoBehaviour
 
     void Start()
     {
-        Button1LevelText.text = PlayerPrefs.GetInt("Hero1").ToString();
-        Button2LevelText.text = PlayerPrefs.GetInt("Hero2").ToString();
+
         Hero1PriceUpdate();
 
         Hero2PriceUpdate();
@@ -48,34 +48,88 @@ public class SkillTree : MonoBehaviour
 
     private void Hero1PriceUpdate()
     {
+        Button1LevelText.text = "Upgrade :" + PlayerPrefs.GetInt("Hero1").ToString();
         if (PlayerPrefs.GetInt("Hero1") == 0)
         {
-        
+
+
+
+            if (GameManager.Instance.levelNo >= 0 && GameManager.Instance.levelNo <= 5)
+            {
+      
+                Description1Text.text = "Superman Walking";
+            }
+            else
+                Description1Text.text = "Ironman Walking";
+
             Button1PriceText.text = RequiredCash.ToString();
+
+
+        }
+        else if (PlayerPrefs.GetInt("Hero1") == 1)
+        {
+
+
+
+            if (GameManager.Instance.levelNo >= 0 && GameManager.Instance.levelNo <= 5)
+                Description1Text.text = "Superman Flying";
+            else
+                Description1Text.text = "Ironman Flying";
+
+            Button1PriceText.text = (RequiredCash + IncreaseAmmount).ToString();
 
         }
         else
         {
-          
-            Button1PriceText.text = (RequiredCash + IncreaseAmmount).ToString();
+            if (GameManager.Instance.levelNo >= 0 && GameManager.Instance.levelNo <= 5)
+                Description1Text.text = "Superman Maxed";
+            else
+                Description1Text.text = "Ironman Maxed";
 
+            Button1PriceText.text = "Maxed";
+            UpgradeButton2.interactable = false;
+      
         }
         
     }
 
     private void Hero2PriceUpdate()
     {
+        
+        Button2LevelText.text = "Upgrade :" + PlayerPrefs.GetInt("Hero2").ToString();
         if (PlayerPrefs.GetInt("Hero2") == 0)
         {
-         
+
+
+            if (GameManager.Instance.levelNo >= 0 && GameManager.Instance.levelNo <= 5)
+                Description2Text.text = "Batman Walking";
+            else
+                Description2Text.text = "Spidy Walking";
             Button2PriceText.text = RequiredCash.ToString();
+        }
+        else if (PlayerPrefs.GetInt("Hero2") == 1)
+        {
+
+
+            if (GameManager.Instance.levelNo >= 0 && GameManager.Instance.levelNo <= 5)
+                Description2Text.text = "Batman Flying";
+            else
+                Description2Text.text = "Spidy Flying";
+
+            Button2PriceText.text = (RequiredCash + IncreaseAmmount).ToString();
+
         }
         else
         {
-       
-            Button2PriceText.text = (RequiredCash + IncreaseAmmount).ToString();
+            if (GameManager.Instance.levelNo >= 0 && GameManager.Instance.levelNo <= 5)
+                Description2Text.text = "Batman Maxed";
+            else
+                Description2Text.text = "Spidy Maxed";
+
+            Button2PriceText.text = "Maxed"; 
+            UpgradeButton1.interactable = false;
         }
-       
+
     }
 
     // Update is called once per frame
@@ -86,18 +140,15 @@ public class SkillTree : MonoBehaviour
     }
     public void UpgradeSuperMan()
     {
-
         if (PlayerPrefs.GetInt("Hero1") == 0)
         {
             UiManager.SaveTotalCoin(UiManager.GetTotalCoin() - RequiredCash);
             PlayerPrefs.SetInt("Hero1", 1);
-
         }
         else if (PlayerPrefs.GetInt("Hero1") == 1)
         {
             UiManager.SaveTotalCoin(UiManager.GetTotalCoin() - (RequiredCash + IncreaseAmmount));
             PlayerPrefs.SetInt("Hero1", 2);
-
         }
 
             c.Hero1.GetComponent<PerCollsion>().Hero1Upgrade();
@@ -108,13 +159,8 @@ public class SkillTree : MonoBehaviour
                 UpgradeButton2.interactable = false;
             }
 
-
-
-
-
-             Button1LevelText.text = PlayerPrefs.GetInt("Hero1").ToString();
              Hero1PriceUpdate();
-              UiManager.Instance.PointText.text = UiManager.GetTotalCoin().ToString();
+             UiManager.Instance.PointText.text = UiManager.GetTotalCoin().ToString();
 
     }
     public void UpgradeBatMan()
@@ -123,17 +169,12 @@ public class SkillTree : MonoBehaviour
         {
             UiManager.SaveTotalCoin(UiManager.GetTotalCoin() - RequiredCash);
             PlayerPrefs.SetInt("Hero2", 1);
-
-
         }
         else if (PlayerPrefs.GetInt("Hero2") == 1)
         {
             UiManager.SaveTotalCoin(UiManager.GetTotalCoin() - (RequiredCash + IncreaseAmmount));
             PlayerPrefs.SetInt("Hero2", 2);
-
-
         }
-        
 
             c.Hero2.GetComponent<PerCollsion>().Hero2Upgrade();
             c.Hero2.GetComponent<PerCollsion>().TorneddoFX.Play();
@@ -143,7 +184,7 @@ public class SkillTree : MonoBehaviour
                 UpgradeButton1.interactable = false;
             }
 
-        Button2LevelText.text = PlayerPrefs.GetInt("Hero2").ToString();
+ 
         Hero2PriceUpdate(); 
         UiManager.Instance.PointText.text = UiManager.GetTotalCoin().ToString();
     }
