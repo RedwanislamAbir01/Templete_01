@@ -199,7 +199,7 @@ MonoBehaviour:
   CrystalSpread: {fileID: 9144820366456875970, guid: f4d26465e3671d0429816dc8f7937a0f, type: 3}
   DestroyVFX: {fileID: 8748687995501502678, guid: 62334a566bbfe3945bc7bd0c02ca1c9e, type: 3}
   isBatMobile: 0
-  isWebNet: 1
+  isWebNet: 0
 --- !u!54 &-7563849298568495467
 Rigidbody:
   m_ObjectHideFlags: 0
