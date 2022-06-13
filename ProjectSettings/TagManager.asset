@@ -26,14 +26,16 @@ TagManager:
   - Exit
   - Bike
   - BikeExit
+  - HulkBuster
+  - HulkBusterExit
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - IgnoreBig
   - Water
   - UI
-  - 
+  - Big
   - 
   - 
   - 

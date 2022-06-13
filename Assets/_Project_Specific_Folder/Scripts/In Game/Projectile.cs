@@ -196,7 +196,18 @@ public class Projectile : MonoBehaviour
 
 
                 }
-                if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KryptoCrstalguy)
+                if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Lizard)
+                {
+                   // other.GetComponent<Enemy>().Rope.SetActive(true);
+                    other.GetComponent<Collider>().enabled = false;
+                    GameObject g = Instantiate(DestroyVFX
+                    , new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity);
+                    Destroy(g, 1);
+                    other.gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>().Play("Death");
+                    Destroy(gameObject);
+
+                }
+                    if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KryptoCrstalguy)
                 {
                     SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().TankHit);
                     other.transform.GetChild(0).gameObject.SetActive(false); other.transform.GetChild(01).gameObject.SetActive(true);

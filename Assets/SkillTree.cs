@@ -21,13 +21,14 @@ public class SkillTree : MonoBehaviour
     public int IncreaseAmmount = 30;
   
     Collsion c;
+
     void Start()
     {
         Hero1PriceUpdate();
 
         Hero2PriceUpdate();
 
-        c = GameManager.Instance.p.transform.GetComponentInChildren<Collsion>();
+        
 
         if (UiManager.GetTotalCoin() >= RequiredCash)
         {
@@ -78,7 +79,8 @@ public class SkillTree : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(c == null)
+        c = GameManager.Instance.p.transform.GetComponentInChildren<Collsion>();
     }
     public void UpgradeSuperMan()
     {

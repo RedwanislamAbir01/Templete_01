@@ -7,6 +7,8 @@ using DG.Tweening;
 using PathCreation.Examples;
 public class GameManager : Singleton<GameManager>
 {
+    public bool IsIronManScene;
+    public GameObject DC, Marvel;
 
     [Header("Level prefabs List")]
     public List<GameObject> LevelPrefabs = new List<GameObject>();
@@ -42,6 +44,23 @@ public class GameManager : Singleton<GameManager>
         PlayerPrefs.SetInt("current_scene", levelNo);
 
 #endif
+        if(levelNo >= 0 && levelNo <= 5 )
+        {
+            DC.gameObject.SetActive(true);
+        }
+        else
+        {
+            if (PlayerPrefs.GetInt("FirstTime", 0) == 0)
+            {
+                
+                PlayerPrefs.SetInt("FirstTime", 1);
+                PlayerPrefs.SetInt("Hero1", 0);
+                PlayerPrefs.SetInt("Hero2", 0);
+
+            }
+           
+                Marvel.gameObject.SetActive(true) ;
+        }
         SavedLevelNo = PlayerPrefs.GetInt("current_scene_text", 0);
         UiManager.Instance.LevelText.text = (SavedLevelNo + 1).ToString();
         int currentLevel = PlayerPrefs.GetInt("current_scene");

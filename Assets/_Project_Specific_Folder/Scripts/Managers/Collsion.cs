@@ -76,6 +76,20 @@ public class Collsion : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+
+        if (other.gameObject.CompareTag("HulkBuster"))
+        {
+            StartCoroutine(GetOnHulkBusterRoutine(other.gameObject));
+            other.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 0);
+        }
+        if (other.gameObject.CompareTag("HulkBusterExit"))
+        {
+            GameObject.FindGameObjectWithTag("HulkBuster").GetComponent<Collider>().enabled = false;
+            other.gameObject.GetComponent<BoxCollider>().enabled = false;
+            StartCoroutine(OnHulkExitRoutine(other.gameObject));
+           // other.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 100);
+        }
+
         if (other.gameObject.CompareTag("Car"))
         {
             Hero2.GetComponent<PerCollsion>().Power1.gameObject.SetActive(false);
@@ -102,6 +116,7 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("FinishLine"))
         {
+            if(Hero2.transform.GetComponent<PerCollsion>().DummyGun != null)
             Hero2.transform.GetComponent<PerCollsion>().DummyGun.SetActive(false);
             Hero1.transform.GetComponent<Controller>().enabled = false;
             Hero2.transform.GetComponent<Controller1>().enabled = false;
@@ -486,10 +501,65 @@ public class Collsion : MonoBehaviour
 
             transform.DOLocalRotate(new Vector3(0, 0, 0), .05f);
         }
-        ); 
-      
+        );
+
     }
-        public IEnumerator GetOnCarRoutine(GameObject obj)
+    public IEnumerator GetOnHulkBusterRoutine(GameObject obj)
+    {
+
+
+        transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
+
+        transform.DOLocalMove(new Vector3(0, 0.88f, 0), .2f);
+        Camera.main.transform.DOLocalMoveZ(5.87f, 1f);
+      //  Hero1.transform.DOLocalMove(H1start, .1f);
+      //  Hero2.transform.DOLocalMove(H2Start, .1f);
+        yield return new WaitForSeconds(.1f);
+        GameManager.Instance.p.enabled = false;
+        Hero2.transform.DOLocalRotate(new Vector3(0, 0, 0), 0f); Hero1.transform.DOLocalRotate(new Vector3(0, 0, 0), 0f);
+ 
+        obj.transform.parent = transform;
+        Hero1.transform.parent = obj.transform; 
+        Hero2.transform.parent = obj.transform;
+        Hero1.transform.DOLocalMove(obj.transform.GetChild(2).transform.localPosition, .4f).OnComplete(() => {
+            obj.GetComponent<Animator>().enabled = true;
+        });
+        Hero2.transform.DOLocalMove(obj.transform.GetChild(3).transform.localPosition, .3f).OnComplete(() => {
+            Hero2.gameObject.SetActive(false);
+        });
+
+
+        GameManager.Instance.p.speed = 0;
+        GameManager.Instance.p.MaxSpeed = 0;
+        GameManager.Instance.p.MinSpeed = 0;
+        GameManager.Instance.p.IncreazseMultiplier = 0;
+
+        yield return new WaitForSeconds(.1f);
+        GameManager.Instance.p.enabled = true;
+        Camera.main.transform.DOLocalMoveZ(-9, .3f);
+        yield return new WaitForSeconds(.5f);
+        Camera.main.transform.DOLocalMove(transform.root.GetChild(4).transform.localPosition, .3f);
+       
+        GameManager.Instance.p.MaxSpeed = 5;
+        GameManager.Instance.p.speed = 5;
+        GameManager.Instance.p.IncreazseMultiplier = 5;
+        Camera.main.transform.GetChild(0).gameObject.SetActive(true);
+        transform.GetComponent<Controller>().enabled = true;
+       
+        Hero1.gameObject.SetActive(false);
+
+        GameManager.Instance.ZoomEffect();
+        // Camera.main.transform.DOLocalMoveZ(5f, 1.5f);
+
+        Hero1Model.GetComponent<Animator>().SetTrigger("Jump");
+        Hero2Model.GetComponent<Animator>().SetTrigger("Jump");
+
+        yield return new WaitForSeconds(1f);
+        Hero1.transform.DOLocalMoveZ(12.07f, .3f); Hero2.transform.DOLocalMoveZ(12.07f, .3f);
+
+
+    }
+    public IEnumerator GetOnCarRoutine(GameObject obj)
     {
      
      
@@ -542,7 +612,50 @@ public class Collsion : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         Hero1.transform.DOLocalMoveZ(12.07f, .3f); Hero2.transform.DOLocalMoveZ(12.07f, .3f);
+
+
+    }
+    public IEnumerator OnHulkExitRoutine(GameObject g)
+    {
+       transform.GetComponent<Controller>().enabled = false;
+
+        Camera.main.transform.GetChild(0).gameObject.SetActive(false);
+
+
+        GameManager.Instance.p.speed = 0;
+        GameManager.Instance.p.MaxSpeed = 0; GameManager.Instance.p.MinSpeed = 0;
+        GameManager.Instance.p.IncreazseMultiplier = 0;
+
+        yield return new WaitForSeconds(.3f);
+        Hero1.transform.parent = transform; Hero2.transform.parent = transform;
+        GameObject.FindGameObjectWithTag("HulkBuster").transform.parent = null;
+        GameObject.FindGameObjectWithTag("HulkBuster").GetComponent<Animator>().enabled = false;
+          Hero1.SetActive(true); Hero2.SetActive(true);
+        //  GameManager.Instance.Fly.Stop();
+        BatCape.transform.DOLocalRotate(StartCapeRot, .2f);
+        BatCape.transform.DOLocalMove(StartCapePos, .01f);
+
+        Hero1Model.GetComponent<Animator>().SetTrigger("Jump");
+        Hero2Model.GetComponent<Animator>().SetTrigger("Jump");
+
+        Camera.main.transform.DOLocalMove(new Vector3(0,11, -20f), .3f);
+
+        Hero1.transform.DOLocalMove(H1start, .3f);
+        Hero2.transform.DOLocalMove(H2Start, .3f);
+
        
+        DOTween.To(() => GameManager.Instance.p.distanceTravelled, x => GameManager.Instance.p.distanceTravelled = x, GameManager.Instance.p.distanceTravelled + 6, .5f).OnComplete(() =>
+        {
+            transform.DOLocalMoveX(0, .1f);
+
+            GameManager.Instance.p.speed = 2.5f;
+            GameManager.Instance.p.MaxSpeed = 2.5f;
+            Hero1Model.GetComponent<Animator>().Play("Run"); Hero2Model.GetComponent<Animator>().Play("Run");
+         
+
+        }
+        );
+
 
     }
     public IEnumerator OnExitRoutine()

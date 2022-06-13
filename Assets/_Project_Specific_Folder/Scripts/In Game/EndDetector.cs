@@ -27,9 +27,12 @@ public class EndDetector : MonoBehaviour
     }
     public IEnumerator SpriteOnOff()
     {
-        aa.gameObject.SetActive(true); bb.gameObject.SetActive(true);
-        yield return new WaitForSeconds(.1f);
-        aa.gameObject.SetActive(false); bb.gameObject.SetActive(false);
+        if (aa != null && bb != null)
+        {
+            aa.gameObject.SetActive(true); bb.gameObject.SetActive(true);
+            yield return new WaitForSeconds(.1f);
+            aa.gameObject.SetActive(false); bb.gameObject.SetActive(false);
+        }
     }
 
 
@@ -183,6 +186,9 @@ public class EndDetector : MonoBehaviour
             }
             else
             {
+                if (GetComponentInParent<Animator>() != null)
+                GetComponentInParent<Animator>().Play("ShootRun");
+
                 StartCoroutine(Shoot6Times());
             }
         }
@@ -203,16 +209,30 @@ public class EndDetector : MonoBehaviour
 
     }
     public IEnumerator LevelTwoBatThrowRoutine()
-    {
-        if(lf.HeroLevel == 2)
+    {   if (!GameManager.Instance.IsIronManScene)
         {
-            Instantiate(Projectile, NewGunSpawnPoint.position, Quaternion.identity);
-            lf.DummyGun.gameObject.SetActive(false);
-            lf.Power2.gameObject.SetActive(true);
-            yield return new WaitForSeconds(.3f);
-            lf.Power2.gameObject.SetActive(false);
-            lf.DummyGun.gameObject.SetActive(true);
+            if (lf.HeroLevel == 2)
+            {
+                Instantiate(Projectile, NewGunSpawnPoint.position, Quaternion.identity);
+                lf.DummyGun.gameObject.SetActive(false);
+                lf.Power2.gameObject.SetActive(true);
+                yield return new WaitForSeconds(.3f);
+                lf.Power2.gameObject.SetActive(false);
+                lf.DummyGun.gameObject.SetActive(true);
+            }
         }
+    else
+        {
+            if (lf.HeroLevel == 2)
+            {
+                GameObject g = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                yield return new WaitForSeconds(.1f);
+                GameObject g1 = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                yield return new WaitForSeconds(.1f);
+                GameObject g2 = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+            }
+        }
+    
     }
 
     public void Shoot()
@@ -240,6 +260,7 @@ public class EndDetector : MonoBehaviour
         g.transform.DOLocalRotate(new Vector3(0, 1, 0), 0);
         GameObject g1 = Instantiate(Projectile, SpwanPoint1.position, Quaternion.identity); g1.GetComponent<Collider>().enabled = false;
         g1.transform.DOLocalRotate(new Vector3(0, -1, 0), 0);
+
         StartCoroutine(SpriteOnOff());
         yield return new WaitForSeconds(.2f);
         GameObject g2 = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
