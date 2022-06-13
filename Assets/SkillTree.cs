@@ -79,7 +79,7 @@ public class SkillTree : MonoBehaviour
             Button1PriceText.text = (RequiredCash + IncreaseAmmount).ToString();
 
         }
-        else
+        else if (PlayerPrefs.GetInt("Hero1") == 2)
         {
             if (GameManager.Instance.levelNo >= 0 && GameManager.Instance.levelNo <= 5)
                 Description1Text.text = "Superman Maxed";
@@ -119,7 +119,7 @@ public class SkillTree : MonoBehaviour
             Button2PriceText.text = (RequiredCash + IncreaseAmmount).ToString();
 
         }
-        else
+        else if (PlayerPrefs.GetInt("Hero2") == 2)
         {
             if (GameManager.Instance.levelNo >= 0 && GameManager.Instance.levelNo <= 5)
                 Description2Text.text = "Batman Maxed";
