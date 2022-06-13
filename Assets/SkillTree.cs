@@ -18,9 +18,10 @@ public class SkillTree : MonoBehaviour
    
 
 
-    public int RequiredCash = 20;
-    public int IncreaseAmmount = 30;
-  
+    public int Hero1RequiredCash = 20;
+    public int Hero1RequiredCash1 = 30;
+    public int Hero2RequiredCash = 20;
+    public int Hero2RequiredCash2 = 30;
     Collsion c;
 
     void Start()
@@ -40,18 +41,31 @@ public class SkillTree : MonoBehaviour
         }
         else
         {
-            if (UiManager.GetTotalCoin() >= RequiredCash)
+            if (UiManager.GetTotalCoin() >= Hero1RequiredCash)
             {
                 UpgradeButton1.interactable = true;
-                UpgradeButton2.interactable = true;
+             
 
-                UpgradeButton1.GetComponent<MySDK.Scaler>().enabled = true; UpgradeButton2.GetComponent<MySDK.Scaler>().enabled = true;
+                UpgradeButton1.GetComponent<MySDK.Scaler>().enabled = true;
             }
             else
             {
                 UpgradeButton1.interactable = false;
+              
+                UpgradeButton1.GetComponent<MySDK.Scaler>().enabled = false;
+            }
+            if (UiManager.GetTotalCoin() >= Hero2RequiredCash)
+            {
+              
+                UpgradeButton2.interactable = true;
+
+                UpgradeButton2.GetComponent<MySDK.Scaler>().enabled = true;
+            }
+            else
+            {
+                
                 UpgradeButton2.interactable = false; 
-                UpgradeButton1.GetComponent<MySDK.Scaler>().enabled = false; UpgradeButton2.GetComponent<MySDK.Scaler>().enabled = false;
+                UpgradeButton2.GetComponent<MySDK.Scaler>().enabled = false;
             }
         }
 
@@ -73,7 +87,7 @@ public class SkillTree : MonoBehaviour
             else
                 Description1Text.text = "Ironman Walking";
 
-            Button1PriceText.text = RequiredCash.ToString();
+            Button1PriceText.text = Hero1RequiredCash.ToString();
 
 
         }
@@ -87,7 +101,7 @@ public class SkillTree : MonoBehaviour
             else
                 Description1Text.text = "Ironman Flying";
 
-            Button1PriceText.text = (RequiredCash + IncreaseAmmount).ToString();
+            Button1PriceText.text = (Hero1RequiredCash1).ToString();
 
         }
         else if (PlayerPrefs.GetInt("Hero1") == 2)
@@ -116,7 +130,7 @@ public class SkillTree : MonoBehaviour
                 Description2Text.text = "Batman Walking";
             else
                 Description2Text.text = "Spidy Walking";
-            Button2PriceText.text = RequiredCash.ToString();
+            Button2PriceText.text =Hero2RequiredCash.ToString();
         }
         else if (PlayerPrefs.GetInt("Hero2") == 1)
         {
@@ -127,7 +141,7 @@ public class SkillTree : MonoBehaviour
             else
                 Description2Text.text = "Spidy Flying";
 
-            Button2PriceText.text = (RequiredCash + IncreaseAmmount).ToString();
+            Button2PriceText.text = (Hero2RequiredCash2).ToString();
 
         }
         else if (PlayerPrefs.GetInt("Hero2") == 2)
@@ -153,19 +167,19 @@ public class SkillTree : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("Hero1") == 0)
         {
-            UiManager.SaveTotalCoin(UiManager.GetTotalCoin() - RequiredCash);
+            UiManager.SaveTotalCoin(UiManager.GetTotalCoin() - Hero1RequiredCash);
             PlayerPrefs.SetInt("Hero1", 1);
         }
         else if (PlayerPrefs.GetInt("Hero1") == 1)
         {
-            UiManager.SaveTotalCoin(UiManager.GetTotalCoin() - (RequiredCash + IncreaseAmmount));
+            UiManager.SaveTotalCoin(UiManager.GetTotalCoin() - (Hero1RequiredCash1));
             PlayerPrefs.SetInt("Hero1", 2);
         }
 
             c.Hero1.GetComponent<PerCollsion>().Hero1Upgrade();
             c.Hero1.GetComponent<PerCollsion>().TorneddoFX.Play();
             StartCoroutine(RotateRoutine());
-            if (UiManager.GetTotalCoin() < RequiredCash + IncreaseAmmount)
+            if (UiManager.GetTotalCoin() < Hero1RequiredCash1)
             {
                 UpgradeButton2.interactable = false;
             }
@@ -178,19 +192,19 @@ public class SkillTree : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("Hero2") == 0)
         {
-            UiManager.SaveTotalCoin(UiManager.GetTotalCoin() - RequiredCash);
+            UiManager.SaveTotalCoin(UiManager.GetTotalCoin() - Hero2RequiredCash);
             PlayerPrefs.SetInt("Hero2", 1);
         }
         else if (PlayerPrefs.GetInt("Hero2") == 1)
         {
-            UiManager.SaveTotalCoin(UiManager.GetTotalCoin() - (RequiredCash + IncreaseAmmount));
+            UiManager.SaveTotalCoin(UiManager.GetTotalCoin() -Hero2RequiredCash2);
             PlayerPrefs.SetInt("Hero2", 2);
         }
 
             c.Hero2.GetComponent<PerCollsion>().Hero2Upgrade();
             c.Hero2.GetComponent<PerCollsion>().TorneddoFX.Play();
             StartCoroutine(RotateRoutine1());
-            if (UiManager.GetTotalCoin() < RequiredCash + IncreaseAmmount)
+            if (UiManager.GetTotalCoin() < Hero2RequiredCash2)
             {
                 UpgradeButton1.interactable = false;
             }

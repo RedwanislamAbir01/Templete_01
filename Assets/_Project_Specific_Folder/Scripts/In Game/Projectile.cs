@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     public GameObject CrystalSpread;
     public GameObject DestroyVFX;
     [SerializeField] bool isBatMobile;
+    [SerializeField] bool isWebNet;
     private void OnEnable()
     {
         Destroy(gameObject, DestroyTime);
@@ -84,7 +85,7 @@ public class Projectile : MonoBehaviour
 
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Lizard)
                 {
-                    if (this.gameObject.name != "SpiderWeapon(Clone)")
+                    if (this.gameObject.name != "SpiderWeapon(Clone)" )
                     {
                         other.transform.GetChild(1).gameObject.SetActive(true);
                         //other.GetComponent<Collider>().enabled = false;
@@ -94,13 +95,27 @@ public class Projectile : MonoBehaviour
                     }
                     else
                     {
-                        other.GetComponent<Enemy>().Rope.SetActive(true);
-                        other.GetComponent<Collider>().enabled = false;
-                        GameObject g = Instantiate(DestroyVFX
-                        , new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity);
-                        Destroy(g, 1);
-                        other.gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>().Play("Tied");
-                        Destroy(gameObject);
+                        if (!isWebNet)
+                        {
+                            other.GetComponent<Enemy>().Rope.SetActive(true);
+                            other.GetComponent<Collider>().enabled = false;
+                            GameObject g = Instantiate(DestroyVFX
+                            , new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity);
+                            Destroy(g, 1);
+                            other.gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>().Play("Tied");
+                            Destroy(gameObject);
+                        }
+
+                        else
+                        {
+                            other.GetComponent<Enemy>().Net.SetActive(true);
+                            other.GetComponent<Collider>().enabled = false;
+                            GameObject g = Instantiate(DestroyVFX
+                            , new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity);
+                            Destroy(g, 1);
+                            other.gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>().Play("Tied");
+                            Destroy(gameObject);
+                        }
                     }
                 }
 

@@ -11,7 +11,7 @@ public class EndDetector : MonoBehaviour
 
 
     PerCollsion lf;
-    public GameObject Projectile, Laser;
+    public GameObject Projectile, Laser , SpiderNet;
     public float LaserTime;
     public GameObject Puncher;
     public bool Enable;
@@ -54,7 +54,7 @@ public class EndDetector : MonoBehaviour
                 {
                     if (lf.Type == eType.Hero2)
                     {
-                        SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().BatBlade);
+                       
                         Anim.SetTrigger("Throw");
                         StartCoroutine(LevelTwoBatThrowRoutine());
                         Shoot();
@@ -69,7 +69,7 @@ public class EndDetector : MonoBehaviour
                 {
                     if (lf.Type == eType.Hero2)
                     {
-                        SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().BatBlade);
+                       
                         Anim.SetTrigger("Throw"); StartCoroutine(LevelTwoBatThrowRoutine());
                         Shoot();
                     }
@@ -135,7 +135,8 @@ public class EndDetector : MonoBehaviour
                 {
                     if (lf.Type == eType.Hero2)
                     {
-                        SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().BatBlade);
+                      
+
                         Anim.SetTrigger("Throw"); StartCoroutine(LevelTwoBatThrowRoutine());
                         Shoot();
                     }
@@ -219,17 +220,16 @@ public class EndDetector : MonoBehaviour
                 yield return new WaitForSeconds(.3f);
                 lf.Power2.gameObject.SetActive(false);
                 lf.DummyGun.gameObject.SetActive(true);
+                SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().IronShoot);
             }
         }
     else
         {
             if (lf.HeroLevel == 2)
             {
-                GameObject g = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
-                yield return new WaitForSeconds(.1f);
-                GameObject g1 = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
-                yield return new WaitForSeconds(.1f);
-                GameObject g2 = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                GameObject g = Instantiate(SpiderNet, SpawnPoint.position, Quaternion.identity);
+               // g.transform.DOLocalRotate(new Vector3(0, 90, 0), 0);
+                g.transform.DOScale(new Vector3(.2f, .2f, .2f), .5f);
             }
         }
     
@@ -241,7 +241,8 @@ public class EndDetector : MonoBehaviour
         {
             if (lf.HeroLevel != 2)
                 Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
-
+            if (lf.HeroLevel == 0)
+                SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().BatBlade);
 
         }
 

@@ -198,6 +198,8 @@ MonoBehaviour:
   HitVFX: {fileID: 1797657264430493913, guid: dd8575b51ad6e4644a5abb4fda3f6e07, type: 3}
   CrystalSpread: {fileID: 9144820366456875970, guid: f4d26465e3671d0429816dc8f7937a0f, type: 3}
   DestroyVFX: {fileID: 8748687995501502678, guid: 62334a566bbfe3945bc7bd0c02ca1c9e, type: 3}
+  isBatMobile: 0
+  isWebNet: 1
 --- !u!54 &-7563849298568495467
 Rigidbody:
   m_ObjectHideFlags: 0

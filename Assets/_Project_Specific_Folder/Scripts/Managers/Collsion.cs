@@ -545,7 +545,7 @@ public class Collsion : MonoBehaviour
         GameManager.Instance.p.speed = 5;
         GameManager.Instance.p.IncreazseMultiplier = 5;
         Camera.main.transform.GetChild(0).gameObject.SetActive(true);
-        transform.GetComponent<Controller>().enabled = true;
+        transform.GetComponent<CarController>().enabled = true;
        
         Hero1.gameObject.SetActive(false);
 
@@ -618,7 +618,7 @@ public class Collsion : MonoBehaviour
     }
     public IEnumerator OnHulkExitRoutine(GameObject g)
     {
-       transform.GetComponent<Controller>().enabled = false;
+       transform.GetComponent<CarController>().enabled = false;
 
         Camera.main.transform.GetChild(0).gameObject.SetActive(false);
         GameObject.FindGameObjectWithTag("HulkBuster").GetComponent<HulkBuster>().SpiderMan.gameObject.SetActive(false);

@@ -5,8 +5,13 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Take 001
-  externalObjects: {}
+    second: Idle
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: npc_Gator_07 - Default_BaseColor
+    second: {fileID: 2800000, guid: d0ad1f8e0a401814cb84dd1da27db4cb, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -18,8 +23,7 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
-      human bone 'LeftUpperLeg' not found\n"
+    rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -27,14 +31,43 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -81,167 +114,7 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton:
-    - name: npc_LizardP1@Idle(Clone)
-      parentName: 
-      position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: croc
-      parentName: npc_LizardP1@Idle(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: -0.7071068, y: 0.000000061817246, z: 0.000000061817246, w: 0.7071068}
-      scale: {x: 1, y: 1, z: 1}
-    - name: gator_Bone001
-      parentName: npc_LizardP1@Idle(Clone)
-      position: {x: -0.45876276, y: 0.101566084, z: -2.3788965}
-      rotation: {x: -0.06262472, y: 0.7043282, z: -0.0626249, w: 0.7043282}
-      scale: {x: 1, y: 0.99999994, z: 1}
-    - name: gator_Bone002
-      parentName: gator_Bone001
-      position: {x: -0.5233531, y: -0.00000030517577, z: -0.000000076293944}
-      rotation: {x: -0.00000023841858, y: 0.000000029802322, z: 0.017731223, w: 0.9998429}
-      scale: {x: 0.9999998, y: 1, z: 0.9999999}
-    - name: gator_Bone003
-      parentName: gator_Bone002
-      position: {x: -0.4810994, y: -0.000000038146972, z: -0.00000015258789}
-      rotation: {x: 0.00000008637987, y: 0.000000015728347, z: -0.43494055, w: 0.9004592}
-      scale: {x: 1.0000002, y: 1, z: 1.0000001}
-    - name: gator_Bone004
-      parentName: gator_Bone003
-      position: {x: -0.36992303, y: 0.000000076293944, z: -0.000000038146972}
-      rotation: {x: -0.0000000032114755, y: 0.000000010664117, z: -0.07285064, w: 0.9973429}
-      scale: {x: 1.0000001, y: 0.99999994, z: 1.0000005}
-    - name: gator_Bone005
-      parentName: gator_Bone004
-      position: {x: -0.35808128, y: 0, z: 0}
-      rotation: {x: -0.000000017294376, y: 0.000000098778386, z: -0.0824338, w: 0.99659663}
-      scale: {x: 1.0000006, y: 1.0000001, z: 1.0000006}
-    - name: gatorarm_Bone006
-      parentName: gator_Bone005
-      position: {x: -0.34563002, y: 0.00000022888183, z: 0}
-      rotation: {x: 0.61756235, y: -0.34440762, z: -0.59164137, w: -0.38724753}
-      scale: {x: 1, y: 1.0000001, z: 1}
-    - name: gatorarm_Bone007
-      parentName: gatorarm_Bone006
-      position: {x: -0.32315838, y: -0.00000015258789, z: 0}
-      rotation: {x: -0.0000009983778, y: -0.000000007450581, z: -0.10728355, w: -0.99422854}
-      scale: {x: 0.99999934, y: 0.99999887, z: 0.9999999}
-    - name: gatorarm_Bone008
-      parentName: gatorarm_Bone007
-      position: {x: -0.43058258, y: -0.000000076293944, z: 0.000000076293944}
-      rotation: {x: -0.056497376, y: -0.68501014, z: -0.030847419, w: 0.7256843}
-      scale: {x: 1.0000004, y: 1.0000005, z: 1.0000004}
-    - name: gatorarm_Bone009
-      parentName: gatorarm_Bone008
-      position: {x: -0.3532332, y: 0.000009841919, z: -0.0000032043456}
-      rotation: {x: -0.07660356, y: 0.2055461, z: -0.34071663, w: 0.91421825}
-      scale: {x: 0.99999976, y: 0.9999997, z: 0.9999996}
-    - name: gatorarm_Bone006(mirrored)
-      parentName: gator_Bone005
-      position: {x: -0.34563002, y: 0.00000022888183, z: -0.000000038146972}
-      rotation: {x: -0.38724768, y: -0.59164125, z: -0.3444078, w: 0.61756223}
-      scale: {x: 0.99999994, y: 1, z: 1}
-    - name: gatorarm_Bone007(mirrored)
-      parentName: gatorarm_Bone006(mirrored)
-      position: {x: -0.32315832, y: 0.000000076293944, z: -0.000000114440915}
-      rotation: {x: -0.0000008195637, y: -0, z: -0.10728375, w: 0.9942285}
-      scale: {x: 0.99999994, y: 0.9999998, z: 1.0000001}
-    - name: gatorarm_Bone008(mirrored)
-      parentName: gatorarm_Bone007(mirrored)
-      position: {x: -0.43058264, y: 0.000000038146972, z: 0.000000038146972}
-      rotation: {x: 0.056497745, y: -0.68501014, z: 0.030847467, w: 0.7256842}
-      scale: {x: 1.0000004, y: 1.0000002, z: 1.0000002}
-    - name: gatorarm_Bone009(mirrored)
-      parentName: gatorarm_Bone008(mirrored)
-      position: {x: -0.35323322, y: -0.000010147094, z: -0.000003080368}
-      rotation: {x: -0.07660341, y: -0.2055462, z: -0.34071678, w: -0.9142182}
-      scale: {x: 1.0000001, y: 0.9999997, z: 0.99999994}
-    - name: gator_Bone006
-      parentName: gator_Bone005
-      position: {x: -0.3456299, y: 0.000000076293944, z: -0.000000038146972}
-      rotation: {x: 0.000000022351742, y: -0.00000011920929, z: 0.20558718, w: 0.9786389}
-      scale: {x: 0.99999934, y: 0.9999999, z: 0.99999887}
-    - name: gator_Bone007
-      parentName: gator_Bone006
-      position: {x: -0.35560173, y: 0.000000076293944, z: 0.000000057220458}
-      rotation: {x: -0.000000014807958, y: 0.0000000039037475, z: -0.012589967, w: 0.9999208}
-      scale: {x: 0.99999994, y: 1.0000001, z: 0.9999998}
-    - name: gator_Bone008
-      parentName: gator_Bone007
-      position: {x: -0.37918982, y: -0.000000038146972, z: 0.000000019073486}
-      rotation: {x: -0.000000010244548, y: 0.000000059604645, z: -0.10659518, w: 0.9943025}
-      scale: {x: 1.000001, y: 1.0000001, z: 1.0000006}
-    - name: gator_Bone009
-      parentName: gator_Bone008
-      position: {x: -0.4101892, y: 0.00000015258789, z: -0.000000057220458}
-      rotation: {x: 0.000000026210879, y: -0.000000032884373, z: 0.014183986, w: 0.99989945}
-      scale: {x: 1.0000002, y: 1, z: 1.0000004}
-    - name: gator_Bone010
-      parentName: gator_Bone009
-      position: {x: -0.42291757, y: 0.00000015258789, z: 0}
-      rotation: {x: -0.00000004411958, y: 0.00000008948287, z: -0.037257094, w: 0.9993057}
-      scale: {x: 0.99999994, y: 1.0000004, z: 0.99999994}
-    - name: gator_Bone011
-      parentName: gator_Bone010
-      position: {x: -0.4492394, y: -0.000000076293944, z: -0.000000038146972}
-      rotation: {x: 0.00000005565829, y: -0.00000007392589, z: -0.24279222, w: 0.9700783}
-      scale: {x: 0.9999998, y: 0.99999994, z: 0.99999994}
-    - name: gator_Bone012
-      parentName: gator_Bone011
-      position: {x: -0.2628363, y: -0.000000076293944, z: 0.000000038146972}
-      rotation: {x: -0, y: 0.000000059604645, z: 0.27179694, w: 0.96235466}
-      scale: {x: 0.9999998, y: 0.9999998, z: 1.0000001}
-    - name: gator_Bone014
-      parentName: gator_Bone010
-      position: {x: -0.4492394, y: -0.000000076293944, z: 0}
-      rotation: {x: 0.000000008676095, y: 0.000000023470239, z: 0.37103403, w: 0.9286193}
-      scale: {x: 1.0000002, y: 0.99999934, z: 1}
-    - name: gator_Bone015
-      parentName: gator_Bone014
-      position: {x: -0.25275856, y: 0, z: -0.000000038146972}
-      rotation: {x: -0, y: -0.00000011920929, z: -0.22685117, w: 0.9739295}
-      scale: {x: 0.99999994, y: 0.9999996, z: 1}
-    - name: gatorarm_Bone001(mirrored)
-      parentName: gator_Bone008
-      position: {x: -0.41018927, y: 0.000000076293944, z: -0.00000019073485}
-      rotation: {x: -0.4452099, y: -0.54935247, z: -0.42821324, w: 0.562702}
-      scale: {x: 1.0000001, y: 1, z: 1}
-    - name: gatorarm_Bone002(mirrored)
-      parentName: gatorarm_Bone001(mirrored)
-      position: {x: -0.3534384, y: 0.00000015258789, z: -0.00000022888183}
-      rotation: {x: 0.002810476, y: -0.035582338, z: -0.0203605, w: 0.9991554}
-      scale: {x: 1, y: 1.0000001, z: 1.0000005}
-    - name: gatorarm_Bone003(mirrored)
-      parentName: gatorarm_Bone002(mirrored)
-      position: {x: -0.39212912, y: 0.000000114440915, z: 0.00000019073485}
-      rotation: {x: -0.0027736435, y: 0.023999192, z: 0.005481794, w: 0.99969316}
-      scale: {x: 1, y: 0.9999998, z: 0.99999994}
-    - name: gatorarm_Bone004(mirrored)
-      parentName: gatorarm_Bone003(mirrored)
-      position: {x: -0.43497324, y: 0.000000057220458, z: 0.00000023841858}
-      rotation: {x: 0.0029136091, y: -0.019559167, z: -0.38024178, w: -0.9246757}
-      scale: {x: 0.9999998, y: 0.9999998, z: 1}
-    - name: gatorarm_Bone001
-      parentName: gator_Bone008
-      position: {x: -0.41018927, y: 0, z: 0.00000017166137}
-      rotation: {x: -0.5627023, y: 0.42821264, z: 0.54935294, w: 0.44520938}
-      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000002}
-    - name: gatorarm_Bone002
-      parentName: gatorarm_Bone001
-      position: {x: -0.3534384, y: -0.000000114440915, z: -0.000000076293944}
-      rotation: {x: -0.0028096118, y: -0.03558207, z: 0.020360425, w: 0.9991554}
-      scale: {x: 1.0000004, y: 1, z: 1.0000001}
-    - name: gatorarm_Bone003
-      parentName: gatorarm_Bone002
-      position: {x: -0.39212906, y: -0.000000019073486, z: 0.000000076293944}
-      rotation: {x: 0.0027745923, y: 0.023999464, z: -0.005482516, w: 0.9996931}
-      scale: {x: 0.9999998, y: 0.9999998, z: 1}
-    - name: gatorarm_Bone004
-      parentName: gatorarm_Bone003
-      position: {x: -0.4349732, y: -0.000000009536743, z: 0}
-      rotation: {x: 0.0029128788, y: 0.019558877, z: -0.38024172, w: 0.9246758}
-      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    skeleton: []
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -252,13 +125,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
