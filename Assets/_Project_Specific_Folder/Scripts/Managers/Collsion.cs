@@ -527,6 +527,7 @@ public class Collsion : MonoBehaviour
         });
         Hero2.transform.DOLocalMove(obj.transform.GetChild(3).transform.localPosition, .3f).OnComplete(() => {
             Hero2.gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("HulkBuster").GetComponent<HulkBuster>().SpiderMan.gameObject.SetActive(true);
         });
 
 
@@ -621,7 +622,7 @@ public class Collsion : MonoBehaviour
        transform.GetComponent<Controller>().enabled = false;
 
         Camera.main.transform.GetChild(0).gameObject.SetActive(false);
-
+        GameObject.FindGameObjectWithTag("HulkBuster").GetComponent<HulkBuster>().SpiderMan.gameObject.SetActive(false);
 
         GameManager.Instance.p.speed = 0;
         GameManager.Instance.p.MaxSpeed = 0; GameManager.Instance.p.MinSpeed = 0;

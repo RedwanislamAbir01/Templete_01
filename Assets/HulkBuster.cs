@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class HulkBuster : MonoBehaviour
 {
-
+    public GameObject SpiderMan;
     public Ease ease;
     public float ScaleAmmounts;
     private void OnTriggerEnter(Collider other)
