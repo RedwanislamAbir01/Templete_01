@@ -523,7 +523,7 @@ public class Collsion : MonoBehaviour
         Hero2.transform.parent = obj.transform;
         Hero1.transform.DOLocalMove(obj.transform.GetChild(2).transform.localPosition, .4f).OnComplete(() => {
             obj.GetComponent<Animator>().enabled = true;
-            GameObject.FindGameObjectWithTag("HulkBuster").transform..GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 0);
+            GameObject.FindGameObjectWithTag("HulkBuster").transform.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 0);
         });
         Hero2.transform.DOLocalMove(obj.transform.GetChild(3).transform.localPosition, .3f).OnComplete(() => {
             Hero2.gameObject.SetActive(false);
