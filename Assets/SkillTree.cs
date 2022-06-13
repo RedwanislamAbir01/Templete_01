@@ -24,6 +24,8 @@ public class SkillTree : MonoBehaviour
 
     void Start()
     {
+        Button1LevelText.text = PlayerPrefs.GetInt("Hero1").ToString();
+        Button2LevelText.text = PlayerPrefs.GetInt("Hero2").ToString();
         Hero1PriceUpdate();
 
         Hero2PriceUpdate();
