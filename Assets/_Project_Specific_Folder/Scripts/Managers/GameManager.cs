@@ -46,6 +46,7 @@ public class GameManager : Singleton<GameManager>
 #endif
         if(levelNo >= 0 && levelNo <= 5 )
         {
+            IsIronManScene = false;
             DC.gameObject.SetActive(true);
         }
         else
@@ -58,6 +59,7 @@ public class GameManager : Singleton<GameManager>
                 PlayerPrefs.SetInt("Hero2", 0);
 
             }
+            IsIronManScene = true;
            
                 Marvel.gameObject.SetActive(true) ;
         }
