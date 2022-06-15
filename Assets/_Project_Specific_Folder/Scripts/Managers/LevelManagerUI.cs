@@ -52,10 +52,10 @@ namespace KaijuRun
                 VuiFor(4, "5");
             }
 
-            //if (i >= 4 && i < 5)
-            //{
-            //    VuiFor(4, "5");
-            //}
+            if (i >= 6 && i <= 12)
+            {
+                VuiFor(7, "8");
+            }
 
             //if (i >= 5 && i < 10)
             //{

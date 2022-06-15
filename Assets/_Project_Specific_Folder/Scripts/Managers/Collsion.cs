@@ -278,6 +278,7 @@ public class Collsion : MonoBehaviour
 
     public IEnumerator ShootBossRoutine()
     {
+        UiManager.Instance.LevelText.gameObject.transform.parent.gameObject.SetActive(false);
         Camera.main.transform.DOLocalMove(new Vector3(1.83f, 1.84f, -7.12f), .3f);
         Camera.main.transform.DOLocalRotate(new Vector3(14.21f, -18.791f, 1.535f), .3f);
         Camera.main.transform.parent = Boss1.transform;
@@ -524,9 +525,9 @@ public class Collsion : MonoBehaviour
             obj.GetComponent<Animator>().enabled = true;
             GameObject.FindGameObjectWithTag("HulkBuster").transform.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 0);
         });
-        Hero2.transform.DOLocalMove(obj.transform.GetChild(3).transform.localPosition, .3f).OnComplete(() => {
+        Hero2.transform.DOLocalMove(obj.transform.GetChild(2).transform.localPosition, .3f).OnComplete(() => {
             Hero2.gameObject.SetActive(false);
-            GameObject.FindGameObjectWithTag("HulkBuster").GetComponent<HulkBuster>().SpiderMan.gameObject.SetActive(true);
+            //GameObject.FindGameObjectWithTag("HulkBuster").GetComponent<HulkBuster>().SpiderMan.gameObject.SetActive(true);
         });
 
 
@@ -540,7 +541,8 @@ public class Collsion : MonoBehaviour
         Camera.main.transform.DOLocalMoveZ(-9, .3f);
         yield return new WaitForSeconds(.5f);
         Camera.main.transform.DOLocalMove(transform.root.GetChild(4).transform.localPosition, .3f);
-       
+
+        Camera.main.transform.DOLocalRotate(new Vector3(25, 0, 0), .2f);
         GameManager.Instance.p.MaxSpeed = 5;
         GameManager.Instance.p.speed = 5;
         GameManager.Instance.p.IncreazseMultiplier = 5;
@@ -621,7 +623,7 @@ public class Collsion : MonoBehaviour
        transform.GetComponent<CarController>().enabled = false;
 
         Camera.main.transform.GetChild(0).gameObject.SetActive(false);
-        GameObject.FindGameObjectWithTag("HulkBuster").GetComponent<HulkBuster>().SpiderMan.gameObject.SetActive(false);
+      //  GameObject.FindGameObjectWithTag("HulkBuster").GetComponent<HulkBuster>().SpiderMan.gameObject.SetActive(false);
 
         GameManager.Instance.p.speed = 0;
         GameManager.Instance.p.MaxSpeed = 0; GameManager.Instance.p.MinSpeed = 0;

@@ -22,9 +22,17 @@ public class PerCollsion : MonoBehaviour
     public ParticleSystem CollectableVFX;
     public ParticleSystem PowerVFX;
 
+    [Header("Tweak")]
+    public int MorphAmmount = 5;
+    public int MorphCap = 50;
+
+    public float ScaleAmmount = .3f;
+
+
+
     public ParticleSystem TorneddoFX;
     public Ease ease;
-    public float ScaleAmmount = .3f;
+
     public float ScaleAmmounts = .15f;
     public int ColelctableCount;
     public Animator anim;
@@ -216,9 +224,9 @@ public class PerCollsion : MonoBehaviour
             if (other.gameObject.CompareTag("Hero1c"))
             {
                 MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-                i += 5;
+                i += MorphAmmount;
                 Scaleup();
-                if(i<=50)
+                if(i<=MorphCap)
                 transform.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0,i);
                 ColelctableCount++;
                 if (ColelctableCount % 5 == 0 && ColelctableCount>1)
@@ -251,9 +259,9 @@ public class PerCollsion : MonoBehaviour
             if (other.gameObject.CompareTag("Hero2c"))
             {
                 MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-                j += 5;
+                j += MorphAmmount;
                 Scaleup();
-                if (j <= 50)
+                if (j <= MorphCap)
                  transform.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, j);
                 //CollectableVFX.Play();
                 ColelctableCount++;
