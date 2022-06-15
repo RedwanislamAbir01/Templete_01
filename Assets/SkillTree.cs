@@ -22,10 +22,26 @@ public class SkillTree : MonoBehaviour
     public int Hero1RequiredCash1 = 30;
     public int Hero2RequiredCash = 20;
     public int Hero2RequiredCash2 = 30;
+
+
+
+    public int SecondHero1RequiredCash = 20;
+    public int SecondHero1RequiredCash1 = 30;
+    public int SecondHero2RequiredCash = 20;
+    public int SecondHero2RequiredCash2 = 30;
     Collsion c;
 
     void Start()
     {
+
+        if(GameManager.Instance.levelNo >= 6)
+        {
+            print("level");
+            Hero1RequiredCash = SecondHero1RequiredCash;
+            Hero1RequiredCash1 = SecondHero1RequiredCash1;
+            Hero2RequiredCash = SecondHero2RequiredCash;
+            Hero2RequiredCash2 = SecondHero2RequiredCash2;
+        }
 
         Hero1PriceUpdate();
 
@@ -48,11 +64,14 @@ public class SkillTree : MonoBehaviour
 
                 UpgradeButton1.GetComponent<MySDK.Scaler>().enabled = true;
             }
+
+
             else
             {
                 UpgradeButton1.interactable = false;
-              
                 UpgradeButton1.GetComponent<MySDK.Scaler>().enabled = false;
+                if (PlayerPrefs.GetInt("Hero1") != 2)
+                    UpgradeButton1.GetComponent<MySDK.Scaler>().enabled = false;
             }
             if (UiManager.GetTotalCoin() >= Hero2RequiredCash)
             {
@@ -64,8 +83,10 @@ public class SkillTree : MonoBehaviour
             else
             {
                 
-                UpgradeButton2.interactable = false; 
+                UpgradeButton2.interactable = false;
                 UpgradeButton2.GetComponent<MySDK.Scaler>().enabled = false;
+                if (PlayerPrefs.GetInt("Hero2") != 2)
+                    UpgradeButton2.GetComponent<MySDK.Scaler>().enabled = false;
             }
         }
 
@@ -107,13 +128,19 @@ public class SkillTree : MonoBehaviour
         else if (PlayerPrefs.GetInt("Hero1") == 2)
         {
             if (GameManager.Instance.levelNo >= 0 && GameManager.Instance.levelNo <= 5)
+            {
                 Description1Text.text = "Superman Maxed";
+                UpgradeButton2.GetComponent<MySDK.Scaler>().enabled = false;
+            }
             else
+            {
                 Description1Text.text = "Ironman Maxed";
+                UpgradeButton2.GetComponent<MySDK.Scaler>().enabled = false;
+            }
 
             Button1PriceText.text = "Maxed";
             UpgradeButton2.interactable = false;
-      
+            UpgradeButton2.GetComponent<MySDK.Scaler>().enabled = false;
         }
         
     }
@@ -147,12 +174,19 @@ public class SkillTree : MonoBehaviour
         else if (PlayerPrefs.GetInt("Hero2") == 2)
         {
             if (GameManager.Instance.levelNo >= 0 && GameManager.Instance.levelNo <= 5)
+            {
                 Description2Text.text = "Batman Maxed";
+                UpgradeButton1.GetComponent<MySDK.Scaler>().enabled = false;
+            }
             else
+            {
                 Description2Text.text = "Spidy Maxed";
+                UpgradeButton1.GetComponent<MySDK.Scaler>().enabled = false;
+            }
 
             Button2PriceText.text = "Maxed"; 
             UpgradeButton1.interactable = false;
+            UpgradeButton1.GetComponent<MySDK.Scaler>().enabled = false;
         }
 
     }
@@ -181,8 +215,8 @@ public class SkillTree : MonoBehaviour
             StartCoroutine(RotateRoutine());
             if (UiManager.GetTotalCoin() < Hero1RequiredCash1)
             {
-                UpgradeButton2.interactable = false;
-            }
+                UpgradeButton2.interactable = false; UpgradeButton2.GetComponent<MySDK.Scaler>().enabled = false;
+        }
 
              Hero1PriceUpdate();
              UiManager.Instance.PointText.text = UiManager.GetTotalCoin().ToString();
@@ -206,8 +240,8 @@ public class SkillTree : MonoBehaviour
             StartCoroutine(RotateRoutine1());
             if (UiManager.GetTotalCoin() < Hero2RequiredCash2)
             {
-                UpgradeButton1.interactable = false;
-            }
+                UpgradeButton1.interactable = false; UpgradeButton1.GetComponent<MySDK.Scaler>().enabled = false;
+        }
 
  
         Hero2PriceUpdate(); 

@@ -185,6 +185,9 @@ public class EndDetector : MonoBehaviour
                 }
 
             }
+
+
+
             else
             {
                 if (GetComponentInParent<Animator>() != null)
@@ -240,14 +243,26 @@ public class EndDetector : MonoBehaviour
         if (lf.Type == eType.Hero2)
         {
             if (lf.HeroLevel != 2)
-                Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+            {
+              GameObject g =  Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+               int i = GetComponentInParent<PerCollsion>().ColelctableCount / 5;
+
+                g.GetComponent<Projectile>().ProjectileSpeed = g.GetComponent<Projectile>().ProjectileSpeed + (i * .25f);
+
+            }
             if (lf.HeroLevel == 0)
                 SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().BatBlade);
 
         }
 
-        else 
-            Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+        else
+        {
+            GameObject g1 = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+            int i = GetComponentInParent<PerCollsion>().ColelctableCount / 5;
+
+            g1.GetComponent<Projectile>().ProjectileSpeed = g1.GetComponent<Projectile>().ProjectileSpeed + (i * .25f);
+
+        }
 
     }
     public IEnumerator Shoot6Times()

@@ -33,9 +33,17 @@ public class PerCollsion : MonoBehaviour
     public float CurrentSpeed,CurrentMaxSpeed;
     public int SizeDownAmmount = 20;
 
+    EndDetector m_DetectorScript;
     float i, j;
     void Start()
     {
+
+      
+        if(m_DetectorScript != null)
+        {
+          m_DetectorScript =  GetComponentInChildren<EndDetector>();
+        }
+
 
         if (Type == eType.Hero1)
         {
@@ -112,7 +120,7 @@ public class PerCollsion : MonoBehaviour
     {
   
         anim.SetBool("Injured", true);
-        GameManager.Instance.p.speed = .75f; GameManager.Instance.p.MaxSpeed= .75f;
+        GameManager.Instance.p.speed -= .25f; GameManager.Instance.p.MaxSpeed -=.25f;
         UiManager.Instance.FadeIn.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
         anim.SetBool("Injured", false); 
@@ -134,9 +142,9 @@ public class PerCollsion : MonoBehaviour
                , anim.transform.localScale.z - ScaleAmmounts
                ), .3f).SetEase(ease).OnComplete(() => {
                    anim.transform.DOScale(new Vector3(anim.transform.localScale.x + ScaleAmmounts,
-anim.transform.localScale.y + ScaleAmmounts
-, anim.transform.localScale.z + ScaleAmmounts
-), .3f);
+                   anim.transform.localScale.y + ScaleAmmounts
+                   , anim.transform.localScale.z + ScaleAmmounts
+                   ), .3f);
                });
 
     }
@@ -208,14 +216,15 @@ anim.transform.localScale.y + ScaleAmmounts
             if (other.gameObject.CompareTag("Hero1c"))
             {
                 MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-                i += 10;
+                i += 5;
                 Scaleup();
                 if(i<=50)
                 transform.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0,i);
                 ColelctableCount++;
                 if (ColelctableCount % 5 == 0 && ColelctableCount>1)
                 {
-                   // SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().SizeUp);
+                    IncreaseProjectileSpeed();
+                    // SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().SizeUp);
                     GameManager.Instance.p.MaxSpeed += .25f;
                     MMVibrationManager.Haptic(HapticTypes.MediumImpact);
                     StartCoroutine(EvolveEffectRoutine());
@@ -226,7 +235,7 @@ anim.transform.localScale.y + ScaleAmmounts
                     CurrentMaxSpeed = GameManager.Instance.p.MaxSpeed;
                 }
                 //CollectableVFX.Play();
-         
+
                 Destroy(other.gameObject);
             }
           else  if (other.gameObject.CompareTag("Hero2c"))
@@ -242,15 +251,16 @@ anim.transform.localScale.y + ScaleAmmounts
             if (other.gameObject.CompareTag("Hero2c"))
             {
                 MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-                j += 10;
+                j += 5;
                 Scaleup();
                 if (j <= 50)
-                    transform.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, j);
+                 transform.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, j);
                 //CollectableVFX.Play();
                 ColelctableCount++;
                
                     if (ColelctableCount % 5 == 0 && ColelctableCount > 1)
                 {
+                    IncreaseProjectileSpeed();
                     SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().SizeUp);
                     GameManager.Instance.p.MaxSpeed += .25f;
                     MMVibrationManager.Haptic(HapticTypes.MediumImpact);
@@ -270,6 +280,11 @@ anim.transform.localScale.y + ScaleAmmounts
                 StartCoroutine(RedScreenRoutine());
             }
         }
+    }
+
+    private void IncreaseProjectileSpeed()
+    {
+
     }
 
     public IEnumerator EvolveEffectRoutine()
