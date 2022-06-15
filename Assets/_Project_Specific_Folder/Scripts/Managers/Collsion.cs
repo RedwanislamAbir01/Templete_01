@@ -134,7 +134,7 @@ public class Collsion : MonoBehaviour
             
    
             GameManager.Instance.GameEnd = true;
-            Boss1.transform.GetChild(0).gameObject.GetComponent<Animator>().Play("Taunt");
+            Boss1.transform.GetComponent<Boss>().Anim.Play("Taunt");
             StartCoroutine(StopRountine());
             transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
           

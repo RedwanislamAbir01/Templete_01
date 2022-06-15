@@ -217,7 +217,7 @@ public class EndDetector : MonoBehaviour
         {
             if (lf.HeroLevel == 2)
             {
-                Instantiate(Projectile, NewGunSpawnPoint.position, Quaternion.identity);
+                Instantiate(SpiderNet, NewGunSpawnPoint.position, Quaternion.identity);
                 lf.DummyGun.gameObject.SetActive(false);
                 lf.Power2.gameObject.SetActive(true);
                 yield return new WaitForSeconds(.3f);
@@ -232,7 +232,7 @@ public class EndDetector : MonoBehaviour
             {
                 GameObject g = Instantiate(SpiderNet, SpawnPoint.position, Quaternion.identity);
                // g.transform.DOLocalRotate(new Vector3(0, 90, 0), 0);
-                g.transform.DOScale(new Vector3(.2f, .2f, .2f), .5f);
+                g.transform.DOScale(new Vector3(.7f, .7f, .7f), 2f);
             }
         }
     
