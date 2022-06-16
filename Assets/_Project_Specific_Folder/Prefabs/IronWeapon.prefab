@@ -112,7 +112,7 @@ Transform:
   m_GameObject: {fileID: 1275118324108484572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.04, y: 0.282, z: 0.22}
-  m_LocalScale: {x: 0.040874835, y: 0.040874835, z: 0.040874835}
+  m_LocalScale: {x: 0.0168016, y: 0.0168016, z: 0.0168016}
   m_Children:
   - {fileID: 1275118323762435640}
   - {fileID: 6155232513059594136}
@@ -194,11 +194,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d616ccccd0affa049815eed540f6444c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileSpeed: 6
+  ProjectileSpeed: 8
   DestroyTime: 2
   HitVFX: {fileID: 1797657264430493913, guid: dd8575b51ad6e4644a5abb4fda3f6e07, type: 3}
   CrystalSpread: {fileID: 9144820366456875970, guid: f4d26465e3671d0429816dc8f7937a0f, type: 3}
   DestroyVFX: {fileID: 3157370685969289855, guid: 662372284ddeee54fad3c2462587922e, type: 3}
+  isBatMobile: 0
+  isWebNet: 0
 --- !u!54 &-7563849298568495467
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -359,11 +361,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5509305661550462182, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
       propertyPath: m_Range
-      value: 8
+      value: 7.2672315
       objectReference: {fileID: 0}
     - target: {fileID: 5509305661550462182, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
       propertyPath: m_Intensity
-      value: 0
+      value: 3.4358382
       objectReference: {fileID: 0}
     - target: {fileID: 5509305661550462183, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
       propertyPath: m_IsActive
@@ -379,15 +381,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5509305661840162658, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
       propertyPath: m_LocalScale.x
-      value: 8.5068
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5509305661840162658, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
       propertyPath: m_LocalScale.y
-      value: 8.5068
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5509305661840162658, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
       propertyPath: m_LocalScale.z
-      value: 8.5068
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5509305661840162658, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -432,6 +434,10 @@ PrefabInstance:
     - target: {fileID: 5509305661840162670, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
       propertyPath: m_Name
       value: CFXR Fireball + Fire Trail
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509305661840162670, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5509305662281031646, guid: 93493751bafa07b4ebec5bc245d5d2b4, type: 3}
       propertyPath: m_Materials.Array.size

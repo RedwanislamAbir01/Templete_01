@@ -104,12 +104,16 @@ public class SkillTree : MonoBehaviour
 
             if (GameManager.Instance.levelNo >= 0 && GameManager.Instance.levelNo <= 5)
             {
-      
+                ChnageButton2Sprte(0);
                 Description1Text.text = "Superman Walking";
             }
             else
+            {
+                ChnageButton2Sprte(03);
                 Description1Text.text = "Ironman Walking";
 
+
+            }
             Button1PriceText.text = Hero1RequiredCash.ToString();
 
 
@@ -120,9 +124,17 @@ public class SkillTree : MonoBehaviour
 
 
             if (GameManager.Instance.levelNo >= 0 && GameManager.Instance.levelNo <= 5)
+            {
+                ChnageButton2Sprte(01);
                 Description1Text.text = "Superman Flying";
+            }
             else
+            {
+                ChnageButton2Sprte(04);
+
                 Description1Text.text = "Ironman Flying";
+
+            }
 
             Button1PriceText.text = (Hero1RequiredCash1).ToString();
 
@@ -131,11 +143,13 @@ public class SkillTree : MonoBehaviour
         {
             if (GameManager.Instance.levelNo >= 0 && GameManager.Instance.levelNo <= 5)
             {
+                ChnageButton2Sprte(02);
                 Description1Text.text = "Superman Maxed";
                 UpgradeButton2.GetComponentInParent<MySDK.Scaler>().enabled = false;
             }
             else
             {
+                ChnageButton2Sprte(05);
                 Description1Text.text = "Ironman Maxed";
                 UpgradeButton2.GetComponentInParent<MySDK.Scaler>().enabled = false;
             }
@@ -156,9 +170,16 @@ public class SkillTree : MonoBehaviour
 
 
             if (GameManager.Instance.levelNo >= 0 && GameManager.Instance.levelNo <= 5)
+            {
+                ChnageButton1Sprte(0);
                 Description2Text.text = "Batman Walking";
+            }
             else
+            {
+                ChnageButton1Sprte(03);
                 Description2Text.text = "Spidy Walking";
+
+            }
             Button2PriceText.text =Hero2RequiredCash.ToString();
         }
         else if (PlayerPrefs.GetInt("Hero2") == 1)
@@ -166,9 +187,18 @@ public class SkillTree : MonoBehaviour
 
 
             if (GameManager.Instance.levelNo >= 0 && GameManager.Instance.levelNo <= 5)
+            {
+                ChnageButton1Sprte(01);
                 Description2Text.text = "Batman Flying";
+
+            }
             else
+            {
+                ChnageButton1Sprte(04);
                 Description2Text.text = "Spidy Flying";
+
+
+            }
 
             Button2PriceText.text = (Hero2RequiredCash2).ToString();
 
@@ -177,11 +207,13 @@ public class SkillTree : MonoBehaviour
         {
             if (GameManager.Instance.levelNo >= 0 && GameManager.Instance.levelNo <= 5)
             {
+                ChnageButton1Sprte(02);
                 Description2Text.text = "Batman Maxed";
                 UpgradeButton1.GetComponentInParent<MySDK.Scaler>().enabled = false;
             }
             else
             {
+                ChnageButton1Sprte(05);
                 Description2Text.text = "Spidy Maxed";
                 UpgradeButton1.GetComponentInParent<MySDK.Scaler>().enabled = false;
             }
@@ -251,9 +283,15 @@ public class SkillTree : MonoBehaviour
     }
 
 
+    private void ChnageButton1Sprte(int i )
+    {
+        UpgradeButton1.GetComponent<Image>().sprite = Button1[i];
+    }
 
-
-
+    private void ChnageButton2Sprte(int i)
+    {
+        UpgradeButton2.GetComponent<Image>().sprite = Button2[i];
+    }
 
 
 
