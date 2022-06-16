@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using DG.Tweening;
 public class Controller : MonoBehaviour
 {
     public enum State
@@ -103,6 +103,52 @@ public class Controller : MonoBehaviour
     }
     public void HandlePlayerMovement()
     {
+
+        if (!GameManager.Instance.IsIronManScene)
+        {
+            if (transform.localPosition.x <= 2 && transform.localPosition.x >= -2)
+            {
+
+                transform.GetChild(0).DOLocalMoveZ(3, .4f);
+            }
+            else
+            {
+                transform.GetChild(0).DOLocalMoveZ(0, .2f);
+            }
+        }
+        else
+        {
+            if (PlayerPrefs.GetInt("Hero1") == 2 && PlayerPrefs.GetInt("Hero2") == 02)
+            {
+                if (transform.localPosition.x <= 2 && transform.localPosition.x >= -2)
+                {
+
+              //      transform.GetChild(0).DOLocalMoveY(4, .4f);
+                }
+                else
+                {
+                  //  transform.GetChild(0).DOLocalMoveY(1.38f, .2f);
+                }
+
+            }
+            else
+            {
+
+                if (transform.localPosition.x <= 2 && transform.localPosition.x >= -2)
+                {
+
+                    transform.GetChild(0).DOLocalMoveZ(3, .4f);
+                }
+                else
+                {
+                    transform.GetChild(0).DOLocalMoveZ(0, .2f);
+                }
+
+            }
+        }
+
+
+
 
         if (Input.GetAxis("Mouse X") > .1f)
         {
