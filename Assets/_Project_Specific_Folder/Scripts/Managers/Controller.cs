@@ -113,7 +113,7 @@ public class Controller : MonoBehaviour
             }
             else
             {
-                transform.GetChild(0).DOLocalMoveZ(0, .2f);
+                transform.GetChild(0).DOLocalMoveZ(0, .4f);
             }
         }
         else
@@ -141,7 +141,7 @@ public class Controller : MonoBehaviour
                 }
                 else
                 {
-                    transform.GetChild(0).DOLocalMoveZ(0, .2f);
+                    transform.GetChild(0).DOLocalMoveZ(0, .4f);
                 }
 
             }

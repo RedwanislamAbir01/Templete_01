@@ -23,6 +23,7 @@ public class PerCollsion : MonoBehaviour
     public ParticleSystem PowerVFX;
 
     [Header("Tweak")]
+    public float SpeedDecreaseAmmount = .25f;
     public int MorphAmmount = 5;
     public int MorphCap = 50;
 
@@ -128,12 +129,12 @@ public class PerCollsion : MonoBehaviour
     {
   
         anim.SetBool("Injured", true);
-        GameManager.Instance.p.speed -= .25f; GameManager.Instance.p.MaxSpeed -=.25f;
+        GameManager.Instance.p.speed -= SpeedDecreaseAmmount; GameManager.Instance.p.MaxSpeed -= SpeedDecreaseAmmount;
         UiManager.Instance.FadeIn.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
         anim.SetBool("Injured", false); 
         UiManager.Instance.FadeIn.gameObject.SetActive(false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.3f);
         GameManager.Instance.p.speed = CurrentSpeed;
         GameManager.Instance.p.MaxSpeed = CurrentMaxSpeed;
     }

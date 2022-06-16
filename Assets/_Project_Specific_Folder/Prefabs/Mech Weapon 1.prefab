@@ -195,11 +195,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d616ccccd0affa049815eed540f6444c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileSpeed: 50
-  DestroyTime: 0.5
-  HitVFX: {fileID: 3790302319916038653, guid: 50a201992c0f2114c810177038b98c69, type: 3}
+  ProjectileSpeed: 60
+  DestroyTime: 0.4
+  HitVFX: {fileID: 3790302319916038653, guid: 2b978af08e58a2a4fa5e522d502a66fc, type: 3}
   CrystalSpread: {fileID: 9144820366456875970, guid: f4d26465e3671d0429816dc8f7937a0f, type: 3}
-  DestroyVFX: {fileID: 3790302319916038653, guid: 50a201992c0f2114c810177038b98c69, type: 3}
+  DestroyVFX: {fileID: 3790302319916038653, guid: 2b978af08e58a2a4fa5e522d502a66fc, type: 3}
   isBatMobile: 1
   isWebNet: 0
 --- !u!54 &-7563849298568495467

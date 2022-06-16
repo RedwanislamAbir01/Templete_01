@@ -139,7 +139,8 @@ public class GameManager : Singleton<GameManager>
         UiManager.Instance.StartUI.SetActive(false);
         StartGame = true;
         p.enabled = true;
-
+        Camera.main.transform.DOLocalMove(new Vector3(0.01419575f, 11, -21.41994f), .3f);
+        Camera.main.transform.DOLocalRotate(new Vector3(12f,0, 0), .3f);
         Invoke("EnableTut", 1f);
     }
 
