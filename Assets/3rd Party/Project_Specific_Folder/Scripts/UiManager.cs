@@ -17,6 +17,11 @@ public class UiManager : Singleton<UiManager>
     int currentLevel;
     int currentLevelText;
 
+
+    public GameObject Level1Tut, Level6Tut;
+
+
+
     public GameObject StartUI, EndUi, CompleteUI , FadeIn , UpgradePnael;
     public GameObject TapFastPanel;
 
@@ -39,7 +44,11 @@ public class UiManager : Singleton<UiManager>
     {
         SaveTotalCoin(100000);
     }
-
+    public void CloseTut()
+    {
+        Time.timeScale = 1;
+        Level1Tut.gameObject.SetActive(false); Level6Tut.gameObject.SetActive(false);
+    }
     public static int GetTotalCoin() => PlayerPrefs.GetInt("LifeTimeScore");
     public static void SaveTotalCoin(int amount) => PlayerPrefs.SetInt("LifeTimeScore", amount);
     public void SetTotalScore()

@@ -89,6 +89,37 @@ public class GameManager : Singleton<GameManager>
             Path.GetComponent<RoadMeshCreator>().refresh();
         }
     }
+    public void EnableTut()
+    {
+        if (levelNo == 0)
+        {
+            if (PlayerPrefs.GetInt("Tutorial101", 0) == 0)
+            {
+
+                UiManager.Instance.Level1Tut.gameObject.SetActive(true);
+                UiManager.Instance.Level1Tut.transform.DOScale(new Vector3(6, 6, 6), .1f).OnComplete(() => { Time.timeScale = 0; });
+
+
+                PlayerPrefs.SetInt("Tutorial101", 1);
+
+
+            }
+        }
+        if(levelNo == 6)
+            if (PlayerPrefs.GetInt("Tutorial106", 0) == 0)
+            {
+
+
+                UiManager.Instance.Level6Tut.gameObject.SetActive(true);
+                UiManager.Instance.Level6Tut.transform.DOScale(new Vector3(6, 6, 6), .1f).OnComplete(() => { Time.timeScale = 0; });
+
+
+                PlayerPrefs.SetInt("Tutorial106", 1);
+
+
+            }
+    
+    }
     public void Reset()
     {
         StartCoroutine(ResetRoutine());
@@ -108,6 +139,8 @@ public class GameManager : Singleton<GameManager>
         UiManager.Instance.StartUI.SetActive(false);
         StartGame = true;
         p.enabled = true;
+
+        Invoke("EnableTut", 1f);
     }
 
     private void ChracterSetUp()
