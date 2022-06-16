@@ -50,7 +50,7 @@ public class EndDetector : MonoBehaviour
         {
             if (!IsBatMobile)
             {
-                if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Wall || other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KyptoBlock)
+                if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Wall)
                 {
                     if (lf.Type == eType.Hero2)
                     {
@@ -65,6 +65,27 @@ public class EndDetector : MonoBehaviour
                     }
 
                 }
+                if ( other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KyptoBlock)
+                {
+                    if (lf.Type == eType.Hero2)
+                    {
+
+                        Anim.SetTrigger("Throw");
+                        StartCoroutine(LevelTwoBatThrowRoutine());
+                        Shoot();
+                    }
+                    else
+                    {
+                        StartCoroutine(LaserEnableDisableRoutine());
+
+                        if (lf.Type == eType.Hero1)
+                        {
+                            other.GetComponent<Collider>().enabled = false;
+                            other.transform.GetChild(0).gameObject.SetActive(false); other.transform.GetChild(01).gameObject.SetActive(true);
+                        }
+                    }
+
+                }
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KryptoCrstalguy)
                 {
                     if (lf.Type == eType.Hero2)
@@ -76,14 +97,22 @@ public class EndDetector : MonoBehaviour
                     else
                     {
                         StartCoroutine(LaserEnableDisableRoutine());
+                        if (PlayerPrefs.GetInt("Hero1") == 2)
+                        {
+                            
+                            other.transform.GetChild(0).gameObject.SetActive(false); other.transform.GetChild(01).gameObject.SetActive(true);
+                                                  
+                            other.GetComponent<Collider>().enabled = false;
+                  
+                        }
                         //Puncher.GetComponent<Animator>().enabled = false;
                         //Puncher.transform.DOLocalMoveZ(30, .3f).SetEase(Ease.InSine).OnComplete(() => {
 
-                        //    Puncher.transform.DOLocalMoveZ(0, .2f).OnComplete(() => {
-                        //        Puncher.GetComponent<Animator>().enabled = true;
+                            //    Puncher.transform.DOLocalMoveZ(0, .2f).OnComplete(() => {
+                            //        Puncher.GetComponent<Animator>().enabled = true;
 
-                        //    });
-                        //});
+                            //    });
+                            //});
                     }
 
                 }
@@ -230,9 +259,11 @@ public class EndDetector : MonoBehaviour
         {
             if (lf.HeroLevel == 2)
             {
+                print("throw");
                 GameObject g = Instantiate(SpiderNet, SpawnPoint.position, Quaternion.identity);
                // g.transform.DOLocalRotate(new Vector3(0, 90, 0), 0);
                 g.transform.DOScale(new Vector3(.7f, .7f, .7f), 2f);
+              
             }
         }
     
@@ -242,6 +273,7 @@ public class EndDetector : MonoBehaviour
     {
         if (lf.Type == eType.Hero2)
         {
+           
             if (lf.HeroLevel != 2)
             {
               GameObject g =  Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
@@ -250,6 +282,7 @@ public class EndDetector : MonoBehaviour
                 g.GetComponent<Projectile>().ProjectileSpeed = g.GetComponent<Projectile>().ProjectileSpeed + (i * .25f);
 
             }
+
             if (lf.HeroLevel == 0)
                 SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().BatBlade);
 

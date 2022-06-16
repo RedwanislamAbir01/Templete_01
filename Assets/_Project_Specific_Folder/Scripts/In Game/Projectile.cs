@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
     public GameObject HitVFX;
     public GameObject CrystalSpread;
     public GameObject DestroyVFX;
-    [SerializeField] bool isBatMobile;
+public bool isBatMobile;
     [SerializeField] bool isWebNet;
     private void OnEnable()
     {
@@ -38,11 +38,37 @@ public class Projectile : MonoBehaviour
                     Destroy(other.gameObject, 5);
                     Destroy(gameObject);
                 }
-                if ((other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.ShieldGuy) || other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Ice)
+                if ((other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.ShieldGuy))
                 {
-                    GameObject g = Instantiate(DestroyVFX, new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity);
-                    Destroy(g, 1);
-                    Destroy(gameObject);
+                    if (PlayerPrefs.GetInt("Hero2") == 2)
+                    {
+                        other.GetComponent<Collider>().enabled = false;
+                        other.transform.GetChild(2).gameObject.SetActive(true);
+                        other.GetComponentInChildren<Animator>().Play("Death");
+                    }
+                    else
+                    {
+                        GameObject g = Instantiate(DestroyVFX, new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity);
+                        Destroy(g, 1);
+                        Destroy(gameObject);
+                    }
+
+                }
+                if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Ice)
+                {
+                    if (PlayerPrefs.GetInt("Hero2") == 2)
+                    {
+                        other.transform.parent.GetChild(0).gameObject.SetActive(false);
+
+
+                        other.gameObject.GetComponent<Enemy>().BrokenPieces.SetActive(true);
+                    }
+                    else
+                    {
+                        GameObject g = Instantiate(DestroyVFX, new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity);
+                        Destroy(g, 1);
+                        Destroy(gameObject);
+                    }
 
                 }
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.BrickWall)
@@ -69,7 +95,8 @@ public class Projectile : MonoBehaviour
                 {
                     if (this.gameObject.name != "SpiderWeapon(Clone)")
                     {
-                        other.GetComponent<Collider>().enabled = false;
+              
+                            other.GetComponent<Collider>().enabled = false;
                         other.gameObject.transform.GetChild(0).gameObject.SetActive(true); other.gameObject.transform.GetChild(01).gameObject.SetActive(false);
                         GameObject g = Instantiate(DestroyVFX
                        , new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity);
@@ -78,8 +105,22 @@ public class Projectile : MonoBehaviour
                     }
                     else
                     {
-                        other.transform.GetChild(3).gameObject.SetActive(true);
-                        Destroy(gameObject);
+                        if (PlayerPrefs.GetInt("Hero2") == 2)
+                        {
+                            other.GetComponent<Enemy>().Net.SetActive(true);
+                            other.GetComponent<Collider>().enabled = false;
+                            GameObject g2 = Instantiate(DestroyVFX
+                            , new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity);
+                            Destroy(g2, 1);
+                            other.gameObject.transform.GetChild(01).gameObject.GetComponent<Animator>().Play("Tied");
+                            Destroy(gameObject);
+                        }
+
+                        else
+                        {
+                            other.transform.GetChild(3).gameObject.SetActive(true);
+                            Destroy(gameObject);
+                        }
                     }
                 }
 
@@ -87,15 +128,32 @@ public class Projectile : MonoBehaviour
                 {
                     if (this.gameObject.name != "SpiderWeapon(Clone)" )
                     {
-                        other.transform.GetChild(1).gameObject.SetActive(true);
-                        //other.GetComponent<Collider>().enabled = false;
-                        other.gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>().Play("Taunt");
-                        Destroy(gameObject);
+                        if (PlayerPrefs.GetInt("Hero1") == 2)
+                        {
+
+                            other.GetComponent<Collider>().enabled = false;
+                            GameObject g = Instantiate(DestroyVFX
+                            , new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity);
+                            Destroy(g , 1);
+                            Destroy(gameObject);
+                            other.gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>().Play("Death");
+                        }
+
+                        else
+                        {
+                            other.transform.GetChild(1).gameObject.SetActive(true);
+                            //other.GetComponent<Collider>().enabled = false;
+                            other.gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>().Play("Taunt");
+                            Destroy(gameObject);
+
+                        }
 
                     }
                     else
                     {
-                        if (!isWebNet)
+                      
+
+                            if (!isWebNet)
                         {
                             other.GetComponent<Enemy>().Rope.SetActive(true);
                             other.GetComponent<Collider>().enabled = false;
@@ -169,6 +227,9 @@ public class Projectile : MonoBehaviour
             }
             else
             {
+      
+
+
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Wall || other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KyptoBlock)
                 {
                   
@@ -239,6 +300,9 @@ public class Projectile : MonoBehaviour
                     Destroy(other.gameObject, 5);
                     Destroy(gameObject);
                 }
+
+
+
             }
         }
     }
