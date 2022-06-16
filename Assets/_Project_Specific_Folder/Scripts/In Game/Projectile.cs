@@ -171,7 +171,7 @@ public class Projectile : MonoBehaviour
             {
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Wall || other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KyptoBlock)
                 {
-                    Camera.main.transform.DOShakePosition(5f, .4f);
+                  
                     other.GetComponent<Collider>().enabled = false;
                     other.transform.GetChild(0).gameObject.SetActive(false); other.transform.GetChild(01).gameObject.SetActive(true);
                     GameObject g = Instantiate(HitVFX, new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity); GameObject g1 = Instantiate(CrystalSpread, new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity);
@@ -182,7 +182,7 @@ public class Projectile : MonoBehaviour
                 }
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.ShieldGuy)
                 {
-                    Camera.main.transform.DOShakePosition(5f, .4f);
+                    
                     SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
                     other.GetComponent<Collider>().enabled = false;
                     other.transform.GetChild(2).gameObject.SetActive(true);
@@ -191,7 +191,7 @@ public class Projectile : MonoBehaviour
                 }
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.BrickWall)
                 {
-                    Camera.main.transform.DOShakePosition(5f, .4f);
+                 
                     other.GetComponent<Collider>().enabled = false;
                     other.GetComponentInChildren<Wall>().EnableRb();
                     GameObject g = Instantiate(DestroyVFX
@@ -204,7 +204,7 @@ public class Projectile : MonoBehaviour
                 }
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.WarMachine)
                 {
-                    Camera.main.transform.DOShakePosition(5f, .4f);
+                   
 
                     other.GetComponent<Collider>().enabled = false;
                     other.gameObject.transform.GetChild(0).gameObject.SetActive(true); other.gameObject.transform.GetChild(01).gameObject.SetActive(false);
@@ -216,7 +216,7 @@ public class Projectile : MonoBehaviour
                 }
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Lizard)
                 {
-                    Camera.main.transform.DOShakePosition(5f, .4f);
+                   
                     // other.GetComponent<Enemy>().Rope.SetActive(true);
                     other.GetComponent<Collider>().enabled = false;
                     GameObject g = Instantiate(DestroyVFX
@@ -228,7 +228,7 @@ public class Projectile : MonoBehaviour
                 }
                     if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KryptoCrstalguy)
                 {
-                    Camera.main.transform.DOShakePosition(5f, .4f);
+                   
                     SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().TankHit);
                     other.transform.GetChild(0).gameObject.SetActive(false); other.transform.GetChild(01).gameObject.SetActive(true);
                     GameObject g1 = Instantiate(CrystalSpread, new Vector3(other.transform.position.x, other.transform.position.y + .5f, other.transform.position.z), Quaternion.identity); ;
