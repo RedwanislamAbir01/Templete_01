@@ -506,7 +506,8 @@ public class Collsion : MonoBehaviour
     }
     public IEnumerator GetOnHulkBusterRoutine(GameObject obj)
     {
-
+       if(Hero2.transform.GetComponent<PerCollsion>().HeroLevel == 0)
+       Hero2Model.GetComponent<Animator>().SetTrigger("Jump");
 
         transform.DOLocalRotate(new Vector3(0, 0, 0), .2f);
 
