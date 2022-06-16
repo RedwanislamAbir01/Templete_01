@@ -145,7 +145,7 @@ MonoBehaviour:
   WaterSpill: {fileID: 0}
   Rope: {fileID: 0}
   Net: {fileID: 0}
-  BrokenPieces: {fileID: 0}
+  BrokenPieces: {fileID: 4108399379360986787}
 --- !u!1 &480821532848536401
 GameObject:
   m_ObjectHideFlags: 0

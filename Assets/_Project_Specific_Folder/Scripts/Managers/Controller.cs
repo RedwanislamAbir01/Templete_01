@@ -52,10 +52,10 @@ public class Controller : MonoBehaviour
     BoxCollider m_BoxCollider;
     bool playedd;
     Camera m_Cam;
-
+    GameManager g;
     void Start()
     {
-
+        g = GameManager.Instance;
         m_Cam = Camera.main;
         rb = GetComponent<Rigidbody>();
         positionX = transform.localPosition.x;
@@ -93,7 +93,7 @@ public class Controller : MonoBehaviour
         lastPosition = transform.position;
         if (!GameManager.Instance.StartGame)
             return;
-
+        if(!g.p.GetComponentInChildren<Collsion>().ControlsDisable)
         HandlePlayerMovement();
 
         #endregion Controls

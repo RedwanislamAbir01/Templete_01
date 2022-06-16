@@ -235,17 +235,23 @@ public class SkillTree : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("Hero1") == 0)
         {
+            c.Hero1.GetComponent<PerCollsion>().TorneddoFX.Play();
             UiManager.SaveTotalCoin(UiManager.GetTotalCoin() - Hero1RequiredCash);
             PlayerPrefs.SetInt("Hero1", 1);
         }
         else if (PlayerPrefs.GetInt("Hero1") == 1)
         {
+            c.Hero1.GetComponent<PerCollsion>().TorneddoFX.Play();
+            ParticleSystem.MainModule settings = c.Hero1.GetComponent<PerCollsion>().TorneddoFX.GetComponent<ParticleSystem>().main;
+            settings.startColor = new ParticleSystem.MinMaxGradient(Color.blue);
+
+           
             UiManager.SaveTotalCoin(UiManager.GetTotalCoin() - (Hero1RequiredCash1));
             PlayerPrefs.SetInt("Hero1", 2);
         }
 
             c.Hero1.GetComponent<PerCollsion>().Hero1Upgrade();
-            c.Hero1.GetComponent<PerCollsion>().TorneddoFX.Play();
+        
             StartCoroutine(RotateRoutine());
             if (UiManager.GetTotalCoin() < Hero1RequiredCash1)
             {
@@ -260,17 +266,21 @@ public class SkillTree : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("Hero2") == 0)
         {
+            c.Hero2.GetComponent<PerCollsion>().TorneddoFX.Play();
             UiManager.SaveTotalCoin(UiManager.GetTotalCoin() - Hero2RequiredCash);
             PlayerPrefs.SetInt("Hero2", 1);
         }
         else if (PlayerPrefs.GetInt("Hero2") == 1)
         {
+            c.Hero2.GetComponent<PerCollsion>().TorneddoFX.Play();
+            ParticleSystem.MainModule settings = c.Hero2.GetComponent<PerCollsion>().TorneddoFX.GetComponent<ParticleSystem>().main;
+            settings.startColor = new ParticleSystem.MinMaxGradient(Color.blue);
             UiManager.SaveTotalCoin(UiManager.GetTotalCoin() -Hero2RequiredCash2);
             PlayerPrefs.SetInt("Hero2", 2);
         }
 
             c.Hero2.GetComponent<PerCollsion>().Hero2Upgrade();
-            c.Hero2.GetComponent<PerCollsion>().TorneddoFX.Play();
+     
             StartCoroutine(RotateRoutine1());
             if (UiManager.GetTotalCoin() < Hero2RequiredCash2)
             {

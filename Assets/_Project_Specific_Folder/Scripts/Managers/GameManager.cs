@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
 {
     public bool IsIronManScene;
     public GameObject DC, Marvel;
-
+  
     [Header("Level prefabs List")]
     public List<GameObject> LevelPrefabs = new List<GameObject>();
 
@@ -86,7 +86,7 @@ public class GameManager : Singleton<GameManager>
             Path = GameObject.Find("pathWAY");
 
             pathCreator = Path.GetComponent<PathCreation.PathCreator>();
-            Path.GetComponent<RoadMeshCreator>().refresh();
+        //    Path.GetComponent<RoadMeshCreator>().refresh();
         }
     }
     public void EnableTut()

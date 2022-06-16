@@ -37,17 +37,17 @@ namespace ItemCollection.GameEndUnlockItem
 
         private int _unlockPercentage = 0;
         private int _nextPackIndex = 0;
-        public  int _increaseAmount = 17;
-        public  float _duration = 2.0f;
+        public int _increaseAmount = 17;
+        public float _duration = 2.0f;
         private void Start()
         {
-            Invoke("NextCallBack", 3.5f);
+            Invoke("NextCallBack", 2.5f);
             currentScene = SceneManager.GetActiveScene();
         }
 
         private void Awake()
         {
-           
+
             _nextPackIndex = PlayerPrefs.GetInt(NextPackIndexKey, 0);
 
             if (_nextPackIndex > allItemPack.Count - 1)
@@ -60,7 +60,7 @@ namespace ItemCollection.GameEndUnlockItem
             AssignNextItem();
 
             _unlockPercentage = GetUnlockPercentage();
-            imgUnLocked.fillAmount = _unlockPercentage /102f;
+            imgUnLocked.fillAmount = _unlockPercentage / 102f;
 
             if (_unlockPercentage < 100)
                 _unlockPercentage += _increaseAmount;
@@ -80,8 +80,8 @@ namespace ItemCollection.GameEndUnlockItem
         {
             PlayerPrefs.SetInt(NextPackIndexKey, PlayerPrefs.GetInt(NextPackIndexKey, 0) + 1);
             SaveUnlockPercentage(0);
-            NextCallBack();
-    
+           // NextCallBack();
+
         }
 
         private void RevealCallBack()
@@ -109,14 +109,14 @@ namespace ItemCollection.GameEndUnlockItem
         private void NextCallBack()
         {
 
-        
+
             UiManager.Instance.Next();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-        public IEnumerator LoadNextScene ()
+        public IEnumerator LoadNextScene()
         {
             yield return new WaitForSeconds(.5f);
-           
+
         }
         private void AssignNextItem()
         {
@@ -131,7 +131,7 @@ namespace ItemCollection.GameEndUnlockItem
             if (_unlockPercentage > 100)
             {
                 _unlockPercentage = 100;
-                targetFillAmount = 100;
+
             }
             //Debug.Log("FillAmount " + imgUnLocked.fillAmount + "  targetFillAmount " + targetFillAmount);
             DOTween.To(() => imgUnLocked.fillAmount, x => imgUnLocked.fillAmount = x, targetFillAmount, _duration);
@@ -147,7 +147,7 @@ namespace ItemCollection.GameEndUnlockItem
                 {
                     //btnReveal.gameObject.SetActive(false);
                     //btnNext.gameObject.SetActive(false);
-                  
+
                     yield break;
                 }
 
@@ -161,8 +161,10 @@ namespace ItemCollection.GameEndUnlockItem
             btnReveal.gameObject.SetActive(false);
             btnNext.gameObject.SetActive(false);
             yield return new WaitForSeconds(_duration);
-            btnCollect.gameObject.SetActive(true); txtUnlockPercentage.text = "100" + "%";
-            
+            //  btnCollect.gameObject.SetActive(true); 
+            CollectCallBack();
+            txtUnlockPercentage.text = "100" + "%";
+
         }
 
         private void SaveUnlockPercentage(int percentage) => PlayerPrefs.SetInt(UnlockPercentageKey, percentage);
