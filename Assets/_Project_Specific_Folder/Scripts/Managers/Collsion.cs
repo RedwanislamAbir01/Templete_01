@@ -163,8 +163,8 @@ public class Collsion : MonoBehaviour
             GameManager.Instance.p.MaxSpeed -= SpeedIncreasAmmount; 
             GameManager.Instance.p.speed = CurrentSpeed;
             GameManager.Instance.p.MaxSpeed = CurrentMaxSpeed;
-            Camera.main.transform.DOLocalMove(camStartPos, .2f);
-            Camera.main.transform.DOLocalRotate(camStartRot.eulerAngles, .2f);
+            Camera.main.transform.DOLocalMove(new Vector3(0.01419575f, 11, -21.41994f), .3f);
+            Camera.main.transform.DOLocalRotate(new Vector3(12f, 0, 0), .3f);
             Flying = false;
           
             BatCape.transform.DOLocalRotate(StartCapeRot, .2f);

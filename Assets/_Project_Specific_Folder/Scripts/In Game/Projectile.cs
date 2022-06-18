@@ -60,8 +60,9 @@ public bool isBatMobile;
                     {
                         other.transform.parent.GetChild(0).gameObject.SetActive(false);
 
-
+                        other.GetComponent<Collider>().enabled = false;
                         other.gameObject.GetComponent<Enemy>().BrokenPieces.SetActive(true);
+                        Destroy(gameObject);
                     }
                     else
                     {

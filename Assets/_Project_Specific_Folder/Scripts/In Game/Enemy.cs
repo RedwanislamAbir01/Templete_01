@@ -43,10 +43,11 @@ public class Enemy : MonoBehaviour
 
             if ( EnemyType == eEnemyType.KryptoCrstalguy )
             {
+                MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
 
                 if (other.GetComponent<PerCollsion>().Type == eType.Hero1)
                 {
-                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+                   
                     other.GetComponentInParent<Collsion>().Hero2Model.GetComponent<Animator>().SetBool ("Injured", true);
                     print("bat");
                 }
@@ -56,10 +57,10 @@ public class Enemy : MonoBehaviour
 
             if ( EnemyType == eEnemyType.ShieldGuy)
             {
-
+                MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                 if (other.GetComponent<PerCollsion>().Type == eType.Hero2)
                 {
-                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+             
                     other.GetComponentInParent<Collsion>().Hero1Model.GetComponent<Animator>().SetBool("Injured", true);
                 }
 
@@ -70,17 +71,18 @@ public class Enemy : MonoBehaviour
             {
                 if (other.GetComponent<PerCollsion>().Type == eType.Hero2)
                 other.GetComponent<PerCollsion>().DoorSizeDownRoutine();
-         
+                MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
 
             }
             if ( EnemyType == eEnemyType.Wall )
             {
+                MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                 if (other.GetComponent<PerCollsion>().Type == eType.Hero2)
                     other.GetComponent<PerCollsion>().DoorSizeDownRoutine();
 
                 else
                 {
-                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+                   
                     other.GetComponent<PerCollsion>().anim.SetTrigger("Death");
                     other.transform.DOLocalMoveY(-2.07f, .2f);
                     GameManager.Instance.Reset();
@@ -90,6 +92,7 @@ public class Enemy : MonoBehaviour
 
             if (EnemyType == eEnemyType.Lizard)
             {
+                MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                 SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
                 this.GetComponentInChildren<Animator>().Play("Attack");
                 other.transform.DOLocalMoveY(-2.07f, .2f);
@@ -97,7 +100,7 @@ public class Enemy : MonoBehaviour
                 GameManager.Instance.Reset();
                 if (other.GetComponent<PerCollsion>().Type == eType.Hero1)
                 {
-                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+                  
                     other.GetComponent<PerCollsion>().anim.SetTrigger("Death");
                     GameManager.Instance.Reset(); other.transform.DOLocalMoveY(-2.07f, .2f);
                 }
@@ -117,11 +120,12 @@ public class Enemy : MonoBehaviour
             }
             if (EnemyType == eEnemyType.Lava)
             {
+                MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                 if (other.GetComponent<PerCollsion>().Type == eType.Hero2)
                 {
                     if (other.GetComponent<PerCollsion>().HeroLevel == 0)
                     {
-                        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+                      
                         other.GetComponent<PerCollsion>().anim.SetTrigger("Death");
                         GameManager.Instance.Reset(); other.transform.DOLocalMoveY(-2.07f, .2f);
                     }
@@ -130,7 +134,7 @@ public class Enemy : MonoBehaviour
                 {
                     if (other.GetComponent<PerCollsion>().HeroLevel == 0)
                     {
-                        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+                      
                         other.GetComponent<PerCollsion>().anim.SetTrigger("Death");
                         GameManager.Instance.Reset(); other.transform.DOLocalMoveY(-2.07f, .2f);
                     }

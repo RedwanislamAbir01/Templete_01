@@ -109,7 +109,7 @@ public class PerCollsion : MonoBehaviour
             if(DummyGun != null)
             DummyGun.gameObject.SetActive(true);
             if (Power1 != null)
-                Power1.SetActive(true);
+            Power1.SetActive(true);
             anim.transform.DOLocalMoveY(0, .2f);
             anim.transform.GetComponent<MySDK.Mover>().m_InitialPosition.y = 0;
             anim.transform.GetComponent<MySDK.Mover>().enabled = true;

@@ -61,7 +61,7 @@ public class Controller1 : MonoBehaviour
         positionX = transform.localPosition.x;
         positionY = transform.localPosition.y;
         originPos = transform.localPosition;
-        speed = .65f;
+        speed = .7f;
 
 
 

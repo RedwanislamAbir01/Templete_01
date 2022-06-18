@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using MoreMountains.NiceVibrations;
 public class UiManager : Singleton<UiManager>
 {
     public TMP_Text LevelText, CoinText, PointText, totalText, NormalCoin, BonusText;
@@ -20,7 +21,8 @@ public class UiManager : Singleton<UiManager>
 
     public GameObject Level1Tut, Level6Tut;
 
-
+    public bool HapticsAllowed;
+    public GameObject haptics;
 
     public GameObject StartUI, EndUi, CompleteUI , FadeIn , UpgradePnael;
     public GameObject TapFastPanel;
@@ -133,5 +135,18 @@ public class UiManager : Singleton<UiManager>
         PlayerPrefs.SetInt("current_scene_text", currentLevelText + 1);
 
     }
-
+    public void EnableHaptics()
+    {
+        haptics.transform.GetChild(0).gameObject.SetActive(false);
+        haptics.transform.GetChild(1).gameObject.SetActive(true);
+        HapticsAllowed = false;
+        MMVibrationManager.SetHapticsActive(HapticsAllowed);
+    }
+    public void DisableHaptics()
+    {
+        haptics.transform.GetChild(0).gameObject.SetActive(true);
+        haptics.transform.GetChild(1).gameObject.SetActive(false);
+        HapticsAllowed = true;
+        MMVibrationManager.SetHapticsActive(HapticsAllowed);
+    }
 }
