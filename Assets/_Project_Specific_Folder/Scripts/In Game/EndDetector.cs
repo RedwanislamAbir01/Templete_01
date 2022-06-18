@@ -242,28 +242,35 @@ public class EndDetector : MonoBehaviour
 
     }
     public IEnumerator LevelTwoBatThrowRoutine()
-    {   if (!GameManager.Instance.IsIronManScene)
+
+
+    {
+        if (!GameManager.Instance.IsHulkScene)
         {
-            if (lf.HeroLevel == 2)
+
+            if (!GameManager.Instance.IsIronManScene)
             {
-                Instantiate(SpiderNet, NewGunSpawnPoint.position, Quaternion.identity);
-                lf.DummyGun.gameObject.SetActive(false);
-                lf.Power2.gameObject.SetActive(true);
-                yield return new WaitForSeconds(.3f);
-                lf.Power2.gameObject.SetActive(false);
-                lf.DummyGun.gameObject.SetActive(true);
-                SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().IronShoot);
+                if (lf.HeroLevel == 2)
+                {
+                    Instantiate(SpiderNet, NewGunSpawnPoint.position, Quaternion.identity);
+                    lf.DummyGun.gameObject.SetActive(false);
+                    lf.Power2.gameObject.SetActive(true);
+                    yield return new WaitForSeconds(.3f);
+                    lf.Power2.gameObject.SetActive(false);
+                    lf.DummyGun.gameObject.SetActive(true);
+                    SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().IronShoot);
+                }
             }
-        }
-    else
-        {
-            if (lf.HeroLevel == 2)
+            else
             {
-                print("throw");
-                GameObject g = Instantiate(SpiderNet, SpawnPoint.position, Quaternion.identity);
-               // g.transform.DOLocalRotate(new Vector3(0, 90, 0), 0);
-                g.transform.DOScale(new Vector3(.7f, .7f, .7f), 2f);
-              
+                if (lf.HeroLevel == 2)
+                {
+                    print("throw");
+                    GameObject g = Instantiate(SpiderNet, SpawnPoint.position, Quaternion.identity);
+                    // g.transform.DOLocalRotate(new Vector3(0, 90, 0), 0);
+                    g.transform.DOScale(new Vector3(.7f, .7f, .7f), 2f);
+
+                }
             }
         }
     

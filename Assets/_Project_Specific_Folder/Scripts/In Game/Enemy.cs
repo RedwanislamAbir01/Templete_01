@@ -15,7 +15,9 @@ public enum eEnemyType
    BrickWall,
    LaserWall,
    WarMachine,
-   Lizard
+   Lizard, 
+   Rock, 
+   ElectricWall
 
 
 
@@ -65,6 +67,50 @@ public class Enemy : MonoBehaviour
                     other.GetComponent<PerCollsion>().anim.SetTrigger("Death");
                     other.transform.DOLocalMoveY(-2.07f, .2f);
                     GameManager.Instance.Reset();
+                }
+
+
+            }
+            if (EnemyType == eEnemyType.ElectricWall)
+            {
+                if (other.GetComponent<PerCollsion>().Type == eType.Hero2)
+                {
+                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+                    other.GetComponent<PerCollsion>().anim.SetTrigger("Death");
+                    other.transform.DOLocalMoveY(-2.07f, .2f);
+                    GameManager.Instance.Reset();
+                }
+
+          
+                if (other.GetComponent<PerCollsion>().Type == eType.Hero1)
+                {
+
+                   
+                }
+
+
+            }
+            if (EnemyType == eEnemyType.Rock)
+            {
+                if (other.GetComponent<PerCollsion>().Type == eType.Hero2)
+                {
+                   
+                }
+
+
+                if (other.GetComponent<PerCollsion>().Type == eType.Hero1)
+                {
+                    if (PlayerPrefs.GetInt("Hero1") != 0)
+                    {
+
+                    }
+                    else
+                    {
+                        other.GetComponent<PerCollsion>().anim.SetTrigger("Death");
+                        other.transform.DOLocalMoveY(-2.07f, .2f);
+                        GameManager.Instance.Reset();
+                    }
+
                 }
 
 

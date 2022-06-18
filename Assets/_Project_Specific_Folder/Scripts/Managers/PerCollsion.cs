@@ -75,14 +75,17 @@ public class PerCollsion : MonoBehaviour
         {
             if(Power1 != null)
             Power1.SetActive(true);
-            anim.transform.GetComponent<MySDK.Mover>().m_InitialPosition.z=1.86f;
+            if (anim.transform.GetComponent<MySDK.Mover>() != null)
+                anim.transform.GetComponent<MySDK.Mover>().m_InitialPosition.z=1.86f;
             //Power2.SetActive(true);
-            anim.transform.GetComponent<MySDK.Mover>().enabled = true;
+            if (anim.transform.GetComponent<MySDK.Mover>() != null)
+                anim.transform.GetComponent<MySDK.Mover>().enabled = true;
 
             anim.runtimeAnimatorController = Level2Aniamtor;
         }
         if (HeroLevel == 2)
         {
+            if(anim.transform.GetComponent<MySDK.Mover>() != null)
             anim.transform.GetComponent<MySDK.Mover>().enabled = true;
             if (Power1 != null)
             Power1.SetActive(false);
@@ -99,9 +102,14 @@ public class PerCollsion : MonoBehaviour
         {
             if (Power1 != null)
                 Power1.SetActive(true);
-            anim.transform.DOLocalMoveY(0, .2f);
-            anim.transform.GetComponent<MySDK.Mover>().m_InitialPosition.y = 0;
-            anim.transform.GetComponent<MySDK.Mover>().enabled = true;
+
+            if (anim.transform.GetComponent<MySDK.Mover>() != null)
+                anim.transform.DOLocalMoveY(0, .2f);
+            if (anim.transform.GetComponent<MySDK.Mover>() != null)
+            {
+                anim.transform.GetComponent<MySDK.Mover>().m_InitialPosition.y = 0;
+                anim.transform.GetComponent<MySDK.Mover>().enabled = true;
+            }
             anim.runtimeAnimatorController = Level2Aniamtor;
         }
         if (HeroLevel == 2)
@@ -110,9 +118,13 @@ public class PerCollsion : MonoBehaviour
             DummyGun.gameObject.SetActive(true);
             if (Power1 != null)
             Power1.SetActive(true);
-            anim.transform.DOLocalMoveY(0, .2f);
-            anim.transform.GetComponent<MySDK.Mover>().m_InitialPosition.y = 0;
-            anim.transform.GetComponent<MySDK.Mover>().enabled = true;
+            if (anim.transform.GetComponent<MySDK.Mover>() != null)
+             anim.transform.DOLocalMoveY(0, .2f);
+            if (anim.transform.GetComponent<MySDK.Mover>() != null)
+            {
+                anim.transform.GetComponent<MySDK.Mover>().m_InitialPosition.y = 0;
+                anim.transform.GetComponent<MySDK.Mover>().enabled = true;
+            }
             anim.runtimeAnimatorController = Level3Animator;
         }
     }
@@ -172,6 +184,32 @@ public class PerCollsion : MonoBehaviour
                     SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
                     anim.SetTrigger("Punch");
                     other.gameObject.GetComponent<Enemy>().BrokenPieces.SetActive(true);
+                }
+
+
+            }
+            if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Rock)
+            {
+                if (Type == eType.Hero1)
+                {
+                    if (PlayerPrefs.GetInt("Hero1") != 0)
+                    {
+                        other.gameObject.GetComponent<Collider>().enabled = false;
+                        other.transform.GetChild(0).gameObject.SetActive(true); other.transform.GetChild(01).gameObject.SetActive(false);
+                        SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
+                        anim.SetTrigger("Punch");
+                        
+                    }
+                }
+                else if (Type == eType.Hero2)
+                {
+                  
+                        other.gameObject.GetComponent<Collider>().enabled = false;
+                        other.transform.GetChild(0).gameObject.SetActive(true); other.transform.GetChild(01).gameObject.SetActive(false);
+                    SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
+                        anim.SetTrigger("Punch");
+
+                    
                 }
 
 
