@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
 
             }
 
-            if (EnemyType == eEnemyType.BrickWall  || EnemyType == eEnemyType.Wall || EnemyType == eEnemyType.KyptoBlock ||EnemyType == eEnemyType.Ice )
+            if (EnemyType == eEnemyType.BrickWall  || EnemyType == eEnemyType.Wall || EnemyType == eEnemyType.KyptoBlock  )
             {
                 if (other.GetComponent<PerCollsion>().Type == eType.Hero2)
                 {
@@ -87,6 +87,20 @@ public class Enemy : MonoBehaviour
                     other.transform.DOLocalMoveY(-2.07f, .2f);
                     GameManager.Instance.Reset();
                 }
+
+
+            }
+            if (EnemyType == eEnemyType.Ice)
+            {
+                if (other.GetComponent<PerCollsion>().Type == eType.Hero2)
+                {
+                    other.GetComponent<PerCollsion>().anim.SetTrigger("Death");
+                    other.transform.DOLocalMoveY(-2.07f, .2f);
+                    GameManager.Instance.Reset();
+                }
+
+                MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+    
 
 
             }

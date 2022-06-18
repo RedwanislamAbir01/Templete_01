@@ -17,9 +17,12 @@ public class MoveForward : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (S.Enable)
+        if (S != null)
         {
-            transform.Translate(Vector3.forward * 5 * Time.deltaTime);
+            if (S.Enable)
+            {
+                transform.Translate(Vector3.forward * 5 * Time.deltaTime);
+            }
         }
     }
 
@@ -27,7 +30,8 @@ public class MoveForward : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.ShieldGuy)
+          
+            if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.ShieldGuy &&  GetComponentInParent<PerCollsion>().Type == eType.Hero1)
             {
                 SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
                 MMVibrationManager.Haptic(HapticTypes.MediumImpact);
@@ -38,6 +42,23 @@ public class MoveForward : MonoBehaviour
                 other.transform.GetChild(2).gameObject.SetActive(true);
                 other.GetComponentInChildren<Animator>().Play("Death");
                 S.Enable = false;
+            }
+            if (GameManager.Instance.IsHulkScene)
+            {
+                if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KryptoCrstalguy)
+                {
+                    SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
+                    MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+                    GetComponent<BoxCollider>().enabled = false;
+                    E.Anim.SetTrigger("Punch");
+                    Invoke("BackToOld", .5f);
+                    other.GetComponent<Collider>().enabled = false;
+                    
+                        SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().TankHit);
+                        other.transform.GetChild(0).gameObject.SetActive(false); other.transform.GetChild(01).gameObject.SetActive(true);
+
+
+                    }
             }
         }
     }

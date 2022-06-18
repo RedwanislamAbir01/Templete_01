@@ -7,8 +7,8 @@ using DG.Tweening;
 using PathCreation.Examples;
 public class GameManager : Singleton<GameManager>
 {
-    public bool IsIronManScene;
-    public GameObject DC, Marvel;
+    public bool IsIronManScene, IsHulkScene;
+    public GameObject DC, Marvel , DC1;
   
     [Header("Level prefabs List")]
     public List<GameObject> LevelPrefabs = new List<GameObject>();
@@ -61,7 +61,7 @@ public class GameManager : Singleton<GameManager>
             IsIronManScene = false;
             DC.gameObject.SetActive(true);
         }
-       else if (levelNo >= 6)
+       else if (levelNo >= 6 && levelNo <= 11)
         {
             if (PlayerPrefs.GetInt("FirstTime", 0) == 0)
             {
@@ -73,7 +73,25 @@ public class GameManager : Singleton<GameManager>
             }
             IsIronManScene = true;
 
-            Marvel.gameObject.SetActive(true); DC.gameObject.SetActive(false);
+            Marvel.gameObject.SetActive(true);
+            DC.gameObject.SetActive(false);
+        }
+        else if (levelNo> 11)
+        {
+          
+            if (PlayerPrefs.GetInt("NewFirstTime", 0) == 0)
+            {
+
+                PlayerPrefs.SetInt("NewFirstTime", 1);
+                PlayerPrefs.SetInt("Hero1", 0);
+                PlayerPrefs.SetInt("Hero2", 0);
+
+            }
+            IsIronManScene = false;
+            IsHulkScene = true;
+            Marvel.gameObject.SetActive(false);
+            DC.gameObject.SetActive(false);
+            DC1.gameObject.SetActive(true);
         }
         p.GetComponentInChildren<Collsion>().Boss1 = GameObject.FindGameObjectWithTag("Boss");
         BatMobile= GameObject.FindGameObjectWithTag("Batmobil");Bike = GameObject.FindGameObjectWithTag("Bike");

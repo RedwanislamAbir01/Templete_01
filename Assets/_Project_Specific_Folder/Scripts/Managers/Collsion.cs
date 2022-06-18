@@ -40,8 +40,11 @@ public class Collsion : MonoBehaviour
         Hero1ModelPos = Hero1Model.transform.position; Hero2ModelPos = Hero2Model.transform.localPosition;
         H1start = Hero1.transform.localPosition;
         H2Start = Hero2.transform.localPosition;
-        StartCapePos = BatCape.transform.localPosition;
-        StartCapeRot = BatCape.transform.localEulerAngles;
+        if (BatCape != null)
+        {
+            StartCapePos = BatCape.transform.localPosition;
+            StartCapeRot = BatCape.transform.localEulerAngles;
+        }
 
     }
     private void Update()

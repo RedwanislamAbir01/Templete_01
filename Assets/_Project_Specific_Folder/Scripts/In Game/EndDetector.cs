@@ -271,41 +271,44 @@ public class EndDetector : MonoBehaviour
 
     public void Shoot()
     {
-        if (lf.Type == eType.Hero2)
+        if (!GameManager.Instance.IsHulkScene)
         {
-           
-            if (lf.HeroLevel != 2)
+            if (lf.Type == eType.Hero2)
             {
-              GameObject g =  Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
-               int i = GetComponentInParent<PerCollsion>().ColelctableCount / 5;
 
-                g.GetComponent<Projectile>().ProjectileSpeed = g.GetComponent<Projectile>().ProjectileSpeed + (i * .25f);
+                if (lf.HeroLevel != 2)
+                {
+                    GameObject g = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                    int i = GetComponentInParent<PerCollsion>().ColelctableCount / 5;
+
+                    g.GetComponent<Projectile>().ProjectileSpeed = g.GetComponent<Projectile>().ProjectileSpeed + (i * .25f);
+
+                }
+
+                if (lf.HeroLevel == 0)
+                    SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().BatBlade);
 
             }
 
-            if (lf.HeroLevel == 0)
-                SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().BatBlade);
-
-        }
-
-        else
-        {
-            if (lf.HeroLevel == 0 || lf.HeroLevel == 01)
-            {
-                GameObject g1 = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
-                int i = GetComponentInParent<PerCollsion>().ColelctableCount / 5;
-
-                g1.GetComponent<Projectile>().ProjectileSpeed = g1.GetComponent<Projectile>().ProjectileSpeed + (i * .25f);
-            }
             else
             {
-                print("---");
-                GameObject g1 = Instantiate(SpiderNet, SpawnPoint.position, Quaternion.identity);
-                int i = GetComponentInParent<PerCollsion>().ColelctableCount / 5;
+                if (lf.HeroLevel == 0 || lf.HeroLevel == 01)
+                {
+                    GameObject g1 = Instantiate(Projectile, SpawnPoint.position, Quaternion.identity);
+                    int i = GetComponentInParent<PerCollsion>().ColelctableCount / 5;
 
-                g1.GetComponent<Projectile>().ProjectileSpeed = g1.GetComponent<Projectile>().ProjectileSpeed + (i * .25f);
+                    g1.GetComponent<Projectile>().ProjectileSpeed = g1.GetComponent<Projectile>().ProjectileSpeed + (i * .25f);
+                }
+                else
+                {
+                    print("---");
+                    GameObject g1 = Instantiate(SpiderNet, SpawnPoint.position, Quaternion.identity);
+                    int i = GetComponentInParent<PerCollsion>().ColelctableCount / 5;
+
+                    g1.GetComponent<Projectile>().ProjectileSpeed = g1.GetComponent<Projectile>().ProjectileSpeed + (i * .25f);
+                }
+
             }
-            
         }
 
     }

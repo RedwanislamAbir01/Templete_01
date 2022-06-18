@@ -180,7 +180,7 @@ public class PerCollsion : MonoBehaviour
 
         if (other.gameObject.CompareTag("Cash"))
         {
-            UiManager.Instance.IncreasePoints(10); other.transform.GetChild(0).gameObject.SetActive(true);
+            UiManager.Instance.IncreasePoints(5); other.transform.GetChild(0).gameObject.SetActive(true);
              other.transform.GetComponent<Collider>().enabled = false; other.transform.GetComponent<MeshRenderer>().enabled = false;
         }
 
