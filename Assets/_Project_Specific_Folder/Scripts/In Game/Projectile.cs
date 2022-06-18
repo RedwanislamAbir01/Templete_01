@@ -44,7 +44,7 @@ public bool isBatMobile;
                     {
                         other.GetComponent<Collider>().enabled = false;
                         other.transform.GetChild(2).gameObject.SetActive(true);
-                        other.GetComponentInChildren<Animator>().Play("Death");
+                        other.GetComponentInChildren<Animator>().Play("Death"); Destroy(gameObject);
                     }
                     else
                     {

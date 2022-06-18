@@ -47,9 +47,10 @@ public class Enemy : MonoBehaviour
 
                 if (other.GetComponent<PerCollsion>().Type == eType.Hero1)
                 {
-                   
-                    other.GetComponentInParent<Collsion>().Hero2Model.GetComponent<Animator>().SetBool ("Injured", true);
-                    print("bat");
+
+                    other.GetComponent<PerCollsion>().anim.SetTrigger("Death");
+                    other.transform.DOLocalMoveY(-2.07f, .2f);
+                    GameManager.Instance.Reset();
                 }
 
 
@@ -60,8 +61,10 @@ public class Enemy : MonoBehaviour
                 MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                 if (other.GetComponent<PerCollsion>().Type == eType.Hero2)
                 {
-             
-                    other.GetComponentInParent<Collsion>().Hero1Model.GetComponent<Animator>().SetBool("Injured", true);
+
+                    other.GetComponent<PerCollsion>().anim.SetTrigger("Death");
+                    other.transform.DOLocalMoveY(-2.07f, .2f);
+                    GameManager.Instance.Reset();
                 }
 
 
@@ -70,15 +73,33 @@ public class Enemy : MonoBehaviour
             if (EnemyType == eEnemyType.BrickWall  || EnemyType == eEnemyType.Wall || EnemyType == eEnemyType.KyptoBlock ||EnemyType == eEnemyType.Ice )
             {
                 if (other.GetComponent<PerCollsion>().Type == eType.Hero2)
-                other.GetComponent<PerCollsion>().DoorSizeDownRoutine();
+                {
+                    other.GetComponent<PerCollsion>().anim.SetTrigger("Death");
+                    other.transform.DOLocalMoveY(-2.07f, .2f);
+                    GameManager.Instance.Reset();
+                }
+               
                 MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+                if (other.GetComponent<PerCollsion>().Type == eType.Hero1)
+                {
+
+                    other.GetComponent<PerCollsion>().anim.SetTrigger("Death");
+                    other.transform.DOLocalMoveY(-2.07f, .2f);
+                    GameManager.Instance.Reset();
+                }
+
 
             }
             if ( EnemyType == eEnemyType.Wall )
             {
                 MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                 if (other.GetComponent<PerCollsion>().Type == eType.Hero2)
-                    other.GetComponent<PerCollsion>().DoorSizeDownRoutine();
+                {
+                    other.GetComponent<PerCollsion>().anim.SetTrigger("Death");
+                    other.transform.DOLocalMoveY(-2.07f, .2f);
+                    GameManager.Instance.Reset();
+                }
+                  
 
                 else
                 {

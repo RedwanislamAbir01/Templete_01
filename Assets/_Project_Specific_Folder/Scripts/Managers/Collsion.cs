@@ -111,7 +111,7 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Exit"))
         {
-          
+            other.gameObject.SetActive(false);
             other.gameObject.GetComponent<Collider>().enabled = false;
             StartCoroutine(OnExitRoutine());
         }
@@ -654,7 +654,8 @@ public class Collsion : MonoBehaviour
         Hero1Model.GetComponent<Animator>().SetTrigger("Jump");
         Hero2Model.GetComponent<Animator>().SetTrigger("Jump");
 
-        Camera.main.transform.DOLocalMove(new Vector3(0,11, -20f), .3f);
+        Camera.main.transform.DOLocalMove(new Vector3(0.01419575f, 11, -21.41994f), .3f);
+        Camera.main.transform.DOLocalRotate(new Vector3(12f, 0, 0), .3f);
 
         Hero1.transform.DOLocalMove(H1start, .3f);
         Hero2.transform.DOLocalMove(H2Start, .3f);
@@ -677,7 +678,7 @@ public class Collsion : MonoBehaviour
     public IEnumerator OnExitRoutine()
     {
         transform.GetComponent<CarController>().enabled = false; 
-       
+      
         Camera.main.transform.GetChild(0).gameObject.SetActive(false);
 
         GameManager.Instance.p.speed = 0;

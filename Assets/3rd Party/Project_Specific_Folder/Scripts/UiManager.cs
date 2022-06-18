@@ -50,6 +50,7 @@ public class UiManager : Singleton<UiManager>
     {
         Time.timeScale = 1;
         Level1Tut.gameObject.SetActive(false); Level6Tut.gameObject.SetActive(false);
+        GameManager.Instance.p.GetComponentInChildren<Collsion>().Hero1.GetComponent<Controller>().speed = .65f; GameManager.Instance.p.GetComponentInChildren<Collsion>().Hero2.GetComponent<Controller1>().speed = .65f;
     }
     public static int GetTotalCoin() => PlayerPrefs.GetInt("LifeTimeScore");
     public static void SaveTotalCoin(int amount) => PlayerPrefs.SetInt("LifeTimeScore", amount);
