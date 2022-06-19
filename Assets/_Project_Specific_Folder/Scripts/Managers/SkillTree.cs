@@ -29,6 +29,12 @@ public class SkillTree : MonoBehaviour
     public int SecondHero1RequiredCash1 = 30;
     public int SecondHero2RequiredCash = 20;
     public int SecondHero2RequiredCash2 = 30;
+
+
+    public int ThirdHero1RequiredCash = 20;
+    public int ThirdHero1RequiredCash1 = 30;
+    public int ThirdHero2RequiredCash = 20;
+    public int ThirdHero2RequiredCash2 = 30;
     Collsion c;
 
     public Sprite[] Button1, Button2;
@@ -36,13 +42,21 @@ public class SkillTree : MonoBehaviour
     void Start()
     {
 
-        if(GameManager.Instance.levelNo >= 6)
+        if(GameManager.Instance.IsIronManScene)
         {
             print("level");
             Hero1RequiredCash = SecondHero1RequiredCash;
             Hero1RequiredCash1 = SecondHero1RequiredCash1;
             Hero2RequiredCash = SecondHero2RequiredCash;
             Hero2RequiredCash2 = SecondHero2RequiredCash2;
+        }
+        else if (GameManager.Instance.IsHulkScene)
+        {
+            Hero1RequiredCash = ThirdHero1RequiredCash;
+            Hero1RequiredCash1 = ThirdHero1RequiredCash1;
+            Hero2RequiredCash = ThirdHero2RequiredCash;
+            Hero2RequiredCash2 = ThirdHero2RequiredCash2;
+
         }
 
         Hero1PriceUpdate();
