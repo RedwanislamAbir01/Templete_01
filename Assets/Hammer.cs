@@ -97,7 +97,7 @@ public class Hammer : MonoBehaviour
                 else if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Rock && GetComponentInParent<PerCollsion>().Type == eType.Hero1)
                 {
 
-                    Electric.Play();
+                        Electric.Play();
                    
                         other.gameObject.GetComponent<Collider>().enabled = false;
                         other.transform.GetChild(0).gameObject.SetActive(true); other.transform.GetChild(01).gameObject.SetActive(false);
@@ -108,6 +108,7 @@ public class Hammer : MonoBehaviour
                 }
                 else
                 {
+                    other.gameObject.GetComponent<Collider>().enabled = false;
                     Electric.Play(); other.GetComponentInChildren<Animator>().Play("Death");
                 }
             }
