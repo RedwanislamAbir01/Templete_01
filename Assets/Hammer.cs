@@ -8,12 +8,12 @@ public class Hammer : MonoBehaviour
     public EndDetector E;
     Vector3 StartPos;
     public GameObject Hammers;
-    public TrailRenderer t;
+
     public ParticleSystem Electric;
     private void Start()
     {
         StartPos = transform.localPosition;
-        t.enabled = false;
+   
         transform.GetChild(0).gameObject.SetActive(false);
     }
     private void OnTriggerEnter(Collider other)
@@ -30,7 +30,7 @@ public class Hammer : MonoBehaviour
                     E.Anim.SetTrigger("Punch");
                     GetComponent<BoxCollider>().enabled = false;
 
-                    t.enabled = true;
+                   
                     transform.DOLocalMove(new Vector3(0.282f , 1.09f , 5f) , .3f).OnComplete(() =>
                     {
                         other.transform.GetChild(1).gameObject.SetActive(true);
@@ -52,7 +52,7 @@ public class Hammer : MonoBehaviour
                     E.Anim.SetTrigger("Punch");
                     GetComponent<BoxCollider>().enabled = false;
 
-                    t.enabled = true;
+                  
                     transform.DOLocalMoveZ(5, .3f).OnComplete(() =>
                     {
                         other.transform.GetChild(1).gameObject.SetActive(true);
@@ -73,7 +73,7 @@ public class Hammer : MonoBehaviour
                     E.Anim.SetTrigger("Punch");
                     GetComponent<BoxCollider>().enabled = false;
 
-                    t.enabled = true;
+                  
                     transform.DOLocalMoveZ(5, .3f).OnComplete(() =>
                     {
 

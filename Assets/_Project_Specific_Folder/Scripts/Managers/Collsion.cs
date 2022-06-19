@@ -435,8 +435,8 @@ public class Collsion : MonoBehaviour
 
             }
             yield return new WaitForSeconds(3f);
-            Camera.main.transform.DOLocalMove(Boss1.transform.GetChild(4).transform.localPosition, .3f);
-            Camera.main.transform.DOLocalRotate(Boss1.transform.GetChild(4).transform.localEulerAngles, .7f);
+            Camera.main.transform.DOLocalMove(new Vector3(3.58f , 3.87f , -6.95f), .3f);
+            Camera.main.transform.DOLocalRotate(new Vector3(14.21f, -18.791f, 1.535f), .7f);
             yield return new WaitForSeconds(2f);
             UiManager.Instance.CompleteUI.SetActive(true);
         }
