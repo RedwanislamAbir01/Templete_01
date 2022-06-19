@@ -42,6 +42,46 @@ public class Hammer : MonoBehaviour
 
 
                 }
+                else if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KryptoCrstalguy&& GetComponentInParent<PerCollsion>().Type == eType.Hero1)
+                {
+
+                    transform.GetChild(0).gameObject.SetActive(true);
+                    Hammers.gameObject.SetActive(false);
+                    SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
+                    E.Anim.SetTrigger("Punch");
+                    GetComponent<BoxCollider>().enabled = false;
+
+                    t.enabled = true;
+                    transform.DOLocalMoveZ(5, .3f).OnComplete(() =>
+                    {
+                        other.transform.GetChild(1).gameObject.SetActive(true);
+                        
+                        other.GetComponentInChildren<Animator>().Play("Taunt");
+                        BackToOld();
+                    });
+
+
+
+                }
+                else if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Rock && GetComponentInParent<PerCollsion>().Type == eType.Hero1)
+                {
+
+                    transform.GetChild(0).gameObject.SetActive(true);
+                    Hammers.gameObject.SetActive(false);
+                    SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
+                    E.Anim.SetTrigger("Punch");
+                    GetComponent<BoxCollider>().enabled = false;
+
+                    t.enabled = true;
+                    transform.DOLocalMoveZ(5, .3f).OnComplete(() =>
+                    {
+
+                        BackToOld();
+                    });
+
+
+
+                }
             }
             else  if (PlayerPrefs.GetInt("Hero1") == 2)
 
@@ -54,9 +94,21 @@ public class Hammer : MonoBehaviour
                     other.GetComponentInChildren<Animator>().Play("Death");
 
                 }
+                else if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Rock && GetComponentInParent<PerCollsion>().Type == eType.Hero1)
+                {
+
+                    Electric.Play();
+                   
+                        other.gameObject.GetComponent<Collider>().enabled = false;
+                        other.transform.GetChild(0).gameObject.SetActive(true); other.transform.GetChild(01).gameObject.SetActive(false);
+                   
+
+
+
+                }
                 else
                 {
-                    Electric.Play();
+                    Electric.Play(); other.GetComponentInChildren<Animator>().Play("Death");
                 }
             }
         }
