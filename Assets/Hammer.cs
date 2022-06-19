@@ -12,6 +12,7 @@ public class Hammer : MonoBehaviour
     public ParticleSystem Electric;
     private void Start()
     {
+        StartPos = transform.localPosition;
         t.enabled = false;
         transform.GetChild(0).gameObject.SetActive(false);
     }
@@ -30,7 +31,7 @@ public class Hammer : MonoBehaviour
                     GetComponent<BoxCollider>().enabled = false;
 
                     t.enabled = true;
-                    transform.DOLocalMoveZ(5, .3f).OnComplete(() =>
+                    transform.DOLocalMove(new Vector3(0.282f , 1.09f , 5f) , .3f).OnComplete(() =>
                     {
                         other.transform.GetChild(1).gameObject.SetActive(true);
                         other.GetComponentInChildren<Animator>().Play("Death");
@@ -109,7 +110,10 @@ public class Hammer : MonoBehaviour
                 else
                 {
                     other.gameObject.GetComponent<Collider>().enabled = false;
-                    Electric.Play(); other.GetComponentInChildren<Animator>().Play("Death");
+
+                    Electric.Play(); 
+                    if(other.GetComponentInChildren<Animator>() != null)
+                    other.GetComponentInChildren<Animator>().Play("Death");
                 }
             }
         }
@@ -117,10 +121,16 @@ public class Hammer : MonoBehaviour
     public void BackToOld()
     {
 
-        GetComponent<BoxCollider>().enabled = true;
-        transform.DOLocalMove(StartPos, .4f).OnComplete(() => {
-            transform.GetChild(0).gameObject.SetActive(false);
+      
+        transform.DOLocalMove(StartPos, .6f).OnComplete(() => {
+            transform.GetChild(0).gameObject.SetActive(false); 
             Hammers.gameObject.SetActive(true);
+            Invoke("DisableCollider", 1.2f);
         });
+    }
+
+    public void DisableCollider()
+    {
+        GetComponent<BoxCollider>().enabled = true;
     }
 }

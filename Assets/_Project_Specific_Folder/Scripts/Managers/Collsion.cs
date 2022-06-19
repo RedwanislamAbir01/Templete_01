@@ -198,7 +198,7 @@ public class Collsion : MonoBehaviour
         Camera.main.transform.DOLocalRotate(new Vector3(17.66f , -.031f , -.089f), .2f);
         GameManager.Instance.p.MaxSpeed += SpeedIncreasAmmount;
         Flying = true;
-       
+        Hero1Model.transform.parent.DOLocalMove(new Vector3(0, 1.38f, 0), .5f);
         Hero1.GetComponent<Controller>().enabled = false;
         Hero2.GetComponent<Controller1>().enabled = false;
 
@@ -214,9 +214,12 @@ public class Collsion : MonoBehaviour
         Hero2Model.GetComponent<Animator>().SetBool("Hang", true);
         Hero1Model.GetComponent<Animator>().SetBool("Hang", true);
         //Hero2Model.transform.DOLocalJump(new Vector3(0.26f, -5.75f, 2.53f), 4,1, .2f);
+        if(!GameManager.Instance.IsHulkScene)
         Hero2.transform.DOLocalMove(new Vector3(0.55f, -1.31f, 2.08f), 0.2f);
-
-        Connector.gameObject.SetActive(false);
+        else
+            Hero2.transform.DOLocalMove(new Vector3(0.55f, -3.27f, 2.08f), 0.2f);
+     
+       // Connector.gameObject.SetActive(false);
         Hero2.transform.DOLocalMoveX(0.33f, .5f).OnComplete(() =>
         {
 

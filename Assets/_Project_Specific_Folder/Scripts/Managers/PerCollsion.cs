@@ -29,7 +29,7 @@ public class PerCollsion : MonoBehaviour
 
     public float ScaleAmmount = .3f;
 
-
+    public GameObject Hammer;
 
     public ParticleSystem TorneddoFX;
     public Ease ease;
@@ -85,6 +85,8 @@ public class PerCollsion : MonoBehaviour
         }
         if (HeroLevel == 2)
         {
+            if (Hammer != null)
+                Hammer.transform.DOLocalRotate(new Vector3(-15.616f, -231.131f, 368.553f), 0);
             if(anim.transform.GetComponent<MySDK.Mover>() != null)
             anim.transform.GetComponent<MySDK.Mover>().enabled = true;
             if (Power1 != null)
@@ -192,21 +194,14 @@ public class PerCollsion : MonoBehaviour
             {
                 if (Type == eType.Hero1)
                 {
-                    if (PlayerPrefs.GetInt("Hero1") != 0)
-                    {
-                        other.gameObject.GetComponent<Collider>().enabled = false;
-                        other.transform.GetChild(0).gameObject.SetActive(true); other.transform.GetChild(01).gameObject.SetActive(false);
-                        SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
-                        anim.SetTrigger("Punch");
-                        
-                    }
+    
                 }
                 else if (Type == eType.Hero2)
                 {
                   
                         other.gameObject.GetComponent<Collider>().enabled = false;
                         other.transform.GetChild(0).gameObject.SetActive(true); other.transform.GetChild(01).gameObject.SetActive(false);
-                    SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
+                        SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
                         anim.SetTrigger("Punch");
 
                     

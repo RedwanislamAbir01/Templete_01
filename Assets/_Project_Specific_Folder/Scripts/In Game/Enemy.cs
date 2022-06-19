@@ -17,7 +17,8 @@ public enum eEnemyType
    WarMachine,
    Lizard, 
    Rock, 
-   ElectricWall
+   ElectricWall, Loki , 
+   Hulk
 
 
 
@@ -100,16 +101,11 @@ public class Enemy : MonoBehaviour
 
                 if (other.GetComponent<PerCollsion>().Type == eType.Hero1)
                 {
-                    if (PlayerPrefs.GetInt("Hero1") != 0)
-                    {
-
-                    }
-                    else
-                    {
+                  
                         other.GetComponent<PerCollsion>().anim.SetTrigger("Death");
                         other.transform.DOLocalMoveY(-2.07f, .2f);
                         GameManager.Instance.Reset();
-                    }
+                    
 
                 }
 

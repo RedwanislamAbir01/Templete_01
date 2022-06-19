@@ -23,9 +23,9 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    public static void LoadLastScene()
+    private static void LoadLastScene()
     {
-        SceneManager.LoadScene(PlayerPrefs.GetInt("current_scene"), 0);
+        SceneManager.LoadScene("Main");
 
     }
 

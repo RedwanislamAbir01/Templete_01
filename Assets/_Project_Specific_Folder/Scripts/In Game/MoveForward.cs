@@ -35,36 +35,42 @@ public class MoveForward : MonoBehaviour
 
             if (GameManager.Instance.IsHulkScene)
             {
-                if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KryptoCrstalguy)
+                if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KryptoCrstalguy && GetComponentInParent<PerCollsion>().Type == eType.Hero2)
                 {
-                    SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
-                    MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-                    GetComponent<BoxCollider>().enabled = false;
-                    E.Anim.SetTrigger("Punch");
-                   
-                    other.GetComponent<Collider>().enabled = false;
-                    
-                        SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().TankHit);
-                    other.GetComponent<Collider>().enabled = false;
-                    
-                    other.GetComponentInChildren<Animator>().Play("Death");
+                    if (PlayerPrefs.GetInt("Hero2") == 2)
+                    {
+                        SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
+                        MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+                        GetComponent<BoxCollider>().enabled = false;
+                        E.Anim.SetTrigger("Punch");
 
-                    other.transform.GetChild(1).gameObject.SetActive(true);
+                        other.GetComponent<Collider>().enabled = false;
+
+                        SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().TankHit);
+                        other.GetComponent<Collider>().enabled = false;
+
+                        other.GetComponentInChildren<Animator>().Play("Death");
+
+                        other.transform.GetChild(1).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
+                        MMVibrationManager.Haptic(HapticTypes.MediumImpact);
+                        GetComponent<BoxCollider>().enabled = false;
+                        E.Anim.SetTrigger("Punch");
+
+                        other.GetComponent<Collider>().enabled = false;
+
+                        SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().TankHit);
+                        other.GetComponent<Collider>().enabled = false;
+
+                        other.GetComponentInChildren<Animator>().Play("Death");
+
+                        other.transform.GetChild(1).gameObject.SetActive(true);
+                    }
                 }
-                if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.ShieldGuy && GetComponentInParent<PerCollsion>().Type == eType.Hero1)
-                {
-                    SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
-                    MMVibrationManager.Haptic(HapticTypes.MediumImpact);
-                    GetComponent<BoxCollider>().enabled = false;
-                    // E.Anim.SetTrigger("Punch");
-                    Hammer.transform.DOLocalMoveZ(5, .5f);
-                    print("---");
-                    Invoke("BackToOld", .5f);
-                    other.GetComponent<Collider>().enabled = false;
-                    other.transform.GetChild(1).gameObject.SetActive(true);
-                    other.GetComponentInChildren<Animator>().Play("Death");
-                
-                }
+      
             }
             else
             {
