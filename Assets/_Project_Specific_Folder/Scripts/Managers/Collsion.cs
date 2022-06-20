@@ -95,6 +95,7 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("HulkRage"))
         {
+            Hero2.GetComponent<PerCollsion>().anim.runtimeAnimatorController = Hero2.GetComponent<PerCollsion>().RageAnim;
             Hero2.transform.DOLocalMoveX(0, .2f);
             Hero1.transform.DOLocalMoveX(0, 2f);
             Hero1.transform.DOLocalMoveZ(-13, 2f);

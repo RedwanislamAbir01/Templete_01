@@ -15,7 +15,7 @@ public class PerCollsion : MonoBehaviour
     [Header("Hero Upgrade Stuffs")]
     public int HeroLevel;
     public RuntimeAnimatorController Current;
-    public RuntimeAnimatorController Level2Aniamtor, Level3Animator;
+    public RuntimeAnimatorController Level2Aniamtor, Level3Animator , RageAnim;
     public GameObject Power1, Power2;
     public GameObject DummyGun;
     [Header("VFX")]
@@ -86,7 +86,7 @@ public class PerCollsion : MonoBehaviour
         if (HeroLevel == 2)
         {
             if (Hammer != null)
-                Hammer.transform.DOLocalRotate(new Vector3(-15.616f, -231.131f, 368.553f), 0);
+            Hammer.transform.DOLocalRotate(new Vector3(-15.616f, -231.131f, 368.553f), 0);
             if(anim.transform.GetComponent<MySDK.Mover>() != null)
             anim.transform.GetComponent<MySDK.Mover>().enabled = true;
             if (Power1 != null)

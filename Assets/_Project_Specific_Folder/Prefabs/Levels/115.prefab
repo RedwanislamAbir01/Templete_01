@@ -1989,7 +1989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bec3ed43f33464fae2af0172dd3a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossLevel: 1
+  BossLevel: 3
 --- !u!1 &7057339682328124921
 GameObject:
   m_ObjectHideFlags: 0
