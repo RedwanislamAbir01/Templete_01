@@ -308,7 +308,7 @@ public class EndDetector : MonoBehaviour
                 }
                 else
                 {
-                    print("---");
+                    
                     GameObject g1 = Instantiate(SpiderNet, SpawnPoint.position, Quaternion.identity);
                     int i = GetComponentInParent<PerCollsion>().ColelctableCount / 5;
 
@@ -316,6 +316,18 @@ public class EndDetector : MonoBehaviour
                 }
 
             }
+        }
+        else
+        {
+            if (lf.HeroLevel == 2)
+            {
+                GameObject g = Anim.transform.parent.gameObject;
+                g.transform.DOLocalJump(new Vector3(0, 0, 35), 5, 1, .4f).OnComplete(() => {
+                    g.transform.DOLocalMoveZ(0, 1.8f);
+                    Anim.GetComponent<Collider>().enabled = true;
+                });
+                }
+
         }
 
     }

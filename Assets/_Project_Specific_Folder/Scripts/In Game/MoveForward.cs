@@ -70,7 +70,26 @@ public class MoveForward : MonoBehaviour
                         other.transform.GetChild(1).gameObject.SetActive(true);
                     }
                 }
-      
+            else    if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.ShieldGuy && GetComponentInParent<PerCollsion>().Type == eType.Hero2)
+                {
+                    if (PlayerPrefs.GetInt("Hero2") == 2)
+                    {
+                        print("aa");
+
+                        SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
+                        E.Anim.SetTrigger("Punch");
+                       
+
+                        other.transform.GetChild(1).gameObject.SetActive(true);
+                        other.GetComponentInChildren<Animator>().Play("Death");
+                      
+                       
+                   
+
+                        other.GetComponent<Collider>().enabled = false;
+                    }
+                }
+
             }
             else
             {
