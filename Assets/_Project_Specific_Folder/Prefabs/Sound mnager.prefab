@@ -144,7 +144,7 @@ MonoBehaviour:
   backgroundAudioSource: {fileID: 0}
   Colleactable1: {fileID: 0}
   Colleactable2: {fileID: 0}
-  TankHit: {fileID: 8300000, guid: 2a421cf008017174ea0deadfcc2a8ccb, type: 3}
+  TankHit: {fileID: 0}
   Flying: {fileID: 8300000, guid: 1f595de011bc82d42a50704358694a96, type: 3}
   IronShoot: {fileID: 8300000, guid: da3d3cc2fadff194097d06696feacbf8, type: 3}
   EnemyHitPlayer: {fileID: 8300000, guid: 516dea1800cdf1b4fa8d9dadae2c3940, type: 3}

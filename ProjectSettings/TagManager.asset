@@ -28,6 +28,8 @@ TagManager:
   - BikeExit
   - HulkBuster
   - HulkBusterExit
+  - HulkRage
+  - HE
   layers:
   - Default
   - TransparentFX

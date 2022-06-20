@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
+using MoreMountains.NiceVibrations;
 public class Hammer : MonoBehaviour
 {
     public EndDetector E;
@@ -24,6 +24,7 @@ public class Hammer : MonoBehaviour
             {
                 if (PlayerPrefs.GetInt("Hero1") != 2)
                 {
+                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                     if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.ShieldGuy && GetComponentInParent<PerCollsion>().Type == eType.Hero1)
                     {
                         transform.GetChild(0).gameObject.SetActive(true);
@@ -47,6 +48,7 @@ public class Hammer : MonoBehaviour
                     }
                     else if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KryptoCrstalguy && GetComponentInParent<PerCollsion>().Type == eType.Hero1)
                     {
+                        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
 
                         transform.GetChild(0).gameObject.SetActive(true);
                         Hammers.gameObject.SetActive(false);
@@ -68,6 +70,7 @@ public class Hammer : MonoBehaviour
                     }
                     else if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Rock && GetComponentInParent<PerCollsion>().Type == eType.Hero1)
                     {
+                        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
 
                         transform.GetChild(0).gameObject.SetActive(true);
                         Hammers.gameObject.SetActive(false);
@@ -91,6 +94,7 @@ public class Hammer : MonoBehaviour
                 {
                     if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.ShieldGuy && GetComponentInParent<PerCollsion>().Type == eType.Hero1)
                     {
+                        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                         other.GetComponent<Collider>().enabled = false;
                         Electric.Play();
                         other.transform.GetChild(1).gameObject.SetActive(true);
@@ -99,7 +103,7 @@ public class Hammer : MonoBehaviour
                     }
                     else if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Rock && GetComponentInParent<PerCollsion>().Type == eType.Hero1)
                     {
-
+                        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                         Electric.Play();
 
                         other.gameObject.GetComponent<Collider>().enabled = false;
@@ -111,6 +115,7 @@ public class Hammer : MonoBehaviour
                     }
                     else
                     {
+                        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                         other.gameObject.GetComponent<Collider>().enabled = false;
 
                         Electric.Play();

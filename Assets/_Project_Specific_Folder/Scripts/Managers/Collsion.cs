@@ -93,7 +93,49 @@ public class Collsion : MonoBehaviour
             StartCoroutine(OnHulkExitRoutine(other.gameObject));
            // other.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 100);
         }
+        if (other.gameObject.CompareTag("HulkRage"))
+        {
+            Hero2.transform.DOLocalMoveX(0, .2f);
+            Hero1.transform.DOLocalMoveX(0, 2f);
+            Hero1.transform.DOLocalMoveZ(-13, 2f);
+            Hero2Model.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 100);
+            Hero2.transform.DOScale(new Vector3(2, 2, 2), 1);
 
+            Hero1Model.transform.GetChild(3).GetComponent<Collider>().enabled = false;
+            Hero2.GetComponent<Controller1>().enabled = false;
+            Hero1.GetComponent<Controller>().enabled = false;
+            Hero2.GetComponent<PerCollsion>().enabled = false;
+            Hero1.GetComponent<PerCollsion>().enabled = false;
+            Camera.main.transform.DOLocalMove(new Vector3(0, 19, -25), .3f);
+            Camera.main.transform.DOLocalRotate(new Vector3(28,0, -0), .3f);
+            GetComponent<CarController>().enabled = true;
+            Hero2.transform.GetComponentInChildren<MoveForward>().RageMode = true;
+            Camera.main.transform.GetChild(0).gameObject.SetActive(true);
+            Hero2.transform.GetChild(1).gameObject.SetActive(false);
+
+        }
+        if (other.gameObject.CompareTag("HE"))
+        {
+            Camera.main.transform.DOLocalMove(new Vector3(0.01419575f, 11, -21.41994f), .1f);
+            Camera.main.transform.DOLocalRotate(new Vector3(12f, 0, 0), .1f);
+            Hero2.transform.DOLocalMove(H2Start, .2f);
+            Hero1.transform.DOLocalMove(H1start, 2f);
+            other.GetComponent<Collider>().enabled = false;
+            Hero2Model.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 1);
+            Hero2.transform.DOScale(new Vector3(1, 1, 1), 1);
+            Hero2.transform.GetChild(1).gameObject.SetActive(true);
+            Hero1Model.transform.GetChild(3).GetComponent<Collider>().enabled = true;
+            Hero2.GetComponent<Controller1>().enabled = true;
+            Hero1.GetComponent<Controller>().enabled = true;
+            Hero2.GetComponent<PerCollsion>().enabled = true;
+            Hero1.GetComponent<PerCollsion>().enabled = true;
+
+            GetComponent<CarController>().enabled = false;
+            Hero2.transform.GetComponentInChildren<MoveForward>().RageMode = false;
+            Camera.main.transform.GetChild(0).gameObject.SetActive(false);
+
+
+        }
         if (other.gameObject.CompareTag("Car"))
         {
             Hero2.GetComponent<PerCollsion>().Power1.gameObject.SetActive(false);

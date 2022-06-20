@@ -21,9 +21,10 @@ public class Boss : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Wall"))
         {
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
             GameManager.Instance.WallCollidedWith++;
             Camera.main.transform.DOShakePosition(.5f, .15f);
-            MMVibrationManager.Haptic(HapticTypes.LightImpact);
+           
             SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().TankHit);
             collision.gameObject.GetComponent<Wall>().EnableRb();
             ParticleFX.Play();

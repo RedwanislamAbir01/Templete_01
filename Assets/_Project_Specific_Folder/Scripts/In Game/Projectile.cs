@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using MoreMountains.NiceVibrations;
 public class Projectile : MonoBehaviour
 {
     public float ProjectileSpeed;
@@ -30,6 +31,7 @@ public bool isBatMobile;
             {
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Wall || other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KyptoBlock)
                 {
+                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                     other.GetComponent<Collider>().enabled = false;
                     other.transform.GetChild(0).gameObject.SetActive(false); other.transform.GetChild(01).gameObject.SetActive(true);
                     GameObject g = Instantiate(HitVFX, new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity); GameObject g1 = Instantiate(CrystalSpread, new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity);
@@ -40,6 +42,7 @@ public bool isBatMobile;
                 }
                 if ((other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.ShieldGuy))
                 {
+                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                     if (PlayerPrefs.GetInt("Hero2") == 2)
                     {
                         other.GetComponent<Collider>().enabled = false;
@@ -56,6 +59,7 @@ public bool isBatMobile;
                 }
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Ice)
                 {
+                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                     if (PlayerPrefs.GetInt("Hero2") == 2)
                     {
                         other.transform.parent.GetChild(0).gameObject.SetActive(false);
@@ -74,6 +78,7 @@ public bool isBatMobile;
                 }
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.BrickWall)
                 {
+                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                     if (this.gameObject.name != "SpiderWeapon(Clone)")
                     {
                         other.GetComponent<Collider>().enabled = false;
@@ -94,6 +99,7 @@ public bool isBatMobile;
                 }
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.WarMachine)
                 {
+                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                     if (this.gameObject.name != "SpiderWeapon(Clone)")
                     {
               
@@ -127,6 +133,7 @@ public bool isBatMobile;
 
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Lizard)
                 {
+                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                     if (this.gameObject.name != "SpiderWeapon(Clone)" )
                     {
                         if (PlayerPrefs.GetInt("Hero1") == 2)
@@ -152,9 +159,9 @@ public bool isBatMobile;
                     }
                     else
                     {
-                      
 
-                            if (!isWebNet)
+                        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+                        if (!isWebNet)
                         {
                             other.GetComponent<Enemy>().Rope.SetActive(true);
                             other.GetComponent<Collider>().enabled = false;
@@ -197,6 +204,7 @@ public bool isBatMobile;
 
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.LaserWall)
                 {
+                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                     if (this.gameObject.name != "IronWeapon(Clone)")
                     {
                         GameObject g = Instantiate(DestroyVFX
@@ -215,6 +223,7 @@ public bool isBatMobile;
                 }
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KryptoCrstalguy)
                 {
+                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                     SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().TankHit);
                     other.transform.GetChild(0).gameObject.SetActive(false); other.transform.GetChild(01).gameObject.SetActive(true);
                     GameObject g1 = Instantiate(CrystalSpread, new Vector3(other.transform.position.x, other.transform.position.y + .5f, other.transform.position.z), Quaternion.identity); ;
@@ -233,7 +242,8 @@ public bool isBatMobile;
 
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Wall || other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KyptoBlock)
                 {
-                  
+                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+
                     other.GetComponent<Collider>().enabled = false;
                     other.transform.GetChild(0).gameObject.SetActive(false); other.transform.GetChild(01).gameObject.SetActive(true);
                     GameObject g = Instantiate(HitVFX, new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity); GameObject g1 = Instantiate(CrystalSpread, new Vector3(other.transform.position.x, other.transform.position.y + .1f, other.transform.position.z), Quaternion.identity);
@@ -244,7 +254,7 @@ public bool isBatMobile;
                 }
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.ShieldGuy)
                 {
-                    
+                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                     SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().EnemyHitPlayer);
                     other.GetComponent<Collider>().enabled = false;
                     other.transform.GetChild(2).gameObject.SetActive(true);
@@ -253,7 +263,8 @@ public bool isBatMobile;
                 }
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.BrickWall)
                 {
-                 
+                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+
                     other.GetComponent<Collider>().enabled = false;
                     other.GetComponentInChildren<Wall>().EnableRb();
                     GameObject g = Instantiate(DestroyVFX
@@ -266,7 +277,8 @@ public bool isBatMobile;
                 }
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.WarMachine)
                 {
-                   
+                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+
 
                     other.GetComponent<Collider>().enabled = false;
                     other.gameObject.transform.GetChild(0).gameObject.SetActive(true); other.gameObject.transform.GetChild(01).gameObject.SetActive(false);
@@ -278,7 +290,7 @@ public bool isBatMobile;
                 }
                 if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.Lizard)
                 {
-                   
+                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                     // other.GetComponent<Enemy>().Rope.SetActive(true);
                     other.GetComponent<Collider>().enabled = false;
                     GameObject g = Instantiate(DestroyVFX
@@ -290,7 +302,7 @@ public bool isBatMobile;
                 }
                     if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.KryptoCrstalguy)
                 {
-                   
+                    MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
                     SoundManager.SharedManager().PlaySFX(SoundManager.SharedManager().TankHit);
                     other.transform.GetChild(0).gameObject.SetActive(false); other.transform.GetChild(01).gameObject.SetActive(true);
                     GameObject g1 = Instantiate(CrystalSpread, new Vector3(other.transform.position.x, other.transform.position.y + .5f, other.transform.position.z), Quaternion.identity); ;
