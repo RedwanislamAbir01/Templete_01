@@ -109,7 +109,7 @@ public class Collsion : MonoBehaviour
             Hero1.GetComponent<PerCollsion>().enabled = false;
             Camera.main.transform.DOLocalMove(new Vector3(0, 19, -25), .3f);
             Camera.main.transform.DOLocalRotate(new Vector3(28,0, -0), .3f);
-            GetComponent<CarController>().enabled = true;
+            GetComponent<NewControler>().enabled = true;
             Hero2.transform.GetComponentInChildren<MoveForward>().RageMode = true;
             Camera.main.transform.GetChild(0).gameObject.SetActive(true);
             Hero2.transform.GetChild(1).gameObject.SetActive(false);
@@ -131,11 +131,16 @@ public class Collsion : MonoBehaviour
             Hero2.GetComponent<PerCollsion>().enabled = true;
             Hero1.GetComponent<PerCollsion>().enabled = true;
 
-            GetComponent<CarController>().enabled = false;
+            GetComponent<NewControler>().enabled = false;
             Hero2.transform.GetComponentInChildren<MoveForward>().RageMode = false;
             Camera.main.transform.GetChild(0).gameObject.SetActive(false);
+            transform.DOLocalMoveX(0, .1f);
+           if( Hero2.GetComponent<PerCollsion>().HeroLevel == 0)
+            Hero2.GetComponent<PerCollsion>().anim.runtimeAnimatorController = Hero2.GetComponent<PerCollsion>().Level2Aniamtor;
+            if (Hero2.GetComponent<PerCollsion>().HeroLevel > 0)
+                Hero2.GetComponent<PerCollsion>().anim.runtimeAnimatorController = Hero2.GetComponent<PerCollsion>().Level3Animator;
 
-
+            Hero2Model.GetComponent<Animator>().Play("Run");
         }
         if (other.gameObject.CompareTag("Car"))
         {
@@ -219,7 +224,7 @@ public class Collsion : MonoBehaviour
             Hero2Model.GetComponent<Animator>().SetBool("Hang", false); Hero1Model.GetComponent<Animator>().SetBool("Hang", false);
           
             transform.DOLocalMoveX(0, .1f);
-            GetComponent<CarController>().enabled = false;
+            GetComponent<NewControler>().enabled = false;
             
             Hero1.transform.DOLocalMove(H1start, .3f);
             Hero2.transform.DOLocalMove(H2Start, .3f).OnComplete(() =>
@@ -268,7 +273,7 @@ public class Collsion : MonoBehaviour
 
             Hero1.transform.DOLocalRotate(new Vector3(0, -0, 0), .3f); Hero2.transform.DOLocalRotate(new Vector3(0, -0, 0), .1f);
         
-            GetComponent<CarController>().enabled = true;
+            GetComponent<NewControler>().enabled = true;
         });
 
     }
@@ -489,7 +494,7 @@ public class Collsion : MonoBehaviour
 
     public IEnumerator GetOnBikeRoutine(GameObject g)
     {
-        transform.GetComponent<CarController>().Control = CarController.eControl.Bike;
+      //  transform.GetComponent<CarController>().Control = CarController.eControl.Bike;
         GameManager.Instance.Bike.transform.GetChild(3).gameObject.SetActive(true);
         transform.DOLocalRotate(new Vector3(-25, transform.localEulerAngles.y, transform.localEulerAngles.z), .5f);
         
@@ -510,9 +515,10 @@ public class Collsion : MonoBehaviour
 
         Hero1Model.transform.parent.DOLocalMove(new Vector3(0, 1.38f, 0), .1f);
         GameManager.Instance.p.MaxSpeed = 5; GameManager.Instance.p.speed = 5; GameManager.Instance.p.IncreazseMultiplier = 5;
-        transform.GetComponent<CarController>().enabled = true;
+        transform.GetComponent<NewControler>().enabled = true;
+        transform.GetComponent<NewControler>().Bike = true;
         Camera.main.transform.GetChild(0).gameObject.SetActive(true);
-
+        transform.DOLocalRotate(new Vector3(0, 0, 0), .3f);
 
 
 
@@ -522,7 +528,7 @@ public class Collsion : MonoBehaviour
       
 
 
-        transform.GetComponent<CarController>().enabled = false;
+        transform.GetComponent<NewControler>().enabled = false;
         Camera.main.transform.GetChild(0).gameObject.SetActive(false);
         GameManager.Instance.p.speed = 0;
         GameManager.Instance.p.MaxSpeed = 0; GameManager.Instance.p.MinSpeed = 0;
@@ -609,7 +615,7 @@ public class Collsion : MonoBehaviour
         GameManager.Instance.p.speed = 5;
         GameManager.Instance.p.IncreazseMultiplier = 5;
         Camera.main.transform.GetChild(0).gameObject.SetActive(true);
-        transform.GetComponent<CarController>().enabled = true;
+        transform.GetComponent<NewControler>().enabled = true;
        
         Hero1.gameObject.SetActive(false);
 
@@ -656,7 +662,7 @@ public class Collsion : MonoBehaviour
         Hero1.transform.DOJump(new Vector3(GameManager.Instance.BatMobile.transform.position.x+1,
             GameManager.Instance.BatMobile.transform.position.y,
             GameManager.Instance.BatMobile.transform.position.z ), .5f, 1, .5f).OnComplete(() => {
-            transform.GetComponent<CarController>().enabled = true;
+            transform.GetComponent<NewControler>().enabled = true;
             GameManager.Instance.BatMobile.transform.GetComponent<Animator>().Play("Close");
             Hero2.gameObject.SetActive(false);
             Hero1.gameObject.SetActive(false);
@@ -682,7 +688,7 @@ public class Collsion : MonoBehaviour
     }
     public IEnumerator OnHulkExitRoutine(GameObject g)
     {
-       transform.GetComponent<CarController>().enabled = false;
+       transform.GetComponent<NewControler>().enabled = false;
 
         Camera.main.transform.GetChild(0).gameObject.SetActive(false);
       //  GameObject.FindGameObjectWithTag("HulkBuster").GetComponent<HulkBuster>().SpiderMan.gameObject.SetActive(false);
@@ -726,7 +732,7 @@ public class Collsion : MonoBehaviour
     }
     public IEnumerator OnExitRoutine()
     {
-        transform.GetComponent<CarController>().enabled = false; 
+        transform.GetComponent<NewControler>().enabled = false; 
       
         Camera.main.transform.GetChild(0).gameObject.SetActive(false);
 
