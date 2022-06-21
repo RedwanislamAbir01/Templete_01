@@ -78,6 +78,7 @@ public class Collsion : MonoBehaviour
             }
         }
     }
+    float m_Weight;
     private void OnTriggerEnter(Collider other)
     {
 
@@ -105,7 +106,7 @@ public class Collsion : MonoBehaviour
             Hero1.GetComponent<PerCollsion>().enabled = false; 
             GetComponent<NewControler>().enabled = false; 
             Hero2.transform.GetChild(1).gameObject.SetActive(false);
-  
+            m_Weight = Hero2Model.GetComponentInChildren<SkinnedMeshRenderer>().GetBlendShapeWeight(0);
         }
             if (other.gameObject.CompareTag("HulkRage"))
         {
@@ -127,6 +128,7 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("HE"))
         {
+            Hero2Model.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, m_Weight);
             GameManager.Instance.p.speed -= 3;
             GameManager.Instance.p.MaxSpeed -= 3;
             Camera.main.transform.DOLocalMove(new Vector3(0.01419575f, 11, -21.41994f), .1f);
@@ -134,7 +136,7 @@ public class Collsion : MonoBehaviour
             Hero2.transform.DOLocalMove(H2Start, .2f);
             Hero1.transform.DOLocalMove(H1start, 2f);
             other.GetComponent<Collider>().enabled = false;
-            Hero2Model.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 1);
+      
             Hero2.transform.DOScale(new Vector3(1, 1, 1), 1);
             Hero2.transform.GetChild(1).gameObject.SetActive(true);
             Hero1Model.transform.GetChild(3).GetComponent<Collider>().enabled = true;

@@ -24,7 +24,7 @@ public class UiManager : Singleton<UiManager>
     public bool HapticsAllowed;
     public GameObject haptics;
 
-    public GameObject StartUI, EndUi, CompleteUI , FadeIn , UpgradePnael;
+    public GameObject StartUI, EndUi, CompleteUI, FadeIn, UpgradePnael, SkillPanel;
     public GameObject TapFastPanel;
 
     public GameObject fillbarTimer;
@@ -41,6 +41,10 @@ public class UiManager : Singleton<UiManager>
         {
             LevelText.text = "Level "+ (currentLevelText + 1).ToString();
         }
+        if(GameManager.Instance.levelNo == 0)
+        {
+            SkillPanel.gameObject.SetActive(false);
+        }
     }
     public void UpdateTotalCoin()
     {
@@ -50,7 +54,8 @@ public class UiManager : Singleton<UiManager>
     {
         Time.timeScale = 1;
         Level1Tut.gameObject.SetActive(false); Level6Tut.gameObject.SetActive(false);
-        GameManager.Instance.p.GetComponentInChildren<Collsion>().Hero1.GetComponent<Controller>().speed = .65f; GameManager.Instance.p.GetComponentInChildren<Collsion>().Hero2.GetComponent<Controller1>().speed = .65f;
+       GameManager.Instance.p.GetComponentInChildren<Collsion>().Hero2.GetComponent<Controller1>().enabled = true;
+        GameManager.Instance.p.GetComponentInChildren<Collsion>().Hero1.GetComponent<Controller>().enabled = true;
     }
     public static int GetTotalCoin() => PlayerPrefs.GetInt("LifeTimeScore");
     public static void SaveTotalCoin(int amount) => PlayerPrefs.SetInt("LifeTimeScore", amount);

@@ -16,6 +16,7 @@ public class Hammer : MonoBehaviour
    
         transform.GetChild(0).gameObject.SetActive(false);
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!GameManager.Instance.GameOver)
@@ -36,8 +37,9 @@ public class Hammer : MonoBehaviour
 
                         transform.DOLocalMove(new Vector3(0.282f, 1.09f, 5f), .3f).OnComplete(() =>
                      {
-                         other.transform.GetChild(1).gameObject.SetActive(true);
+                         other.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>().Play();
                          other.GetComponentInChildren<Animator>().Play("Death");
+
                          BackToOld();
                      });
                         print("---");
@@ -59,8 +61,8 @@ public class Hammer : MonoBehaviour
 
                         transform.DOLocalMoveZ(5, .3f).OnComplete(() =>
                         {
-                            other.transform.GetChild(1).gameObject.SetActive(true);
-
+                            other.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>().Play();
+         
                             other.GetComponentInChildren<Animator>().Play("Taunt");
                             BackToOld();
                         });
@@ -81,7 +83,9 @@ public class Hammer : MonoBehaviour
 
                         transform.DOLocalMoveZ(5, .3f).OnComplete(() =>
                         {
-
+                            other.gameObject.GetComponent<Collider>().enabled = false;
+                            other.transform.GetChild(0).gameObject.SetActive(true);
+                            other.transform.GetChild(1).gameObject.SetActive(false);
                             BackToOld();
                         });
 
@@ -98,6 +102,7 @@ public class Hammer : MonoBehaviour
                         other.GetComponent<Collider>().enabled = false;
                         Electric.Play();
                         other.transform.GetChild(1).gameObject.SetActive(true);
+           
                         other.GetComponentInChildren<Animator>().Play("Death");
 
                     }
@@ -107,7 +112,8 @@ public class Hammer : MonoBehaviour
                         Electric.Play();
 
                         other.gameObject.GetComponent<Collider>().enabled = false;
-                        other.transform.GetChild(0).gameObject.SetActive(true); other.transform.GetChild(01).gameObject.SetActive(false);
+                        other.transform.GetChild(0).gameObject.SetActive(true);
+                        other.transform.GetChild(1).gameObject.SetActive(false);
 
 
 

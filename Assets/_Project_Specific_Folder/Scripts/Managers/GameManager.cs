@@ -113,9 +113,10 @@ public class GameManager : Singleton<GameManager>
         {
             if (PlayerPrefs.GetInt("Tutorial101", 0) == 0)
             {
-
+               p.GetComponentInChildren<Collsion>().Hero2.GetComponent<Controller1>().enabled = false;
+                p.GetComponentInChildren<Collsion>().Hero1.GetComponent<Controller>().enabled = false;
                 UiManager.Instance.Level1Tut.gameObject.SetActive(true);
-                p.GetComponentInChildren<Collsion>().Hero1.GetComponent<Controller>().speed = 0; p.GetComponentInChildren<Collsion>().Hero2.GetComponent<Controller1>().speed = 0;
+          
                 UiManager.Instance.Level1Tut.transform.DOScale(new Vector3(6, 6, 6), .1f).OnComplete(() => { Time.timeScale = 0; });
 
 
@@ -128,7 +129,8 @@ public class GameManager : Singleton<GameManager>
             if (PlayerPrefs.GetInt("Tutorial106", 0) == 0)
             {
 
-                p.GetComponentInChildren<Collsion>().Hero1.GetComponent<Controller>().speed = 0; p.GetComponentInChildren<Collsion>().Hero2.GetComponent<Controller1>().speed = 0;
+                p.GetComponentInChildren<Collsion>().Hero2.GetComponent<Controller1>().enabled = false;
+                p.GetComponentInChildren<Collsion>().Hero1.GetComponent<Controller>().enabled = false;
                 UiManager.Instance.Level6Tut.gameObject.SetActive(true);
                 UiManager.Instance.Level6Tut.transform.DOScale(new Vector3(6, 6, 6), .1f).OnComplete(() => { Time.timeScale = 0; });
 

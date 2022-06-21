@@ -68,7 +68,7 @@ public class MoveForward : MonoBehaviour
 
                             other.GetComponentInChildren<Animator>().Play("Death");
 
-                            other.transform.GetChild(1).gameObject.SetActive(true);
+                            other.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>().Play();
                         }
                         else
                         {
@@ -84,7 +84,7 @@ public class MoveForward : MonoBehaviour
 
                             other.GetComponentInChildren<Animator>().Play("Death");
 
-                            other.transform.GetChild(1).gameObject.SetActive(true);
+                            other.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>().Play();
                         }
                     }
                     else if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.ShieldGuy && GetComponentInParent<PerCollsion>().Type == eType.Hero2)
@@ -97,7 +97,7 @@ public class MoveForward : MonoBehaviour
                             E.Anim.SetTrigger("Punch");
 
 
-                            other.transform.GetChild(1).gameObject.SetActive(true);
+                            other.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>().Play();
                             other.GetComponentInChildren<Animator>().Play("Death");
 
 
@@ -130,7 +130,7 @@ public class MoveForward : MonoBehaviour
 
                             other.GetComponentInChildren<Animator>().Play("Death");
 
-                            other.transform.GetChild(1).gameObject.SetActive(true);
+                        other.transform.GetChild(1).gameObject.SetActive(true);
                         StartCoroutine(PauseGame(.1f));
                     }
                     if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.ShieldGuy )
@@ -142,8 +142,9 @@ public class MoveForward : MonoBehaviour
                             E.Anim.SetTrigger("Punch");
 
 
-                            other.transform.GetChild(1).gameObject.SetActive(true);
-                            other.GetComponentInChildren<Animator>().Play("Death");
+                        other.transform.GetChild(1).gameObject.SetActive(true);
+
+                        other.GetComponentInChildren<Animator>().Play("Death");
 
 
 
