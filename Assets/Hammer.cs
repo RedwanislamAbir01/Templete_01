@@ -121,12 +121,15 @@ public class Hammer : MonoBehaviour
                     }
                     else
                     {
-                        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-                        other.gameObject.GetComponent<Collider>().enabled = false;
+                        if (other.gameObject.GetComponent<Enemy>().EnemyType != eEnemyType.ElectricWall && GetComponentInParent<PerCollsion>().Type == eType.Hero1)
+                        {
+                            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+                            other.gameObject.GetComponent<Collider>().enabled = false;
 
-                        Electric.Play();
-                        if (other.GetComponentInChildren<Animator>() != null)
-                            other.GetComponentInChildren<Animator>().Play("Death");
+                            Electric.Play();
+                            if (other.GetComponentInChildren<Animator>() != null)
+                                other.GetComponentInChildren<Animator>().Play("Death");
+                        }
                     }
                 }
             }

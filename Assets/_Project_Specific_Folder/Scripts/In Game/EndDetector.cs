@@ -8,7 +8,7 @@ public class EndDetector : MonoBehaviour
     public Animator Anim;
     public Transform SpawnPoint, SpwanPoint1, NewGunSpawnPoint;
     public GameObject aa, bb;
-
+    public ParticleSystem poof;
 
     PerCollsion lf;
     public GameObject Projectile, Laser , SpiderNet;
@@ -322,14 +322,20 @@ public class EndDetector : MonoBehaviour
             if (lf.HeroLevel == 2)
             {
                 GameObject g = Anim.transform.parent.gameObject;
+                Invoke("PoofDelay", .4f);
                 g.transform.DOLocalJump(new Vector3(0, 0, 35), 5, 1, .4f).OnComplete(() => {
                     g.transform.DOLocalMoveZ(0, 1.8f);
                     Anim.GetComponent<Collider>().enabled = true;
+                  
                 });
                 }
 
         }
 
+    }
+    void PoofDelay()
+    {
+        poof.Play();
     }
     public IEnumerator Shoot6Times()
     {

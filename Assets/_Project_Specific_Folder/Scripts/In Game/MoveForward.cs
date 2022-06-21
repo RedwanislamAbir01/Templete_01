@@ -9,7 +9,7 @@ public class MoveForward : MonoBehaviour
     public ShieldDetector S;
     Vector3 StartPos;
     public GameObject Hammer;
-
+    public ParticleSystem Poof;
     public bool RageMode;
     void Start()
     {
