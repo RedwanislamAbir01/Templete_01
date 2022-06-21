@@ -137,7 +137,7 @@ public class Collsion : MonoBehaviour
             Hero1.transform.DOLocalMove(H1start, 2f);
             other.GetComponent<Collider>().enabled = false;
       
-            Hero2.transform.DOScale(new Vector3(1, 1, 1), 1);
+            Hero2.transform.DOScale(new Vector3(1.2053f, 1.2053f, 1.2053f), 1);
             Hero2.transform.GetChild(1).gameObject.SetActive(true);
             Hero1Model.transform.GetChild(3).GetComponent<Collider>().enabled = true;
             Hero2.GetComponent<Controller1>().enabled = true;
