@@ -130,8 +130,8 @@ public class MoveForward : MonoBehaviour
 
                             other.GetComponentInChildren<Animator>().Play("Death");
 
-                        other.transform.GetChild(1).gameObject.SetActive(true);
-                        StartCoroutine(PauseGame(.1f));
+                            other.transform.GetChild(1).gameObject.SetActive(true);
+                      
                     }
                     if (other.gameObject.GetComponent<Enemy>().EnemyType == eEnemyType.ShieldGuy )
                     {
@@ -150,11 +150,11 @@ public class MoveForward : MonoBehaviour
 
 
                             other.GetComponent<Collider>().enabled = false;
-                        StartCoroutine(PauseGame(.1f));
+                       
                     }
                     else
                     {
-                        StartCoroutine(PauseGame(.1f));
+                      
                     }
                 }
             }

@@ -112,8 +112,8 @@ public class Collsion : MonoBehaviour
         }
             if (other.gameObject.CompareTag("HulkRage"))
         {
-            GameManager.Instance.p.speed += 3;
-            GameManager.Instance.p.MaxSpeed += 3;
+            GameManager.Instance.p.speed += 2;
+            GameManager.Instance.p.MaxSpeed +=2;
             Hero2.GetComponent<PerCollsion>().anim.runtimeAnimatorController = Hero2.GetComponent<PerCollsion>().RageAnim;
 
             Hero2Model.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 100);
@@ -131,8 +131,8 @@ public class Collsion : MonoBehaviour
         if (other.gameObject.CompareTag("HE"))
         {
             Hero2Model.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, m_Weight);
-            GameManager.Instance.p.speed -= 3;
-            GameManager.Instance.p.MaxSpeed -= 3;
+            GameManager.Instance.p.speed -= 2;
+            GameManager.Instance.p.MaxSpeed -= 2;
             Camera.main.transform.DOLocalMove(new Vector3(0.01419575f, 11, -21.41994f), .1f);
             Camera.main.transform.DOLocalRotate(new Vector3(12f, 0, 0), .1f);
             Hero2.transform.DOLocalMove(H2Start, .2f);
