@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -397,6 +397,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 919228085908779727, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1142263145875251924, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -538,6 +542,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2961480935584856654, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2961480935584856654, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0fa56003ba7ac1342ad5796211668dec, type: 3}
+    - target: {fileID: 2961480935584856654, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -627,15 +639,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6692555132919373802, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: m_Color.b
-      value: 0.8117648
+      value: 0.027450966
       objectReference: {fileID: 0}
     - target: {fileID: 6692555132919373802, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: m_Color.g
-      value: 0.40000004
+      value: 0.12891307
       objectReference: {fileID: 0}
     - target: {fileID: 6692555132919373802, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 0.8862745
       objectReference: {fileID: 0}
     - target: {fileID: 6692555132919373802, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
       propertyPath: m_Enabled
@@ -757,6 +769,22 @@ PrefabInstance:
       propertyPath: m_FillMethod
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8166043133267284356, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6288964
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166043133267284356, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.7994289
+      objectReference: {fileID: 0}
+    - target: {fileID: 8166043133267284356, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2409854
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979461772963077009, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 298972064, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
     - {fileID: 897167763, guid: 3346ac0d4432a8646b2781750bc1e10f, type: 3}
@@ -839,3 +867,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399a9921e2e4e794080e883b381c42f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MultiplyText: {fileID: 0}
