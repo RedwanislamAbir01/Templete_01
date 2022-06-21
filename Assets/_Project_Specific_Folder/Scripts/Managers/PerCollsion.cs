@@ -100,8 +100,15 @@ public class PerCollsion : MonoBehaviour
     {
         
         HeroLevel = PlayerPrefs.GetInt("Hero2");
+
+ 
         if (HeroLevel == 1)
         {
+            if (GameManager.Instance.IsHulkScene)
+            {
+                Power1.SetActive(true);
+                Power2.SetActive(true);
+            }
             if (Power1 != null)
                 Power1.SetActive(true);
 
@@ -116,7 +123,12 @@ public class PerCollsion : MonoBehaviour
         }
         if (HeroLevel == 2)
         {
-            if(DummyGun != null)
+            if (GameManager.Instance.IsHulkScene)
+            {
+                Power1.SetActive(true);
+                Power2.SetActive(true);
+            }
+            if (DummyGun != null)
             DummyGun.gameObject.SetActive(true);
             if (Power1 != null)
             Power1.SetActive(true);

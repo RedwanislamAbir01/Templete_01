@@ -91,32 +91,44 @@ public class Collsion : MonoBehaviour
             GameObject.FindGameObjectWithTag("HulkBuster").GetComponent<Collider>().enabled = false;
             other.gameObject.GetComponent<BoxCollider>().enabled = false;
             StartCoroutine(OnHulkExitRoutine(other.gameObject));
-           // other.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 100);
+            // other.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 100);
         }
-        if (other.gameObject.CompareTag("HulkRage"))
+        if (other.gameObject.CompareTag("RageTrigger"))
         {
-            Hero2.GetComponent<PerCollsion>().anim.runtimeAnimatorController = Hero2.GetComponent<PerCollsion>().RageAnim;
             Hero2.transform.DOLocalMoveX(0, .2f);
             Hero1.transform.DOLocalMoveX(0, 2f);
             Hero1.transform.DOLocalMoveZ(-13, 2f);
-            Hero2Model.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 100);
-            Hero2.transform.DOScale(new Vector3(2, 2, 2), 1);
-
             Hero1Model.transform.GetChild(3).GetComponent<Collider>().enabled = false;
             Hero2.GetComponent<Controller1>().enabled = false;
             Hero1.GetComponent<Controller>().enabled = false;
             Hero2.GetComponent<PerCollsion>().enabled = false;
-            Hero1.GetComponent<PerCollsion>().enabled = false;
+            Hero1.GetComponent<PerCollsion>().enabled = false; 
+            GetComponent<NewControler>().enabled = false; 
+            Hero2.transform.GetChild(1).gameObject.SetActive(false);
+  
+        }
+            if (other.gameObject.CompareTag("HulkRage"))
+        {
+            GameManager.Instance.p.speed += 3;
+            GameManager.Instance.p.MaxSpeed += 3;
+            Hero2.GetComponent<PerCollsion>().anim.runtimeAnimatorController = Hero2.GetComponent<PerCollsion>().RageAnim;
+
+            Hero2Model.GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 100);
+            Hero2.transform.DOScale(new Vector3(2, 2, 2), 1);
+
+
             Camera.main.transform.DOLocalMove(new Vector3(0, 19, -25), .3f);
             Camera.main.transform.DOLocalRotate(new Vector3(28,0, -0), .3f);
             GetComponent<NewControler>().enabled = true;
             Hero2.transform.GetComponentInChildren<MoveForward>().RageMode = true;
             Camera.main.transform.GetChild(0).gameObject.SetActive(true);
-            Hero2.transform.GetChild(1).gameObject.SetActive(false);
+      
 
         }
         if (other.gameObject.CompareTag("HE"))
         {
+            GameManager.Instance.p.speed -= 3;
+            GameManager.Instance.p.MaxSpeed -= 3;
             Camera.main.transform.DOLocalMove(new Vector3(0.01419575f, 11, -21.41994f), .1f);
             Camera.main.transform.DOLocalRotate(new Vector3(12f, 0, 0), .1f);
             Hero2.transform.DOLocalMove(H2Start, .2f);

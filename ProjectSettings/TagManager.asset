@@ -30,6 +30,7 @@ TagManager:
   - HulkBusterExit
   - HulkRage
   - HE
+  - RageTrigger
   layers:
   - Default
   - TransparentFX
