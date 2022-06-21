@@ -84,6 +84,8 @@ public class Collsion : MonoBehaviour
 
         if (other.gameObject.CompareTag("HulkBuster"))
         {
+            Hero1.transform.GetComponent<Controller>().enabled = false;
+            Hero2.transform.GetComponent<Controller1>().enabled = false;
             StartCoroutine(GetOnHulkBusterRoutine(other.gameObject));
           
         }
