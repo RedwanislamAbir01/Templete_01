@@ -71,7 +71,10 @@ namespace KaijuRun
             {
                 VuiFor(7, "8");
             }
-           
+            if (i >=13)
+            {
+                VuiFor(13, "13");
+            }
             //if (i >= 5 && i < 10)
             //{
             //    VuiFor(9, "10");
