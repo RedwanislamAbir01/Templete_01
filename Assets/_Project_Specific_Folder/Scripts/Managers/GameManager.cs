@@ -96,6 +96,12 @@ public class GameManager : Singleton<GameManager>
         p.GetComponentInChildren<Collsion>().Boss1 = GameObject.FindGameObjectWithTag("Boss");
         BatMobile= GameObject.FindGameObjectWithTag("Batmobil");Bike = GameObject.FindGameObjectWithTag("Bike");
         s.enabled = true;
+
+        if(levelNo == 13)
+        {
+            UiManager.Instance.UpgradePnael.GetComponent<ItemCollection.GameEndUnlockItem.UnlockItemWithPercentage>()._increaseAmount = 20;
+        }
+
     }
     private void Update()
     {

@@ -91,6 +91,8 @@ public class Collsion : MonoBehaviour
         }
         if (other.gameObject.CompareTag("HulkBusterExit"))
         {
+            Hero1.transform.GetComponent<Controller>().enabled = true;
+            Hero2.transform.GetComponent<Controller1>().enabled = true;
             GameObject.FindGameObjectWithTag("HulkBuster").GetComponent<Collider>().enabled = false;
             other.gameObject.GetComponent<BoxCollider>().enabled = false;
             StartCoroutine(OnHulkExitRoutine(other.gameObject));

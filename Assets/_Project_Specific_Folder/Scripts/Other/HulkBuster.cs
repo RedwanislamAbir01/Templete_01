@@ -10,6 +10,14 @@ public class HulkBuster : MonoBehaviour
     public float ScaleAmmounts;
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Cash"))
+        {
+            UiManager.Instance.IncreasePoints(5);
+
+            other.transform.GetChild(0).gameObject.SetActive(true);
+            other.transform.GetComponent<Collider>().enabled = false; other.transform.GetComponent<MeshRenderer>().enabled = false;
+        }
+
         if (other.gameObject.CompareTag("Hero2c") || other.gameObject.CompareTag("Hero1c"))
         {
             Destroy(other.gameObject);
@@ -29,4 +37,5 @@ transform.localScale.y - ScaleAmmounts
                        });
 
     }
+
 }
